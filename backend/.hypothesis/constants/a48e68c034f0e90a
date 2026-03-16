@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/routes/categories.py
+# hypothesis_version: 6.151.9
+
+[100, 201, 204, 500, '/categories', '/subcategories', '/{category_id}', '/{sub_category_id}', 'categories', 'subcategories']

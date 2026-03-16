@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/core/exception_handlers.py
+# hypothesis_version: 6.151.9
+
+[404, 409, 422, 'detail']

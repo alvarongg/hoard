@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Lint Backend Python",
+  "description": "Ejecuta Ruff (linter Python) automáticamente cuando se edita un archivo Python del backend para detectar problemas de estilo y errores.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "backend/**/*.py"
+    ]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "cd backend && python -m ruff check ${file} --no-fix"
+  }
+}

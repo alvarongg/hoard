@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/image.py
+# hypothesis_version: 6.151.9
+
+[100, 255, 1000, 'CASCADE', 'collection_items.id', 'item_images']

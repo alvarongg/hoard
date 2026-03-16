@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/routes/collections.py
+# hypothesis_version: 6.151.9
+
+[100, 201, 204, 500, '/collections', '/items', '/{collection_id}', '/{item_id}', 'collection-items', 'collections']

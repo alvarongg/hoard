@@ -1,0 +1,135 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "confirm": "Confirmar",
+    "search": "Buscar",
+    "noResults": "No se encontraron resultados",
+    "retry": "Reintentar"
+  },
+  "navigation": {
+    "main": "Navegación principal",
+    "home": "Inicio",
+    "collections": "Colecciones",
+    "catalogs": "Catálogos"
+  },
+  "home": {
+    "welcome": "Bienvenido a H.O.A.R.D.",
+    "description": "Hobby Organization, Archive & Registry Database",
+    "quickAccess": "Acceso Rápido",
+    "totalCollections": "Total de Colecciones",
+    "totalCatalogs": "Total de Catálogos",
+    "recentCollections": "Tus Colecciones",
+    "viewAll": "Ver Todas",
+    "getStarted": "Comienza creando tu primera colección"
+  },
+  "collections": {
+    "title": "Colecciones",
+    "detail": "Detalle de Colección",
+    "create": "Crear Colección",
+    "edit": "Editar Colección",
+    "empty": "Aún no hay colecciones",
+    "name": "Nombre",
+    "description": "Descripción",
+    "type": "Tipo",
+    "singleCategory": "Categoría Única",
+    "multiCategory": "Multi Categoría",
+    "mixed": "Mixta",
+    "items": "Items",
+    "itemCount": "{{count}} items",
+    "editLabel": "Editar {{name}}",
+    "deleteLabel": "Eliminar {{name}}",
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar esta colección?",
+    "form": {
+      "nameRequired": "El nombre es obligatorio",
+      "selectType": "Selecciona tipo de colección",
+      "selectSubCategory": "Selecciona sub-categoría",
+      "subCategory": "Sub-categoría",
+      "subCategoryRequired": "La sub-categoría es obligatoria para colecciones de categoría única",
+      "mainCategory": "Categoría Principal",
+      "selectMainCategory": "Selecciona categoría principal"
+    }
+  },
+  "catalogs": {
+    "title": "Catálogos",
+    "detail": "Detalle de Catálogo",
+    "create": "Crear Catálogo",
+    "empty": "Aún no hay catálogos",
+    "name": "Nombre",
+    "description": "Descripción",
+    "items": "Items del Catálogo",
+    "search": "Buscar items..."
+  },
+  "categories": {
+    "title": "Categorías",
+    "main": "Categorías Principales",
+    "sub": "Subcategorías",
+    "name": "Nombre",
+    "description": "Descripción"
+  },
+  "items": {
+    "title": "Items",
+    "add": "Agregar Item",
+    "edit": "Editar Item",
+    "empty": "Aún no hay items",
+    "condition": "Condición",
+    "mint": "Perfecto",
+    "nearMint": "Casi Perfecto",
+    "excellent": "Excelente",
+    "good": "Bueno",
+    "fair": "Regular",
+    "poor": "Malo",
+    "complete": "Completo",
+    "incomplete": "Incompleto",
+    "price": "Precio",
+    "notes": "Notas",
+    "storage": "Ubicación de Almacenamiento",
+    "acquisitionType": "Tipo de Adquisición",
+    "purchase": "Compra",
+    "gift": "Regalo",
+    "trade": "Intercambio",
+    "found": "Encontrado",
+    "inherited": "Heredado",
+    "catalogItem": "Item del Catálogo",
+    "form": {
+      "selectCatalogItem": "Selecciona item del catálogo",
+      "selectCondition": "Selecciona condición",
+      "catalogItemRequired": "El item del catálogo es obligatorio",
+      "conditionRequired": "La condición es obligatoria"
+    }
+  },
+  "images": {
+    "title": "Imágenes",
+    "upload": "Subir Imagen",
+    "delete": "Eliminar Imagen",
+    "primary": "Principal",
+    "gallery": "Galería de Imágenes",
+    "empty": "Aún no hay imágenes",
+    "dropzone": "Arrastra imágenes aquí o haz clic para seleccionar",
+    "invalidType": "Tipo de archivo inválido. Permitidos: JPEG, PNG, WebP",
+    "tooLarge": "El archivo es demasiado grande. Tamaño máximo: 10MB",
+    "preview": "Vista previa de imagen"
+  },
+  "ui": {
+    "loading": "Cargando",
+    "close": "Cerrar",
+    "emptyTitle": "Nada aquí todavía",
+    "emptyDescription": "Comienza creando tu primer elemento"
+  },
+  "errors": {
+    "generic": "Algo salió mal",
+    "notFound": "Recurso no encontrado",
+    "duplicate": "Ya existe un recurso con ese nombre",
+    "validation": "Por favor revisa el formulario",
+    "loadFailed": "Error al cargar datos",
+    "createFailed": "Error al crear",
+    "updateFailed": "Error al actualizar",
+    "deleteFailed": "Error al eliminar",
+    "uploadFailed": "Error al subir archivo"
+  }
+}

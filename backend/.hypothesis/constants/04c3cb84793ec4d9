@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/schemas/image.py
+# hypothesis_version: 6.151.9
+
+[1024, 'File size in bytes', 'Original file name', 'UUID primary key', 'Upload timestamp', 'image/jpeg', 'image/png', 'image/webp']

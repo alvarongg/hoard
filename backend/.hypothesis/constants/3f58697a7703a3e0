@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/schemas/__init__.py
+# hypothesis_version: 6.151.9
+
+['ALLOWED_IMAGE_TYPES', 'CatalogCreate', 'CatalogItemCreate', 'CatalogItemResponse', 'CatalogItemUpdate', 'CatalogResponse', 'CatalogUpdate', 'CollectionCreate', 'CollectionItemCreate', 'CollectionItemUpdate', 'CollectionResponse', 'CollectionUpdate', 'ImageUploadResponse', 'ItemImageResponse', 'MAX_IMAGE_SIZE', 'MainCategoryCreate', 'MainCategoryResponse', 'MainCategoryUpdate', 'StrUUID', 'SubCategoryCreate', 'SubCategoryResponse', 'SubCategoryUpdate']

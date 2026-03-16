@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/standard_component.py
+# hypothesis_version: 6.151.9
+
+[100, 'CASCADE', 'component_name', 'standard_components', 'sub_categories.id', 'sub_category_id']

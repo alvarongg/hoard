@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/accessory.py
+# hypothesis_version: 6.151.9
+
+[100, 200, 500, 'CASCADE', 'SET NULL', 'USD', 'accessories_stock', 'collection_items.id', 'item_components', 'suppliers.id']

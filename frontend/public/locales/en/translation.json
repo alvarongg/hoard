@@ -1,0 +1,135 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "confirm": "Confirm",
+    "search": "Search",
+    "noResults": "No results found",
+    "retry": "Retry"
+  },
+  "navigation": {
+    "main": "Main navigation",
+    "home": "Home",
+    "collections": "Collections",
+    "catalogs": "Catalogs"
+  },
+  "home": {
+    "welcome": "Welcome to H.O.A.R.D.",
+    "description": "Hobby Organization, Archive & Registry Database",
+    "quickAccess": "Quick Access",
+    "totalCollections": "Total Collections",
+    "totalCatalogs": "Total Catalogs",
+    "recentCollections": "Your Collections",
+    "viewAll": "View All",
+    "getStarted": "Get started by creating your first collection"
+  },
+  "collections": {
+    "title": "Collections",
+    "detail": "Collection Detail",
+    "create": "Create Collection",
+    "edit": "Edit Collection",
+    "empty": "No collections yet",
+    "name": "Name",
+    "description": "Description",
+    "type": "Type",
+    "singleCategory": "Single Category",
+    "multiCategory": "Multi Category",
+    "mixed": "Mixed",
+    "items": "Items",
+    "itemCount": "{{count}} items",
+    "editLabel": "Edit {{name}}",
+    "deleteLabel": "Delete {{name}}",
+    "deleteConfirm": "Are you sure you want to delete this collection?",
+    "form": {
+      "nameRequired": "Name is required",
+      "selectType": "Select collection type",
+      "selectSubCategory": "Select sub-category",
+      "subCategory": "Sub-category",
+      "subCategoryRequired": "Sub-category is required for single category collections",
+      "mainCategory": "Main Category",
+      "selectMainCategory": "Select main category"
+    }
+  },
+  "catalogs": {
+    "title": "Catalogs",
+    "detail": "Catalog Detail",
+    "create": "Create Catalog",
+    "empty": "No catalogs yet",
+    "name": "Name",
+    "description": "Description",
+    "items": "Catalog Items",
+    "search": "Search items..."
+  },
+  "categories": {
+    "title": "Categories",
+    "main": "Main Categories",
+    "sub": "Subcategories",
+    "name": "Name",
+    "description": "Description"
+  },
+  "items": {
+    "title": "Items",
+    "add": "Add Item",
+    "edit": "Edit Item",
+    "empty": "No items yet",
+    "condition": "Condition",
+    "mint": "Mint",
+    "nearMint": "Near Mint",
+    "excellent": "Excellent",
+    "good": "Good",
+    "fair": "Fair",
+    "poor": "Poor",
+    "complete": "Complete",
+    "incomplete": "Incomplete",
+    "price": "Price",
+    "notes": "Notes",
+    "storage": "Storage Location",
+    "acquisitionType": "Acquisition Type",
+    "purchase": "Purchase",
+    "gift": "Gift",
+    "trade": "Trade",
+    "found": "Found",
+    "inherited": "Inherited",
+    "catalogItem": "Catalog Item",
+    "form": {
+      "selectCatalogItem": "Select catalog item",
+      "selectCondition": "Select condition",
+      "catalogItemRequired": "Catalog item is required",
+      "conditionRequired": "Condition is required"
+    }
+  },
+  "images": {
+    "title": "Images",
+    "upload": "Upload Image",
+    "delete": "Delete Image",
+    "primary": "Primary",
+    "gallery": "Image Gallery",
+    "empty": "No images yet",
+    "dropzone": "Drop images here or click to select",
+    "invalidType": "Invalid file type. Allowed: JPEG, PNG, WebP",
+    "tooLarge": "File is too large. Maximum size: 10MB",
+    "preview": "Image preview"
+  },
+  "ui": {
+    "loading": "Loading",
+    "close": "Close",
+    "emptyTitle": "Nothing here yet",
+    "emptyDescription": "Get started by creating your first item"
+  },
+  "errors": {
+    "generic": "Something went wrong",
+    "notFound": "Resource not found",
+    "duplicate": "A resource with that name already exists",
+    "validation": "Please check the form for errors",
+    "loadFailed": "Failed to load data",
+    "createFailed": "Failed to create",
+    "updateFailed": "Failed to update",
+    "deleteFailed": "Failed to delete",
+    "uploadFailed": "Failed to upload file"
+  }
+}

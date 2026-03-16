@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/wishlist.py
+# hypothesis_version: 6.151.9
+
+[200, 500, 1000, 'CASCADE', 'RESTRICT', 'SET NULL', 'USD', 'all, delete-orphan', 'catalog_items.id', 'collection_items.id', 'collections.id', 'medium', 'sightings', 'suppliers.id', 'wishlist_item', 'wishlist_items', 'wishlist_items.id', 'wishlist_sightings']

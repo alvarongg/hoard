@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/catalog.py
+# hypothesis_version: 6.151.9
+
+[100, 200, 500, 1000, 'CASCADE', 'RESTRICT', 'all, delete-orphan', 'catalog', 'catalog_items', 'catalogs', 'catalogs.id', 'items', 'sub_categories.id']

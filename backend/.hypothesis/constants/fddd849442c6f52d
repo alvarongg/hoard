@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/schemas/collection_item.py
+# hypothesis_version: 6.151.9
+
+[200, 'Acquisition type', 'Creation timestamp', 'Currency code', 'Optional notes', 'Purchase date', 'Purchase price', 'Storage location', 'USD', 'UUID primary key', 'excellent', 'fair', 'found', 'gift', 'good', 'inherited', 'mint', 'near_mint', 'poor', 'purchase', 'trade']

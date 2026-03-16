@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "name": "A11y Check New Component",
+  "description": "Cuando se crea un nuevo componente React (.tsx), recuerda al agente que debe incluir accesibilidad (ARIA, keyboard nav, i18n) y crear el archivo de test correspondiente con axe-core.",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "frontend/src/components/**/*.tsx",
+      "frontend/src/pages/**/*.tsx"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Se creó un nuevo componente React. Verifica que incluye: 1) HTML semántico (article, section, nav, etc.) 2) ARIA labels en elementos interactivos 3) Textos traducidos con t() de i18next (no strings hardcodeados) 4) Soporte de navegación por teclado. Además, crea el archivo de test .test.tsx correspondiente que incluya un test de accesibilidad con axe-core (toHaveNoViolations)."
+  }
+}
