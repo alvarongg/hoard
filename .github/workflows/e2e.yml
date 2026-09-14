@@ -1,10 +1,10 @@
 name: E2E
 
+# Manual only: this workflow consumes GitHub Actions minutes, so it never runs
+# automatically. Trigger it from the Actions tab (Run workflow) if/when Actions
+# billing is enabled. Day to day, run the E2E suite locally instead — see
+# frontend/README or the repo README ("Running E2E tests locally").
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 jobs:

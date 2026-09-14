@@ -47,7 +47,7 @@ describe("SkipLink", () => {
     render(
       <>
         <SkipLink targetId="main-content" />
-        <main id="main-content" data-testid="main">
+        <main id="main-content" data-testid="main" tabIndex={-1}>
           Main content
         </main>
       </>
@@ -66,7 +66,7 @@ describe("SkipLink", () => {
     render(
       <>
         <SkipLink targetId="main-content" />
-        <main id="main-content" data-testid="main">
+        <main id="main-content" data-testid="main" tabIndex={-1}>
           Main content
         </main>
       </>

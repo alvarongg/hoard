@@ -839,6 +839,34 @@ docker-compose exec backend alembic upgrade head
 docker-compose exec backend python -m utils.backup_service
 ```
 
+### **Tests E2E (Playwright) — en local, sin coste**
+
+Los tests end-to-end viven en `frontend/tests/e2e/` y corren contra el stack
+completo (db → backend → frontend → nginx). **No** usan GitHub Actions: el
+workflow `.github/workflows/e2e.yml` es **manual** (`workflow_dispatch`) para no
+consumir minutos facturables. Para ejecutarlos localmente o en un servidor propio:
+
+```bash
+# 1) Levantar el stack (desde la raíz del repo)
+docker compose up -d --build
+
+# 2) Esperar a que nginx sirva la app
+until curl -fsS http://localhost/ >/dev/null; do sleep 3; done
+
+# 3) Instalar navegadores de Playwright (solo la primera vez) y correr la suite
+cd frontend
+npm ci
+npx playwright install --with-deps chromium
+PLAYWRIGHT_BASE_URL=http://localhost npm run test:e2e
+
+# 4) Bajar el stack
+cd .. && docker compose down -v
+```
+
+Si el host expone la app en otra dirección (p. ej. un servidor doméstico en la
+LAN), apuntá `PLAYWRIGHT_BASE_URL` a esa URL, por ejemplo
+`PLAYWRIGHT_BASE_URL=http://192.168.0.9 npm run test:e2e`.
+
 ---
 
 ## 🚀 Roadmap de Desarrollo

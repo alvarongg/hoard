@@ -49,7 +49,7 @@ test.describe('Keyboard Navigation', () => {
     await page.keyboard.press('Enter');
 
     await expect(page).toHaveURL(/\/collections/);
-    await expect(page.getByRole('heading', { name: /collections/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /collections/i, level: 1 })).toBeVisible();
   });
 
   test('can navigate to catalogs page using keyboard', async ({ page }) => {

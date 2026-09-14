@@ -12,7 +12,7 @@ const TEST_COLLECTION_NAME = 'E2E Test Collection';
 test.describe('Collections CRUD Flow', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/collections');
-    await expect(page.getByRole('heading', { name: /collections/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /collections/i, level: 1 })).toBeVisible();
   });
 
   test('can create a new collection and see it in the list', async ({ page }) => {
@@ -92,7 +92,7 @@ test.describe('Collections Full Lifecycle', () => {
 
     // Step 1: Navigate to collections
     await page.goto('/collections');
-    await expect(page.getByRole('heading', { name: /collections/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /collections/i, level: 1 })).toBeVisible();
 
     // Step 2: Create collection
     await page.getByRole('button', { name: /create collection/i }).click();
