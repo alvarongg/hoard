@@ -221,7 +221,7 @@ describe("SearchFilters", () => {
 
     // Should be called multiple times (once per character)
     expect(onChange).toHaveBeenCalled();
-    const lastCall = onChange.mock.calls[onChange.mock.calls.length - 1][0];
+    const lastCall = onChange.mock.calls[onChange.mock.calls.length - 1]?.[0];
     expect(lastCall.yearMin).toBe(1990);
   });
 
@@ -235,7 +235,7 @@ describe("SearchFilters", () => {
     await user.type(manufacturerInput, "Nintendo");
 
     expect(onChange).toHaveBeenCalled();
-    const lastCall = onChange.mock.calls[onChange.mock.calls.length - 1][0];
+    const lastCall = onChange.mock.calls[onChange.mock.calls.length - 1]?.[0];
     expect(lastCall.manufacturer).toBe("Nintendo");
   });
 

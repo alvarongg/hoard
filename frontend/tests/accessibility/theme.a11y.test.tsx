@@ -2,7 +2,7 @@
  * Accessibility tests for theme contrast in both light and dark modes.
  * Runs axe-core on key pages to verify WCAG 2.1 AA contrast requirements.
  */
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach, beforeAll } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";

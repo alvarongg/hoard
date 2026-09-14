@@ -8,7 +8,6 @@ import { test, expect } from '@playwright/test';
  */
 
 const TEST_COLLECTION_NAME = 'E2E Test Collection';
-const EDITED_COLLECTION_NAME = 'E2E Edited Collection';
 
 test.describe('Collections CRUD Flow', () => {
   test.beforeEach(async ({ page }) => {

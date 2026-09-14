@@ -53,7 +53,7 @@ describe("SearchBar", () => {
     });
 
     // Re-render with updated value
-    const { rerender } = render(
+    render(
       <SearchBar value={currentValue} onChange={onChange} />,
     );
 
@@ -64,7 +64,7 @@ describe("SearchBar", () => {
     expect(onChange).toHaveBeenCalled();
     // The final call should have the full value
     const lastCall = onChange.mock.calls[onChange.mock.calls.length - 1];
-    expect(lastCall[0]).toContain("o"); // Last character typed
+    expect(lastCall?.[0]).toContain("o"); // Last character typed
   });
 
   it("shows clear button when value is present", () => {

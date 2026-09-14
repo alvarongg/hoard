@@ -6,7 +6,6 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "i18next";
 import { ThemeToggle } from "./ThemeToggle";
 import { ThemeProvider } from "../../theme/ThemeProvider";
-import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 expect.extend(toHaveNoViolations);
 
@@ -140,7 +139,7 @@ describe("ThemeToggle", () => {
     renderWithTheme();
 
     const radios = screen.getAllByRole("radio");
-    radios[0].focus();
+    radios[0]!.focus();
 
     // Arrow Right should move to next option
     await user.keyboard("{ArrowRight}");
@@ -160,7 +159,7 @@ describe("ThemeToggle", () => {
     renderWithTheme();
 
     const radios = screen.getAllByRole("radio");
-    radios[0].focus();
+    radios[0]!.focus();
 
     // Arrow Left should wrap to last
     await user.keyboard("{ArrowLeft}");
@@ -176,7 +175,7 @@ describe("ThemeToggle", () => {
     renderWithTheme();
 
     const radios = screen.getAllByRole("radio");
-    radios[2].focus();
+    radios[2]!.focus();
 
     await user.keyboard("{Home}");
     expect(radios[0]).toHaveFocus();
@@ -187,7 +186,7 @@ describe("ThemeToggle", () => {
     renderWithTheme();
 
     const radios = screen.getAllByRole("radio");
-    radios[0].focus();
+    radios[0]!.focus();
 
     await user.keyboard("{End}");
     expect(radios[2]).toHaveFocus();

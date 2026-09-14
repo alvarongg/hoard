@@ -6,7 +6,7 @@
  */
 
 import { useTranslation } from "react-i18next";
-import { useComponentTemplate, useItemComponentMutations, type OnCompletenessChange } from "../../hooks/useItemComponents";
+import { useComponentTemplate, type OnCompletenessChange } from "../../hooks/useItemComponents";
 import { ComponentRow } from "./ComponentRow";
 import { LoadingSpinner } from "../ui/LoadingSpinner";
 import { ErrorMessage } from "../ui/ErrorMessage";
@@ -26,7 +26,6 @@ export function ComponentChecklist({
   const { t } = useTranslation();
   const announce = useAnnouncement();
   const { data: template, isLoading, error, refetch } = useComponentTemplate(collectionItemId);
-  const { upsert } = useItemComponentMutations(collectionItemId);
 
   function handleCompletenessChange(result: Parameters<OnCompletenessChange>[0]) {
     // Announce the change

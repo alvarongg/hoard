@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import type { WishlistItem } from "../../types/wishlist";
 
@@ -36,6 +36,14 @@ export function AcquireDialog({ item, isOpen, onClose, onConfirm, isLoading }: A
     }
   }, [isOpen]);
 
+  const handleClose = useCallback(() => {
+    setCollectionItemId("");
+    setError("");
+    onClose();
+    // Return focus to the previous element
+    previousActiveElement.current?.focus();
+  }, [onClose]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
@@ -50,15 +58,7 @@ export function AcquireDialog({ item, isOpen, onClose, onConfirm, isLoading }: A
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
-
-  const handleClose = () => {
-    setCollectionItemId("");
-    setError("");
-    onClose();
-    // Return focus to the previous element
-    previousActiveElement.current?.focus();
-  };
+  }, [isOpen, handleClose]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

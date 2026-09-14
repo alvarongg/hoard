@@ -473,6 +473,8 @@
       "publisher": "Editora",
       "developer": "Desenvolvedor",
       "brand": "Marca"
-    }
+    },
+    "clearFilters": "Limpar filtros",
+    "filtersCleared": "Filtros removidos"
   }
 }
