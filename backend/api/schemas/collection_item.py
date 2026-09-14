@@ -6,7 +6,7 @@ from datetime import date, datetime
 from decimal import Decimal
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from api.schemas._types import StrUUID
 
@@ -61,6 +61,32 @@ class CollectionItemBase(BaseModel):
         max_length=200,
         description="Where the item is stored",
     )
+    supplier_id: str | None = Field(
+        None,
+        description="UUID of the supplier the item was acquired from",
+    )
+    is_authentic: bool = Field(
+        True,
+        description="Whether the item is authentic (False = bootleg)",
+    )
+    authenticity_notes: str | None = Field(
+        None,
+        description="Notes on authenticity / bootleg details",
+    )
+    country_of_origin: str | None = Field(
+        None,
+        min_length=2,
+        max_length=2,
+        description="ISO 3166-1 alpha-2 country where the item was made/sold",
+    )
+    condition_notes: str | None = Field(
+        None,
+        description="Free-text notes about the item's condition",
+    )
+    custom_fields: dict | None = Field(
+        None,
+        description="Extra per-item fields (jsonb)",
+    )
 
 
 class CollectionItemCreate(CollectionItemBase):
@@ -111,6 +137,22 @@ class CollectionItemUpdate(BaseModel):
         max_length=200,
         description="Where the item is stored",
     )
+    supplier_id: str | None = Field(None, description="Supplier UUID")
+    is_authentic: bool | None = Field(
+        None, description="Whether the item is authentic (False = bootleg)"
+    )
+    authenticity_notes: str | None = Field(
+        None, description="Notes on authenticity / bootleg details"
+    )
+    country_of_origin: str | None = Field(
+        None, min_length=2, max_length=2, description="ISO-2 country of origin"
+    )
+    condition_notes: str | None = Field(
+        None, description="Free-text notes about the item's condition"
+    )
+    custom_fields: dict | None = Field(
+        None, description="Extra per-item fields (jsonb)"
+    )
 
 
 class CollectionItemResponse(BaseModel):
@@ -127,7 +169,43 @@ class CollectionItemResponse(BaseModel):
     purchase_date: date | None = Field(None, description="Purchase date")
     acquisition_type: str | None = Field(None, description="Acquisition type")
     storage_location: str | None = Field(None, description="Storage location")
+    supplier_id: StrUUID | None = Field(None, description="Supplier UUID")
+    is_authentic: bool = Field(True, description="Whether authentic")
+    authenticity_notes: str | None = Field(None, description="Authenticity notes")
+    country_of_origin: str | None = Field(None, description="ISO-2 country")
+    condition_notes: str | None = Field(None, description="Condition notes")
+    custom_fields: dict | None = Field(None, description="Extra fields")
+    catalog_title: str | None = Field(
+        None, description="Resolved title of the linked catalog item"
+    )
+    catalog_name: str | None = Field(
+        None, description="Name of the catalog the item belongs to"
+    )
     created_at: datetime = Field(..., description="Creation timestamp")
     updated_at: datetime = Field(..., description="Last update timestamp")
 
     model_config = ConfigDict(from_attributes=True)
+
+    @model_validator(mode="before")
+    @classmethod
+    def _resolve_catalog(cls, data):
+        """Populate catalog_title/catalog_name from the loaded relationship.
+
+        Accepts an ORM object (from_attributes) and returns a dict so we can
+        add derived fields without mutating the SQLAlchemy instance.
+        """
+        if isinstance(data, dict):
+            return data
+        catalog_item = getattr(data, "catalog_item", None)
+        if catalog_item is None:
+            return data
+        fields = {
+            c: getattr(data, c)
+            for c in cls.model_fields
+            if c not in ("catalog_title", "catalog_name")
+            and hasattr(data, c)
+        }
+        fields["catalog_title"] = getattr(catalog_item, "title", None)
+        catalog = getattr(catalog_item, "catalog", None)
+        fields["catalog_name"] = getattr(catalog, "name", None) if catalog else None
+        return fields

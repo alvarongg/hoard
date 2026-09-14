@@ -52,7 +52,8 @@
     "export": "Exportar",
     "import": "Importar",
     "backups": "Backups",
-    "settings": "Configurações"
+    "settings": "Configurações",
+    "pending": "Pendentes"
   },
   "home": {
     "welcome": "Bem-vindo ao H.O.A.R.D.",
@@ -161,7 +162,8 @@
       "fileTooLarge": "O arquivo excede o limite de 5 MB",
       "invalidFileType": "Apenas arquivos .csv são permitidos",
       "noData": "O arquivo não contém linhas de dados"
-    }
+    },
+    "viewItem": "Ver item"
   },
   "categories": {
     "title": "Categorias",
@@ -747,5 +749,93 @@
   "catalogImport": {
     "description": "Importe um arquivo de catálogo (entity_type='catalog').",
     "selectFile": "Selecionar arquivo"
+  },
+  "collector": {
+    "actions": {
+      "addToCollection": "Adicionar à coleção",
+      "addToWishlist": "Adicionar à lista de desejos"
+    },
+    "ownership": {
+      "owned": "Você já tem em {{count}} coleção(ões)",
+      "notOwned": "Você ainda não tem isto em nenhuma coleção."
+    },
+    "addToCollection": {
+      "collection": "Coleção",
+      "chooseCollection": "Escolha uma coleção",
+      "condition": "Estado",
+      "authenticity": "Autenticidade",
+      "original": "Original",
+      "bootleg": "Bootleg",
+      "country": "País de origem (ISO-2)",
+      "price": "Preço pago",
+      "currency": "Moeda",
+      "supplier": "Fornecedor",
+      "noSupplier": "Sem fornecedor",
+      "newSupplier": "Novo fornecedor",
+      "storageLocation": "Localização física",
+      "conditionNotes": "Notas de estado",
+      "needsMaintenance": "Requer manutenção (ex.: bateria)",
+      "maintenanceType": "Tipo",
+      "maintenanceDue": "Data de revisão",
+      "removeFromWishlist": "Remover da lista de desejos",
+      "save": "Salvar",
+      "error": "Não foi possível adicionar o item."
+    },
+    "supplierQuickAdd": {
+      "title": "Novo fornecedor rápido",
+      "name": "Nome",
+      "country": "País (ISO-2)",
+      "create": "Criar",
+      "error": "Não foi possível criar o fornecedor."
+    },
+    "catalogQuickAdd": {
+      "title": "Novo catálogo rápido",
+      "name": "Nome",
+      "tematica": "Temática",
+      "create": "Criar"
+    },
+    "collectionCatalogs": {
+      "title": "Catálogos associados",
+      "empty": "Esta coleção ainda não tem catálogos associados.",
+      "associate": "Associar catálogo",
+      "choose": "Escolha um catálogo",
+      "add": "Associar",
+      "remove": "Remover",
+      "new": "Novo catálogo"
+    },
+    "price": {
+      "title": "Preços",
+      "url": "URL do PriceCharting",
+      "lookup": "Buscar preço",
+      "error": "Não foi possível obter o preço."
+    },
+    "wishlist": {
+      "gotIt": "Já consegui"
+    }
+  },
+  "pending": {
+    "title": "Pendentes",
+    "description": "Dados faltantes que você pode completar quando quiser.",
+    "empty": "Não há pendências.",
+    "missing": "Faltam",
+    "markDone": "Completei: {{field}}",
+    "entity": {
+      "supplier": "Fornecedores",
+      "catalog": "Catálogos",
+      "catalog_item": "Itens de catálogo",
+      "collection_item": "Itens de coleção"
+    }
+  },
+  "catalogItemEdit": {
+    "edit": "Editar item",
+    "title": "Título",
+    "description": "Descrição / notas",
+    "region": "Região",
+    "manufacturer": "Fabricante",
+    "publisher": "Editora",
+    "developer": "Desenvolvedor",
+    "variation": "Variante",
+    "variationPlaceholder": "ex.: com jogo / teclado / top-loader",
+    "variationDetails": "Detalhes da variante"
   }
 }

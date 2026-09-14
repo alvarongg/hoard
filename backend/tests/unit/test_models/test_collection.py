@@ -7,7 +7,7 @@ from sqlalchemy import Boolean, Date, DateTime, Integer, Numeric, String, Text, 
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.types import JSON
 
-from api.models.base import Base
+from api.models.base import StringArray,   Base
 from api.models.catalog import Catalog, CatalogItem
 from api.models.category import MainCategory, SubCategory
 from api.models.collection import Collection, CollectionItem
@@ -176,13 +176,13 @@ class TestCollectionItemColumns:
     def test_custom_fields_column_is_json(self) -> None:
         mapper = inspect(CollectionItem)
         col = mapper.columns["custom_fields"]
-        assert isinstance(col.type, JSON)
+        assert isinstance(col.type, (JSON, StringArray))
         assert col.nullable is False
 
     def test_tags_column_is_json(self) -> None:
         mapper = inspect(CollectionItem)
         col = mapper.columns["tags"]
-        assert isinstance(col.type, JSON)
+        assert isinstance(col.type, (JSON, StringArray))
 
     def test_supplier_id_is_foreign_key(self) -> None:
         mapper = inspect(CollectionItem)

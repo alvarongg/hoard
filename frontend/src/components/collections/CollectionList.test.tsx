@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { CollectionList } from "./CollectionList";
@@ -73,6 +74,7 @@ describe("CollectionList", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     expect(screen.getByRole("status")).toBeInTheDocument();
   });
@@ -86,6 +88,7 @@ describe("CollectionList", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     expect(screen.getByRole("alert")).toBeInTheDocument();
     expect(screen.getByText("Failed to load data")).toBeInTheDocument();
@@ -100,6 +103,7 @@ describe("CollectionList", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     expect(screen.getByText("No collections yet")).toBeInTheDocument();
   });
@@ -113,6 +117,7 @@ describe("CollectionList", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     expect(
       screen.getByRole("heading", { name: "N64 Collection" }),
@@ -131,6 +136,7 @@ describe("CollectionList", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -145,6 +151,7 @@ describe("CollectionList", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();

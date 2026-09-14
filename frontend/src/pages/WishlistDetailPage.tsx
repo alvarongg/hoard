@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useWishlistItem } from "../hooks/useWishlist";
+import { useAcquireAndAdd } from "../hooks/useCollectorWorkflow";
 import { useSightings } from "../hooks/useSightings";
+import { AddToCollectionForm } from "../components/collector/AddToCollectionForm";
+import type { AddToCollectionResult } from "../components/collector/AddToCollectionForm";
 import { PriceAggregatesPanel } from "../components/wishlist/PriceAggregatesPanel";
 import { SightingList } from "../components/wishlist/SightingList";
 import { SightingForm } from "../components/wishlist/SightingForm";
@@ -31,6 +34,8 @@ export function WishlistDetailPage() {
   const [isSightingFormOpen, setIsSightingFormOpen] = useState(false);
   const [editingSighting, setEditingSighting] = useState<Sighting | null>(null);
   const [isAcquireDialogOpen, setIsAcquireDialogOpen] = useState(false);
+  const [isGotItOpen, setIsGotItOpen] = useState(false);
+  const acquireAndAdd = useAcquireAndAdd(id ?? "");
 
   const {
     data: item,
@@ -89,6 +94,16 @@ export function WishlistDetailPage() {
     setIsAcquireDialogOpen(false);
   };
 
+  const handleGotIt = (result: AddToCollectionResult) => {
+    acquireAndAdd.mutate(
+      {
+        collectionItem: result.data,
+        removeFromWishlist: result.removeFromWishlist,
+      },
+      { onSuccess: () => setIsGotItOpen(false) },
+    );
+  };
+
   const formatPrice = (price: number | null, currency: string) => {
     if (price === null) return null;
     return new Intl.NumberFormat(undefined, {
@@ -142,6 +157,14 @@ export function WishlistDetailPage() {
               className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               {t("wishlist.acquire.button")}
+            </button>
+          )}
+          {!item.isAcquired && (
+            <button
+              onClick={() => setIsGotItOpen(true)}
+              className="ml-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {t("collector.wishlist.gotIt")}
             </button>
           )}
         </div>
@@ -228,6 +251,21 @@ export function WishlistDetailPage() {
         onConfirm={handleAcquire}
         isLoading={acquire.isPending}
       />
+
+      <Modal
+        isOpen={isGotItOpen}
+        onClose={() => setIsGotItOpen(false)}
+        title={t("collector.wishlist.gotIt")}
+      >
+        <AddToCollectionForm
+          catalogItemId={item.catalogItemId}
+          fixedCollectionId={item.collectionId}
+          showWishlistToggle
+          isLoading={acquireAndAdd.isPending}
+          onSubmit={handleGotIt}
+          onCancel={() => setIsGotItOpen(false)}
+        />
+      </Modal>
     </div>
   );
 }

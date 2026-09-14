@@ -247,6 +247,16 @@ class CatalogItemUpdate(BaseModel):
         max_length=1000,
         description="URL to the cover image",
     )
+    variation: str | None = Field(
+        None, max_length=200, description="Short variant label"
+    )
+    variation_details: str | None = Field(
+        None, description="Long variant description"
+    )
+    related_items_group: str | None = Field(
+        None,
+        description="Shared id grouping an item with its variants",
+    )
 
 
 class CatalogItemResponse(CatalogItemBase):
@@ -256,6 +266,14 @@ class CatalogItemResponse(CatalogItemBase):
     catalog_id: StrUUID = Field(
         ..., description="UUID of the parent catalog"
     )
+    variation: str | None = Field(None, description="Short variant label")
+    variation_details: str | None = Field(
+        None, description="Long variant description"
+    )
+    related_items_group: str | None = Field(
+        None, description="Shared id grouping variants"
+    )
+    images: dict | None = Field(None, description="Reference images metadata")
     created_at: datetime = Field(..., description="Creation timestamp")
     updated_at: datetime = Field(..., description="Last update timestamp")
 

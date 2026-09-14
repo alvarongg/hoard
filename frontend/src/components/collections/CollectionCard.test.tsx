@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
@@ -49,6 +50,7 @@ describe("CollectionCard", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     expect(
       screen.getByRole("heading", { name: "My N64 Collection" }),
@@ -62,6 +64,7 @@ describe("CollectionCard", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     expect(screen.getByText("Single Category")).toBeInTheDocument();
   });
@@ -73,6 +76,7 @@ describe("CollectionCard", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     expect(screen.getByText("Nintendo 64 games")).toBeInTheDocument();
   });
@@ -86,6 +90,7 @@ describe("CollectionCard", () => {
         onEdit={onEdit}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     await user.click(
       screen.getByRole("button", { name: "Edit My N64 Collection" }),
@@ -102,6 +107,7 @@ describe("CollectionCard", () => {
         onEdit={vi.fn()}
         onDelete={onDelete}
       />,
+      { wrapper: MemoryRouter },
     );
     await user.click(
       screen.getByRole("button", { name: "Delete My N64 Collection" }),
@@ -116,6 +122,7 @@ describe("CollectionCard", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     const article = screen.getByRole("article");
     expect(article).toHaveAttribute("aria-labelledby", "collection-col-1");
@@ -128,6 +135,7 @@ describe("CollectionCard", () => {
         onEdit={vi.fn()}
         onDelete={vi.fn()}
       />,
+      { wrapper: MemoryRouter },
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();

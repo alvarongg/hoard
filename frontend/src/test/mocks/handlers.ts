@@ -197,6 +197,10 @@ export const handlers = [
     return HttpResponse.json([mockCollectionItem]);
   }),
 
+  http.get(`${API_URL}/collections/:id/catalogs`, () => {
+    return HttpResponse.json([mockCatalog]);
+  }),
+
   http.post(`${API_URL}/collections/:id/items`, async ({ request }) => {
     const body = (await request.json()) as Record<string, unknown>;
     return HttpResponse.json(

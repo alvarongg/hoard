@@ -52,7 +52,8 @@
     "export": "Export",
     "import": "Import",
     "backups": "Backups",
-    "settings": "Settings"
+    "settings": "Settings",
+    "pending": "Pending"
   },
   "home": {
     "welcome": "Welcome to H.O.A.R.D.",
@@ -161,7 +162,8 @@
       "fileTooLarge": "The file exceeds the 5 MB limit",
       "invalidFileType": "Only .csv files are allowed",
       "noData": "The file has no data rows"
-    }
+    },
+    "viewItem": "View item"
   },
   "categories": {
     "title": "Categories",
@@ -747,5 +749,93 @@
   "catalogImport": {
     "description": "Import a catalog file (entity_type='catalog').",
     "selectFile": "Select file"
+  },
+  "collector": {
+    "actions": {
+      "addToCollection": "Add to collection",
+      "addToWishlist": "Add to wishlist"
+    },
+    "ownership": {
+      "owned": "You already own it in {{count}} collection(s)",
+      "notOwned": "You don't own this in any collection yet."
+    },
+    "addToCollection": {
+      "collection": "Collection",
+      "chooseCollection": "Choose a collection",
+      "condition": "Condition",
+      "authenticity": "Authenticity",
+      "original": "Original",
+      "bootleg": "Bootleg",
+      "country": "Country of origin (ISO-2)",
+      "price": "Price paid",
+      "currency": "Currency",
+      "supplier": "Supplier",
+      "noSupplier": "No supplier",
+      "newSupplier": "New supplier",
+      "storageLocation": "Physical location",
+      "conditionNotes": "Condition notes",
+      "needsMaintenance": "Requires maintenance (e.g. battery)",
+      "maintenanceType": "Type",
+      "maintenanceDue": "Review date",
+      "removeFromWishlist": "Remove from wishlist",
+      "save": "Save",
+      "error": "Could not add the item."
+    },
+    "supplierQuickAdd": {
+      "title": "Quick new supplier",
+      "name": "Name",
+      "country": "Country (ISO-2)",
+      "create": "Create",
+      "error": "Could not create the supplier."
+    },
+    "catalogQuickAdd": {
+      "title": "Quick new catalog",
+      "name": "Name",
+      "tematica": "Theme",
+      "create": "Create"
+    },
+    "collectionCatalogs": {
+      "title": "Associated catalogs",
+      "empty": "This collection has no associated catalogs yet.",
+      "associate": "Associate catalog",
+      "choose": "Choose a catalog",
+      "add": "Associate",
+      "remove": "Remove",
+      "new": "New catalog"
+    },
+    "price": {
+      "title": "Prices",
+      "url": "PriceCharting URL",
+      "lookup": "Look up price",
+      "error": "Could not fetch the price."
+    },
+    "wishlist": {
+      "gotIt": "I got it"
+    }
+  },
+  "pending": {
+    "title": "Pending",
+    "description": "Missing data you can complete whenever you want.",
+    "empty": "No pending items.",
+    "missing": "Missing",
+    "markDone": "Completed: {{field}}",
+    "entity": {
+      "supplier": "Suppliers",
+      "catalog": "Catalogs",
+      "catalog_item": "Catalog items",
+      "collection_item": "Collection items"
+    }
+  },
+  "catalogItemEdit": {
+    "edit": "Edit item",
+    "title": "Title",
+    "description": "Description / notes",
+    "region": "Region",
+    "manufacturer": "Manufacturer",
+    "publisher": "Publisher",
+    "developer": "Developer",
+    "variation": "Variant",
+    "variationPlaceholder": "e.g. with game / keyboard / top-loader",
+    "variationDetails": "Variant details"
   }
 }

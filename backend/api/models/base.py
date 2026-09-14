@@ -5,9 +5,11 @@ from datetime import datetime
 
 from sqlalchemy import DateTime, String, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy.types import CHAR, TypeDecorator
+from sqlalchemy.types import CHAR, JSON, TypeDecorator
 
+from sqlalchemy.dialects.postgresql import ARRAY as PG_ARRAY
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
+from sqlalchemy.types import Text
 
 
 class DBUUID(TypeDecorator):
@@ -41,6 +43,25 @@ class Base(DeclarativeBase):
     """Base class for all SQLAlchemy models."""
 
     pass
+
+
+class StringArray(TypeDecorator):
+    """Cross-dialect list-of-strings column.
+
+    Uses PostgreSQL's native ``text[]`` (so it matches columns declared as
+    ``TEXT[]`` in schema.sql) and falls back to JSON on other backends
+    (e.g. SQLite for tests). Without this, mapping a ``text[]`` column as
+    plain JSON makes asyncpg send ``json`` and PostgreSQL rejects the insert
+    with "column is of type text[] but expression is of type json".
+    """
+
+    impl = JSON
+    cache_ok = True
+
+    def load_dialect_impl(self, dialect):  # type: ignore[override]
+        if dialect.name == "postgresql":
+            return dialect.type_descriptor(PG_ARRAY(Text()))
+        return dialect.type_descriptor(JSON())
 
 
 def _generate_uuid_str() -> str:

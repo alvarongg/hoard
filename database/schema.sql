@@ -391,6 +391,9 @@ CREATE TABLE collection_items (
     storage_location VARCHAR(200),
     storage_position VARCHAR(100),
     
+    -- Origen (país ISO 3166-1 alpha-2 donde se fabricó/vendió el ejemplar)
+    country_of_origin VARCHAR(2),
+    
     -- Valorización
     purchase_price DECIMAL(10, 2),
     purchase_currency VARCHAR(3) DEFAULT 'USD',
@@ -710,6 +713,51 @@ COMMENT ON TABLE item_accessories IS 'Relación entre items y los accesorios que
 
 CREATE INDEX idx_item_accessories_item ON item_accessories(collection_item_id);
 CREATE INDEX idx_item_accessories_accessory ON item_accessories(accessory_id);
+
+-- ============================================
+-- COLECCIÓN ↔ CATÁLOGOS (N:M) — catálogos que alimentan una colección
+-- ============================================
+CREATE TABLE collection_catalogs (
+    collection_id UUID NOT NULL REFERENCES collections(id) ON DELETE CASCADE,
+    catalog_id UUID NOT NULL REFERENCES catalogs(id) ON DELETE CASCADE,
+    is_primary BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (collection_id, catalog_id)
+);
+CREATE INDEX idx_collection_catalogs_catalog ON collection_catalogs(catalog_id);
+
+-- ============================================
+-- MANTENIMIENTO PROGRAMADO (p.ej. batería de cartuchos)
+-- ============================================
+CREATE TABLE maintenance_schedules (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    collection_item_id UUID NOT NULL REFERENCES collection_items(id) ON DELETE CASCADE,
+    maintenance_type VARCHAR(50) NOT NULL,
+    due_date DATE NOT NULL,
+    notes TEXT,
+    is_done BOOLEAN DEFAULT false,
+    done_date DATE,
+    done_notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX idx_maintenance_item ON maintenance_schedules(collection_item_id);
+CREATE INDEX idx_maintenance_due ON maintenance_schedules(due_date) WHERE is_done = false;
+
+-- ============================================
+-- PENDIENTES DE COMPLETAR (datos faltantes de altas rápidas)
+-- ============================================
+CREATE TABLE pending_completions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    entity_type VARCHAR(30) NOT NULL,
+    entity_id UUID NOT NULL,
+    missing_fields JSONB NOT NULL DEFAULT '[]'::jsonb,
+    status VARCHAR(20) NOT NULL DEFAULT 'open',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    resolved_at TIMESTAMP
+);
+CREATE INDEX idx_pending_status_type ON pending_completions(status, entity_type);
 
 -- ============================================
 -- FUNCIONES Y TRIGGERS

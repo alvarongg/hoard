@@ -19,6 +19,7 @@ from sqlalchemy.types import JSON
 from api.models.base import DBUUID, Base, TimestampMixin, UUIDMixin
 
 if TYPE_CHECKING:
+    from api.models.collection import Collection
     from api.models.price_history import CatalogPriceHistory
 
 
@@ -50,6 +51,10 @@ class Catalog(UUIDMixin, TimestampMixin, Base):
         back_populates="catalog",
         cascade="all, delete-orphan",
         passive_deletes=True,
+    )
+    collections: Mapped[list["Collection"]] = relationship(
+        secondary="collection_catalogs",
+        back_populates="catalogs",
     )
 
     def __repr__(self) -> str:

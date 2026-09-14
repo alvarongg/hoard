@@ -17,10 +17,12 @@ from api.schemas.wishlist import (
     SightingCreate,
     SightingUpdate,
     WishlistAcquire,
+    WishlistAcquireAndAdd,
     WishlistItemCreate,
     WishlistItemDetail,
     WishlistItemUpdate,
 )
+from api.services.collection_item_service import CollectionItemService
 from core.dialect import supports_views
 from core.exceptions import DuplicateError, NotFoundError, ValidationError
 
@@ -209,6 +211,43 @@ class WishlistService:
         item.is_acquired = True
         item.acquired_date = date.today()
         item.acquired_collection_item_id = data.acquired_collection_item_id
+
+        await self._db.commit()
+        await self._db.refresh(item)
+        return item
+
+    async def acquire_and_create(
+        self, wishlist_item_id: str, data: WishlistAcquireAndAdd
+    ) -> WishlistItem:
+        """"Ya lo conseguí": create a collection item from the wishlist item.
+
+        Creates a CollectionItem in the wishlist item's collection using its
+        catalog item, marks the wishlist item acquired, and optionally
+        deactivates it.
+
+        Raises:
+            NotFoundError: If the wishlist item does not exist.
+            DuplicateError: If the wishlist item is already acquired.
+        """
+        item = await self.get(wishlist_item_id)
+        if item.is_acquired:
+            raise DuplicateError(
+                f"Wishlist item '{wishlist_item_id}' is already acquired"
+            )
+
+        # Force the catalog item + collection from the wishlist item.
+        create = data.collection_item.model_copy(
+            update={"catalog_item_id": item.catalog_item_id}
+        )
+        collection_item = await CollectionItemService(self._db).add_item(
+            item.collection_id, create
+        )
+
+        item.is_acquired = True
+        item.acquired_date = date.today()
+        item.acquired_collection_item_id = collection_item.id
+        if data.remove_from_wishlist:
+            item.is_active = False
 
         await self._db.commit()
         await self._db.refresh(item)

@@ -17,11 +17,13 @@ from sqlalchemy import (
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.types import JSON
 
-from api.models.base import DBUUID, Base, TimestampMixin, UUIDMixin
+from api.models.base import DBUUID, Base, StringArray, TimestampMixin, UUIDMixin
 
 if TYPE_CHECKING:
     from api.models.accessory import ItemAccessory, ItemComponent
-    from api.models.catalog import CatalogItem
+    from api.models.catalog import Catalog, CatalogItem
+    from api.models.category import SubCategory
+    from api.models.maintenance import MaintenanceSchedule
     from api.models.supplier import Supplier
     from api.models.transaction import ItemTransaction
 
@@ -56,6 +58,10 @@ class Collection(UUIDMixin, TimestampMixin, Base):
         passive_deletes=True,
     )
     restricted_sub_category: Mapped[SubCategory | None] = relationship()
+    catalogs: Mapped[list[Catalog]] = relationship(
+        secondary="collection_catalogs",
+        back_populates="collections",
+    )
 
     def __repr__(self) -> str:
         return f"<Collection(id={self.id!r}, name={self.name!r})>"
@@ -104,6 +110,11 @@ class CollectionItem(UUIDMixin, TimestampMixin, Base):
     )
     storage_position: Mapped[str | None] = mapped_column(
         String(100), nullable=True,
+    )
+
+    # Origin (ISO 3166-1 alpha-2 country where the item was made/sold)
+    country_of_origin: Mapped[str | None] = mapped_column(
+        String(2), nullable=True,
     )
 
     # Purchase / value
@@ -158,7 +169,7 @@ class CollectionItem(UUIDMixin, TimestampMixin, Base):
 
     # Custom / tags / sale
     custom_fields: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
-    tags: Mapped[list | None] = mapped_column(JSON, nullable=True)
+    tags: Mapped[list | None] = mapped_column(StringArray, nullable=True)
     for_sale: Mapped[bool] = mapped_column(Boolean, default=False)
     asking_price: Mapped[float | None] = mapped_column(
         Numeric(10, 2), nullable=True,
@@ -183,6 +194,35 @@ class CollectionItem(UUIDMixin, TimestampMixin, Base):
         cascade="all, delete-orphan",
         passive_deletes=True,
     )
+    maintenance_schedules: Mapped[list[MaintenanceSchedule]] = relationship(
+        back_populates="collection_item",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
 
     def __repr__(self) -> str:
         return f"<CollectionItem(id={self.id!r}, collection_id={self.collection_id!r})>"
+
+
+class CollectionCatalog(TimestampMixin, Base):
+    """Association: catalogs a collection draws from (N:M)."""
+
+    __tablename__ = "collection_catalogs"
+
+    collection_id: Mapped[str] = mapped_column(
+        DBUUID(),
+        ForeignKey("collections.id", ondelete="CASCADE"),
+        primary_key=True,
+    )
+    catalog_id: Mapped[str] = mapped_column(
+        DBUUID(),
+        ForeignKey("catalogs.id", ondelete="CASCADE"),
+        primary_key=True,
+    )
+    is_primary: Mapped[bool] = mapped_column(Boolean, default=False)
+
+    def __repr__(self) -> str:
+        return (
+            f"<CollectionCatalog(collection_id={self.collection_id!r}, "
+            f"catalog_id={self.catalog_id!r})>"
+        )

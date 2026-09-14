@@ -52,7 +52,8 @@
     "export": "Exportieren",
     "import": "Importieren",
     "backups": "Sicherungen",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "pending": "Ausstehend"
   },
   "home": {
     "welcome": "Willkommen bei H.O.A.R.D.",
@@ -161,7 +162,8 @@
       "fileTooLarge": "Die Datei überschreitet das 5 MB Limit",
       "invalidFileType": "Nur .csv Dateien sind erlaubt",
       "noData": "Die Datei enthält keine Datenzeilen"
-    }
+    },
+    "viewItem": "Element ansehen"
   },
   "categories": {
     "title": "Kategorien",
@@ -747,5 +749,93 @@
   "catalogImport": {
     "description": "Importiere eine Katalogdatei (entity_type='catalog').",
     "selectFile": "Datei auswählen"
+  },
+  "collector": {
+    "actions": {
+      "addToCollection": "Zur Sammlung hinzufügen",
+      "addToWishlist": "Zur Wunschliste hinzufügen"
+    },
+    "ownership": {
+      "owned": "Bereits in {{count}} Sammlung(en) vorhanden",
+      "notOwned": "Noch in keiner Sammlung vorhanden."
+    },
+    "addToCollection": {
+      "collection": "Sammlung",
+      "chooseCollection": "Sammlung wählen",
+      "condition": "Zustand",
+      "authenticity": "Echtheit",
+      "original": "Original",
+      "bootleg": "Bootleg",
+      "country": "Herkunftsland (ISO-2)",
+      "price": "Bezahlter Preis",
+      "currency": "Währung",
+      "supplier": "Lieferant",
+      "noSupplier": "Kein Lieferant",
+      "newSupplier": "Neuer Lieferant",
+      "storageLocation": "Physischer Standort",
+      "conditionNotes": "Zustandsnotizen",
+      "needsMaintenance": "Wartung erforderlich (z.B. Batterie)",
+      "maintenanceType": "Typ",
+      "maintenanceDue": "Überprüfungsdatum",
+      "removeFromWishlist": "Von der Wunschliste entfernen",
+      "save": "Speichern",
+      "error": "Element konnte nicht hinzugefügt werden."
+    },
+    "supplierQuickAdd": {
+      "title": "Schneller neuer Lieferant",
+      "name": "Name",
+      "country": "Land (ISO-2)",
+      "create": "Erstellen",
+      "error": "Lieferant konnte nicht erstellt werden."
+    },
+    "catalogQuickAdd": {
+      "title": "Schneller neuer Katalog",
+      "name": "Name",
+      "tematica": "Thema",
+      "create": "Erstellen"
+    },
+    "collectionCatalogs": {
+      "title": "Zugeordnete Kataloge",
+      "empty": "Diese Sammlung hat noch keine zugeordneten Kataloge.",
+      "associate": "Katalog zuordnen",
+      "choose": "Katalog wählen",
+      "add": "Zuordnen",
+      "remove": "Entfernen",
+      "new": "Neuer Katalog"
+    },
+    "price": {
+      "title": "Preise",
+      "url": "PriceCharting-URL",
+      "lookup": "Preis abfragen",
+      "error": "Preis konnte nicht abgerufen werden."
+    },
+    "wishlist": {
+      "gotIt": "Habe ich bekommen"
+    }
+  },
+  "pending": {
+    "title": "Ausstehend",
+    "description": "Fehlende Daten, die Sie jederzeit ergänzen können.",
+    "empty": "Keine ausstehenden Elemente.",
+    "missing": "Fehlend",
+    "markDone": "Erledigt: {{field}}",
+    "entity": {
+      "supplier": "Lieferanten",
+      "catalog": "Kataloge",
+      "catalog_item": "Katalogeinträge",
+      "collection_item": "Sammlungseinträge"
+    }
+  },
+  "catalogItemEdit": {
+    "edit": "Element bearbeiten",
+    "title": "Titel",
+    "description": "Beschreibung / Notizen",
+    "region": "Region",
+    "manufacturer": "Hersteller",
+    "publisher": "Herausgeber",
+    "developer": "Entwickler",
+    "variation": "Variante",
+    "variationPlaceholder": "z.B. mit Spiel / Tastatur / Top-Loader",
+    "variationDetails": "Variantendetails"
   }
 }
