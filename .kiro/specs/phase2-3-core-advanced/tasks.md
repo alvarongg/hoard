@@ -809,86 +809,86 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_
 
-- [ ] 35. Bloque 2 - Exportación backend (R13)
-  - [~] 35.1 Crear `backend/api/schemas/export.py`
+- [x] 35. Bloque 2 - Exportación backend (R13)
+  - [x] 35.1 Crear `backend/api/schemas/export.py`
     - `ExportEnvelope` (`schema_version`, `entity_type`, `exported_at`, `source`), `CollectionExport`, `CollectionItemExport` (con `components`), `CatalogExport`, `WishlistExport`
     - _Requirements: 13.1, 13.2, 13.6_
-  - [~] 35.2 Crear `backend/api/services/export_service.py`
+  - [x] 35.2 Crear `backend/api/services/export_service.py`
     - `SCHEMA_VERSION = "1.0"`; `export_collection` (colección, items, componentes y catalog items referenciados), `export_catalog_json`, `export_catalog_csv`, `export_wishlist`
     - El header CSV se deriva de `CsvImportService.REQUIRED_COLUMNS | OPTIONAL_COLUMNS` en orden estable, nunca escrito a mano
     - `NotFoundError` para entidades inexistentes
     - _Requirements: 13.1, 13.2, 13.3, 13.4, 13.6, 19.6_
-  - [~] 35.3 Agregar `get_export_service` en `backend/api/dependencies.py` y crear `backend/api/routes/export.py`
+  - [x] 35.3 Agregar `get_export_service` en `backend/api/dependencies.py` y crear `backend/api/routes/export.py`
     - `GET /export/collections/{id}`, `GET /export/catalogs/{id}?format=json|csv`, `GET /export/wishlist`
     - Encabezados `Content-Type` y `Content-Disposition: attachment` con nombre de archivo; 404 para entidad inexistente, 422 para formato no soportado
     - Registrar `app.include_router(export_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 13.2, 13.3, 13.4, 13.5, 19.6_
-  - [~] 35.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_export_service.py`
+  - [x] 35.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_export_service.py`
     - Export de colección con items y componentes; colección vacía; catálogo con y sin items
     - El header del CSV coincide exactamente con las constantes del importador
     - Entidad inexistente lanza `NotFoundError`
     - _Requirements: 13.1, 13.2, 13.3, 13.4, 19.10_
-  - [~] 35.5 Escribir integration tests en `backend/tests/integration/test_routes/test_export.py`
+  - [x] 35.5 Escribir integration tests en `backend/tests/integration/test_routes/test_export.py`
     - 200 con `Content-Type` y `Content-Disposition` correctos por formato; 404 y 422
     - _Requirements: 13.2, 13.3, 13.4, 13.5, 19.9_
 
-- [ ] 36. Bloque 2 - Importación JSON backend (R14)
-  - [~] 36.1 Crear `backend/api/schemas/import_data.py` y ampliar `backend/api/schemas/csv_import.py`
+- [x] 36. Bloque 2 - Importación JSON backend (R14)
+  - [x] 36.1 Crear `backend/api/schemas/import_data.py` y ampliar `backend/api/schemas/csv_import.py`
     - `ImportEntityChange` (`entity_type`, `identifier`, `action`, `reason`), `ImportPreview` (`schema_version`, `to_create`, `to_update`, `to_skip`, `changes`, `errors`)
     - Ampliar `BatchImportResult` con `updated_count` y `skipped_count` con default 0, sin romper al cliente CSV existente
     - _Requirements: 14.3, 14.4, 14.5, 14.7_
-  - [~] 36.2 Crear `backend/api/services/json_import_service.py`
+  - [x] 36.2 Crear `backend/api/services/json_import_service.py`
     - `MAX_FILE_SIZE = 10 MB`, `SUPPORTED_VERSIONS = {"1.0"}`
     - `_parse_envelope` valida JSON, estructura y `schema_version`; `_plan` clasifica cada entidad en create / update / skip y acumula errores por entidad con identificador y motivo
     - `_resolve_existing` busca por clave natural según la tabla del design: `Catalog(sub_category_id, name)`, `CatalogItem(catalog_id, title, region, variant)` con prioridad a `sku`/`upc` no vacío, `Collection(name)`, `CollectionItem(collection_id, catalog_item_id, variant_description, certification_number)`, `WishlistItem(collection_id, catalog_item_id)`, `Supplier(name, type)`, `ItemComponent(collection_item_id, component_name)`; los UUID del documento se ignoran para el matching
     - `preview` corre `_plan` dentro de una transacción que se descarta, sin `commit`; `execute` usa el mismo `_plan` y devuelve `BatchImportResult`
     - _Requirements: 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7, 14.8, 19.6_
-  - [~] 36.3 Agregar `get_json_import_service` en `backend/api/dependencies.py` y crear `backend/api/routes/import_data.py`
+  - [x] 36.3 Agregar `get_json_import_service` en `backend/api/dependencies.py` y crear `backend/api/routes/import_data.py`
     - `POST /import/preview` y `POST /import/execute` con `UploadFile`; 413 si excede 10 MB, 422 si el JSON o la estructura son inválidos
     - Registrar `app.include_router(import_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 14.1, 14.2, 14.3, 19.6_
-  - [~] 36.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_json_import_service.py`
+  - [x] 36.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_json_import_service.py`
     - JSON inválido y estructura no reconocida rechazados; `schema_version` no soportada rechazada; archivo mayor a 10 MB rechazado
     - `preview` no escribe nada en la base (conteos idénticos antes y después)
     - Entidades coincidentes por clave natural se actualizan en lugar de duplicarse
     - Archivo con entidades válidas e inválidas persiste las válidas y reporta ambas cantidades
     - `preview` y `execute` producen los mismos conteos para el mismo archivo
     - _Requirements: 14.1, 14.2, 14.3, 14.4, 14.6, 14.7, 19.10_
-  - [~] 36.5 Escribir integration tests en `backend/tests/integration/test_routes/test_import.py`
+  - [x] 36.5 Escribir integration tests en `backend/tests/integration/test_routes/test_import.py`
     - Códigos 200/413/422; `preview` seguido de no llamar a `execute` deja la base intacta
     - _Requirements: 14.1, 14.2, 14.3, 14.10, 19.9_
-  - [~] 36.6 Escribir property test de idempotencia del import
+  - [x] 36.6 Escribir property test de idempotencia del import
     - **Property 3: La importación es idempotente**
     - **Validates: Requirements 14.6, 14.8**
     - Usar `hypothesis` (mínimo 100 iteraciones) generando documentos de exportación válidos e importándolos dos veces; comparar el conteo por tipo de entidad
     - Archivo: `backend/tests/unit/test_services/test_json_import_service_properties.py`
-  - [~] 36.7 Escribir property test del round-trip export → import
+  - [x] 36.7 Escribir property test del round-trip export → import
     - **Property 4: El round-trip export → import preserva las entidades**
     - **Validates: Requirements 13.6, 14.5**
     - Usar `hypothesis` (mínimo 100 iteraciones) generando colecciones con items y componentes, exportando e importando en una base vacía y comparando los campos exportados
     - Archivo: `backend/tests/unit/test_services/test_transfer_roundtrip_properties.py`
 
-- [ ] 37. Bloque 2 - Export e import frontend (R13, R14)
-  - [~] 37.1 Crear `frontend/src/types/transfer.ts`, `frontend/src/services/exportApi.ts` y `frontend/src/services/importApi.ts`
+- [x] 37. Bloque 2 - Export e import frontend (R13, R14)
+  - [x] 37.1 Crear `frontend/src/types/transfer.ts`, `frontend/src/services/exportApi.ts` y `frontend/src/services/importApi.ts`
     - `ImportPreview`, `ImportEntityChange`, `BatchImportResult` ampliado con `updatedCount` y `skippedCount`, `ExportFormat`
     - `exportApi` usa `fetch` directo más `URL.createObjectURL` para disparar la descarga (no `fetchApi`, que parsea JSON); `importApi` con `preview(file)` y `execute(file)` sobre `FormData`
     - _Requirements: 13.5, 13.7, 14.3, 14.5, 19.7_
-  - [~] 37.2 Crear `frontend/src/hooks/useExport.ts` y `frontend/src/hooks/useJsonImport.ts`
+  - [x] 37.2 Crear `frontend/src/hooks/useExport.ts` y `frontend/src/hooks/useJsonImport.ts`
     - `useExport` expone estado de progreso y error; `useJsonImport` mantiene el paso del asistente y el resultado, e invalida todas las query keys afectadas tras `execute`
     - _Requirements: 13.7, 13.8, 14.9_
-  - [~] 37.3 Crear los componentes en `frontend/src/components/transfer/`
+  - [x] 37.3 Crear los componentes en `frontend/src/components/transfer/`
     - `ExportPanel.tsx` (selección de entidad y formato, indicador de progreso, error con reintento)
     - `ImportWizard.tsx` con 4 pasos (subir → vista previa → confirmar → reporte), `ImportPreviewTable.tsx` sobre `Table`, `ImportReport.tsx`
     - Cancelar en la vista previa simplemente no llama a `execute`; el asistente lo indica explícitamente
     - _Requirements: 13.7, 13.8, 14.9, 14.10_
-  - [~] 37.4 Crear `frontend/src/pages/ExportPage.tsx` y `frontend/src/pages/ImportPage.tsx` con rutas y navegación
+  - [x] 37.4 Crear `frontend/src/pages/ExportPage.tsx` y `frontend/src/pages/ImportPage.tsx` con rutas y navegación
     - Rutas `/export` e `/import` en `frontend/src/App.tsx`; enlaces en `Navigation.tsx`
     - _Requirements: 13.7, 14.9_
-  - [~] 37.5 Escribir tests de hooks, componentes y páginas de transferencia
+  - [x] 37.5 Escribir tests de hooks, componentes y páginas de transferencia
     - Hooks con MSW: descarga exitosa, error con reintento, preview seguido de execute
     - `ExportPanel.test.tsx`, `ImportWizard.test.tsx`, `ImportPreviewTable.test.tsx`, `ImportReport.test.tsx`, `ExportPage.test.tsx`, `ImportPage.test.tsx`: avance y retroceso entre pasos, cancelación sin llamar a `execute`, reporte con errores por entidad, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 13.7, 13.8, 14.9, 14.10, 19.2, 19.3_
-  - [~] 37.6 Agregar claves i18n de export e import en los 5 idiomas
+  - [x] 37.6 Agregar claves i18n de export e import en los 5 idiomas
     - Sección `export.*` (`title`, `entity`, `format`, `download`, `inProgress`, `retry`) e `import.*` (`title`, `steps.*`, `selectFile`, `preview`, `toCreate`, `toUpdate`, `toSkip`, `confirm`, `cancel`, `report`, `partialErrors`, `empty`)
     - `errors.export.*` (`notFound`, `invalidFormat`) y `errors.import.*` (`invalidStructure`, `unsupportedVersion`, `fileTooLarge`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`

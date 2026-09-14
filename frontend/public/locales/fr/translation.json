@@ -48,7 +48,9 @@
     "wishlist": "Liste de souhaits",
     "search": "Rechercher",
     "stats": "Statistiques",
-    "accessories": "Accessoires"
+    "accessories": "Accessoires",
+    "export": "Exporter",
+    "import": "Importer"
   },
   "home": {
     "welcome": "Bienvenue sur H.O.A.R.D.",
@@ -463,6 +465,16 @@
       "alreadyAssigned": "Déjà attribué",
       "hasAssignments": "A des attributions actives",
       "selectRequired": "Sélectionnez un accessoire"
+    },
+    "export": {
+      "failed": "L'exportation a échoué",
+      "notFound": "Introuvable",
+      "invalidFormat": "Format non pris en charge"
+    },
+    "import": {
+      "invalidStructure": "Structure invalide",
+      "unsupportedVersion": "Version non prise en charge",
+      "fileTooLarge": "Fichier trop volumineux"
     }
   },
   "search": {
@@ -604,5 +616,45 @@
     "unassign": "Retirer",
     "quantityUsed": "Quantité utilisée",
     "empty": "Aucun accessoire"
+  },
+  "export": {
+    "title": "Exporter",
+    "entity": "Entité",
+    "entityWishlist": "Liste de souhaits",
+    "entityCollection": "Collection",
+    "entityCatalog": "Catalogue",
+    "format": "Format",
+    "download": "Télécharger",
+    "inProgress": "Exportation..."
+  },
+  "import": {
+    "title": "Importer",
+    "selectFile": "Sélectionner un fichier",
+    "preview": "Aperçu",
+    "entity": "Entité",
+    "action": "Action",
+    "toCreate": "À créer",
+    "toUpdate": "À mettre à jour",
+    "toSkip": "À ignorer",
+    "confirm": "Confirmer l'importation",
+    "cancel": "Annuler",
+    "cancelHint": "Annuler n'applique aucun changement.",
+    "done": "Terminé",
+    "report": "Rapport",
+    "partialErrors": "Erreurs partielles",
+    "errorRow": "Ligne {{row}}",
+    "empty": "Aucun changement",
+    "actions": {
+      "create": "Créer",
+      "update": "Mettre à jour",
+      "skip": "Ignorer"
+    },
+    "steps": {
+      "label": "Étapes",
+      "upload": "Téléverser",
+      "preview": "Aperçu",
+      "confirm": "Confirmer",
+      "report": "Rapport"
+    }
   }
 }

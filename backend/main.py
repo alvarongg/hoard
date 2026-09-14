@@ -9,6 +9,8 @@ from fastapi.staticfiles import StaticFiles
 from api.routes.catalogs import catalog_items_router
 from api.routes.accessories import router as accessories_router
 from api.routes.catalogs import router as catalogs_router
+from api.routes.export import router as export_router
+from api.routes.import_data import router as import_router
 from api.routes.categories import router as categories_router
 from api.routes.categories import subcategories_router
 from api.routes.collections import items_router as collection_items_router
@@ -81,6 +83,8 @@ app.include_router(price_history_router, prefix="/api")
 app.include_router(transactions_router, prefix="/api")
 app.include_router(stats_router, prefix="/api")
 app.include_router(accessories_router, prefix="/api")
+app.include_router(export_router, prefix="/api")
+app.include_router(import_router, prefix="/api")
 
 
 @app.get("/health")

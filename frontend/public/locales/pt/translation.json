@@ -48,7 +48,9 @@
     "wishlist": "Lista de desejos",
     "search": "Pesquisar",
     "stats": "Estatísticas",
-    "accessories": "Acessórios"
+    "accessories": "Acessórios",
+    "export": "Exportar",
+    "import": "Importar"
   },
   "home": {
     "welcome": "Bem-vindo ao H.O.A.R.D.",
@@ -463,6 +465,16 @@
       "alreadyAssigned": "Já atribuído",
       "hasAssignments": "Tem atribuições ativas",
       "selectRequired": "Selecione um acessório"
+    },
+    "export": {
+      "failed": "A exportação falhou",
+      "notFound": "Não encontrado",
+      "invalidFormat": "Formato não suportado"
+    },
+    "import": {
+      "invalidStructure": "Estrutura inválida",
+      "unsupportedVersion": "Versão não suportada",
+      "fileTooLarge": "Arquivo muito grande"
     }
   },
   "search": {
@@ -604,5 +616,45 @@
     "unassign": "Remover",
     "quantityUsed": "Quantidade usada",
     "empty": "Sem acessórios"
+  },
+  "export": {
+    "title": "Exportar",
+    "entity": "Entidade",
+    "entityWishlist": "Lista de desejos",
+    "entityCollection": "Coleção",
+    "entityCatalog": "Catálogo",
+    "format": "Formato",
+    "download": "Baixar",
+    "inProgress": "Exportando..."
+  },
+  "import": {
+    "title": "Importar",
+    "selectFile": "Selecionar arquivo",
+    "preview": "Prévia",
+    "entity": "Entidade",
+    "action": "Ação",
+    "toCreate": "A criar",
+    "toUpdate": "A atualizar",
+    "toSkip": "A ignorar",
+    "confirm": "Confirmar importação",
+    "cancel": "Cancelar",
+    "cancelHint": "Cancelar não aplica alterações.",
+    "done": "Concluído",
+    "report": "Relatório",
+    "partialErrors": "Erros parciais",
+    "errorRow": "Linha {{row}}",
+    "empty": "Sem alterações",
+    "actions": {
+      "create": "Criar",
+      "update": "Atualizar",
+      "skip": "Ignorar"
+    },
+    "steps": {
+      "label": "Etapas",
+      "upload": "Enviar",
+      "preview": "Prévia",
+      "confirm": "Confirmar",
+      "report": "Relatório"
+    }
   }
 }

@@ -48,7 +48,9 @@
     "wishlist": "Wunschliste",
     "search": "Suchen",
     "stats": "Statistiken",
-    "accessories": "Zubehör"
+    "accessories": "Zubehör",
+    "export": "Exportieren",
+    "import": "Importieren"
   },
   "home": {
     "welcome": "Willkommen bei H.O.A.R.D.",
@@ -463,6 +465,16 @@
       "alreadyAssigned": "Bereits zugewiesen",
       "hasAssignments": "Hat aktive Zuweisungen",
       "selectRequired": "Wählen Sie ein Zubehör"
+    },
+    "export": {
+      "failed": "Export fehlgeschlagen",
+      "notFound": "Nicht gefunden",
+      "invalidFormat": "Nicht unterstütztes Format"
+    },
+    "import": {
+      "invalidStructure": "Ungültige Struktur",
+      "unsupportedVersion": "Nicht unterstützte Version",
+      "fileTooLarge": "Datei zu groß"
     }
   },
   "search": {
@@ -604,5 +616,45 @@
     "unassign": "Entfernen",
     "quantityUsed": "Verwendete Menge",
     "empty": "Kein Zubehör"
+  },
+  "export": {
+    "title": "Exportieren",
+    "entity": "Entität",
+    "entityWishlist": "Wunschliste",
+    "entityCollection": "Sammlung",
+    "entityCatalog": "Katalog",
+    "format": "Format",
+    "download": "Herunterladen",
+    "inProgress": "Exportiere..."
+  },
+  "import": {
+    "title": "Importieren",
+    "selectFile": "Datei auswählen",
+    "preview": "Vorschau",
+    "entity": "Entität",
+    "action": "Aktion",
+    "toCreate": "Zu erstellen",
+    "toUpdate": "Zu aktualisieren",
+    "toSkip": "Zu überspringen",
+    "confirm": "Import bestätigen",
+    "cancel": "Abbrechen",
+    "cancelHint": "Abbrechen wendet keine Änderungen an.",
+    "done": "Fertig",
+    "report": "Bericht",
+    "partialErrors": "Teilweise Fehler",
+    "errorRow": "Zeile {{row}}",
+    "empty": "Keine Änderungen",
+    "actions": {
+      "create": "Erstellen",
+      "update": "Aktualisieren",
+      "skip": "Überspringen"
+    },
+    "steps": {
+      "label": "Schritte",
+      "upload": "Hochladen",
+      "preview": "Vorschau",
+      "confirm": "Bestätigen",
+      "report": "Bericht"
+    }
   }
 }

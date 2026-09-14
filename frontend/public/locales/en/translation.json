@@ -48,7 +48,9 @@
     "wishlist": "Wishlist",
     "search": "Search",
     "stats": "Statistics",
-    "accessories": "Accessories"
+    "accessories": "Accessories",
+    "export": "Export",
+    "import": "Import"
   },
   "home": {
     "welcome": "Welcome to H.O.A.R.D.",
@@ -463,6 +465,16 @@
       "alreadyAssigned": "Already assigned",
       "hasAssignments": "Has active assignments",
       "selectRequired": "Select an accessory"
+    },
+    "export": {
+      "failed": "Export failed",
+      "notFound": "Not found",
+      "invalidFormat": "Unsupported format"
+    },
+    "import": {
+      "invalidStructure": "Invalid structure",
+      "unsupportedVersion": "Unsupported version",
+      "fileTooLarge": "File too large"
     }
   },
   "search": {
@@ -604,5 +616,45 @@
     "unassign": "Remove",
     "quantityUsed": "Quantity used",
     "empty": "No accessories"
+  },
+  "export": {
+    "title": "Export",
+    "entity": "Entity",
+    "entityWishlist": "Wishlist",
+    "entityCollection": "Collection",
+    "entityCatalog": "Catalog",
+    "format": "Format",
+    "download": "Download",
+    "inProgress": "Exporting..."
+  },
+  "import": {
+    "title": "Import",
+    "selectFile": "Select file",
+    "preview": "Preview",
+    "entity": "Entity",
+    "action": "Action",
+    "toCreate": "To create",
+    "toUpdate": "To update",
+    "toSkip": "To skip",
+    "confirm": "Confirm import",
+    "cancel": "Cancel",
+    "cancelHint": "Cancelling applies no changes.",
+    "done": "Done",
+    "report": "Report",
+    "partialErrors": "Partial errors",
+    "errorRow": "Row {{row}}",
+    "empty": "No changes",
+    "actions": {
+      "create": "Create",
+      "update": "Update",
+      "skip": "Skip"
+    },
+    "steps": {
+      "label": "Steps",
+      "upload": "Upload",
+      "preview": "Preview",
+      "confirm": "Confirm",
+      "report": "Report"
+    }
   }
 }

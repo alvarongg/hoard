@@ -12,8 +12,10 @@ from api.services.collection_item_service import CollectionItemService
 from api.services.collection_service import CollectionService
 from api.services.collection_stats_service import CollectionStatsService
 from api.services.csv_import_service import CsvImportService
+from api.services.export_service import ExportService
 from api.services.image_service import ImageService
 from api.services.item_component_service import ItemComponentService
+from api.services.json_import_service import JsonImportService
 from api.services.price_history_service import PriceHistoryService
 from api.services.search_service import SearchService
 from api.services.stats_service import StatsService
@@ -135,3 +137,17 @@ def get_accessory_service(
 ) -> AccessoryService:
     """Provide an AccessoryService instance."""
     return AccessoryService(db)
+
+
+def get_export_service(
+    db: AsyncSession = Depends(get_db),
+) -> ExportService:
+    """Provide an ExportService instance."""
+    return ExportService(db)
+
+
+def get_json_import_service(
+    db: AsyncSession = Depends(get_db),
+) -> JsonImportService:
+    """Provide a JsonImportService instance."""
+    return JsonImportService(db)

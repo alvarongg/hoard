@@ -34,6 +34,16 @@ class BatchImportResult(BaseModel):
         ge=0,
         description="Number of data rows rejected during import",
     )
+    updated_count: int = Field(
+        0,
+        ge=0,
+        description="Number of existing entities updated during import",
+    )
+    skipped_count: int = Field(
+        0,
+        ge=0,
+        description="Number of entities skipped during import",
+    )
     errors: list[BatchImportError] = Field(
         default_factory=list,
         description="Detail of every rejected row",
