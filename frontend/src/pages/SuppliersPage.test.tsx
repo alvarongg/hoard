@@ -8,6 +8,10 @@ import type { Supplier } from "../types/supplier";
 expect.extend(toHaveNoViolations);
 
 // ---- i18n mock ---------------------------------------------------------
+vi.mock("../hooks/useAnnouncement", () => ({
+  useAnnouncement: () => vi.fn(),
+}));
+
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key: string, opts?: Record<string, unknown>) => {

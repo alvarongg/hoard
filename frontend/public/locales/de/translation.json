@@ -118,7 +118,11 @@
       "itemCount": "{{count}} Artikel",
       "uncategorized": "Ohne Kategorie"
     },
-    "emptyFirstItem": "Noch keine Artikel in dieser Sammlung. Fügen Sie Ihren ersten Artikel hinzu, um loszulegen."
+    "emptyFirstItem": "Noch keine Artikel in dieser Sammlung. Fügen Sie Ihren ersten Artikel hinzu, um loszulegen.",
+    "announceCreated": "{{name}} erstellt",
+    "announceCreateError": "Erstellen fehlgeschlagen",
+    "announceDeleted": "Gelöscht",
+    "announceDeleteError": "Löschen fehlgeschlagen"
   },
   "catalogs": {
     "title": "Kataloge",
@@ -301,7 +305,11 @@
     "deleteBlocked": "Löschen nicht möglich: Anbieter hat zugehörige Käufe",
     "editLabel": "{{name}} bearbeiten",
     "deleteLabel": "{{name}} löschen",
-    "deleteConfirm": "Sind Sie sicher, dass Sie diesen Anbieter löschen möchten?"
+    "deleteConfirm": "Sind Sie sicher, dass Sie diesen Anbieter löschen möchten?",
+    "announceCreated": "{{name}} erstellt",
+    "announceCreateError": "Erstellen fehlgeschlagen",
+    "announceDeleted": "Gelöscht",
+    "announceDeleteError": "Löschen fehlgeschlagen"
   },
   "wishlist": {
     "title": "Wunschliste",
@@ -412,7 +420,11 @@
         "noDecision": "Noch keine Entscheidung",
         "decisionNotes": "Entscheidungsnotizen"
       }
-    }
+    },
+    "announceCreated": "Wunschlisten-Eintrag hinzugefügt",
+    "announceCreateError": "Erstellen fehlgeschlagen",
+    "announceDeleted": "Gelöscht",
+    "announceDeleteError": "Löschen fehlgeschlagen"
   },
   "errors": {
     "generic": "Etwas ist schiefgelaufen",

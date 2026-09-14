@@ -5,6 +5,7 @@ import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
 import { EmptyState } from "../components/ui/EmptyState";
 import { Modal } from "../components/ui/Modal";
+import { useAnnouncement } from "../hooks/useAnnouncement";
 import { SupplierCard } from "../components/suppliers/SupplierCard";
 import { SupplierForm } from "../components/suppliers/SupplierForm";
 import { SupplierFilters } from "../components/suppliers/SupplierFilters";
@@ -25,6 +26,7 @@ import type { Supplier, SupplierCreate, SupplierUpdate } from "../types/supplier
  */
 export function SuppliersPage() {
   const { t } = useTranslation();
+  const announce = useAnnouncement();
 
   // Filter state
   const [typeFilter, setTypeFilter] = useState<string>("");
@@ -85,7 +87,10 @@ export function SuppliersPage() {
       remove.mutate(deletingSupplier.id, {
         onSuccess: () => {
           setDeletingSupplier(null);
+          announce(t("suppliers.announceDeleted"));
         },
+        onError: () =>
+          announce(t("suppliers.announceDeleteError"), "assertive"),
       });
     }
   }
@@ -109,7 +114,14 @@ export function SuppliersPage() {
       create.mutate(data as SupplierCreate, {
         onSuccess: () => {
           setIsModalOpen(false);
+          announce(
+            t("suppliers.announceCreated", {
+              name: (data as SupplierCreate).name,
+            }),
+          );
         },
+        onError: () =>
+          announce(t("suppliers.announceCreateError"), "assertive"),
       });
     }
   }

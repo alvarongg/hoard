@@ -8,6 +8,7 @@ import { WishlistForm } from "../components/wishlist/WishlistForm";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
 import { Modal } from "../components/ui/Modal";
+import { useAnnouncement } from "../hooks/useAnnouncement";
 import type { WishlistItemCreate, WishlistItemUpdate, Urgency } from "../types/wishlist";
 
 /**
@@ -20,6 +21,7 @@ import type { WishlistItemCreate, WishlistItemUpdate, Urgency } from "../types/w
  */
 export function WishlistPage() {
   const { t } = useTranslation();
+  const announce = useAnnouncement();
   const navigate = useNavigate();
 
   // Filter state
@@ -58,7 +60,12 @@ export function WishlistPage() {
 
   const handleDelete = async (id: string) => {
     if (window.confirm(t("wishlist.deleteConfirm"))) {
-      await remove.mutateAsync(id);
+      try {
+        await remove.mutateAsync(id);
+        announce(t("wishlist.announceDeleted"));
+      } catch {
+        announce(t("wishlist.announceDeleteError"), "assertive");
+      }
     }
   };
 
@@ -67,13 +74,18 @@ export function WishlistPage() {
   };
 
   const handleFormSubmit = async (data: WishlistItemCreate | WishlistItemUpdate) => {
-    if (editingItem) {
-      await update.mutateAsync({ id: editingItem, data: data as WishlistItemUpdate });
-    } else {
-      await create.mutateAsync(data as WishlistItemCreate);
+    try {
+      if (editingItem) {
+        await update.mutateAsync({ id: editingItem, data: data as WishlistItemUpdate });
+      } else {
+        await create.mutateAsync(data as WishlistItemCreate);
+        announce(t("wishlist.announceCreated"));
+      }
+      setIsFormOpen(false);
+      setEditingItem(null);
+    } catch {
+      announce(t("wishlist.announceCreateError"), "assertive");
     }
-    setIsFormOpen(false);
-    setEditingItem(null);
   };
 
   const handleClearFilters = () => {

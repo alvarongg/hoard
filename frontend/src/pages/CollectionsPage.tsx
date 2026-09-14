@@ -7,10 +7,12 @@ import { CollectionList } from "../components/collections/CollectionList";
 import { CollectionForm } from "../components/collections/CollectionForm";
 import { Button } from "../components/ui/Button";
 import { Modal } from "../components/ui/Modal";
+import { useAnnouncement } from "../hooks/useAnnouncement";
 
 export function CollectionsPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const announce = useAnnouncement();
   const { data, isLoading, error, create, remove } = useCollections();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [selectedMainCategoryId, setSelectedMainCategoryId] = useState("");
@@ -27,10 +29,14 @@ export function CollectionsPage() {
   const handleDelete = useCallback(
     (id: string) => {
       if (window.confirm(t("collections.deleteConfirm"))) {
-        remove.mutate(id);
+        remove.mutate(id, {
+          onSuccess: () => announce(t("collections.announceDeleted")),
+          onError: () =>
+            announce(t("collections.announceDeleteError"), "assertive"),
+        });
       }
     },
-    [remove, t],
+    [remove, t, announce],
   );
 
   const handleCreate = useCallback(
@@ -45,10 +51,14 @@ export function CollectionsPage() {
         { onSuccess: () => {
           setShowCreateModal(false);
           setSelectedMainCategoryId("");
-        }},
+          announce(t("collections.announceCreated", { name: formData.name }));
+        },
+          onError: () =>
+            announce(t("collections.announceCreateError"), "assertive"),
+        },
       );
     },
-    [create],
+    [create, t, announce],
   );
 
   function handleCloseModal() {

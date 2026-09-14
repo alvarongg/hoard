@@ -1036,7 +1036,7 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
   - [x] 45.2 Ajustar el layout para zoom al 200% en `frontend/src/components/layout/AppLayout.tsx` y `frontend/src/index.css`
     - Contenedores con `max-width` en `rem` y sin anchos fijos en px; tablas envueltas en un contenedor con scroll horizontal propio para evitar el scroll bidimensional de la página
     - _Requirements: 18.4_
-  - [~] 45.3 Aplicar `useReducedMotion` y `useAnnouncement` en los flujos ya construidos
+  - [x] 45.3 Aplicar `useReducedMotion` y `useAnnouncement` en los flujos ya construidos
     - Sustituir los mensajes de éxito y error dispersos por anuncios vía `LiveRegion` (`assertive` para errores, `polite` para éxitos) en los formularios y páginas de las Tasks 9 a 43
     - Desactivar animaciones y transiciones no esenciales cuando `useReducedMotion()` es verdadero
     - _Requirements: 18.1, 18.2_
