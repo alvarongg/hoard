@@ -46,7 +46,8 @@
     "catalogManagement": "Gestion des Catalogues",
     "suppliers": "Fournisseurs",
     "wishlist": "Liste de souhaits",
-    "search": "Rechercher"
+    "search": "Rechercher",
+    "stats": "Statistiques"
   },
   "home": {
     "welcome": "Bienvenue sur H.O.A.R.D.",
@@ -541,6 +542,36 @@
       "totalInflow": "Entrées",
       "roi": "ROI",
       "roiUnavailable": "aucune donnée"
+    }
+  },
+  "stats": {
+    "title": "Statistiques",
+    "totalItems": "Articles totaux",
+    "totalValue": "Valeur actuelle",
+    "totalInvested": "Investi",
+    "valueGain": "Gain",
+    "roi": "ROI",
+    "roiUnavailable": "aucune donnée",
+    "byCollection": "Par collection",
+    "byCategory": "Par catégorie",
+    "timeline": "Chronologie",
+    "empty": "Aucune donnée à afficher",
+    "retry": "Réessayer"
+  },
+  "charts": {
+    "valuationOverTime": "Valeur dans le temps",
+    "investmentVsValue": "Investissement vs valeur",
+    "categoryDistribution": "Répartition par catégorie",
+    "acquisitionTimeline": "Acquisitions dans le temps",
+    "viewDataTable": "Voir le tableau de données",
+    "category": "Catégorie",
+    "noData": "Aucune donnée pour le graphique",
+    "loadError": "Impossible de charger le graphique",
+    "descriptions": {
+      "valuationOverTime": "Évolution du montant investi par période",
+      "investmentVsValue": "Comparaison entre investi et valeur actuelle",
+      "categoryDistribution": "Valeur actuelle cumulée par catégorie",
+      "acquisitionTimeline": "Nombre d'articles acquis par période"
     }
   }
 }

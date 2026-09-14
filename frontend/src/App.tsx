@@ -16,6 +16,7 @@ import { SuppliersPage } from "./pages/SuppliersPage";
 import { WishlistPage } from "./pages/WishlistPage";
 import { WishlistDetailPage } from "./pages/WishlistDetailPage";
 import { SearchPage } from "./pages/SearchPage";
+import { StatsPage } from "./pages/StatsPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -41,6 +42,7 @@ export const appRoutes: RouteObject[] = [
       { path: "wishlist", element: <WishlistPage /> },
       { path: "wishlist/:id", element: <WishlistDetailPage /> },
       { path: "search", element: <SearchPage /> },
+      { path: "stats", element: <StatsPage /> },
     ],
   },
 ];

@@ -15,6 +15,7 @@ from api.services.image_service import ImageService
 from api.services.item_component_service import ItemComponentService
 from api.services.price_history_service import PriceHistoryService
 from api.services.search_service import SearchService
+from api.services.stats_service import StatsService
 from api.services.supplier_service import SupplierService
 from api.services.transaction_service import TransactionService
 from api.services.wishlist_service import WishlistService
@@ -119,3 +120,10 @@ def get_transaction_service(
 ) -> TransactionService:
     """Provide a TransactionService instance."""
     return TransactionService(db)
+
+
+def get_stats_service(
+    db: AsyncSession = Depends(get_db),
+) -> StatsService:
+    """Provide a StatsService instance."""
+    return StatsService(db)

@@ -46,7 +46,8 @@
     "catalogManagement": "Katalogverwaltung",
     "suppliers": "Anbieter",
     "wishlist": "Wunschliste",
-    "search": "Suchen"
+    "search": "Suchen",
+    "stats": "Statistiken"
   },
   "home": {
     "welcome": "Willkommen bei H.O.A.R.D.",
@@ -541,6 +542,36 @@
       "totalInflow": "Zuflüsse",
       "roi": "ROI",
       "roiUnavailable": "keine Daten"
+    }
+  },
+  "stats": {
+    "title": "Statistiken",
+    "totalItems": "Objekte gesamt",
+    "totalValue": "Aktueller Wert",
+    "totalInvested": "Investiert",
+    "valueGain": "Gewinn",
+    "roi": "ROI",
+    "roiUnavailable": "keine Daten",
+    "byCollection": "Nach Sammlung",
+    "byCategory": "Nach Kategorie",
+    "timeline": "Zeitleiste",
+    "empty": "Keine Daten vorhanden",
+    "retry": "Erneut versuchen"
+  },
+  "charts": {
+    "valuationOverTime": "Wert im Zeitverlauf",
+    "investmentVsValue": "Investition vs. Wert",
+    "categoryDistribution": "Kategorieverteilung",
+    "acquisitionTimeline": "Anschaffungen im Zeitverlauf",
+    "viewDataTable": "Datentabelle anzeigen",
+    "category": "Kategorie",
+    "noData": "Keine Daten für das Diagramm",
+    "loadError": "Diagramm konnte nicht geladen werden",
+    "descriptions": {
+      "valuationOverTime": "Entwicklung des investierten Betrags pro Zeitraum",
+      "investmentVsValue": "Vergleich von Investition und aktuellem Wert",
+      "categoryDistribution": "Kumulierter aktueller Wert pro Kategorie",
+      "acquisitionTimeline": "Anzahl der pro Zeitraum erworbenen Objekte"
     }
   }
 }

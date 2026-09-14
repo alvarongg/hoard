@@ -664,82 +664,82 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [~] 28. Checkpoint - Price history y transacciones completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 29. Bloque 2 - Estadísticas backend (R7)
-  - [~] 29.1 Crear `backend/api/schemas/stats.py`
+- [x] 29. Bloque 2 - Estadísticas backend (R7)
+  - [x] 29.1 Crear `backend/api/schemas/stats.py`
     - `ValuationStats`, `DashboardStats`, `CollectionStatsEntry`, `CategoryStatsEntry`, `TimelineEntry`, `TimelinePeriod` enum (`month`, `quarter`, `year`), `CollectionItemSummary`
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
-  - [~] 29.2 Crear `backend/api/services/stats_service.py`
+  - [x] 29.2 Crear `backend/api/services/stats_service.py`
     - `get_dashboard`, `get_by_collection`, `get_valuation`, `get_by_category`, `get_timeline(period)`
     - `_invested_expression` usa la inversión real derivada de transacciones cuando existen y `purchase_price` cuando no; los items sin ninguna de las dos se excluyen sin error
     - El ROI se calcula con `roi_percentage()` de `utils/computations.py`, devolviendo `None` cuando la inversión es cero
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 11.8, 19.6_
-  - [~] 29.3 Agregar `get_stats_service` en `backend/api/dependencies.py` y crear `backend/api/routes/stats.py`
+  - [x] 29.3 Agregar `get_stats_service` en `backend/api/dependencies.py` y crear `backend/api/routes/stats.py`
     - `GET /stats/dashboard`, `/stats/collections`, `/stats/valuation`, `/stats/categories`, `/stats/timeline?period=month|quarter|year` (422 si el período no es válido)
     - Registrar `app.include_router(stats_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 19.6_
-  - [~] 29.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_stats_service.py`
+  - [x] 29.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_stats_service.py`
     - Base vacía: conteos en cero, ROI nulo, listas vacías
     - Items sin `purchase_price` excluidos de la inversión; items con transacciones usan la inversión real
     - Inversión total cero devuelve ROI nulo, no error de división
     - Timeline agrupado por mes, trimestre y año con el formato de período esperado
     - Categorías con conteo y valor acumulado; colecciones inactivas excluidas del desglose por colección
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 19.10_
-  - [~] 29.5 Escribir integration tests en `backend/tests/integration/test_routes/test_stats.py`
+  - [x] 29.5 Escribir integration tests en `backend/tests/integration/test_routes/test_stats.py`
     - 200 y formato por endpoint; `period` inválido devuelve 422; base vacía devuelve 200 con estructura completa
     - _Requirements: 7.1, 7.5, 7.7, 19.9_
 
-- [ ] 30. Bloque 2 - Estadísticas frontend (R7)
-  - [~] 30.1 Crear `frontend/src/types/stats.ts` y `frontend/src/services/statsApi.ts`
+- [x] 30. Bloque 2 - Estadísticas frontend (R7)
+  - [x] 30.1 Crear `frontend/src/types/stats.ts` y `frontend/src/services/statsApi.ts`
     - `ValuationStats`, `DashboardStats`, `CollectionStatsEntry`, `CategoryStatsEntry`, `TimelineEntry`, `TimelinePeriod`
     - `statsApi` con `dashboard`, `collections`, `valuation`, `categories`, `timeline(period)`
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 19.7_
-  - [~] 30.2 Crear `frontend/src/hooks/useStats.ts` con un hook por endpoint
+  - [x] 30.2 Crear `frontend/src/hooks/useStats.ts` con un hook por endpoint
     - `useDashboardStats`, `useCollectionStatsList`, `useValuationStats`, `useCategoryStats`, `useTimelineStats`
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
-  - [~] 30.3 Crear los componentes en `frontend/src/components/stats/`
+  - [x] 30.3 Crear los componentes en `frontend/src/components/stats/`
     - `MetricCard.tsx`, `CollectionStatsTable.tsx`, `CategoryStatsTable.tsx` sobre `Table`
     - `MetricCard` representa el ROI nulo como texto explicativo, no como 0%
     - _Requirements: 7.2, 7.4, 7.7_
-  - [~] 30.4 Crear `frontend/src/pages/StatsPage.tsx` con ruta y navegación
+  - [x] 30.4 Crear `frontend/src/pages/StatsPage.tsx` con ruta y navegación
     - Cada bloque maneja su propio estado de error con `ErrorMessage` y botón de reintento (`refetch`), sin vaciar la página
     - Estado vacío global cuando no hay colecciones ni items
     - Ruta `/stats` en `frontend/src/App.tsx`; enlace en `Navigation.tsx`
     - _Requirements: 7.8, 7.9, 7.10_
-  - [~] 30.5 Escribir tests de hooks, componentes y página de estadísticas
+  - [x] 30.5 Escribir tests de hooks, componentes y página de estadísticas
     - Hooks con MSW: éxito, error, loading
     - `MetricCard.test.tsx`, `CollectionStatsTable.test.tsx`, `CategoryStatsTable.test.tsx`, `StatsPage.test.tsx`: estado vacío, error por bloque con reintento sin afectar a los demás, ROI nulo, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 7.8, 7.9, 7.10, 19.2, 19.3_
-  - [~] 30.6 Agregar claves i18n de estadísticas en los 5 idiomas
+  - [x] 30.6 Agregar claves i18n de estadísticas en los 5 idiomas
     - Sección `stats.*` (`title`, `totalItems`, `totalValue`, `totalInvested`, `valueGain`, `roi`, `roiUnavailable`, `recentAcquisitions`, `mostValuable`, `highPriorityWishlist`, `byCollection`, `byCategory`, `timeline`, `period.*`, `empty`, `retry`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_
 
-- [ ] 31. Bloque 2 - Gráficos accesibles (R16)
-  - [~] 31.1 Crear `frontend/src/types/chart.ts` y `frontend/src/components/charts/ChartDataTable.tsx`
+- [x] 31. Bloque 2 - Gráficos accesibles (R16)
+  - [x] 31.1 Crear `frontend/src/types/chart.ts` y `frontend/src/components/charts/ChartDataTable.tsx`
     - `ChartSeries` con `key`, `label`, `marker` (`circle | square | triangle | diamond`), `dashArray?`, `points`
     - `ChartDataTable` renderiza sobre `Table` una fila por punto con los valores exactos de las series
     - _Requirements: 16.2, 16.3_
-  - [~] 31.2 Crear `frontend/src/components/charts/ChartContainer.tsx`
+  - [x] 31.2 Crear `frontend/src/components/charts/ChartContainer.tsx`
     - Props `{ title, description, data, isLoading, error, children }`
     - `<figure>` con `<figcaption>`; SVG del gráfico con `aria-hidden="true"`; `ChartDataTable` dentro de un `<details>` con `<summary>` etiquetado y alcanzable por teclado
     - `EmptyState` cuando `data` está vacío, `LoadingSpinner` mientras carga, `ErrorMessage` propio ante error
     - Desactiva `isAnimationActive` cuando `useReducedMotion()` es verdadero
     - _Requirements: 16.2, 16.4, 16.5, 16.7, 18.1_
-  - [~] 31.3 Crear los 4 gráficos en `frontend/src/components/charts/`
+  - [x] 31.3 Crear los 4 gráficos en `frontend/src/components/charts/`
     - `ValuationOverTimeChart.tsx` (línea), `InvestmentVsValueChart.tsx` (barras agrupadas), `CategoryDistributionChart.tsx` (barras horizontales), `AcquisitionTimelineChart.tsx` (área)
     - Todos consumen `statsApi` mediante los hooks de la Task 30, envueltos en `ChartContainer`, con `marker` distinto por serie
     - Cargar Recharts con `React.lazy` para no penalizar el primer render de las páginas que no lo usan
     - _Requirements: 16.1, 16.3_
-  - [~] 31.4 Integrar la sección de gráficos en `frontend/src/pages/StatsPage.tsx`
+  - [x] 31.4 Integrar la sección de gráficos en `frontend/src/pages/StatsPage.tsx`
     - Sección de gráficos debajo de las métricas, con cada gráfico aislado en su propio contenedor de error
     - _Requirements: 16.1, 16.7_
-  - [~] 31.5 Escribir tests de gráficos
+  - [x] 31.5 Escribir tests de gráficos
     - `ChartDataTable.test.tsx`: una fila por punto y valores coincidentes con la entrada
     - `ChartContainer.test.tsx`: `<figure>`/`<figcaption>` presentes, `<summary>` alcanzable por teclado y abre la tabla con Enter, SVG `aria-hidden`, estado vacío, error aislado, animación desactivada con `prefers-reduced-motion`
     - Un `.test.tsx` por gráfico verificando que la tabla equivalente refleja los datos del endpoint mockeado con MSW y que cada serie tiene un `marker` distinto
     - `frontend/tests/accessibility/charts.a11y.test.tsx`: axe sobre la sección completa en tema claro y oscuro
     - _Requirements: 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 19.2, 19.3_
-  - [~] 31.6 Agregar claves i18n de gráficos en los 5 idiomas
+  - [x] 31.6 Agregar claves i18n de gráficos en los 5 idiomas
     - Sección `charts.*` (`valuationOverTime`, `investmentVsValue`, `categoryDistribution`, `acquisitionTimeline`, `viewDataTable`, `series.*`, `noData`, `loadError`, `descriptions.*`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_
