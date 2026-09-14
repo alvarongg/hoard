@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 
 from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.models.catalog import Catalog, CatalogItem
@@ -195,4 +196,15 @@ class QuickAddService:
         )
         await self._db.commit()
         await self._db.refresh(collection_item)
-        return collection_item
+        # Reload with the catalog_item relationship so the response can
+        # resolve catalog_title/catalog_name without a lazy async load.
+        result = await self._db.execute(
+            select(CollectionItem)
+            .options(
+                selectinload(CollectionItem.catalog_item).selectinload(
+                    CatalogItem.catalog
+                )
+            )
+            .where(CollectionItem.id == collection_item.id)
+        )
+        return result.scalar_one()

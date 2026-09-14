@@ -45,6 +45,8 @@ const mockItem: CollectionItem = {
   countryOfOrigin: null,
   conditionNotes: null,
   customFields: null,
+  catalogTitle: null,
+  catalogName: null,
   createdAt: "2024-01-01T00:00:00Z",
   updatedAt: "2024-01-01T00:00:00Z",
 };

@@ -6,7 +6,7 @@ from datetime import date, datetime
 from decimal import Decimal
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from api.schemas._types import StrUUID
 
@@ -175,7 +175,37 @@ class CollectionItemResponse(BaseModel):
     country_of_origin: str | None = Field(None, description="ISO-2 country")
     condition_notes: str | None = Field(None, description="Condition notes")
     custom_fields: dict | None = Field(None, description="Extra fields")
+    catalog_title: str | None = Field(
+        None, description="Resolved title of the linked catalog item"
+    )
+    catalog_name: str | None = Field(
+        None, description="Name of the catalog the item belongs to"
+    )
     created_at: datetime = Field(..., description="Creation timestamp")
     updated_at: datetime = Field(..., description="Last update timestamp")
 
     model_config = ConfigDict(from_attributes=True)
+
+    @model_validator(mode="before")
+    @classmethod
+    def _resolve_catalog(cls, data):
+        """Populate catalog_title/catalog_name from the loaded relationship.
+
+        Accepts an ORM object (from_attributes) and returns a dict so we can
+        add derived fields without mutating the SQLAlchemy instance.
+        """
+        if isinstance(data, dict):
+            return data
+        catalog_item = getattr(data, "catalog_item", None)
+        if catalog_item is None:
+            return data
+        fields = {
+            c: getattr(data, c)
+            for c in cls.model_fields
+            if c not in ("catalog_title", "catalog_name")
+            and hasattr(data, c)
+        }
+        fields["catalog_title"] = getattr(catalog_item, "title", None)
+        catalog = getattr(catalog_item, "catalog", None)
+        fields["catalog_name"] = getattr(catalog, "name", None) if catalog else None
+        return fields

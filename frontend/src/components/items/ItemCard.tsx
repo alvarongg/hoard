@@ -42,10 +42,12 @@ export function ItemCard({
         />
       )}
       <h3 id={headingId} className="text-base font-semibold text-gray-900">
-        {catalogTitle ?? item.catalogItemId}
+        {catalogTitle ?? item.catalogTitle ?? item.catalogItemId}
       </h3>
-      {catalogName && (
-        <p className="text-xs text-gray-400">{catalogName}</p>
+      {(catalogName ?? item.catalogName) && (
+        <p className="text-xs text-gray-400">
+          {catalogName ?? item.catalogName}
+        </p>
       )}
       <p className="mt-1 text-sm text-gray-500">
         {t("items.condition")}: {t(CONDITION_KEYS[item.condition])}

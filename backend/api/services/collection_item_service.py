@@ -33,6 +33,11 @@ class CollectionItemService:
 
         result = await self._db.execute(
             select(CollectionItem)
+            .options(
+                selectinload(CollectionItem.catalog_item).selectinload(
+                    CatalogItem.catalog
+                )
+            )
             .where(CollectionItem.collection_id == collection_id)
             .order_by(CollectionItem.created_at.desc())
             .offset(skip)
@@ -46,7 +51,16 @@ class CollectionItemService:
         Raises:
             NotFoundError: If the item does not exist.
         """
-        item = await self._db.get(CollectionItem, item_id)
+        result = await self._db.execute(
+            select(CollectionItem)
+            .options(
+                selectinload(CollectionItem.catalog_item).selectinload(
+                    CatalogItem.catalog
+                )
+            )
+            .where(CollectionItem.id == item_id)
+        )
+        item = result.scalar_one_or_none()
         if item is None:
             raise NotFoundError(f"Collection item '{item_id}' not found")
         return item
@@ -88,7 +102,7 @@ class CollectionItemService:
         )
         await self._db.commit()
         await self._db.refresh(item)
-        return item
+        return await self.get_by_id(item.id)
 
     async def update(
         self,
@@ -108,7 +122,7 @@ class CollectionItemService:
 
         await self._db.commit()
         await self._db.refresh(item)
-        return item
+        return await self.get_by_id(item.id)
 
     async def delete(self, item_id: str) -> None:
         """Delete a collection item (hard delete).

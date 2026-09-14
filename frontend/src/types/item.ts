@@ -31,6 +31,8 @@ export interface CollectionItem {
   countryOfOrigin: string | null;
   conditionNotes: string | null;
   customFields: Record<string, unknown> | null;
+  catalogTitle: string | null;
+  catalogName: string | null;
   createdAt: string;
   updatedAt: string;
 }
