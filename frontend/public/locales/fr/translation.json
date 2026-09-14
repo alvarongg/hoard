@@ -51,7 +51,8 @@
     "accessories": "Accessoires",
     "export": "Exporter",
     "import": "Importer",
-    "backups": "Sauvegardes"
+    "backups": "Sauvegardes",
+    "settings": "Paramètres"
   },
   "home": {
     "welcome": "Bienvenue sur H.O.A.R.D.",
@@ -719,5 +720,30 @@
     "failed": {
       "title": "Opérations échouées"
     }
+  },
+  "settings": {
+    "title": "Paramètres du système",
+    "subtitle": "Langue, thème et gestion des catalogues et des données.",
+    "general": "Général",
+    "language": "Langue",
+    "catalogs": "Catalogues",
+    "data": "Données",
+    "createCatalog": "Créer un catalogue",
+    "importCatalog": "Importer un catalogue"
+  },
+  "catalogLibrary": {
+    "title": "Catalogues officiels",
+    "description": "Chargez les catalogues publiés dans le dépôt du projet.",
+    "items": "éléments",
+    "load": "Charger",
+    "loading": "Chargement…",
+    "loaded": "Chargé : {{created}} créés, {{updated}} mis à jour, {{skipped}} ignorés.",
+    "loadError": "Impossible de charger le catalogue.",
+    "empty": "Aucun catalogue officiel disponible.",
+    "generateNote": "Les catalogues sont générés hors ligne avec les scripts du dépôt ; l'application n'interroge jamais la source à l'exécution."
+  },
+  "catalogImport": {
+    "description": "Importez un fichier de catalogue (entity_type='catalog').",
+    "selectFile": "Sélectionner un fichier"
   }
 }

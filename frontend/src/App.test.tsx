@@ -33,6 +33,12 @@ vi.mock("./pages/CatalogDetailPage", () => ({
 vi.mock("./pages/CatalogManagementPage", () => ({
   CatalogManagementPage: () => <div>catalog-management-page</div>,
 }));
+vi.mock("./pages/SettingsPage", () => ({
+  SettingsPage: () => <div>settings-page</div>,
+}));
+vi.mock("./pages/CatalogImportPage", () => ({
+  CatalogImportPage: () => <div>catalog-import-page</div>,
+}));
 
 // Mock matchMedia for ThemeProvider
 const createMatchMedia = (prefersDark: boolean) => (query: string) => ({
@@ -82,13 +88,12 @@ describe("appRoutes", () => {
     expect(await screen.findByText("catalog-detail-page")).toBeInTheDocument();
   });
 
-  it("renders the navigation link to catalog management inside the layout", async () => {
-    renderAt("/catalogs/manage");
+  it("renders the settings navigation link inside the layout", async () => {
+    renderAt("/settings");
 
-    await screen.findByText("catalog-management-page");
-    expect(screen.getByText("navigation.catalogManagement")).toHaveAttribute(
+    expect(screen.getByText("navigation.settings")).toHaveAttribute(
       "href",
-      "/catalogs/manage",
+      "/settings",
     );
   });
 });

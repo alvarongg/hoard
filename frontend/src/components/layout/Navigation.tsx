@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+const linkClass = ({ isActive }: { isActive: boolean }): string =>
+  `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`;
+
 export function Navigation() {
   const { t } = useTranslation();
 
@@ -8,125 +11,43 @@ export function Navigation() {
     <nav aria-label={t("navigation.main")}>
       <ul className="flex gap-4">
         <li>
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
+          <NavLink to="/" end className={linkClass}>
             {t("navigation.home")}
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/collections"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
+          <NavLink to="/collections" className={linkClass}>
             {t("navigation.collections")}
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/catalogs"
-            end
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
+          <NavLink to="/catalogs" end className={linkClass}>
             {t("navigation.catalogs")}
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/catalogs/manage"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
-            {t("navigation.catalogManagement")}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/suppliers"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
-            {t("navigation.suppliers")}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/wishlist"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
+          <NavLink to="/wishlist" className={linkClass}>
             {t("navigation.wishlist")}
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/search"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
+          <NavLink to="/search" className={linkClass}>
             {t("navigation.search")}
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/stats"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
+          <NavLink to="/stats" className={linkClass}>
             {t("navigation.stats")}
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/accessories"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
+          <NavLink to="/accessories" className={linkClass}>
             {t("navigation.accessories")}
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/export"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
-            {t("navigation.export")}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/import"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
-            {t("navigation.import")}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/settings/backups"
-            className={({ isActive }) =>
-              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
-            }
-          >
-            {t("navigation.backups")}
+          <NavLink to="/settings" className={linkClass}>
+            {t("navigation.settings")}
           </NavLink>
         </li>
       </ul>

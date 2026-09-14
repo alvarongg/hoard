@@ -51,7 +51,8 @@
     "accessories": "Accessories",
     "export": "Export",
     "import": "Import",
-    "backups": "Backups"
+    "backups": "Backups",
+    "settings": "Settings"
   },
   "home": {
     "welcome": "Welcome to H.O.A.R.D.",
@@ -719,5 +720,30 @@
     "failed": {
       "title": "Failed operations"
     }
+  },
+  "settings": {
+    "title": "System settings",
+    "subtitle": "Language, theme, and catalog and data management.",
+    "general": "General",
+    "language": "Language",
+    "catalogs": "Catalogs",
+    "data": "Data",
+    "createCatalog": "Create catalog",
+    "importCatalog": "Import catalog"
+  },
+  "catalogLibrary": {
+    "title": "Official catalogs",
+    "description": "Load catalogs published in the project repository.",
+    "items": "items",
+    "load": "Load",
+    "loading": "Loading…",
+    "loaded": "Loaded: {{created}} created, {{updated}} updated, {{skipped}} skipped.",
+    "loadError": "Could not load the catalog.",
+    "empty": "No official catalogs available.",
+    "generateNote": "Catalogs are generated offline with the repository scripts; the app never queries the source at runtime."
+  },
+  "catalogImport": {
+    "description": "Import a catalog file (entity_type='catalog').",
+    "selectFile": "Select file"
   }
 }

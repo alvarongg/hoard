@@ -15,8 +15,11 @@ vi.mock("react-i18next", () => ({
         "navigation.home": "Home",
         "navigation.collections": "Collections",
         "navigation.catalogs": "Catalogs",
-        "navigation.catalogManagement": "Catalog Management",
-        "navigation.suppliers": "Suppliers",
+        "navigation.wishlist": "Wishlist",
+        "navigation.search": "Search",
+        "navigation.stats": "Statistics",
+        "navigation.accessories": "Accessories",
+        "navigation.settings": "Settings",
       };
       return translations[key] ?? key;
     },
@@ -36,23 +39,20 @@ function renderWithRouter(initialEntries: string[] = ["/"]) {
 }
 
 describe("Navigation", () => {
-  it("renders all navigation links", () => {
+  it("renders the main collection navigation links", () => {
     renderWithRouter();
 
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Collections")).toBeInTheDocument();
     expect(screen.getByText("Catalogs")).toBeInTheDocument();
-    expect(screen.getByText("Catalog Management")).toBeInTheDocument();
-    expect(screen.getByText("Suppliers")).toBeInTheDocument();
+    expect(screen.getByText("Wishlist")).toBeInTheDocument();
+    expect(screen.getByText("Settings")).toBeInTheDocument();
   });
 
-  it("points the catalog management link to /catalogs/manage", () => {
+  it("points the settings link to /settings", () => {
     renderWithRouter();
 
-    expect(screen.getByText("Catalog Management")).toHaveAttribute(
-      "href",
-      "/catalogs/manage",
-    );
+    expect(screen.getByText("Settings")).toHaveAttribute("href", "/settings");
   });
 
   it("has accessible navigation landmark with label", () => {
@@ -83,28 +83,13 @@ describe("Navigation", () => {
     expect(catalogsLink).toHaveAttribute("aria-current", "page");
   });
 
-  it("sets aria-current page on active Catalog Management link", () => {
-    renderWithRouter(["/catalogs/manage"]);
+  it("sets aria-current page on active Settings link", () => {
+    renderWithRouter(["/settings"]);
 
-    expect(screen.getByText("Catalog Management")).toHaveAttribute(
+    expect(screen.getByText("Settings")).toHaveAttribute(
       "aria-current",
       "page",
     );
-  });
-
-  it("sets aria-current page on active Suppliers link", () => {
-    renderWithRouter(["/suppliers"]);
-
-    expect(screen.getByText("Suppliers")).toHaveAttribute(
-      "aria-current",
-      "page",
-    );
-  });
-
-  it("does not mark the Catalogs link active on the management route", () => {
-    renderWithRouter(["/catalogs/manage"]);
-
-    expect(screen.getByText("Catalogs")).not.toHaveAttribute("aria-current");
   });
 
   it("does not set aria-current on inactive links", () => {
@@ -128,10 +113,7 @@ describe("Navigation", () => {
     expect(screen.getByText("Catalogs")).toHaveFocus();
 
     await user.tab();
-    expect(screen.getByText("Catalog Management")).toHaveFocus();
-
-    await user.tab();
-    expect(screen.getByText("Suppliers")).toHaveFocus();
+    expect(screen.getByText("Wishlist")).toHaveFocus();
   });
 
   it("has no accessibility violations", async () => {
