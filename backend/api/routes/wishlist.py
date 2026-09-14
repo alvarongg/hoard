@@ -12,6 +12,7 @@ from api.schemas.wishlist import (
     SightingResponse,
     SightingUpdate,
     WishlistAcquire,
+    WishlistAcquireAndAdd,
     WishlistItemCreate,
     WishlistItemDetail,
     WishlistItemResponse,
@@ -105,6 +106,22 @@ async def mark_wishlist_item_acquired(
     Links the wishlist item to a collection item representing the purchase.
     """
     return await service.mark_acquired(wishlist_item_id, data)
+
+
+@router.post(
+    "/{wishlist_item_id}/acquire-and-add",
+    response_model=WishlistItemResponse,
+)
+async def acquire_and_add_wishlist_item(
+    wishlist_item_id: str,
+    data: WishlistAcquireAndAdd,
+    service: WishlistService = Depends(get_wishlist_service),
+) -> WishlistItemResponse:
+    """"Ya lo conseguí": create a collection item from this wishlist item.
+
+    Optionally removes (deactivates) the wishlist item afterwards.
+    """
+    return await service.acquire_and_create(wishlist_item_id, data)
 
 
 # ------------------------------------------------------------------

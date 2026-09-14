@@ -9,6 +9,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from api.schemas._types import StrUUID
+from api.schemas.collection_item import CollectionItemCreate
 
 
 # ---------------------------------------------------------------------------
@@ -258,6 +259,22 @@ class WishlistAcquire(BaseModel):
     acquired_collection_item_id: StrUUID = Field(
         ...,
         description="UUID of the collection item created from this acquisition",
+    )
+
+
+class WishlistAcquireAndAdd(BaseModel):
+    """Create a collection item from a wishlist item ("ya lo conseguí").
+
+    The collection and catalog item are taken from the wishlist item; the
+    collection_item payload's catalog_item_id is ignored/overridden.
+    """
+
+    collection_item: "CollectionItemCreate" = Field(
+        ..., description="Collection-item data to create"
+    )
+    remove_from_wishlist: bool = Field(
+        False,
+        description="If true, deactivate the wishlist item after acquiring",
     )
 
 

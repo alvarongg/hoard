@@ -30,6 +30,13 @@ from api.routes.sightings import router as sightings_router
 from api.routes.suppliers import router as suppliers_router
 from api.routes.transactions import router as transactions_router
 from api.routes.wishlist import router as wishlist_router
+from api.routes.collector_workflow import (
+    catalog_items_router as cw_catalog_items_router,
+    collections_router as cw_collections_router,
+    maintenance_router as cw_maintenance_router,
+    pending_router as cw_pending_router,
+    suppliers_router as cw_suppliers_router,
+)
 from core.config import get_settings
 from core.exception_handlers import (
     duplicate_handler,
@@ -94,6 +101,11 @@ app.include_router(import_router, prefix="/api")
 app.include_router(catalog_library_router, prefix="/api")
 app.include_router(catalog_import_router, prefix="/api")
 app.include_router(backups_router, prefix="/api")
+app.include_router(cw_collections_router, prefix="/api")
+app.include_router(cw_catalog_items_router, prefix="/api")
+app.include_router(cw_suppliers_router, prefix="/api")
+app.include_router(cw_maintenance_router, prefix="/api")
+app.include_router(cw_pending_router, prefix="/api")
 
 
 @app.get("/health")

@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     CATALOG_LIBRARY_URL: str = ""
     # SSRF guard: only these hosts may be fetched for the remote library.
     CATALOG_LIBRARY_ALLOWED_HOSTS: str = "raw.githubusercontent.com"
+    # On-demand price lookup (PriceCharting). Never runs in bulk/scheduled.
+    PRICE_LOOKUP_ENABLED: bool = True
+    PRICE_LOOKUP_ALLOWED_HOSTS: str = "pricecharting.com,www.pricecharting.com"
     SEARCH_SIMILARITY_THRESHOLD: float = 0.3
 
     @cached_property
@@ -37,6 +40,15 @@ class Settings(BaseSettings):
         return [
             h.strip()
             for h in self.CATALOG_LIBRARY_ALLOWED_HOSTS.split(",")
+            if h.strip()
+        ]
+
+    @cached_property
+    def price_lookup_allowed_hosts_list(self) -> list[str]:
+        """Parse PRICE_LOOKUP_ALLOWED_HOSTS into a list of hostnames."""
+        return [
+            h.strip()
+            for h in self.PRICE_LOOKUP_ALLOWED_HOSTS.split(",")
             if h.strip()
         ]
 
