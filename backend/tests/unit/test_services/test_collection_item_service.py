@@ -372,3 +372,71 @@ class TestListByCollection:
     ) -> None:
         with pytest.raises(NotFoundError):
             await service.list_by_collection("nonexistent-uuid")
+
+
+# ---------------------------------------------------------------------------
+# Collector-workflow: full item fields + N:M auto-link
+# ---------------------------------------------------------------------------
+
+
+class TestCollectorWorkflowFields:
+    """New fields exposed by the collector-workflow spec."""
+
+    @pytest.mark.asyncio
+    async def test_add_item_persists_supplier_authenticity_country(
+        self,
+        service: CollectionItemService,
+        db_session: AsyncSession,
+    ) -> None:
+        from api.models.supplier import Supplier
+
+        sub = await _seed_sub_category(db_session)
+        catalog_item = await _seed_catalog_and_item(db_session, sub)
+        collection = await _seed_collection(db_session)
+        supplier = Supplier(name="Suruga-ya", country="JP")
+        db_session.add(supplier)
+        await db_session.commit()
+
+        data = _item_create(
+            catalog_item.id,
+            condition="good",
+            supplier_id=supplier.id,
+            is_authentic=False,
+            authenticity_notes="Reproducción",
+            country_of_origin="BR",
+            condition_notes="Etiqueta despegada",
+            purchase_price="42.50",
+        )
+        result = await service.add_item(collection.id, data)
+
+        assert result.supplier_id == supplier.id
+        assert result.is_authentic is False
+        assert result.authenticity_notes == "Reproducción"
+        assert result.country_of_origin == "BR"
+        assert result.condition_notes == "Etiqueta despegada"
+
+    @pytest.mark.asyncio
+    async def test_add_item_auto_links_catalog_to_collection(
+        self,
+        service: CollectionItemService,
+        db_session: AsyncSession,
+    ) -> None:
+        from sqlalchemy import select
+
+        from api.models.collection import CollectionCatalog
+
+        sub = await _seed_sub_category(db_session)
+        catalog_item = await _seed_catalog_and_item(db_session, sub)
+        collection = await _seed_collection(db_session)
+
+        await service.add_item(collection.id, _item_create(catalog_item.id))
+
+        links = (
+            await db_session.execute(
+                select(CollectionCatalog).where(
+                    CollectionCatalog.collection_id == collection.id
+                )
+            )
+        ).scalars().all()
+        assert len(links) == 1
+        assert links[0].catalog_id == catalog_item.catalog_id
