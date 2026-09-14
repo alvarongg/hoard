@@ -139,7 +139,7 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - Usar `hypothesis` (mínimo 100 iteraciones) con inversión y valor de mercado arbitrarios, verificando la equivalencia exacta y la fórmula en el resto de los casos
     - Archivo: `backend/tests/unit/test_utils/test_computations_properties.py`
 
-- [ ] 6. Bloque 0 - Crear los componentes UI transversales
+- [x] 6. Bloque 0 - Crear los componentes UI transversales
   - [x] 6.1 Crear `frontend/src/components/ui/LiveRegion.tsx`
     - Props `{ message: string; politeness?: "polite" | "assertive" }`
     - Renderiza un contenedor `role="status"` con `aria-live` según `politeness` y `aria-atomic="true"`, visualmente oculto pero disponible para lectores de pantalla
@@ -173,10 +173,10 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - `frontend/public/locales/es/translation.json` y `frontend/public/locales/en/translation.json`: sección `a11y` con `skipToContent`, `sortAscending`, `sortDescending`, `tableCaptionFallback`, `closeTooltip`
     - _Requirements: 19.1_
 
-- [~] 7. Checkpoint - Cimientos del Bloque 0 completos
+- [x] 7. Checkpoint - Cimientos del Bloque 0 completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 8. Bloque 1 - Suppliers backend (R2)
+- [x] 8. Bloque 1 - Suppliers backend (R2)
   - [x] 8.1 Crear `backend/api/schemas/supplier.py`
     - `SupplierBase` con `name` (min_length 1), `type`, `country`, `state_province`, `city`, `address`, `postal_code`, `website`, `email` (`EmailStr`), `phone`, `marketplace_url`, `social_media`, `rating` (ge 0, le 5, 2 decimales), `notes`, `is_favorite`, `is_active`
     - `field_validator` `_name_not_blank` (rechaza vacío y solo espacios) y `_type_allowed` (online, physical_store, marketplace, private_seller, auction)
@@ -209,7 +209,7 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - Filtros y paginación vía query params
     - _Requirements: 2.1, 2.2, 2.3, 2.7, 2.8, 2.10, 19.9_
 
-- [ ] 9. Bloque 1 - Suppliers frontend (R2)
+- [x] 9. Bloque 1 - Suppliers frontend (R2)
   - [x] 9.1 Crear `frontend/src/types/supplier.ts` y `frontend/src/services/suppliersApi.ts`
     - `SupplierType`, `Supplier`, `SupplierCreate`, `SupplierUpdate`, `SupplierPurchase`, `SupplierReferences`; sin `any`
     - `suppliersApi` con `list(filters)`, `get(id)`, `create`, `update`, `remove`, `purchases(id)` sobre `fetchApi`, con conversión camelCase/snake_case
@@ -222,12 +222,12 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - `SupplierForm` valida localmente `name` no vacío y `rating` en rango, con `aria-invalid` y `aria-describedby`
     - `FavoriteToggle` es un botón con `aria-pressed` y etiqueta traducida
     - _Requirements: 2.1, 2.4, 2.5, 2.6, 2.7_
-  - [~] 9.4 Crear `frontend/src/pages/SuppliersPage.tsx` y registrar la ruta y la navegación
+  - [x] 9.4 Crear `frontend/src/pages/SuppliersPage.tsx` y registrar la ruta y la navegación
     - Listado con filtros, formulario en `Modal`, historial de compras del proveedor seleccionado, estados loading / error / empty
     - Ruta `/suppliers` en `appRoutes` de `frontend/src/App.tsx` como hija de `AppLayout`
     - Enlace en `frontend/src/components/layout/Navigation.tsx`
     - _Requirements: 2.6, 2.7, 2.9_
-  - [~] 9.5 Escribir tests de hooks y componentes de suppliers
+  - [x] 9.5 Escribir tests de hooks y componentes de suppliers
     - `useSuppliers.test.ts`, `useSupplier.test.ts`, `useSupplierPurchases.test.ts` con MSW: éxito, error, loading, invalidación; el toggle optimista revierte ante error
     - `SupplierCard.test.tsx`, `SupplierForm.test.tsx`, `SupplierFilters.test.tsx`, `FavoriteToggle.test.tsx`, `SuppliersPage.test.tsx`: renderizado, interacciones con `userEvent`, estados, teclado, ARIA y test axe-core obligatorio
     - Actualizar `frontend/src/components/layout/Navigation.test.tsx` con el enlace nuevo
@@ -312,32 +312,32 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [x] 12. Checkpoint - Suppliers y wishlist completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 13. Bloque 1 - Componentes de items backend (R5)
-  - [~] 13.1 Crear `backend/api/schemas/item_component.py`
+- [x] 13. Bloque 1 - Componentes de items backend (R5)
+  - [x] 13.1 Crear `backend/api/schemas/item_component.py`
     - `ItemComponentBase` con `standard_component_id`, `component_name`, `component_type`, `is_present`, `condition`, `condition_notes`, `variant_description`
     - `model_validator(mode="after")` `_name_or_standard_required`: `component_name` obligatorio cuando `standard_component_id` es `None`
     - `ItemComponentCreate`, `ItemComponentUpdate`, `ItemComponentResponse`, `ComponentTemplateEntry`, `CompletenessResult`
     - _Requirements: 5.2, 5.3, 5.4_
-  - [~] 13.2 Crear `backend/api/services/item_component_service.py`
+  - [x] 13.2 Crear `backend/api/services/item_component_service.py`
     - `get_template` devuelve los `standard_components` de la sub-categoría del item con el estado registrado si existe
     - `list`, `upsert`, `update`, `delete` (devuelve `CompletenessResult`)
     - `recalculate_completeness` usa `is_item_complete()` de `utils/computations.py` sobre los componentes `required` y persiste `collection_items.is_complete`; se invoca al final de cada mutación
     - _Requirements: 5.1, 5.2, 5.3, 5.5, 5.6, 5.8, 19.6_
-  - [~] 13.3 Agregar `get_item_component_service` en `backend/api/dependencies.py`
+  - [x] 13.3 Agregar `get_item_component_service` en `backend/api/dependencies.py`
     - Factory para `ItemComponentService`
     - _Requirements: 19.6_
-  - [~] 13.4 Crear `backend/api/routes/item_components.py` y registrar el router en `backend/main.py`
+  - [x] 13.4 Crear `backend/api/routes/item_components.py` y registrar el router en `backend/main.py`
     - `GET /collection-items/{id}/components/template`, `GET /collection-items/{id}/components`, `POST /collection-items/{id}/components` (201), `PUT /item-components/{id}`, `DELETE /item-components/{id}` (200 con `CompletenessResult`, no 204)
     - `app.include_router(item_components_router, prefix="/api")`
     - _Requirements: 5.1, 5.2, 5.7, 5.8, 19.6_
-  - [~] 13.5 Escribir unit tests del service en `backend/tests/unit/test_services/test_item_component_service.py`
+  - [x] 13.5 Escribir unit tests del service en `backend/tests/unit/test_services/test_item_component_service.py`
     - Template de una sub-categoría con componentes y de una sin componentes
     - Componente ad-hoc con `standard_component_id` nulo y `component_name` presente aceptado; sin ninguno de los dos rechazado
     - Item con todos los `required` presentes es completo; con uno ausente es incompleto
     - Item cuya sub-categoría no define `required` se considera completo
     - Borrado recalcula completitud y devuelve el nuevo estado
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.8, 19.10_
-  - [~] 13.6 Escribir integration tests en `backend/tests/integration/test_routes/test_item_components.py`
+  - [x] 13.6 Escribir integration tests en `backend/tests/integration/test_routes/test_item_components.py`
     - Códigos 200/201/404/422; `DELETE` devuelve 200 con `CompletenessResult`; item inexistente devuelve 404
     - _Requirements: 5.1, 5.4, 5.8, 19.9_
   - [x] 13.7 Escribir property test de la completitud del item
@@ -346,29 +346,29 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - Usar `hypothesis` (mínimo 100 iteraciones) generando conjuntos arbitrarios de standard components y de registros de presencia, incluido el conjunto vacío de requeridos
     - Archivo: `backend/tests/unit/test_services/test_item_component_service_properties.py`
 
-- [ ] 14. Bloque 1 - Componentes de items frontend (R5)
-  - [~] 14.1 Crear `frontend/src/types/itemComponent.ts` y `frontend/src/services/itemComponentsApi.ts`
+- [x] 14. Bloque 1 - Componentes de items frontend (R5)
+  - [x] 14.1 Crear `frontend/src/types/itemComponent.ts` y `frontend/src/services/itemComponentsApi.ts`
     - `ComponentType`, `ItemComponent`, `ComponentTemplateEntry`, `CompletenessResult` y los `Create`/`Update`
     - `itemComponentsApi` con `template`, `list`, `upsert`, `update`, `remove`
     - _Requirements: 5.1, 5.2, 19.7_
-  - [~] 14.2 Crear `frontend/src/hooks/useItemComponents.ts`
+  - [x] 14.2 Crear `frontend/src/hooks/useItemComponents.ts`
     - Mutaciones que consumen el `CompletenessResult` de la respuesta para actualizar el badge sin refetch adicional
     - _Requirements: 5.7, 5.8_
-  - [~] 14.3 Crear los componentes en `frontend/src/components/components/`
+  - [x] 14.3 Crear los componentes en `frontend/src/components/components/`
     - `ComponentChecklist.tsx` (props `collectionItemId`, `onCompletenessChange`), `ComponentRow.tsx`, `CompletenessBadge.tsx` sobre `Badge`
     - Cada fila es un checkbox etiquetado con `condition` y notas opcionales; el checklist anuncia el cambio de completitud vía `useAnnouncement`
     - Integrar `ComponentChecklist` y `CompletenessBadge` en el detalle de collection item de `frontend/src/pages/CollectionDetailPage.tsx`
     - _Requirements: 5.1, 5.2, 5.3, 5.7_
-  - [~] 14.4 Escribir tests de hook y componentes de item components
+  - [x] 14.4 Escribir tests de hook y componentes de item components
     - `useItemComponents.test.ts` con MSW; `ComponentChecklist.test.tsx`, `ComponentRow.test.tsx`, `CompletenessBadge.test.tsx`: renderizado, toggle con `userEvent`, actualización del badge sin recarga, teclado, ARIA y test axe-core obligatorio
     - Actualizar `frontend/src/pages/CollectionDetailPage.test.tsx` con la integración del checklist
     - _Requirements: 5.7, 19.2, 19.3_
-  - [~] 14.5 Agregar claves i18n de componentes en `es` y `en`
+  - [x] 14.5 Agregar claves i18n de componentes en `es` y `en`
     - Sección `components.*` (`title`, `template`, `present`, `absent`, `addCustom`, `componentName`, `componentType.*`, `condition`, `conditionNotes`, `variantDescription`, `complete`, `incomplete`, `completenessAnnouncement`) y `errors.component.nameRequired`
     - Archivos: `frontend/public/locales/{es,en}/translation.json`
     - _Requirements: 19.1_
 
-- [ ] 15. Bloque 1 - Colecciones multi-category backend (R1)
+- [x] 15. Bloque 1 - Colecciones multi-category backend (R1)
   - [x] 15.1 Extender `backend/api/schemas/collection.py`
     - Agregar `theme`, `theme_description`, `goal_description`, `goal_items_count`, `display_order`, `is_public`, `is_active` a `CollectionBase` si faltan
     - Restringir `collection_type` a `single_category | multi_category | mixed` con validator
@@ -432,7 +432,7 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [x] 17. Checkpoint - Componentes y colecciones multi-category completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 18. Bloque 1 - Búsqueda avanzada backend (R6)
+- [x] 18. Bloque 1 - Búsqueda avanzada backend (R6)
   - [x] 18.1 Crear `backend/api/schemas/search.py`
     - `CatalogSearchParams` con `q`, los 9 filtros, `year_min`/`year_max` (ge 1800, le 2200), `skip` (ge 0), `limit` (ge 1, le 200)
     - `SearchMode` enum (`full_text`, `fuzzy`, `degraded`) y `CatalogSearchResult` con `items`, `total`, `search_mode`
@@ -455,112 +455,112 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - Búsqueda sin resultados devuelve lista vacía y `total = 0`
     - Paginación: `skip`/`limit` no alteran el `total`
     - _Requirements: 6.4, 6.5, 6.7, 6.8, 19.10_
-  - [~] 18.5 Escribir tests marcados `@pytest.mark.postgres` en `backend/tests/integration/test_postgres/test_search_postgres.py`
+  - [x] 18.5 Escribir tests marcados `@pytest.mark.postgres` en `backend/tests/integration/test_postgres/test_search_postgres.py`
     - Orden por relevancia según los pesos A/B/C: coincidencia en `title` antes que en `description`
     - `search_mode = "full_text"` con resultados y `"fuzzy"` con término mal escrito por encima del umbral
     - _Requirements: 6.1, 6.2, 6.3, 19.8_
   - [x] 18.6 Escribir integration tests en `backend/tests/integration/test_routes/test_search.py`
     - 200 con formato `CatalogSearchResult`; `limit` fuera de rango devuelve 422; combinación de `q` y filtros
     - _Requirements: 6.5, 6.6, 6.8, 19.9_
-  - [~] 18.7 Escribir property test del subconjunto filtrado
+  - [x] 18.7 Escribir property test del subconjunto filtrado
     - **Property 5: Los resultados filtrados son un subconjunto de los no filtrados**
     - **Validates: Requirements 6.5, 6.6**
     - Usar `hypothesis` (mínimo 100 iteraciones) generando catálogos, términos y combinaciones de filtros; verificar inclusión de identificadores y conservación del orden relativo de los comunes
     - Archivo: `backend/tests/unit/test_services/test_search_service_properties.py`
 
-- [ ] 19. Bloque 1 - Búsqueda avanzada frontend (R6)
-  - [~] 19.1 Crear `frontend/src/types/search.ts` y `frontend/src/services/searchApi.ts`
+- [x] 19. Bloque 1 - Búsqueda avanzada frontend (R6)
+  - [x] 19.1 Crear `frontend/src/types/search.ts` y `frontend/src/services/searchApi.ts`
     - `SearchMode`, `CatalogSearchFilters`, `CatalogSearchResult`
     - `searchApi.catalogItems(filters, skip, limit)` serializando solo los filtros definidos
     - _Requirements: 6.5, 6.8, 19.7_
-  - [~] 19.2 Crear `frontend/src/hooks/useDebouncedValue.ts` y `frontend/src/hooks/useSearch.ts`
+  - [x] 19.2 Crear `frontend/src/hooks/useDebouncedValue.ts` y `frontend/src/hooks/useSearch.ts`
     - `useDebouncedValue(value, delayMs)` con timer propio, sin dependencias nuevas; debounce de 300 ms
     - `useSearch` consulta con el valor debounced y mantiene `keepPreviousData` para evitar parpadeo
     - _Requirements: 6.9_
-  - [~] 19.3 Crear los componentes en `frontend/src/components/search/`
+  - [x] 19.3 Crear los componentes en `frontend/src/components/search/`
     - `SearchBar.tsx` (props `value`, `onChange`, `resultCount`, `isLoading`), `SearchFilters.tsx`, `SearchResultList.tsx`, `SearchModeNotice.tsx`
     - `SearchModeNotice` explica el modo degradado cuando `searchMode === "degraded"`
     - El conteo de resultados se anuncia con `LiveRegion` (`polite`) al cambiar o limpiar filtros
     - Estado vacío con sugerencia de ampliar o quitar filtros; botón de limpiar filtros
     - _Requirements: 6.4, 6.7, 6.9, 6.10_
-  - [~] 19.4 Crear `frontend/src/pages/SearchPage.tsx` con ruta y navegación
+  - [x] 19.4 Crear `frontend/src/pages/SearchPage.tsx` con ruta y navegación
     - Composición de barra, filtros y resultados paginados con el total de coincidencias
     - Ruta `/search` en `frontend/src/App.tsx`; enlace en `Navigation.tsx`
     - _Requirements: 6.7, 6.8_
-  - [~] 19.5 Escribir tests de hooks, componentes y página de búsqueda
+  - [x] 19.5 Escribir tests de hooks, componentes y página de búsqueda
     - `useDebouncedValue.test.ts` con timers falsos; `useSearch.test.ts` con MSW verificando que no se emite consulta por cada pulsación
     - `SearchBar.test.tsx`, `SearchFilters.test.tsx`, `SearchResultList.test.tsx`, `SearchModeNotice.test.tsx`, `SearchPage.test.tsx`: estado vacío, limpiar filtros, anuncio del conteo, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 6.7, 6.9, 6.10, 19.2, 19.3_
-  - [~] 19.6 Agregar claves i18n de búsqueda en `es` y `en`
+  - [x] 19.6 Agregar claves i18n de búsqueda en `es` y `en`
     - Sección `search.*` (`title`, `placeholder`, `filters.*`, `results`, `resultCount`, `noResults`, `clearFilters`, `degradedMode`, `fuzzyMode`, `yearRange`)
     - Archivos: `frontend/public/locales/{es,en}/translation.json`
     - _Requirements: 19.1_
 
-- [~] 20. Checkpoint - Búsqueda avanzada completa
+- [x] 20. Checkpoint - Búsqueda avanzada completa
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 21. Bloque 1 - Dark mode: tokens y proveedor de tema (R8)
-  - [~] 21.1 Configurar `darkMode: "class"` y tokens semánticos en `frontend/tailwind.config.ts`
+- [x] 21. Bloque 1 - Dark mode: tokens y proveedor de tema (R8)
+  - [x] 21.1 Configurar `darkMode: "class"` y tokens semánticos en `frontend/tailwind.config.ts`
     - `darkMode: "class"`; tokens `surface`, `surface-muted`, `content`, `content-muted`, `border`, `accent`, `danger`, cada uno con su valor claro y su variante oscura
     - Todos los pares texto/fondo con ratio mínimo 4.5:1 para WCAG AA
     - Agregar en `frontend/src/index.css` la regla `@media (prefers-reduced-motion: reduce)` que anula `transition` y `animation` no esenciales, y `:focus-visible` con outline de 2 px y contraste 3:1
     - _Requirements: 8.6, 18.1, 18.5_
-  - [~] 21.2 Crear `frontend/src/theme/storage.ts`
+  - [x] 21.2 Crear `frontend/src/theme/storage.ts`
     - `STORAGE_KEY = "hoard.theme"`; `readPreference()` devuelve `"auto"` ante valor inválido o `localStorage` inaccesible (envuelto en `try/catch`), `writePreference()`, `clearPreference()`
     - _Requirements: 8.2, 8.4, 8.5_
-  - [~] 21.3 Crear `frontend/src/theme/ThemeProvider.tsx` y `frontend/src/theme/useTheme.ts`
+  - [x] 21.3 Crear `frontend/src/theme/ThemeProvider.tsx` y `frontend/src/theme/useTheme.ts`
     - `ThemePreference = "light" | "dark" | "auto"`; contexto con `preference`, `resolvedTheme`, `setPreference`
     - Escribe o quita `class="dark"` en `document.documentElement`; escucha `matchMedia("(prefers-color-scheme: dark)")` cuando la preferencia es `auto`
     - Montar el provider en `frontend/src/main.tsx` por encima de `App`
     - _Requirements: 8.1, 8.2, 8.3, 8.4_
-  - [~] 21.4 Agregar el script inline de tema en `frontend/index.html`
+  - [x] 21.4 Agregar el script inline de tema en `frontend/index.html`
     - Aplica la clase antes del primer paint leyendo `hoard.theme` y `prefers-color-scheme`, dentro de `try/catch`
     - _Requirements: 8.1, 8.2, 8.5_
-  - [~] 21.5 Crear `frontend/src/components/ui/ThemeToggle.tsx` e integrarlo en `AppLayout`
+  - [x] 21.5 Crear `frontend/src/components/ui/ThemeToggle.tsx` e integrarlo en `AppLayout`
     - Grupo de radio de 3 opciones (claro / oscuro / automático) con `role="radiogroup"`, `aria-checked` y navegación por flechas usando `react-aria`
     - Renderizarlo en `frontend/src/components/layout/AppLayout.tsx` junto al `LanguageSelector`
     - _Requirements: 8.3, 8.7_
-  - [~] 21.6 Escribir tests de tema
+  - [x] 21.6 Escribir tests de tema
     - `frontend/src/theme/storage.test.ts`: valor inválido cae a `auto`, `localStorage` que lanza no rompe
     - `frontend/src/theme/ThemeProvider.test.tsx` con `matchMedia` mockeado: sin preferencia sigue el sistema, preferencia explícita gana, `auto` limpia el storage, alternar actualiza la clase sin recargar
     - `frontend/src/components/ui/ThemeToggle.test.tsx`: `aria-checked`, navegación por flechas, activación con teclado y test axe-core obligatorio
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.7, 19.2, 19.3_
-  - [~] 21.7 Crear la suite de contraste en ambos temas en `frontend/tests/accessibility/theme.a11y.test.tsx`
+  - [x] 21.7 Crear la suite de contraste en ambos temas en `frontend/tests/accessibility/theme.a11y.test.tsx`
     - Corre axe-core sobre cada página existente en tema claro y en tema oscuro, exigiendo cero violaciones de contraste WCAG 2.1 AA
     - _Requirements: 8.6, 18.7_
-  - [~] 21.8 Agregar claves i18n del selector de tema en `es` y `en`
+  - [x] 21.8 Agregar claves i18n del selector de tema en `es` y `en`
     - Sección `theme.*` (`label`, `light`, `dark`, `auto`, `currentTheme`)
     - Archivos: `frontend/public/locales/{es,en}/translation.json`
     - _Requirements: 19.1_
 
-- [ ] 22. Bloque 1 - Idiomas pt, fr y de (R9)
-  - [~] 22.1 Extender `frontend/src/i18n/config.ts`
+- [x] 22. Bloque 1 - Idiomas pt, fr y de (R9)
+  - [x] 22.1 Extender `frontend/src/i18n/config.ts`
     - `supportedLngs: ["es", "en", "pt", "fr", "de"]`, `detection.order: ["localStorage", "navigator", "htmlTag"]`, `fallbackLng` explícito
     - Listener `i18n.on("languageChanged", lng => { document.documentElement.lang = lng })`
     - _Requirements: 9.1, 9.3, 9.4, 9.6_
-  - [~] 22.2 Crear los tres archivos de traducción portando todas las claves existentes
+  - [x] 22.2 Crear los tres archivos de traducción portando todas las claves existentes
     - Crear `frontend/public/locales/pt/translation.json`, `frontend/public/locales/fr/translation.json` y `frontend/public/locales/de/translation.json`
     - Portar el conjunto completo de claves acumulado hasta este punto (Fase 1 más las Tasks 6, 9, 11, 14, 16, 19 y 21), con exactamente el mismo conjunto que `es` y `en` y sin valores vacíos
     - A partir de esta task, toda clave nueva se agrega a los 5 archivos
     - _Requirements: 9.1, 9.2, 9.3, 19.1_
-  - [~] 22.3 Actualizar `frontend/src/components/layout/LanguageSelector.tsx`
+  - [x] 22.3 Actualizar `frontend/src/components/layout/LanguageSelector.tsx`
     - Las 5 opciones con el nombre de cada idioma en su propio idioma, `aria-label` traducido y opción activa marcada, operable con teclado
     - _Requirements: 9.1, 9.4, 9.5_
-  - [~] 22.4 Crear el chequeo de paridad de claves `frontend/scripts/check-i18n-keys.ts` y el script `lint:i18n`
+  - [x] 22.4 Crear el chequeo de paridad de claves `frontend/scripts/check-i18n-keys.ts` y el script `lint:i18n`
     - Compara los 5 archivos y falla listando claves faltantes y sobrantes y valores vacíos
     - Agregar `"lint:i18n": "tsx scripts/check-i18n-keys.ts"` en `frontend/package.json`
     - _Requirements: 9.2, 19.1_
-  - [~] 22.5 Actualizar tests de i18n
+  - [x] 22.5 Actualizar tests de i18n
     - `frontend/src/components/layout/LanguageSelector.test.tsx`: las 5 opciones, cambio de idioma, `document.documentElement.lang` actualizado, persistencia, teclado, ARIA y test axe-core
     - Extender `frontend/src/pages/i18n.property.test.ts` a los 5 idiomas
     - _Requirements: 9.1, 9.4, 9.5, 9.6, 19.2, 19.3_
-  - [~] 22.6 Escribir property test de paridad de claves i18n
+  - [x] 22.6 Escribir property test de paridad de claves i18n
     - **Property 8: Paridad de claves i18n entre los cinco idiomas**
     - **Validates: Requirements 9.2, 19.1**
     - Usar `fast-check` (mínimo 100 iteraciones) sobre el conjunto unión de claves de los 5 archivos, verificando existencia y valor no vacío en todos
     - Archivo: `frontend/src/i18n/i18nParity.property.test.ts`
 
-- [~] 23. Checkpoint - Cierre del Bloque 1 (Fase 2 Core) y subida de coverage a 80%
+- [x] 23. Checkpoint - Cierre del Bloque 1 (Fase 2 Core) y subida de coverage a 80%
   - Elevar `fail_under = 80` en `backend/pyproject.toml` y `coverage.thresholds.lines = 80` en `frontend/vitest.config.ts`
   - Ensure all tests pass, ask the user if questions arise.
 

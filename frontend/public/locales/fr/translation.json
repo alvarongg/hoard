@@ -473,6 +473,8 @@
       "publisher": "Éditeur",
       "developer": "Développeur",
       "brand": "Marque"
-    }
+    },
+    "clearFilters": "Effacer les filtres",
+    "filtersCleared": "Filtres effacés"
   }
 }

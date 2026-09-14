@@ -25,7 +25,7 @@ function buildQueryString(
   params.set("limit", String(limit));
 
   // Add filters (only defined values)
-  const snakeFilters = toSnakeCase(filters);
+  const snakeFilters = toSnakeCase<Record<string, unknown>>(filters);
   for (const [key, value] of Object.entries(snakeFilters)) {
     if (value !== undefined && value !== null && value !== "") {
       params.set(key, String(value));

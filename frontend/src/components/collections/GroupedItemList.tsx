@@ -12,7 +12,7 @@ interface GroupedItemListProps {
   onEditItem?: (itemId: string) => void;
 }
 
-export function GroupedItemList({ groups, onEditItem }: GroupedItemListProps) {
+export function GroupedItemList({ groups }: GroupedItemListProps) {
   const { t } = useTranslation();
 
   if (groups.length === 0) {

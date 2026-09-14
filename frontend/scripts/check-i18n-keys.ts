@@ -2,9 +2,11 @@
  * Script to check i18n key parity across all 5 supported languages.
  * Ensures all languages have the same set of keys and no empty values.
  */
-import { readFileSync, readdirSync } from "fs";
-import { join } from "path";
+import { readFileSync } from "fs";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const LOCALES_DIR = join(__dirname, "../public/locales");
 const SUPPORTED_LANGUAGES = ["es", "en", "pt", "fr", "de"];
 

@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { ComponentTemplateEntry, CompletenessResult } from "../../types/itemComponent";
+import type { ComponentTemplateEntry } from "../../types/itemComponent";
 import { useItemComponentMutations, type OnCompletenessChange } from "../../hooks/useItemComponents";
 import { useAnnouncement } from "../../hooks/useAnnouncement";
 

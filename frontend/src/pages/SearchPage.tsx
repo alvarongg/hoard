@@ -4,7 +4,6 @@
  * Requirements: 6.7, 6.8, 6.10
  */
 
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LiveRegion } from "../components/ui/LiveRegion";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
@@ -29,18 +28,12 @@ export function SearchPage() {
     data,
     isLoading,
     isError,
-    error,
     refetch,
   } = useSearchState({}, PAGE_SIZE);
-
-  const [announcement, setAnnouncement] = useState<string | null>(null);
 
   // Handle search query change
   const handleQueryChange = (q: string) => {
     updateFilters({ q });
-    if (q.length > 2) {
-      setAnnouncement(t("search.searching"));
-    }
   };
 
   // Handle item selection
@@ -49,19 +42,21 @@ export function SearchPage() {
     window.location.href = `/catalogs/${item.catalogId}/items/${item.id}`;
   };
 
-  // Announce result count when data changes
   const resultCount = data?.total ?? 0;
   const searchMode = data?.searchMode ?? "degraded";
 
-  // Update announcement when results change
-  if (data && !isLoading && !announcement) {
-    const count = data.total;
-    const message =
-      count === 0
+  // Derive the screen-reader announcement from current state (no effect needed):
+  // once results settle, announce the count or the empty-state message.
+  const announcement =
+    !isLoading && data
+      ? data.total === 0
         ? t("search.noResults")
-        : t("search.resultCount", { count });
-    // Only set if needed
-  }
+        : t("search.resultCount", { count: data.total })
+      : null;
+
+  const handleClearFilters = () => {
+    clearFilters();
+  };
 
   if (isError) {
     return (
@@ -103,6 +98,13 @@ export function SearchPage() {
           filters={filters}
           onFiltersChange={updateFilters}
         />
+        <button
+          type="button"
+          onClick={handleClearFilters}
+          className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded dark:text-blue-400"
+        >
+          {t("search.clearFilters")}
+        </button>
       </div>
 
       {/* Results */}
