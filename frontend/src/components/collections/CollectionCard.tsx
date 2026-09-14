@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import type { Collection, CollectionType } from "../../types/collection";
 
 interface CollectionCardProps {
@@ -27,7 +28,12 @@ export function CollectionCard({
       className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
     >
       <h3 id={headingId} className="text-lg font-semibold text-gray-900">
-        {collection.name}
+        <Link
+          to={`/collections/${collection.id}`}
+          className="text-blue-700 hover:underline"
+        >
+          {collection.name}
+        </Link>
       </h3>
       <p className="mt-1 text-sm text-gray-500">
         {t(TYPE_KEYS[collection.collectionType])}
@@ -36,6 +42,12 @@ export function CollectionCard({
         <p className="mt-1 text-sm text-gray-600">{collection.description}</p>
       )}
       <div className="mt-3 flex gap-2">
+        <Link
+          to={`/collections/${collection.id}`}
+          className="rounded-md bg-gray-200 px-3 py-1 text-sm text-gray-800 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+        >
+          {t("common.view")}
+        </Link>
         <button
           onClick={() => onEdit(collection.id)}
           aria-label={t("collections.editLabel", { name: collection.name })}

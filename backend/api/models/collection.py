@@ -17,7 +17,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.types import JSON
 
-from api.models.base import DBUUID, Base, TimestampMixin, UUIDMixin
+from api.models.base import DBUUID, Base, StringArray, TimestampMixin, UUIDMixin
 
 if TYPE_CHECKING:
     from api.models.accessory import ItemAccessory, ItemComponent
@@ -169,7 +169,7 @@ class CollectionItem(UUIDMixin, TimestampMixin, Base):
 
     # Custom / tags / sale
     custom_fields: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
-    tags: Mapped[list | None] = mapped_column(JSON, nullable=True)
+    tags: Mapped[list | None] = mapped_column(StringArray, nullable=True)
     for_sale: Mapped[bool] = mapped_column(Boolean, default=False)
     asking_price: Mapped[float | None] = mapped_column(
         Numeric(10, 2), nullable=True,

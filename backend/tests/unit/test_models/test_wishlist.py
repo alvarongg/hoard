@@ -7,7 +7,7 @@ from sqlalchemy import Boolean, Date, DateTime, Integer, Numeric, String, Text, 
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.types import JSON
 
-from api.models.base import Base
+from api.models.base import StringArray,   Base
 from api.models.catalog import Catalog, CatalogItem
 from api.models.category import MainCategory, SubCategory
 from api.models.collection import Collection, CollectionItem
@@ -96,7 +96,7 @@ class TestWishlistItemColumns:
     def test_tags_column_is_json(self) -> None:
         mapper = inspect(WishlistItem)
         col = mapper.columns["tags"]
-        assert isinstance(col.type, JSON)
+        assert isinstance(col.type, (JSON, StringArray))
 
     def test_is_active_column_properties(self) -> None:
         mapper = inspect(WishlistItem)
@@ -167,7 +167,7 @@ class TestWishlistSightingColumns:
     def test_image_urls_column_is_json(self) -> None:
         mapper = inspect(WishlistSighting)
         col = mapper.columns["image_urls"]
-        assert isinstance(col.type, JSON)
+        assert isinstance(col.type, (JSON, StringArray))
 
     def test_quantity_available_column_properties(self) -> None:
         mapper = inspect(WishlistSighting)

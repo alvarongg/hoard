@@ -15,7 +15,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.types import JSON
 
-from api.models.base import DBUUID, Base, TimestampMixin, UUIDMixin
+from api.models.base import DBUUID, Base, StringArray, TimestampMixin, UUIDMixin
 
 
 class WishlistItem(UUIDMixin, TimestampMixin, Base):
@@ -69,7 +69,7 @@ class WishlistItem(UUIDMixin, TimestampMixin, Base):
     # Notes
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     search_notes: Mapped[str | None] = mapped_column(Text, nullable=True)
-    tags: Mapped[list | None] = mapped_column(JSON, nullable=True)
+    tags: Mapped[list | None] = mapped_column(StringArray, nullable=True)
 
     # Status
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
@@ -128,7 +128,7 @@ class WishlistSighting(UUIDMixin, Base):
     condition: Mapped[str | None] = mapped_column(String(50), nullable=True)
     is_complete: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
-    image_urls: Mapped[list | None] = mapped_column(JSON, nullable=True)
+    image_urls: Mapped[list | None] = mapped_column(StringArray, nullable=True)
 
     # Availability
     is_available: Mapped[bool] = mapped_column(Boolean, default=True)
