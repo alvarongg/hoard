@@ -50,7 +50,8 @@
     "stats": "Statistics",
     "accessories": "Accessories",
     "export": "Export",
-    "import": "Import"
+    "import": "Import",
+    "backups": "Backups"
   },
   "home": {
     "welcome": "Welcome to H.O.A.R.D.",
@@ -475,6 +476,13 @@
       "invalidStructure": "Invalid structure",
       "unsupportedVersion": "Unsupported version",
       "fileTooLarge": "File too large"
+    },
+    "backup": {
+      "notFound": "Not found",
+      "corrupted": "Corrupted backup",
+      "toolUnavailable": "PostgreSQL client unavailable",
+      "invalidFrequency": "Invalid frequency",
+      "invalidRetention": "Invalid retention"
     }
   },
   "search": {
@@ -656,5 +664,28 @@
       "confirm": "Confirm",
       "report": "Report"
     }
+  },
+  "backups": {
+    "title": "Backups",
+    "create": "Create backup",
+    "download": "Download",
+    "restore": "Restore",
+    "delete": "Delete",
+    "createdAt": "Date",
+    "size": "Size",
+    "config": "Configuration",
+    "frequency": "Frequency",
+    "frequencyDaily": "Daily",
+    "frequencyWeekly": "Weekly",
+    "frequencyMonthly": "Monthly",
+    "retention": "Retention",
+    "nextRun": "Next run",
+    "lastRun": "Last run",
+    "lastRunFailed": "The last run failed",
+    "restoreWarning": "Restoring {{filename}} will overwrite the current data. This action is irreversible.",
+    "restoreConfirmWord": "RESTORE",
+    "restoreConfirmPrompt": "Type {{word}} to confirm",
+    "toolUnavailable": "The PostgreSQL client (pg_dump) is not available on the server",
+    "empty": "No backups"
   }
 }

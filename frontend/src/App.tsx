@@ -20,6 +20,7 @@ import { StatsPage } from "./pages/StatsPage";
 import { AccessoriesPage } from "./pages/AccessoriesPage";
 import { ExportPage } from "./pages/ExportPage";
 import { ImportPage } from "./pages/ImportPage";
+import { BackupsPage } from "./pages/BackupsPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,6 +50,7 @@ export const appRoutes: RouteObject[] = [
       { path: "accessories", element: <AccessoriesPage /> },
       { path: "export", element: <ExportPage /> },
       { path: "import", element: <ImportPage /> },
+      { path: "settings/backups", element: <BackupsPage /> },
     ],
   },
 ];

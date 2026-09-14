@@ -50,7 +50,8 @@
     "stats": "Statistiques",
     "accessories": "Accessoires",
     "export": "Exporter",
-    "import": "Importer"
+    "import": "Importer",
+    "backups": "Sauvegardes"
   },
   "home": {
     "welcome": "Bienvenue sur H.O.A.R.D.",
@@ -475,6 +476,13 @@
       "invalidStructure": "Structure invalide",
       "unsupportedVersion": "Version non prise en charge",
       "fileTooLarge": "Fichier trop volumineux"
+    },
+    "backup": {
+      "notFound": "Introuvable",
+      "corrupted": "Sauvegarde corrompue",
+      "toolUnavailable": "Client PostgreSQL indisponible",
+      "invalidFrequency": "Fréquence invalide",
+      "invalidRetention": "Rétention invalide"
     }
   },
   "search": {
@@ -656,5 +664,28 @@
       "confirm": "Confirmer",
       "report": "Rapport"
     }
+  },
+  "backups": {
+    "title": "Sauvegardes",
+    "create": "Créer une sauvegarde",
+    "download": "Télécharger",
+    "restore": "Restaurer",
+    "delete": "Supprimer",
+    "createdAt": "Date",
+    "size": "Taille",
+    "config": "Configuration",
+    "frequency": "Fréquence",
+    "frequencyDaily": "Quotidienne",
+    "frequencyWeekly": "Hebdomadaire",
+    "frequencyMonthly": "Mensuelle",
+    "retention": "Rétention",
+    "nextRun": "Prochaine exécution",
+    "lastRun": "Dernière exécution",
+    "lastRunFailed": "La dernière exécution a échoué",
+    "restoreWarning": "Restaurer {{filename}} écrasera les données actuelles. Cette action est irréversible.",
+    "restoreConfirmWord": "RESTAURER",
+    "restoreConfirmPrompt": "Tapez {{word}} pour confirmer",
+    "toolUnavailable": "Le client PostgreSQL (pg_dump) n'est pas disponible sur le serveur",
+    "empty": "Aucune sauvegarde"
   }
 }

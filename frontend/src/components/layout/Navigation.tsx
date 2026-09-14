@@ -119,6 +119,16 @@ export function Navigation() {
             {t("navigation.import")}
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/settings/backups"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.backups")}
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

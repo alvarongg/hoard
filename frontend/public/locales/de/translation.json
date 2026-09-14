@@ -50,7 +50,8 @@
     "stats": "Statistiken",
     "accessories": "Zubehör",
     "export": "Exportieren",
-    "import": "Importieren"
+    "import": "Importieren",
+    "backups": "Sicherungen"
   },
   "home": {
     "welcome": "Willkommen bei H.O.A.R.D.",
@@ -475,6 +476,13 @@
       "invalidStructure": "Ungültige Struktur",
       "unsupportedVersion": "Nicht unterstützte Version",
       "fileTooLarge": "Datei zu groß"
+    },
+    "backup": {
+      "notFound": "Nicht gefunden",
+      "corrupted": "Beschädigte Sicherung",
+      "toolUnavailable": "PostgreSQL-Client nicht verfügbar",
+      "invalidFrequency": "Ungültige Häufigkeit",
+      "invalidRetention": "Ungültige Aufbewahrung"
     }
   },
   "search": {
@@ -656,5 +664,28 @@
       "confirm": "Bestätigen",
       "report": "Bericht"
     }
+  },
+  "backups": {
+    "title": "Sicherungen",
+    "create": "Sicherung erstellen",
+    "download": "Herunterladen",
+    "restore": "Wiederherstellen",
+    "delete": "Löschen",
+    "createdAt": "Datum",
+    "size": "Größe",
+    "config": "Konfiguration",
+    "frequency": "Häufigkeit",
+    "frequencyDaily": "Täglich",
+    "frequencyWeekly": "Wöchentlich",
+    "frequencyMonthly": "Monatlich",
+    "retention": "Aufbewahrung",
+    "nextRun": "Nächste Ausführung",
+    "lastRun": "Letzte Ausführung",
+    "lastRunFailed": "Die letzte Ausführung ist fehlgeschlagen",
+    "restoreWarning": "Das Wiederherstellen von {{filename}} überschreibt die aktuellen Daten. Diese Aktion ist unwiderruflich.",
+    "restoreConfirmWord": "WIEDERHERSTELLEN",
+    "restoreConfirmPrompt": "Geben Sie {{word}} zur Bestätigung ein",
+    "toolUnavailable": "Der PostgreSQL-Client (pg_dump) ist auf dem Server nicht verfügbar",
+    "empty": "Keine Sicherungen"
   }
 }

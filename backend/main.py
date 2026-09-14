@@ -11,6 +11,7 @@ from api.routes.accessories import router as accessories_router
 from api.routes.catalogs import router as catalogs_router
 from api.routes.export import router as export_router
 from api.routes.import_data import router as import_router
+from api.routes.backups import router as backups_router
 from api.routes.categories import router as categories_router
 from api.routes.categories import subcategories_router
 from api.routes.collections import items_router as collection_items_router
@@ -32,12 +33,14 @@ from core.exception_handlers import (
     duplicate_handler,
     file_validation_handler,
     not_found_handler,
+    service_unavailable_handler,
     validation_handler,
 )
 from core.exceptions import (
     DuplicateError,
     FileValidationError,
     NotFoundError,
+    ToolUnavailableError,
     ValidationError,
 )
 
@@ -62,6 +65,7 @@ app.add_exception_handler(NotFoundError, not_found_handler)
 app.add_exception_handler(DuplicateError, duplicate_handler)
 app.add_exception_handler(ValidationError, validation_handler)
 app.add_exception_handler(FileValidationError, file_validation_handler)
+app.add_exception_handler(ToolUnavailableError, service_unavailable_handler)
 
 
 # Register routers
@@ -85,6 +89,7 @@ app.include_router(stats_router, prefix="/api")
 app.include_router(accessories_router, prefix="/api")
 app.include_router(export_router, prefix="/api")
 app.include_router(import_router, prefix="/api")
+app.include_router(backups_router, prefix="/api")
 
 
 @app.get("/health")

@@ -50,7 +50,8 @@
     "stats": "Estatísticas",
     "accessories": "Acessórios",
     "export": "Exportar",
-    "import": "Importar"
+    "import": "Importar",
+    "backups": "Backups"
   },
   "home": {
     "welcome": "Bem-vindo ao H.O.A.R.D.",
@@ -475,6 +476,13 @@
       "invalidStructure": "Estrutura inválida",
       "unsupportedVersion": "Versão não suportada",
       "fileTooLarge": "Arquivo muito grande"
+    },
+    "backup": {
+      "notFound": "Não encontrado",
+      "corrupted": "Backup corrompido",
+      "toolUnavailable": "Cliente PostgreSQL indisponível",
+      "invalidFrequency": "Frequência inválida",
+      "invalidRetention": "Retenção inválida"
     }
   },
   "search": {
@@ -656,5 +664,28 @@
       "confirm": "Confirmar",
       "report": "Relatório"
     }
+  },
+  "backups": {
+    "title": "Backups",
+    "create": "Criar backup",
+    "download": "Baixar",
+    "restore": "Restaurar",
+    "delete": "Excluir",
+    "createdAt": "Data",
+    "size": "Tamanho",
+    "config": "Configuração",
+    "frequency": "Frequência",
+    "frequencyDaily": "Diária",
+    "frequencyWeekly": "Semanal",
+    "frequencyMonthly": "Mensal",
+    "retention": "Retenção",
+    "nextRun": "Próxima execução",
+    "lastRun": "Última execução",
+    "lastRunFailed": "A última execução falhou",
+    "restoreWarning": "Restaurar {{filename}} sobrescreverá os dados atuais. Esta ação é irreversível.",
+    "restoreConfirmWord": "RESTAURAR",
+    "restoreConfirmPrompt": "Digite {{word}} para confirmar",
+    "toolUnavailable": "O cliente PostgreSQL (pg_dump) não está disponível no servidor",
+    "empty": "Sem backups"
   }
 }

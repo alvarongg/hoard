@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.services.catalog_service import CatalogService
 from api.services.accessory_service import AccessoryService
+from api.services.backup_service import BackupService
 from api.services.category_service import CategoryService
 from api.services.collection_item_service import CollectionItemService
 from api.services.collection_service import CollectionService
@@ -151,3 +152,11 @@ def get_json_import_service(
 ) -> JsonImportService:
     """Provide a JsonImportService instance."""
     return JsonImportService(db)
+
+
+def get_backup_service(
+    db: AsyncSession = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+) -> BackupService:
+    """Provide a BackupService instance."""
+    return BackupService(db, settings.BACKUP_DIR, settings.DATABASE_URL)

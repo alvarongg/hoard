@@ -897,15 +897,15 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [~] 38. Checkpoint - Accesorios, export e import completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 39. Bloque 2 - Backups backend (R15)
-  - [~] 39.1 Crear `backend/api/schemas/backup.py`
+- [x] 39. Bloque 2 - Backups backend (R15)
+  - [x] 39.1 Crear `backend/api/schemas/backup.py`
     - `BackupInfo`, `BackupConfig` (`frequency` literal, `retention_count` ge 1 le 365, `next_run_at`, `last_run_at`, `last_run_status`), `BackupConfigUpdate`, `RestoreResult`, `BackupVerification`
     - _Requirements: 15.2, 15.3, 15.6, 15.8, 15.9_
-  - [~] 39.2 Agregar `ToolUnavailableError` y su handler
+  - [x] 39.2 Agregar `ToolUnavailableError` y su handler
     - `ToolUnavailableError(DomainError)` en `backend/core/exceptions.py`
     - `service_unavailable_handler` (→ 503) registrado en `backend/core/exception_handlers.py` y en `backend/main.py`
     - _Requirements: 15.1_
-  - [~] 39.3 Crear `backend/api/services/backup_service.py`
+  - [x] 39.3 Crear `backend/api/services/backup_service.py`
     - `create(trigger)` genera `hoard-backup-{YYYYMMDD-HHMMSS}-{shortid}.tar.gz` en `BACKUP_DIR` con `manifest.json`, `database.dump` (`pg_dump -Fc` vía `subprocess`), `uploads/` (copia de `UPLOAD_DIR`) y `config.json` con ajustes no sensibles (nunca `SECRET_KEY` ni `DATABASE_URL`)
     - `shutil.which("pg_dump")` al inicio de `create`; si falta lanza `ToolUnavailableError` nombrando el binario
     - `list` ordenado por fecha descendente, `get_path`, `delete`, `apply_retention` (solo tras un backup exitoso)
@@ -914,53 +914,53 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - `get_config` / `update_config` persisten en `app_settings` bajo la clave `backups.config`
     - `try_acquire_backup_lock` / `release_backup_lock` con `pg_try_advisory_lock(hashtext('hoard.backup'))`
     - _Requirements: 15.1, 15.2, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9, 15.10, 15.11, 19.6_
-  - [~] 39.4 Crear `backend/core/scheduler.py` y arrancarlo desde el `lifespan` de `backend/main.py`
+  - [x] 39.4 Crear `backend/core/scheduler.py` y arrancarlo desde el `lifespan` de `backend/main.py`
     - `AsyncIOScheduler` de APScheduler; job que toma el advisory lock antes de ejecutar y sale sin hacer nada si no lo obtiene
     - Reprograma según la frecuencia persistida y actualiza `last_run_at`, `last_run_status` y `next_run_at`
     - Un fallo registra el error y conserva los backups existentes sin aplicar retención
     - _Requirements: 15.8, 15.9, 15.10, 15.11_
-  - [~] 39.5 Agregar `get_backup_service` en `backend/api/dependencies.py` y crear `backend/api/routes/backups.py`
+  - [x] 39.5 Agregar `get_backup_service` en `backend/api/dependencies.py` y crear `backend/api/routes/backups.py`
     - `GET/POST /backups` (201, 503), `GET /backups/{id}/download` (200, 404), `POST /backups/{id}/restore` (200, 404, 422), `DELETE /backups/{id}` (204, 404), `GET/PUT /backups/config` (200, 422)
     - Registrar `app.include_router(backups_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 15.1, 15.3, 15.4, 15.5, 15.6, 15.8, 15.9, 19.6_
-  - [~] 39.6 Escribir unit tests en `backend/tests/unit/test_services/test_backup_service.py` y `backend/tests/unit/test_core/test_scheduler.py`
+  - [x] 39.6 Escribir unit tests en `backend/tests/unit/test_services/test_backup_service.py` y `backend/tests/unit/test_core/test_scheduler.py`
     - `create` con `pg_dump` mockeado produce el tar con los 4 miembros y el manifest correcto; sin `pg_dump` lanza `ToolUnavailableError`
     - `_verify` rechaza tar corrupto, manifest ausente, `schema_version` no soportada, checksum incorrecto y miembros con path traversal
     - `restore` con archivo inválido no modifica datos; con archivo válido devuelve `RestoreResult`
     - `get_config`/`update_config` persisten en `app_settings`; frecuencia inválida y retención fuera de rango rechazadas
     - Scheduler: sin lock no ejecuta; fallo registra `last_run_status = "failed"` y no aplica retención
     - _Requirements: 15.1, 15.2, 15.5, 15.6, 15.7, 15.8, 15.9, 15.11, 19.10_
-  - [~] 39.7 Escribir integration tests en `backend/tests/integration/test_routes/test_backups.py`
+  - [x] 39.7 Escribir integration tests en `backend/tests/integration/test_routes/test_backups.py`
     - Códigos 200/201/204/404/422/503; `download` devuelve el archivo con `Content-Disposition`; `restore` de backup inexistente devuelve 404 y de backup corrupto 422
     - _Requirements: 15.4, 15.5, 15.6, 15.7, 19.9_
-  - [~] 39.8 Escribir property test de la rotación de backups
+  - [x] 39.8 Escribir property test de la rotación de backups
     - **Property 7: La rotación de backups conserva exactamente min(N, creados)**
     - **Validates: Requirements 15.10**
     - Usar `hypothesis` (mínimo 100 iteraciones) con retención N ≥ 1 y K backups creados secuencialmente; verificar la cantidad restante y que son los más recientes
     - Archivo: `backend/tests/unit/test_services/test_backup_service_properties.py`
 
-- [ ] 40. Bloque 2 - Backups frontend (R15)
-  - [~] 40.1 Crear `frontend/src/types/backup.ts` y `frontend/src/services/backupsApi.ts`
+- [x] 40. Bloque 2 - Backups frontend (R15)
+  - [x] 40.1 Crear `frontend/src/types/backup.ts` y `frontend/src/services/backupsApi.ts`
     - `BackupInfo`, `BackupConfig`, `BackupConfigUpdate`, `RestoreResult`, `BackupFrequency`
     - `backupsApi` con `list`, `create`, `download`, `restore`, `remove`, `getConfig`, `updateConfig`
     - _Requirements: 15.3, 15.4, 15.6, 15.9, 19.7_
-  - [~] 40.2 Crear `frontend/src/hooks/useBackups.ts` y `frontend/src/hooks/useBackupConfig.ts`
+  - [x] 40.2 Crear `frontend/src/hooks/useBackups.ts` y `frontend/src/hooks/useBackupConfig.ts`
     - Crear o borrar invalida el listado; restaurar invalida todas las query keys de datos
     - _Requirements: 15.3, 15.6, 15.9_
-  - [~] 40.3 Crear los componentes en `frontend/src/components/backups/`
+  - [x] 40.3 Crear los componentes en `frontend/src/components/backups/`
     - `BackupList.tsx` sobre `Table` con acciones de descarga, restauración y borrado
     - `BackupConfigForm.tsx` con frecuencia (daily/weekly/monthly), retención y la próxima ejecución programada
     - `RestoreConfirmDialog.tsx`: exige escribir la palabra de confirmación para habilitar el botón, dado que la operación es destructiva e irreversible
     - _Requirements: 15.3, 15.4, 15.6, 15.8, 15.9, 15.12_
-  - [~] 40.4 Crear `frontend/src/pages/BackupsPage.tsx` con ruta y navegación
+  - [x] 40.4 Crear `frontend/src/pages/BackupsPage.tsx` con ruta y navegación
     - Ruta `/settings/backups` en `frontend/src/App.tsx`; enlace en `Navigation.tsx`
     - Mensaje explicativo dedicado ante 503 (falta el cliente de PostgreSQL)
     - _Requirements: 15.12_
-  - [~] 40.5 Escribir tests de hooks, componentes y página de backups
+  - [x] 40.5 Escribir tests de hooks, componentes y página de backups
     - Hooks con MSW incluyendo el caso 503
     - `BackupList.test.tsx`, `BackupConfigForm.test.tsx`, `RestoreConfirmDialog.test.tsx`, `BackupsPage.test.tsx`: botón de restaurar deshabilitado hasta escribir la confirmación, focus trap y Escape en el diálogo, estado vacío, error 503, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 15.12, 18.6, 19.2, 19.3_
-  - [~] 40.6 Agregar claves i18n de backups en los 5 idiomas
+  - [x] 40.6 Agregar claves i18n de backups en los 5 idiomas
     - Sección `backups.*` (`title`, `create`, `download`, `restore`, `delete`, `createdAt`, `size`, `trigger.*`, `contents.*`, `config.*`, `frequency.*`, `retention`, `nextRun`, `lastRun`, `lastRunFailed`, `restoreWarning`, `restoreConfirmWord`, `empty`)
     - `errors.backup.*` (`notFound`, `corrupted`, `toolUnavailable`, `invalidFrequency`, `invalidRetention`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
