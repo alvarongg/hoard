@@ -110,6 +110,40 @@ describe("Modal", () => {
     expect(onClose).toHaveBeenCalled();
   });
 
+  it("moves focus into the dialog on open", () => {
+    render(
+      <Modal isOpen={true} onClose={vi.fn()} title="Test">
+        <button>Inside</button>
+      </Modal>,
+    );
+    // The first focusable (the close button) receives focus.
+    expect(document.activeElement).not.toBe(document.body);
+    expect(
+      screen.getByRole("dialog").contains(document.activeElement),
+    ).toBe(true);
+  });
+
+  it("returns focus to the opener when closed", () => {
+    const opener = document.createElement("button");
+    opener.textContent = "Open";
+    document.body.appendChild(opener);
+    opener.focus();
+    expect(document.activeElement).toBe(opener);
+
+    const { rerender } = render(
+      <Modal isOpen={true} onClose={vi.fn()} title="Test">
+        Content
+      </Modal>,
+    );
+    rerender(
+      <Modal isOpen={false} onClose={vi.fn()} title="Test">
+        Content
+      </Modal>,
+    );
+    expect(document.activeElement).toBe(opener);
+    opener.remove();
+  });
+
   it("has no accessibility violations", async () => {
     const { container } = render(
       <Modal isOpen={true} onClose={vi.fn()} title="Accessible Modal">

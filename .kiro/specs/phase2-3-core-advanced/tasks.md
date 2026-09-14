@@ -1029,21 +1029,21 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 45. Bloque 2 - Accesibilidad avanzada y auditoría (R18)
-  - [~] 45.1 Reforzar `frontend/src/components/ui/Modal.tsx`
+  - [x] 45.1 Reforzar `frontend/src/components/ui/Modal.tsx`
     - `FocusScope` de react-aria con `contain` y `restoreFocus`, cierre con Escape y retorno del foco al elemento que abrió el diálogo
     - Actualizar `frontend/src/components/ui/Modal.test.tsx` con focus trap, Escape y retorno del foco
     - _Requirements: 18.6_
-  - [~] 45.2 Ajustar el layout para zoom al 200% en `frontend/src/components/layout/AppLayout.tsx` y `frontend/src/index.css`
+  - [x] 45.2 Ajustar el layout para zoom al 200% en `frontend/src/components/layout/AppLayout.tsx` y `frontend/src/index.css`
     - Contenedores con `max-width` en `rem` y sin anchos fijos en px; tablas envueltas en un contenedor con scroll horizontal propio para evitar el scroll bidimensional de la página
     - _Requirements: 18.4_
   - [~] 45.3 Aplicar `useReducedMotion` y `useAnnouncement` en los flujos ya construidos
     - Sustituir los mensajes de éxito y error dispersos por anuncios vía `LiveRegion` (`assertive` para errores, `polite` para éxitos) en los formularios y páginas de las Tasks 9 a 43
     - Desactivar animaciones y transiciones no esenciales cuando `useReducedMotion()` es verdadero
     - _Requirements: 18.1, 18.2_
-  - [~] 45.4 Crear la suite de auditoría por página en `frontend/tests/accessibility/pages.a11y.test.tsx`
+  - [x] 45.4 Crear la suite de auditoría por página en `frontend/tests/accessibility/pages.a11y.test.tsx`
     - axe-core sobre todas las páginas (las 6 de Fase 1 más las 9 nuevas) en tema claro y oscuro, exigiendo cero violaciones WCAG 2.1 AA
     - _Requirements: 18.7, 8.6, 16.6_
-  - [~] 45.5 Crear el E2E de teclado en `frontend/tests/e2e/a11y-keyboard.spec.ts`
+  - [x] 45.5 Crear el E2E de teclado en `frontend/tests/e2e/a11y-keyboard.spec.ts`
     - Recorrido completo por teclado, skip link operativo, focus trap en modales, zoom al 200% sin pérdida de funcionalidad ni scroll horizontal de página
     - _Requirements: 18.4, 18.5, 18.6_
   - [x] 45.6 Crear `docs/ACCESSIBILITY.md` y enlazarlo desde el README
@@ -1064,7 +1064,7 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - Revisar `backend/api/routes/*.py`: ninguna regla de negocio en las routes; toda validación de dominio en los services y toda traducción de error vía exception handlers
     - Mover a `services/` cualquier lógica que haya quedado en routes
     - _Requirements: 19.6_
-  - [~] 46.4 Completar los E2E faltantes en `frontend/tests/e2e/`
+  - [x] 46.4 Completar los E2E faltantes en `frontend/tests/e2e/`
     - `suppliers.spec.ts`, `wishlist.spec.ts`, `components.spec.ts`, `search.spec.ts`, `stats.spec.ts`, `theme.spec.ts`, `i18n.spec.ts`, `accessories.spec.ts`, `transfer.spec.ts` (export → import round-trip), `backups.spec.ts`, `charts.spec.ts`
     - _Requirements: 19.9_
 
