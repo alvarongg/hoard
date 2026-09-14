@@ -10,6 +10,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Keyboard Navigation', () => {
   test('can tab through main navigation links', async ({ page }) => {
     await page.goto('/');
+    await expect(page.getByRole('heading', { name: /welcome/i })).toBeVisible();
 
     // Tab into the navigation area
     // The first focusable element in the header is the H.O.A.R.D. logo link
@@ -39,9 +40,10 @@ test.describe('Keyboard Navigation', () => {
 
   test('can navigate to collections page using keyboard', async ({ page }) => {
     await page.goto('/');
+    await expect(page.getByRole('heading', { name: /welcome/i })).toBeVisible();
 
     // Switch to EN first for consistent text matching
-    await page.getByRole('button', { name: 'EN' }).click();
+    await page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'EN' }).click();
 
     // Find and activate the Collections nav link via keyboard
     const collectionsLink = page.getByRole('link', { name: 'Collections' }).first();
@@ -54,8 +56,9 @@ test.describe('Keyboard Navigation', () => {
 
   test('can navigate to catalogs page using keyboard', async ({ page }) => {
     await page.goto('/');
+    await expect(page.getByRole('heading', { name: /welcome/i })).toBeVisible();
 
-    await page.getByRole('button', { name: 'EN' }).click();
+    await page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'EN' }).click();
 
     const catalogsLink = page.getByRole('link', { name: 'Catalogs' }).first();
     await catalogsLink.focus();
@@ -68,7 +71,7 @@ test.describe('Keyboard Navigation', () => {
   test('can open create collection modal with keyboard', async ({ page }) => {
     await page.goto('/collections');
 
-    await page.getByRole('button', { name: 'EN' }).click();
+    await page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'EN' }).click();
 
     const createButton = page.getByRole('button', { name: /create collection/i });
     await createButton.focus();
@@ -81,7 +84,7 @@ test.describe('Keyboard Navigation', () => {
   test('can close modal with Escape key', async ({ page }) => {
     await page.goto('/collections');
 
-    await page.getByRole('button', { name: 'EN' }).click();
+    await page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'EN' }).click();
 
     // Open create modal
     await page.getByRole('button', { name: /create collection/i }).click();
@@ -95,31 +98,40 @@ test.describe('Keyboard Navigation', () => {
 
   test('can fill and submit collection form with keyboard', async ({ page }) => {
     await page.goto('/collections');
+    await expect(
+      page.getByRole('heading', { name: /collections/i, level: 1 }),
+    ).toBeVisible();
 
-    await page.getByRole('button', { name: 'EN' }).click();
+    await page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'EN' }).click();
 
     // Open modal
     await page.getByRole('button', { name: /create collection/i }).click();
+    const dialog = page.getByRole('dialog');
+    await expect(dialog).toBeVisible();
 
-    // Tab to name field and type
-    const nameInput = page.getByRole('textbox', { name: /name/i });
+    // Fill the name field
+    const nameInput = dialog.getByLabel('Name');
     await nameInput.focus();
     await nameInput.fill(`Keyboard Test ${Date.now()}`);
 
-    // Tab to save button and press Enter
-    const saveButton = page.getByRole('button', { name: /save/i });
+    // Multi Category needs no sub-category, so the form validates with a name.
+    await dialog.getByLabel('Type').selectOption({ label: 'Multi Category' });
+
+    // Submit with the keyboard
+    const saveButton = dialog.getByRole('button', { name: /save/i });
     await saveButton.focus();
     await page.keyboard.press('Enter');
 
     // Modal should close after successful creation
-    await expect(page.getByRole('textbox', { name: /name/i })).not.toBeVisible({ timeout: 5000 });
+    await expect(dialog).toBeHidden({ timeout: 8000 });
   });
 
   test('language selector buttons are keyboard accessible', async ({ page }) => {
     await page.goto('/');
+    await expect(page.getByRole('heading', { name: /welcome/i })).toBeVisible();
 
-    const esButton = page.getByRole('button', { name: 'ES' });
-    const enButton = page.getByRole('button', { name: 'EN' });
+    const esButton = page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'ES' });
+    const enButton = page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'EN' });
 
     // Focus and activate ES button
     await esButton.focus();
@@ -136,32 +148,31 @@ test.describe('Keyboard Navigation', () => {
 
   test('tab order follows logical reading order on home page', async ({ page }) => {
     await page.goto('/');
+    await expect(page.getByRole('heading', { name: /welcome/i })).toBeVisible();
 
-    await page.getByRole('button', { name: 'EN' }).click();
+    await page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'EN' }).click();
 
-    // Collect focused element names as we tab through
-    const focusedElements: string[] = [];
-
-    for (let i = 0; i < 15; i++) {
+    // Tab through the first several focusable elements, reading the active
+    // element in-page (a single evaluate per step avoids the locator churn /
+    // teardown race that re-resolving :focus 15x can trigger).
+    const focusedTags: string[] = [];
+    for (let i = 0; i < 12; i++) {
       await page.keyboard.press('Tab');
-      const focused = page.locator(':focus');
-      const tagName = await focused.evaluate((el) => el.tagName.toLowerCase()).catch(() => '');
-      const text = await focused.textContent().catch(() => '');
-      const ariaLabel = await focused.getAttribute('aria-label').catch(() => '');
-
-      if (tagName === 'a' || tagName === 'button') {
-        focusedElements.push(text?.trim() || ariaLabel || '');
-      }
+      const tag = await page.evaluate(
+        () => document.activeElement?.tagName.toLowerCase() ?? '',
+      );
+      if (tag === 'a' || tag === 'button') focusedTags.push(tag);
     }
 
-    // Navigation links should appear before page content links
-    expect(focusedElements.length).toBeGreaterThan(0);
+    // The skip link and header nav are all links/buttons, so tabbing from the
+    // top of the document must land on at least one of them.
+    expect(focusedTags.length).toBeGreaterThan(0);
   });
 
   test('collection cards have focusable edit and delete buttons', async ({ page }) => {
     await page.goto('/collections');
 
-    await page.getByRole('button', { name: 'EN' }).click();
+    await page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'EN' }).click();
 
     const articles = page.locator('article');
     const count = await articles.count();
@@ -186,7 +197,7 @@ test.describe('Keyboard Navigation', () => {
   test('catalogs search input is keyboard accessible', async ({ page }) => {
     await page.goto('/catalogs');
 
-    await page.getByRole('button', { name: 'EN' }).click();
+    await page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'EN' }).click();
 
     const searchInput = page.getByRole('textbox', { name: /search items/i });
     await searchInput.focus();

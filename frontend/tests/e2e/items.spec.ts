@@ -14,10 +14,18 @@ test.describe('Collection Items Flow', () => {
     // Create a collection to work with
     const page = await browser.newPage();
     await page.goto('/collections');
+    await expect(
+      page.getByRole('heading', { name: /collections/i, level: 1 }),
+    ).toBeVisible();
     await page.getByRole('button', { name: /create collection/i }).click();
-    await page.getByRole('textbox', { name: /name/i }).fill(collectionName);
-    await page.getByRole('button', { name: /save/i }).click();
-    await expect(page.getByText(collectionName)).toBeVisible();
+    const dialog = page.getByRole('dialog');
+    await expect(dialog).toBeVisible();
+    await dialog.getByLabel('Name').fill(collectionName);
+    // Multi Category needs no sub-category, so a name is a valid submission.
+    await dialog.getByLabel('Type').selectOption({ label: 'Multi Category' });
+    await dialog.getByRole('button', { name: /save/i }).click();
+    await expect(dialog).toBeHidden({ timeout: 8000 });
+    await expect(page.getByRole('heading', { name: collectionName })).toBeVisible();
     await page.close();
   });
 
@@ -39,8 +47,8 @@ test.describe('Collection Items Flow', () => {
     await page.getByRole('button', { name: /add item/i }).click();
 
     // The item form modal should be visible with condition and catalog item fields
-    await expect(page.getByText(/condition/i)).toBeVisible();
-    await expect(page.getByText(/catalog item/i)).toBeVisible();
+    await expect(page.getByText(/condition/i).first()).toBeVisible();
+    await expect(page.getByText(/catalog item/i).first()).toBeVisible();
   });
 
   test('add item form has required fields', async ({ page }) => {
@@ -57,7 +65,7 @@ test.describe('Collection Items Flow', () => {
     const conditionError = page.getByText(/condition is required/i);
 
     // At least one validation error should appear
-    await expect(catalogError.or(conditionError)).toBeVisible();
+    await expect(catalogError.or(conditionError).first()).toBeVisible();
   });
 
   test('add item modal can be cancelled', async ({ page }) => {
@@ -65,7 +73,7 @@ test.describe('Collection Items Flow', () => {
     await page.getByRole('button', { name: new RegExp(`edit ${collectionName}`, 'i') }).click();
 
     await page.getByRole('button', { name: /add item/i }).click();
-    await expect(page.getByText(/condition/i)).toBeVisible();
+    await expect(page.getByText(/condition/i).first()).toBeVisible();
 
     await page.getByRole('button', { name: /cancel/i }).click();
 
