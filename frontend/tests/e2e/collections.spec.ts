@@ -1,116 +1,123 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 
 /**
  * E2E tests for the Collections CRUD flow.
  * Runs against the full Docker stack (backend + frontend + nginx + db).
  *
- * Flow: create collection → verify in list → edit → delete
+ * The collection form defaults to the "single_category" type, which REQUIRES
+ * a sub-category. To create a collection with only a name we switch the type
+ * to "Multi Category" (no sub-category required) before saving.
  */
 
-const TEST_COLLECTION_NAME = 'E2E Test Collection';
+async function gotoCollections(page: Page) {
+  await page.goto('/collections');
+  await expect(
+    page.getByRole('heading', { name: /collections/i, level: 1 }),
+  ).toBeVisible();
+}
+
+/** Create a collection via the modal and wait for it to appear in the list. */
+async function createCollection(page: Page, name: string) {
+  await page.getByRole('button', { name: /create collection/i }).click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await dialog.getByLabel('Name').fill(name);
+  // Multi Category needs no sub-category, so name alone is a valid submission.
+  await dialog.getByLabel('Type').selectOption({ label: 'Multi Category' });
+  await dialog.getByRole('button', { name: /save/i }).click();
+  await expect(dialog).toBeHidden({ timeout: 8000 });
+  await expect(page.getByRole('heading', { name })).toBeVisible();
+}
+
+async function deleteCollection(page: Page, name: string) {
+  page.on('dialog', (d) => d.accept());
+  await page
+    .getByRole('button', { name: new RegExp(`delete ${name}`, 'i') })
+    .click();
+  await expect(page.getByRole('heading', { name })).toHaveCount(0);
+}
 
 test.describe('Collections CRUD Flow', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/collections');
-    await expect(page.getByRole('heading', { name: /collections/i })).toBeVisible();
+    await gotoCollections(page);
   });
 
   test('can create a new collection and see it in the list', async ({ page }) => {
-    await page.getByRole('button', { name: /create collection/i }).click();
-
-    await page.getByRole('textbox', { name: /name/i }).fill(TEST_COLLECTION_NAME);
-    await page.getByRole('textbox', { name: /description/i }).fill('Created by E2E test');
-
-    await page.getByRole('button', { name: /save/i }).click();
-
-    await expect(page.getByText(TEST_COLLECTION_NAME)).toBeVisible();
+    const name = `Create ${Date.now()}`;
+    await createCollection(page, name);
+    await deleteCollection(page, name);
   });
 
   test('can navigate to collection detail from the list', async ({ page }) => {
-    await expect(page.getByText(TEST_COLLECTION_NAME)).toBeVisible();
+    const name = `Detail ${Date.now()}`;
+    await createCollection(page, name);
 
-    await page.getByRole('button', { name: new RegExp(`edit ${TEST_COLLECTION_NAME}`, 'i') }).click();
-
-    await expect(page.getByRole('heading', { name: TEST_COLLECTION_NAME })).toBeVisible();
+    await page
+      .getByRole('button', { name: new RegExp(`edit ${name}`, 'i') })
+      .click();
+    await expect(page.getByRole('heading', { name })).toBeVisible();
     await expect(page.getByRole('button', { name: /add item/i })).toBeVisible();
+
+    await gotoCollections(page);
+    await deleteCollection(page, name);
   });
 
-  test('can edit a collection name', async ({ page }) => {
-    await page.getByRole('button', { name: new RegExp(`edit ${TEST_COLLECTION_NAME}`, 'i') }).click();
+  test('can open a collection detail page', async ({ page }) => {
+    const name = `Edit ${Date.now()}`;
+    await createCollection(page, name);
 
-    await expect(page.getByRole('heading', { name: TEST_COLLECTION_NAME })).toBeVisible();
+    await page
+      .getByRole('button', { name: new RegExp(`edit ${name}`, 'i') })
+      .click();
+    await expect(page.getByRole('heading', { name })).toBeVisible();
 
-    // The detail page should show the collection info
-    await expect(page.getByText(TEST_COLLECTION_NAME)).toBeVisible();
+    await gotoCollections(page);
+    await deleteCollection(page, name);
   });
 
   test('can delete a collection', async ({ page }) => {
-    page.on('dialog', (dialog) => dialog.accept());
-
-    await page.getByRole('button', { name: new RegExp(`delete ${TEST_COLLECTION_NAME}`, 'i') }).click();
-
-    await expect(page.getByText(TEST_COLLECTION_NAME)).not.toBeVisible();
-  });
-
-  test('shows empty state when no collections exist', async ({ page }) => {
-    // If no collections, the empty state message should appear
-    const emptyMessage = page.getByText(/no collections yet/i);
-    const collectionCards = page.locator('article');
-
-    // Either we see collections or the empty state
-    const hasCollections = await collectionCards.count() > 0;
-    if (!hasCollections) {
-      await expect(emptyMessage).toBeVisible();
-    }
+    const name = `Delete ${Date.now()}`;
+    await createCollection(page, name);
+    await deleteCollection(page, name);
   });
 
   test('create collection form validates required fields', async ({ page }) => {
     await page.getByRole('button', { name: /create collection/i }).click();
+    const dialog = page.getByRole('dialog');
+    await expect(dialog).toBeVisible();
 
-    // Submit without filling name
-    await page.getByRole('button', { name: /save/i }).click();
+    // Submit without filling name.
+    await dialog.getByRole('button', { name: /save/i }).click();
 
-    // Should show validation error for name
+    // Validation error for the name field is shown, modal stays open.
     await expect(page.getByText(/name is required/i)).toBeVisible();
   });
 
   test('create collection modal can be cancelled', async ({ page }) => {
     await page.getByRole('button', { name: /create collection/i }).click();
+    const dialog = page.getByRole('dialog');
+    await expect(dialog).toBeVisible();
 
-    await expect(page.getByRole('textbox', { name: /name/i })).toBeVisible();
-
-    await page.getByRole('button', { name: /cancel/i }).click();
-
-    // Modal should be closed — name input no longer visible
-    await expect(page.getByRole('textbox', { name: /name/i })).not.toBeVisible();
+    await dialog.getByRole('button', { name: /cancel/i }).click();
+    await expect(dialog).toBeHidden();
   });
 });
 
 test.describe('Collections Full Lifecycle', () => {
   test('create → verify → navigate to detail → go back → delete', async ({ page }) => {
-    const collectionName = `Lifecycle ${Date.now()}`;
+    const name = `Lifecycle ${Date.now()}`;
 
-    // Step 1: Navigate to collections
-    await page.goto('/collections');
-    await expect(page.getByRole('heading', { name: /collections/i })).toBeVisible();
+    await gotoCollections(page);
+    await createCollection(page, name);
 
-    // Step 2: Create collection
-    await page.getByRole('button', { name: /create collection/i }).click();
-    await page.getByRole('textbox', { name: /name/i }).fill(collectionName);
-    await page.getByRole('button', { name: /save/i }).click();
-    await expect(page.getByText(collectionName)).toBeVisible();
+    await page
+      .getByRole('button', { name: new RegExp(`edit ${name}`, 'i') })
+      .click();
+    await expect(page.getByRole('heading', { name })).toBeVisible();
 
-    // Step 3: Navigate to detail via edit
-    await page.getByRole('button', { name: new RegExp(`edit ${collectionName}`, 'i') }).click();
-    await expect(page.getByRole('heading', { name: collectionName })).toBeVisible();
+    await gotoCollections(page);
+    await expect(page.getByRole('heading', { name })).toBeVisible();
 
-    // Step 4: Go back to collections list
-    await page.getByRole('button', { name: /collections/i }).first().click();
-    await expect(page.getByText(collectionName)).toBeVisible();
-
-    // Step 5: Delete collection
-    page.on('dialog', (dialog) => dialog.accept());
-    await page.getByRole('button', { name: new RegExp(`delete ${collectionName}`, 'i') }).click();
-    await expect(page.getByText(collectionName)).not.toBeVisible();
+    await deleteCollection(page, name);
   });
 });

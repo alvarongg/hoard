@@ -10,7 +10,7 @@ test.describe("Theme E2E", () => {
   test("renders the theme page", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("heading", { name: /home|hoard/i }).first(),
+      page.getByRole("heading", { name: /welcome/i }).first(),
     ).toBeVisible();
   });
 });

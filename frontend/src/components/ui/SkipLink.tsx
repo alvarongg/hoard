@@ -16,25 +16,25 @@ interface SkipLinkProps {
 export function SkipLink({ targetId }: SkipLinkProps) {
   const { t } = useTranslation();
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+  const focusTarget = () => {
     const target = document.getElementById(targetId);
     if (target) {
-      target.setAttribute("tabindex", "-1");
+      // The target (e.g. <main tabIndex={-1}>) is already programmatically
+      // focusable. Just move focus to it — do NOT strip its tabindex, which
+      // would drop the focus we just set.
       target.focus();
-      target.removeAttribute("tabindex");
     }
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    focusTarget();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      const target = document.getElementById(targetId);
-      if (target) {
-        target.setAttribute("tabindex", "-1");
-        target.focus();
-        target.removeAttribute("tabindex");
-      }
+      focusTarget();
     }
   };
 

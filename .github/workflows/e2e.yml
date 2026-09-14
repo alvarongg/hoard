@@ -1,0 +1,72 @@
+name: E2E
+
+# Manual only: this workflow consumes GitHub Actions minutes, so it never runs
+# automatically. Trigger it from the Actions tab (Run workflow) if/when Actions
+# billing is enabled. Day to day, run the E2E suite locally instead — see
+# frontend/README or the repo README ("Running E2E tests locally").
+on:
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    name: Playwright E2E (full stack)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Boot the full Docker stack
+        run: docker compose up -d --build
+
+      - name: Wait for the app to be reachable via nginx
+        run: |
+          for i in $(seq 1 60); do
+            if curl -fsS http://localhost/ >/dev/null 2>&1; then
+              echo "App is up after ${i} attempt(s)."
+              exit 0
+            fi
+            echo "Waiting for http://localhost/ (attempt ${i}/60)..."
+            sleep 5
+          done
+          echo "App did not become reachable in time. Dumping logs:"
+          docker compose logs --no-color --tail=200
+          exit 1
+
+      - name: Install E2E dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright E2E tests
+        working-directory: frontend
+        env:
+          PLAYWRIGHT_BASE_URL: http://localhost
+        run: npm run test:e2e
+
+      - name: Dump stack logs on failure
+        if: failure()
+        run: docker compose logs --no-color --tail=300
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: frontend/playwright-report/
+          retention-days: 7
+
+      - name: Tear down the stack
+        if: always()
+        run: docker compose down -v

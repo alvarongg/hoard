@@ -6,13 +6,15 @@ import { test, expect } from "@playwright/test";
  *
  * Covers: skip link, keyboard-only navigation, modal focus trap, and 200%
  * zoom without loss of functionality or page-level horizontal scroll.
- *
- * NOTE: authored but not executed in the build environment (needs the
- * Playwright runner + running stack).
  */
 test.describe("Keyboard accessibility", () => {
   test("skip link is the first focusable and jumps to main", async ({ page }) => {
     await page.goto("/");
+    // Wait for the SPA to hydrate (initial render shows a "Loading..."
+    // fallback with no focusable content) before exercising tab order.
+    await expect(
+      page.getByRole("heading", { name: /welcome/i }),
+    ).toBeVisible();
     await page.keyboard.press("Tab");
     const skip = page.getByRole("link", { name: /skip/i });
     await expect(skip).toBeFocused();
@@ -24,12 +26,12 @@ test.describe("Keyboard accessibility", () => {
     page,
   }) => {
     await page.goto("/");
-    // Tab through the nav and activate a link with the keyboard.
-    const collections = page.getByRole("link", { name: /collections/i });
+    const nav = page.getByRole("navigation", { name: /main navigation/i });
+    const collections = nav.getByRole("link", { name: /collections/i });
     await collections.focus();
     await collections.press("Enter");
     await expect(
-      page.getByRole("heading", { name: /collections/i }),
+      page.getByRole("heading", { name: /collections/i, level: 1 }),
     ).toBeVisible();
   });
 
@@ -37,6 +39,10 @@ test.describe("Keyboard accessibility", () => {
     page,
   }) => {
     await page.goto("/collections");
+    await expect(
+      page.getByRole("heading", { name: /collections/i, level: 1 }),
+    ).toBeVisible();
+
     const opener = page.getByRole("button", { name: /create collection/i });
     await opener.focus();
     await opener.press("Enter");
@@ -65,7 +71,7 @@ test.describe("Keyboard accessibility", () => {
     );
     expect(overflowsX).toBe(false);
     await expect(
-      page.getByRole("heading", { name: /collections/i }),
+      page.getByRole("heading", { name: /collections/i, level: 1 }),
     ).toBeVisible();
   });
 });

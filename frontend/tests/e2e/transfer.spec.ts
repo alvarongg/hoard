@@ -16,8 +16,13 @@ test.describe("Transfer E2E", () => {
 });
 
 test.describe("Import wizard E2E", () => {
-  test("shows the import steps", async ({ page }) => {
+  test("shows the import page and file selector", async ({ page }) => {
     await page.goto("/import");
-    await expect(page.getByText(/upload/i).first()).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /import/i }).first(),
+    ).toBeVisible();
+    // The file selector is a styled <input type="file"> (may be visually
+    // hidden), so assert its presence in the DOM rather than visible text.
+    await expect(page.locator('input[type="file"]')).toHaveCount(1);
   });
 });
