@@ -15,6 +15,9 @@ class Settings(BaseSettings):
     CORS_ORIGINS: str = "http://localhost,http://localhost:3000"
     UPLOAD_DIR: str = "/app/uploads"
     BACKUP_DIR: str = "/app/backups"
+    # Directory holding the official catalog library (manifest.json + files).
+    # Defaults to the repo's `catalogs/` dir mounted into the image.
+    CATALOG_LIBRARY_DIR: str = "/app/catalogs"
     SEARCH_SIMILARITY_THRESHOLD: float = 0.3
 
     @cached_property

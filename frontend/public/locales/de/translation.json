@@ -51,7 +51,8 @@
     "accessories": "Zubehör",
     "export": "Exportieren",
     "import": "Importieren",
-    "backups": "Sicherungen"
+    "backups": "Sicherungen",
+    "settings": "Einstellungen"
   },
   "home": {
     "welcome": "Willkommen bei H.O.A.R.D.",
@@ -719,5 +720,30 @@
     "failed": {
       "title": "Fehlgeschlagene Operationen"
     }
+  },
+  "settings": {
+    "title": "Systemeinstellungen",
+    "subtitle": "Sprache, Thema sowie Katalog- und Datenverwaltung.",
+    "general": "Allgemein",
+    "language": "Sprache",
+    "catalogs": "Kataloge",
+    "data": "Daten",
+    "createCatalog": "Katalog erstellen",
+    "importCatalog": "Katalog importieren"
+  },
+  "catalogLibrary": {
+    "title": "Offizielle Kataloge",
+    "description": "Lade Kataloge, die im Projekt-Repository veröffentlicht wurden.",
+    "items": "Einträge",
+    "load": "Laden",
+    "loading": "Wird geladen…",
+    "loaded": "Geladen: {{created}} erstellt, {{updated}} aktualisiert, {{skipped}} übersprungen.",
+    "loadError": "Der Katalog konnte nicht geladen werden.",
+    "empty": "Keine offiziellen Kataloge verfügbar.",
+    "generateNote": "Kataloge werden offline mit den Repository-Skripten erzeugt; die App fragt die Quelle zur Laufzeit nie ab."
+  },
+  "catalogImport": {
+    "description": "Importiere eine Katalogdatei (entity_type='catalog').",
+    "selectFile": "Datei auswählen"
   }
 }

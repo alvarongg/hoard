@@ -6,6 +6,8 @@ from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.services.catalog_service import CatalogService
+from api.services.catalog_import_service import CatalogImportService
+from api.services.catalog_library_service import CatalogLibraryService
 from api.services.accessory_service import AccessoryService
 from api.services.backup_service import BackupService
 from api.services.category_service import CategoryService
@@ -152,6 +154,23 @@ def get_json_import_service(
 ) -> JsonImportService:
     """Provide a JsonImportService instance."""
     return JsonImportService(db)
+
+
+def get_catalog_import_service(
+    db: AsyncSession = Depends(get_db),
+) -> CatalogImportService:
+    """Provide a CatalogImportService instance."""
+    return CatalogImportService(db)
+
+
+def get_catalog_library_service(
+    db: AsyncSession = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+) -> CatalogLibraryService:
+    """Provide a CatalogLibraryService backed by the local library dir."""
+    return CatalogLibraryService(
+        CatalogImportService(db), settings.CATALOG_LIBRARY_DIR
+    )
 
 
 def get_backup_service(

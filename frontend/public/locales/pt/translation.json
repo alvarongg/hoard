@@ -51,7 +51,8 @@
     "accessories": "Acessórios",
     "export": "Exportar",
     "import": "Importar",
-    "backups": "Backups"
+    "backups": "Backups",
+    "settings": "Configurações"
   },
   "home": {
     "welcome": "Bem-vindo ao H.O.A.R.D.",
@@ -719,5 +720,30 @@
     "failed": {
       "title": "Operações com falha"
     }
+  },
+  "settings": {
+    "title": "Configurações do sistema",
+    "subtitle": "Idioma, tema e gestão de catálogos e dados.",
+    "general": "Geral",
+    "language": "Idioma",
+    "catalogs": "Catálogos",
+    "data": "Dados",
+    "createCatalog": "Criar catálogo",
+    "importCatalog": "Importar catálogo"
+  },
+  "catalogLibrary": {
+    "title": "Catálogos oficiais",
+    "description": "Carregue catálogos publicados no repositório do projeto.",
+    "items": "itens",
+    "load": "Carregar",
+    "loading": "Carregando…",
+    "loaded": "Carregado: {{created}} criados, {{updated}} atualizados, {{skipped}} ignorados.",
+    "loadError": "Não foi possível carregar o catálogo.",
+    "empty": "Nenhum catálogo oficial disponível.",
+    "generateNote": "Os catálogos são gerados offline com os scripts do repositório; o app não consulta a fonte em tempo de execução."
+  },
+  "catalogImport": {
+    "description": "Importe um arquivo de catálogo (entity_type='catalog').",
+    "selectFile": "Selecionar arquivo"
   }
 }

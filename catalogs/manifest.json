@@ -1,0 +1,28 @@
+{
+  "catalogs": [
+    {
+      "checksum": "sha256:ff40e84f2b4b8be240c0cad9300a5239c7dccb3399daf4cee0d0d4d7e5bab204",
+      "description": "Juegos de Sega Genesis/Mega Drive (Wikidata)",
+      "id": "genesis",
+      "item_count": 2144,
+      "name": "Sega Genesis / Mega Drive",
+      "path": "genesis.v1.json",
+      "system": "genesis",
+      "updated_at": "2026-09-14T19:52:27Z",
+      "version": "1.0.0"
+    },
+    {
+      "checksum": "sha256:9a5584c3161cc0555969598f15cf4a9c8d2cc2b4276fc08aab317ed87bc215b4",
+      "description": "Juegos de NES/Famicom (Wikidata)",
+      "id": "nes",
+      "item_count": 1208,
+      "name": "Nintendo Entertainment System / Famicom",
+      "path": "nes.v1.json",
+      "system": "nes",
+      "updated_at": "2026-09-14T19:52:18Z",
+      "version": "1.0.0"
+    }
+  ],
+  "generated_at": "2026-09-14T19:52:27Z",
+  "schema_version": "1.0"
+}

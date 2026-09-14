@@ -21,6 +21,8 @@ import { AccessoriesPage } from "./pages/AccessoriesPage";
 import { ExportPage } from "./pages/ExportPage";
 import { ImportPage } from "./pages/ImportPage";
 import { BackupsPage } from "./pages/BackupsPage";
+import { SettingsPage } from "./pages/SettingsPage";
+import { CatalogImportPage } from "./pages/CatalogImportPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,6 +52,8 @@ export const appRoutes: RouteObject[] = [
       { path: "accessories", element: <AccessoriesPage /> },
       { path: "export", element: <ExportPage /> },
       { path: "import", element: <ImportPage /> },
+      { path: "settings", element: <SettingsPage /> },
+      { path: "settings/catalog-import", element: <CatalogImportPage /> },
       { path: "settings/backups", element: <BackupsPage /> },
     ],
   },

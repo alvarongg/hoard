@@ -11,6 +11,8 @@ from api.routes.accessories import router as accessories_router
 from api.routes.catalogs import router as catalogs_router
 from api.routes.export import router as export_router
 from api.routes.import_data import router as import_router
+from api.routes.catalog_library import router as catalog_library_router
+from api.routes.catalog_library import import_router as catalog_import_router
 from api.routes.backups import router as backups_router
 from api.routes.categories import router as categories_router
 from api.routes.categories import subcategories_router
@@ -89,6 +91,8 @@ app.include_router(stats_router, prefix="/api")
 app.include_router(accessories_router, prefix="/api")
 app.include_router(export_router, prefix="/api")
 app.include_router(import_router, prefix="/api")
+app.include_router(catalog_library_router, prefix="/api")
+app.include_router(catalog_import_router, prefix="/api")
 app.include_router(backups_router, prefix="/api")
 
 
