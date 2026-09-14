@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
@@ -70,6 +71,7 @@ function renderCard(overrides: Partial<WishlistItem> = {}) {
   const onView = vi.fn();
   const utils = render(
     <WishlistCard item={item} onEdit={onEdit} onDelete={onDelete} onView={onView} />,
+    { wrapper: MemoryRouter },
   );
   return { item, onEdit, onDelete, onView, ...utils };
 }
@@ -140,7 +142,7 @@ describe("WishlistCard", () => {
     const user = userEvent.setup();
     const { onView, item } = renderCard();
 
-    await user.click(screen.getByRole("button", { name: /view/i }));
+    await user.click(screen.getByRole("link", { name: /view/i }));
     expect(onView).toHaveBeenCalledWith(item.id);
   });
 

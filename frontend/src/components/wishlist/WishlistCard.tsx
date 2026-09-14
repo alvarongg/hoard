@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import type { WishlistItem } from "../../types/wishlist";
 import { Badge } from "../ui/Badge";
 import { PriorityBadge } from "./PriorityBadge";
@@ -94,13 +95,14 @@ export function WishlistCard({ item, onEdit, onDelete, onView }: WishlistCardPro
       </div>
 
       <div className="mt-4 flex gap-2">
-        <button
+        <Link
+          to={`/wishlist/${item.id}`}
           onClick={() => onView(item.id)}
           className="rounded-md bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
           aria-label={t("wishlist.viewDetails")}
         >
           {t("common.view")}
-        </button>
+        </Link>
         <button
           onClick={() => onEdit(item.id)}
           className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"

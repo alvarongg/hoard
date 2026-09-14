@@ -152,7 +152,7 @@ describe("WishlistPage", () => {
     renderWithProviders(<WishlistPage />);
     await screen.findByText("Item wish-1");
 
-    await user.click(screen.getByRole("button", { name: "View details" }));
+    await user.click(screen.getByRole("link", { name: "View details" }));
 
     expect(mockNavigate).toHaveBeenCalledWith("/wishlist/wish-1");
   });

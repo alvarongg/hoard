@@ -202,7 +202,7 @@ test.describe("H.O.A.R.D. collector workflow — deep audit", () => {
 
     // Open the collection and its "Add Item" dialog.
     await page.goto("/collections", { timeout: NAV_TIMEOUT });
-    await page.getByRole("heading", { level: 3, name: collectionName }).click();
+    await page.getByRole("link", { name: collectionName }).first().click();
     await expect(page).toHaveURL(/\/collections\/[^/]+$/, { timeout: NAV_TIMEOUT });
 
     await page.getByRole("button", { name: "Add Item" }).click();
@@ -233,7 +233,7 @@ test.describe("H.O.A.R.D. collector workflow — deep audit", () => {
 
     // Open the collection and add an item through the "Add Item" dialog.
     await page.goto("/collections", { timeout: NAV_TIMEOUT });
-    await page.getByRole("heading", { level: 3, name: collectionName }).click();
+    await page.getByRole("link", { name: collectionName }).first().click();
     await expect(page).toHaveURL(/\/collections\/[^/]+$/, { timeout: NAV_TIMEOUT });
 
     await page.getByRole("button", { name: "Add Item" }).click();
