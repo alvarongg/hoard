@@ -118,7 +118,11 @@
       "itemCount": "{{count}} articles",
       "uncategorized": "Sans Catégorie"
     },
-    "emptyFirstItem": "Pas encore d'articles dans cette collection. Ajoutez votre premier article pour commencer."
+    "emptyFirstItem": "Pas encore d'articles dans cette collection. Ajoutez votre premier article pour commencer.",
+    "announceCreated": "{{name}} créé",
+    "announceCreateError": "Échec de la création",
+    "announceDeleted": "Supprimé",
+    "announceDeleteError": "Échec de la suppression"
   },
   "catalogs": {
     "title": "Catalogues",
@@ -301,7 +305,11 @@
     "deleteBlocked": "Impossible de supprimer : le fournisseur a des achats associés",
     "editLabel": "Modifier {{name}}",
     "deleteLabel": "Supprimer {{name}}",
-    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce fournisseur ?"
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce fournisseur ?",
+    "announceCreated": "{{name}} créé",
+    "announceCreateError": "Échec de la création",
+    "announceDeleted": "Supprimé",
+    "announceDeleteError": "Échec de la suppression"
   },
   "wishlist": {
     "title": "Liste de souhaits",
@@ -412,7 +420,11 @@
         "noDecision": "Pas encore de décision",
         "decisionNotes": "Notes de la décision"
       }
-    }
+    },
+    "announceCreated": "Article ajouté à la liste de souhaits",
+    "announceCreateError": "Échec de la création",
+    "announceDeleted": "Supprimé",
+    "announceDeleteError": "Échec de la suppression"
   },
   "errors": {
     "generic": "Quelque chose s'est mal passé",

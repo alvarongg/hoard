@@ -9,6 +9,10 @@ import { WishlistPage } from "./WishlistPage";
 expect.extend(toHaveNoViolations);
 
 const mockNavigate = vi.fn();
+vi.mock("../hooks/useAnnouncement", () => ({
+  useAnnouncement: () => vi.fn(),
+}));
+
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom");
   return { ...actual, useNavigate: () => mockNavigate };

@@ -118,7 +118,11 @@
       "itemCount": "{{count}} items",
       "uncategorized": "Uncategorized"
     },
-    "emptyFirstItem": "No items in this collection yet. Add your first item to get started."
+    "emptyFirstItem": "No items in this collection yet. Add your first item to get started.",
+    "announceCreated": "{{name}} created",
+    "announceCreateError": "Failed to create",
+    "announceDeleted": "Deleted",
+    "announceDeleteError": "Failed to delete"
   },
   "catalogs": {
     "title": "Catalogs",
@@ -301,7 +305,11 @@
     "deleteBlocked": "Cannot delete: supplier has associated purchases",
     "editLabel": "Edit {{name}}",
     "deleteLabel": "Delete {{name}}",
-    "deleteConfirm": "Are you sure you want to delete this supplier?"
+    "deleteConfirm": "Are you sure you want to delete this supplier?",
+    "announceCreated": "{{name}} created",
+    "announceCreateError": "Failed to create",
+    "announceDeleted": "Deleted",
+    "announceDeleteError": "Failed to delete"
   },
   "wishlist": {
     "title": "Wishlist",
@@ -412,7 +420,11 @@
         "noDecision": "No decision yet",
         "decisionNotes": "Decision Notes"
       }
-    }
+    },
+    "announceCreated": "Wishlist item added",
+    "announceCreateError": "Failed to create",
+    "announceDeleted": "Deleted",
+    "announceDeleteError": "Failed to delete"
   },
   "errors": {
     "generic": "Something went wrong",
