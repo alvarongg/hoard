@@ -15,6 +15,8 @@ vi.mock("react-i18next", () => ({
         "navigation.home": "Home",
         "navigation.collections": "Collections",
         "navigation.catalogs": "Catalogs",
+        "navigation.catalogManagement": "Catalog Management",
+        "navigation.suppliers": "Suppliers",
       };
       return translations[key] ?? key;
     },
@@ -40,6 +42,17 @@ describe("Navigation", () => {
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Collections")).toBeInTheDocument();
     expect(screen.getByText("Catalogs")).toBeInTheDocument();
+    expect(screen.getByText("Catalog Management")).toBeInTheDocument();
+    expect(screen.getByText("Suppliers")).toBeInTheDocument();
+  });
+
+  it("points the catalog management link to /catalogs/manage", () => {
+    renderWithRouter();
+
+    expect(screen.getByText("Catalog Management")).toHaveAttribute(
+      "href",
+      "/catalogs/manage",
+    );
   });
 
   it("has accessible navigation landmark with label", () => {
@@ -70,6 +83,30 @@ describe("Navigation", () => {
     expect(catalogsLink).toHaveAttribute("aria-current", "page");
   });
 
+  it("sets aria-current page on active Catalog Management link", () => {
+    renderWithRouter(["/catalogs/manage"]);
+
+    expect(screen.getByText("Catalog Management")).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+  });
+
+  it("sets aria-current page on active Suppliers link", () => {
+    renderWithRouter(["/suppliers"]);
+
+    expect(screen.getByText("Suppliers")).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+  });
+
+  it("does not mark the Catalogs link active on the management route", () => {
+    renderWithRouter(["/catalogs/manage"]);
+
+    expect(screen.getByText("Catalogs")).not.toHaveAttribute("aria-current");
+  });
+
   it("does not set aria-current on inactive links", () => {
     renderWithRouter(["/collections"]);
 
@@ -89,6 +126,12 @@ describe("Navigation", () => {
 
     await user.tab();
     expect(screen.getByText("Catalogs")).toHaveFocus();
+
+    await user.tab();
+    expect(screen.getByText("Catalog Management")).toHaveFocus();
+
+    await user.tab();
+    expect(screen.getByText("Suppliers")).toHaveFocus();
   });
 
   it("has no accessibility violations", async () => {

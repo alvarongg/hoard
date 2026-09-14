@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useParams, useNavigate } from "react-router-dom";
 import { useCollection } from "../hooks/useCollection";
 import { useCollectionItems } from "../hooks/useCollectionItems";
-import { useCatalogSearch } from "../hooks/useCatalogs";
+import { useCollectionCatalog } from "../hooks/useCollectionCatalog";
+import { useCatalogItems } from "../hooks/useCatalogItems";
 import { ItemList } from "../components/items/ItemList";
 import { ItemForm } from "../components/items/ItemForm";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
@@ -18,7 +19,10 @@ export function CollectionDetailPage() {
   const navigate = useNavigate();
   const collection = useCollection(id ?? "");
   const items = useCollectionItems(id ?? "");
-  const catalogSearch = useCatalogSearch("");
+  const { catalogId } = useCollectionCatalog(
+    collection.data?.restrictedToSubCategoryId,
+  );
+  const catalogItems = useCatalogItems(catalogId ?? "");
   const [showAddItemModal, setShowAddItemModal] = useState(false);
 
   const handleAddItem = useCallback(
@@ -112,7 +116,8 @@ export function CollectionDetailPage() {
         title={t("items.add")}
       >
         <ItemForm
-          catalogItems={catalogSearch.data ?? []}
+          catalogItems={catalogItems.data ?? []}
+          catalogId={catalogId}
           onSubmit={handleAddItem}
           onCancel={() => setShowAddItemModal(false)}
           isLoading={items.addItem.isPending}

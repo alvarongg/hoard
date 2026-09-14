@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { AppLayout } from "./AppLayout";
+import { ThemeProvider } from "../../theme/ThemeProvider";
 
 expect.extend(toHaveNoViolations);
 
@@ -15,6 +16,15 @@ vi.mock("react-i18next", () => ({
         "navigation.home": "Home",
         "navigation.collections": "Collections",
         "navigation.catalogs": "Catalogs",
+        "navigation.catalogManagement": "Catalog Management",
+        "navigation.suppliers": "Suppliers",
+        "navigation.wishlist": "Wishlist",
+        "navigation.search": "Search",
+        "theme.label": "Theme",
+        "theme.light": "Light",
+        "theme.dark": "Dark",
+        "theme.auto": "Auto",
+        "languageSelector.label": "Language selector",
       };
       return translations[key] ?? key;
     },
@@ -25,15 +35,39 @@ vi.mock("react-i18next", () => ({
   }),
 }));
 
+vi.mock("../../hooks/useReducedMotion", () => ({
+  useReducedMotion: () => false,
+}));
+
+// Mock matchMedia for ThemeProvider
+const createMatchMedia = (prefersDark: boolean) => (query: string) => ({
+  matches: query === "(prefers-color-scheme: dark)" ? prefersDark : false,
+  media: query,
+  onchange: null,
+  addListener: vi.fn(),
+  removeListener: vi.fn(),
+  addEventListener: vi.fn(),
+  removeEventListener: vi.fn(),
+  dispatchEvent: vi.fn(),
+});
+
 function renderWithRouter() {
+  window.matchMedia = vi.fn(createMatchMedia(false));
   return render(
-    <MemoryRouter>
-      <AppLayout />
-    </MemoryRouter>,
+    <ThemeProvider>
+      <MemoryRouter>
+        <AppLayout />
+      </MemoryRouter>
+    </ThemeProvider>,
   );
 }
 
 describe("AppLayout", () => {
+  beforeEach(() => {
+    localStorage.clear();
+    document.documentElement.classList.remove("dark");
+  });
+
   it("renders navigation with all links", () => {
     renderWithRouter();
 
@@ -59,6 +93,13 @@ describe("AppLayout", () => {
 
     // The mock changeLanguage should have been called
     expect(esButton).toBeInTheDocument();
+  });
+
+  it("renders theme toggle component", () => {
+    renderWithRouter();
+
+    const themeToggle = screen.getByRole("radiogroup", { name: "Theme" });
+    expect(themeToggle).toBeInTheDocument();
   });
 
   it("has accessible navigation landmark", () => {

@@ -4,10 +4,16 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends, Query, Response
 
-from api.dependencies import get_collection_item_service, get_collection_service
+from api.dependencies import (
+    get_collection_item_service,
+    get_collection_service,
+    get_collection_stats_service,
+)
 from api.schemas.collection import (
     CollectionCreate,
+    CollectionItemGroup,
     CollectionResponse,
+    CollectionStats,
     CollectionUpdate,
 )
 from api.schemas.collection_item import (
@@ -17,6 +23,7 @@ from api.schemas.collection_item import (
 )
 from api.services.collection_item_service import CollectionItemService
 from api.services.collection_service import CollectionService
+from api.services.collection_stats_service import CollectionStatsService
 
 router = APIRouter(prefix="/collections", tags=["collections"])
 
@@ -71,6 +78,31 @@ async def delete_collection(
 ) -> None:
     """Delete a collection."""
     await service.delete(collection_id)
+
+
+@router.get(
+    "/{collection_id}/items/grouped",
+    response_model=list[CollectionItemGroup],
+)
+async def list_collection_items_grouped(
+    collection_id: str,
+    service: CollectionService = Depends(get_collection_service),
+) -> list[CollectionItemGroup]:
+    """List collection items grouped by main/sub category."""
+    groups = await service.list_items_grouped(collection_id)
+    return [CollectionItemGroup(**g) for g in groups]
+
+
+@router.get(
+    "/{collection_id}/stats",
+    response_model=CollectionStats,
+)
+async def get_collection_stats(
+    collection_id: str,
+    service: CollectionStatsService = Depends(get_collection_stats_service),
+) -> CollectionStats:
+    """Get statistics for a collection."""
+    return await service.get_collection_stats(collection_id)
 
 
 # ------------------------------------------------------------------

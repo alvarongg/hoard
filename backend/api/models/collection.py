@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from sqlalchemy import (
     Boolean,
     Date,
@@ -16,6 +18,12 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.types import JSON
 
 from api.models.base import DBUUID, Base, TimestampMixin, UUIDMixin
+
+if TYPE_CHECKING:
+    from api.models.accessory import ItemAccessory, ItemComponent
+    from api.models.catalog import CatalogItem
+    from api.models.supplier import Supplier
+    from api.models.transaction import ItemTransaction
 
 
 class Collection(UUIDMixin, TimestampMixin, Base):
@@ -159,6 +167,22 @@ class CollectionItem(UUIDMixin, TimestampMixin, Base):
     # Relationships
     collection: Mapped[Collection] = relationship(back_populates="items")
     catalog_item: Mapped[CatalogItem] = relationship()
+    supplier: Mapped[Supplier | None] = relationship(back_populates="collection_items")
+    components: Mapped[list[ItemComponent]] = relationship(
+        back_populates="collection_item",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
+    transactions: Mapped[list[ItemTransaction]] = relationship(
+        back_populates="collection_item",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
+    accessories: Mapped[list[ItemAccessory]] = relationship(
+        back_populates="collection_item",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
 
     def __repr__(self) -> str:
         return f"<CollectionItem(id={self.id!r}, collection_id={self.collection_id!r})>"

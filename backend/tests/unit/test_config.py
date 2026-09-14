@@ -47,3 +47,12 @@ class TestSettings:
         monkeypatch.setenv("CORS_ORIGINS", " http://a.com , http://b.com ")
         settings = Settings()
         assert settings.cors_origins_list == ["http://a.com", "http://b.com"]
+
+    def test_default_search_similarity_threshold(self) -> None:
+        settings = Settings()
+        assert settings.SEARCH_SIMILARITY_THRESHOLD == 0.3
+
+    def test_search_similarity_threshold_from_env(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        monkeypatch.setenv("SEARCH_SIMILARITY_THRESHOLD", "0.5")
+        settings = Settings()
+        assert settings.SEARCH_SIMILARITY_THRESHOLD == 0.5

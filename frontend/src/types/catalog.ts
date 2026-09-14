@@ -20,3 +20,14 @@ export interface CatalogUpdate {
   description?: string;
   isActive?: boolean;
 }
+
+export interface BatchImportError {
+  row: number;
+  message: string;
+}
+
+export interface BatchImportResult {
+  createdCount: number;
+  errorCount: number;
+  errors: BatchImportError[];
+}

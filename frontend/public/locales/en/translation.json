@@ -1,4 +1,21 @@
 {
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "sortAscending": "{{column}}, sorted ascending, click to sort descending",
+    "sortDescending": "{{column}}, sorted descending, click to remove sort",
+    "sortNone": "{{column}}, not sorted, click to sort ascending",
+    "tableCaptionFallback": "Data table",
+    "closeTooltip": "Close tooltip"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "auto": "Auto"
+  },
+  "languageSelector": {
+    "label": "Language selector"
+  },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
@@ -10,13 +27,25 @@
     "confirm": "Confirm",
     "search": "Search",
     "noResults": "No results found",
-    "retry": "Retry"
+    "retry": "Retry",
+    "view": "View",
+    "saving": "Saving...",
+    "all": "All",
+    "clearFilters": "Clear filters",
+    "yes": "Yes",
+    "no": "No",
+    "previous": "Previous",
+    "next": "Next"
   },
   "navigation": {
     "main": "Main navigation",
     "home": "Home",
     "collections": "Collections",
-    "catalogs": "Catalogs"
+    "catalogs": "Catalogs",
+    "catalogManagement": "Catalog Management",
+    "suppliers": "Suppliers",
+    "wishlist": "Wishlist",
+    "search": "Search"
   },
   "home": {
     "welcome": "Welcome to H.O.A.R.D.",
@@ -53,7 +82,37 @@
       "subCategoryRequired": "Sub-category is required for single category collections",
       "mainCategory": "Main Category",
       "selectMainCategory": "Select main category"
-    }
+    },
+    "stats": {
+      "title": "Collection Statistics",
+      "totalItems": "Total Items",
+      "differentCategories": "Categories",
+      "totalInvested": "Total Invested",
+      "currentValue": "Current Value",
+      "valueGain": "Value Gain",
+      "roi": "ROI",
+      "roiUnavailable": "N/A",
+      "completeItems": "Complete Items",
+      "gradedItems": "Graded Items"
+    },
+    "theme": "Theme",
+    "themeDescription": "Theme Description",
+    "goalDescription": "Goal Description",
+    "goalItemsCount": "Goal Items Count",
+    "displayOrder": "Display Order",
+    "isPublic": "Public",
+    "isActive": "Active",
+    "types": {
+      "singleCategory": "Single Category",
+      "multiCategory": "Multi Category",
+      "mixed": "Mixed"
+    },
+    "grouped": {
+      "title": "Items by Category",
+      "itemCount": "{{count}} items",
+      "uncategorized": "Uncategorized"
+    },
+    "emptyFirstItem": "No items in this collection yet. Add your first item to get started."
   },
   "catalogs": {
     "title": "Catalogs",
@@ -63,7 +122,35 @@
     "name": "Name",
     "description": "Description",
     "items": "Catalog Items",
-    "search": "Search items..."
+    "search": "Search items...",
+    "management": {
+      "title": "Catalog Management",
+      "selectCatalog": "Select a catalog",
+      "noCatalogs": "No catalogs available yet",
+      "noItems": "This catalog has no items yet",
+      "addItem": "Add item",
+      "importCsv": "Import CSV",
+      "itemCount_one": "{{count}} item",
+      "itemCount_other": "{{count}} items",
+      "pagination": "Catalog items pagination",
+      "previousPage": "Previous page",
+      "nextPage": "Next page",
+      "pageStatus": "Page {{current}} of {{total}}"
+    },
+    "csv": {
+      "upload": "Import CSV",
+      "selectFile": "CSV file",
+      "importing": "Importing file...",
+      "importComplete": "Import complete",
+      "createdCount_one": "{{count}} item created",
+      "createdCount_other": "{{count}} items created",
+      "errorCount_one": "{{count}} row with errors",
+      "errorCount_other": "{{count}} rows with errors",
+      "errorDetail": "Row {{row}}: {{message}}",
+      "fileTooLarge": "The file exceeds the 5 MB limit",
+      "invalidFileType": "Only .csv files are allowed",
+      "noData": "The file has no data rows"
+    }
   },
   "categories": {
     "title": "Categories",
@@ -101,6 +188,27 @@
       "selectCondition": "Select condition",
       "catalogItemRequired": "Catalog item is required",
       "conditionRequired": "Condition is required"
+    },
+    "inline": {
+      "createNew": "Create new catalog item",
+      "title": "Title",
+      "titleRequired": "Title is required",
+      "titleWhitespace": "Title cannot be only whitespace",
+      "showOptional": "Show optional fields",
+      "hideOptional": "Hide optional fields",
+      "optionalFields": "Optional fields",
+      "creating": "Creating catalog item...",
+      "createSuccess": "Catalog item created successfully",
+      "createError": "Could not create the catalog item. Please try again.",
+      "subtitle": "Subtitle",
+      "description": "Description",
+      "manufacturer": "Manufacturer",
+      "publisher": "Publisher",
+      "developer": "Developer",
+      "brand": "Brand",
+      "language": "Language",
+      "region": "Region",
+      "rarity": "Rarity"
     }
   },
   "images": {
@@ -115,11 +223,190 @@
     "tooLarge": "File is too large. Maximum size: 10MB",
     "preview": "Image preview"
   },
+  "components": {
+    "title": "Components",
+    "template": {
+      "empty": "No components defined for this category"
+    },
+    "present": "{{name}} marked as present",
+    "absent": "{{name}} marked as absent",
+    "toggleComponent": "Toggle {{name}}",
+    "required": "required",
+    "hideDetails": "Hide details",
+    "addDetails": "Add details",
+    "condition": "Condition",
+    "conditionNotes": "Notes",
+    "complete": "Complete",
+    "incomplete": "Incomplete ({{present}}/{{required}})",
+    "requiredComponents": "Required Components",
+    "optionalComponents": "Optional Components",
+    "completenessAnnouncement": {
+      "complete": "Item is now complete",
+      "incomplete": "Item is incomplete. Missing: {{missing}}"
+    }
+  },
   "ui": {
     "loading": "Loading",
     "close": "Close",
     "emptyTitle": "Nothing here yet",
     "emptyDescription": "Get started by creating your first item"
+  },
+  "suppliers": {
+    "title": "Suppliers",
+    "create": "Create Supplier",
+    "edit": "Edit Supplier",
+    "delete": "Delete Supplier",
+    "name": "Name",
+    "type": "Type",
+    "typeOptions": {
+      "individual": "Individual",
+      "store": "Store",
+      "online": "Online Store",
+      "market": "Marketplace",
+      "other": "Other"
+    },
+    "country": "Country",
+    "city": "City",
+    "stateProvince": "State/Province",
+    "address": "Address",
+    "postalCode": "Postal Code",
+    "website": "Website",
+    "email": "Email",
+    "phone": "Phone",
+    "marketplaceUrl": "Marketplace URL",
+    "notes": "Notes",
+    "active": "Active",
+    "rating": "Rating",
+    "favorite": "Mark as favorite",
+    "unfavorite": "Remove from favorites",
+    "filters": {
+      "all": "All",
+      "favorites": "Favorites only",
+      "byType": "By type",
+      "byCountry": "By country"
+    },
+    "purchases": {
+      "title": "Purchases",
+      "count_one": "{{count}} purchase",
+      "count_other": "{{count}} purchases",
+      "totalSpent": "Total spent"
+    },
+    "empty": "No suppliers yet",
+    "deleteBlocked": "Cannot delete: supplier has associated purchases",
+    "editLabel": "Edit {{name}}",
+    "deleteLabel": "Delete {{name}}",
+    "deleteConfirm": "Are you sure you want to delete this supplier?"
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "create": "Create Wishlist Item",
+    "edit": "Edit Wishlist Item",
+    "delete": "Delete Wishlist Item",
+    "viewDetails": "View details",
+    "backToList": "← Back to Wishlist",
+    "itemTitle": "Wishlist Item #{{id}}",
+    "empty": "No wishlist items yet",
+    "acquired": "Acquired",
+    "inactive": "Inactive",
+    "budget": "Budget",
+    "condition": "Condition",
+    "completeness": "Completeness",
+    "mustBeComplete": "Must be complete",
+    "anyCompleteness": "Any condition accepted",
+    "notes": "Notes",
+    "searchNotes": "Search Notes",
+    "deleteConfirm": "Are you sure you want to delete this wishlist item?",
+    "priority": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "lowest": "Lowest"
+    },
+    "urgency": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
+    "form": {
+      "priority": "Priority",
+      "urgency": "Urgency",
+      "maxPrice": "Maximum Price",
+      "currency": "Currency",
+      "desiredCondition": "Desired Condition",
+      "mustBeComplete": "Must be complete",
+      "completenessDescription": "Completeness Requirements",
+      "specificVariantRequired": "Specific variant required",
+      "variantDescription": "Variant Description",
+      "notes": "Notes",
+      "searchNotes": "Search Notes",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "filters": {
+      "priority": "Priority",
+      "urgency": "Urgency",
+      "status": "Status",
+      "activeOnly": "Active only",
+      "inactiveOnly": "Inactive only",
+      "includeAcquired": "Include acquired items"
+    },
+    "acquire": {
+      "title": "Mark as Acquired",
+      "description": "Enter the ID of the collection item that was created for this wishlist item.",
+      "collectionItemId": "Collection Item ID",
+      "collectionItemPlaceholder": "Enter collection item UUID",
+      "collectionItemRequired": "Collection item ID is required",
+      "confirm": "Confirm Acquisition",
+      "button": "Mark Acquired",
+      "alreadyAcquired": "This item is already marked as acquired"
+    },
+    "aggregates": {
+      "title": "Price Statistics",
+      "average": "Average Price",
+      "minimum": "Minimum Price",
+      "maximum": "Maximum Price",
+      "totalSightings": "Total Sightings",
+      "availableCount": "{{count}} currently available",
+      "noData": "No data"
+    },
+    "sightings": {
+      "title": "Sightings",
+      "create": "Add Sighting",
+      "edit": "Edit Sighting",
+      "empty": "No sightings yet. Add one to track prices.",
+      "available": "Available",
+      "unavailable": "Unavailable",
+      "contacted": "Contacted",
+      "condition": "Condition",
+      "viewListing": "View Listing",
+      "sighted": "Sighted",
+      "deleteConfirm": "Are you sure you want to delete this sighting?",
+      "decision": {
+        "buy": "Buy",
+        "pass": "Pass",
+        "wait": "Wait",
+        "negotiate": "Negotiate"
+      },
+      "form": {
+        "price": "Price",
+        "currency": "Currency",
+        "condition": "Condition",
+        "url": "URL",
+        "location": "Location",
+        "availability": "Availability",
+        "contactSection": "Contact Information",
+        "contacted": "Contacted Seller",
+        "contactMethod": "Contact Method",
+        "responseNotes": "Response Notes",
+        "decisionSection": "Decision",
+        "decision": "Decision",
+        "noDecision": "No decision yet",
+        "decisionNotes": "Decision Notes"
+      }
+    }
   },
   "errors": {
     "generic": "Something went wrong",
@@ -130,6 +417,62 @@
     "createFailed": "Failed to create",
     "updateFailed": "Failed to update",
     "deleteFailed": "Failed to delete",
-    "uploadFailed": "Failed to upload file"
+    "uploadFailed": "Failed to upload file",
+    "collection": {
+      "subCategoryRequired": "Sub-category is required for single category collections",
+      "invalidType": "Invalid collection type",
+      "subCategoryMismatch": "Item sub-category does not match collection restriction"
+    },
+    "supplier": {
+      "nameRequired": "Name is required",
+      "invalidType": "Invalid supplier type",
+      "ratingRange": "Rating must be between 0 and 5",
+      "hasReferences": "Cannot delete: supplier has associated purchases",
+      "notFound": "Supplier not found"
+    },
+    "wishlist": {
+      "referenceNotFound": "Referenced catalog item or collection not found",
+      "priorityRange": "Priority must be between 1 and 5",
+      "invalidUrgency": "Invalid urgency level",
+      "alreadyAcquired": "This item is already acquired",
+      "notFound": "Wishlist item not found",
+      "maxPriceNegative": "Maximum price cannot be negative"
+    },
+    "sighting": {
+      "priceRequired": "Price is required",
+      "invalidDecision": "Invalid decision value"
+    },
+    "searchFailed": "Search failed. Please try again."
+  },
+  "search": {
+    "title": "Search Catalog",
+    "placeholder": "Search catalog items...",
+    "results": "Search Results",
+    "resultsLabel": "Search results",
+    "resultCount": "{{count}} results found",
+    "noResults": "No results found",
+    "noResultsHint": "Try adjusting your search or filters",
+    "enterQuery": "Enter a search term to begin",
+    "clearSearch": "Clear search",
+    "searching": "Searching...",
+    "searchHint": "Enter a search term",
+    "degradedMode": "Using basic search mode. Some features may be limited.",
+    "fuzzyMode": "Using fuzzy search to find close matches.",
+    "pagination": "Search results pagination",
+    "pageStatus": "Page {{current}} of {{total}}",
+    "filters": {
+      "title": "Filters",
+      "mainCategory": "Main Category",
+      "subCategory": "Sub Category",
+      "language": "Language",
+      "region": "Region",
+      "rarity": "Rarity",
+      "yearMin": "Year From",
+      "yearMax": "Year To",
+      "manufacturer": "Manufacturer",
+      "publisher": "Publisher",
+      "developer": "Developer",
+      "brand": "Brand"
+    }
   }
 }

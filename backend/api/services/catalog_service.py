@@ -141,15 +141,19 @@ class CatalogService:
     ) -> CatalogItem:
         """Create a new catalog item in the given catalog.
 
+        The parent catalog's ``total_items`` counter is incremented in the
+        same transaction as the insert.
+
         Raises:
             NotFoundError: If the catalog does not exist.
         """
-        await self.get_catalog(catalog_id)
+        catalog = await self.get_catalog(catalog_id)
 
         item_data = data.model_dump()
         item_data["catalog_id"] = catalog_id
         item = CatalogItem(**item_data)
         self._db.add(item)
+        catalog.total_items = (catalog.total_items or 0) + 1
         await self._db.commit()
         await self._db.refresh(item)
         return item

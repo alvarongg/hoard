@@ -9,7 +9,13 @@ from api.services.catalog_service import CatalogService
 from api.services.category_service import CategoryService
 from api.services.collection_item_service import CollectionItemService
 from api.services.collection_service import CollectionService
+from api.services.collection_stats_service import CollectionStatsService
+from api.services.csv_import_service import CsvImportService
 from api.services.image_service import ImageService
+from api.services.item_component_service import ItemComponentService
+from api.services.search_service import SearchService
+from api.services.supplier_service import SupplierService
+from api.services.wishlist_service import WishlistService
 from core.config import Settings, get_settings
 from core.database import get_async_session
 
@@ -41,11 +47,25 @@ def get_collection_service(
     return CollectionService(db)
 
 
+def get_collection_stats_service(
+    db: AsyncSession = Depends(get_db),
+) -> CollectionStatsService:
+    """Provide a CollectionStatsService instance."""
+    return CollectionStatsService(db)
+
+
 def get_collection_item_service(
     db: AsyncSession = Depends(get_db),
 ) -> CollectionItemService:
     """Provide a CollectionItemService instance."""
     return CollectionItemService(db)
+
+
+def get_csv_import_service(
+    db: AsyncSession = Depends(get_db),
+) -> CsvImportService:
+    """Provide a CsvImportService instance."""
+    return CsvImportService(db)
 
 
 def get_image_service(
@@ -54,3 +74,32 @@ def get_image_service(
 ) -> ImageService:
     """Provide an ImageService instance."""
     return ImageService(db, settings.UPLOAD_DIR)
+
+
+def get_supplier_service(
+    db: AsyncSession = Depends(get_db),
+) -> SupplierService:
+    """Provide a SupplierService instance."""
+    return SupplierService(db)
+
+
+def get_wishlist_service(
+    db: AsyncSession = Depends(get_db),
+) -> WishlistService:
+    """Provide a WishlistService instance."""
+    return WishlistService(db)
+
+
+def get_item_component_service(
+    db: AsyncSession = Depends(get_db),
+) -> ItemComponentService:
+    """Provide an ItemComponentService instance."""
+    return ItemComponentService(db)
+
+
+def get_search_service(
+    db: AsyncSession = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+) -> SearchService:
+    """Provide a SearchService instance."""
+    return SearchService(db, settings)

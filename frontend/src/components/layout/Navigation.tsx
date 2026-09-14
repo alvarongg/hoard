@@ -31,11 +31,52 @@ export function Navigation() {
         <li>
           <NavLink
             to="/catalogs"
+            end
             className={({ isActive }) =>
               `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
             }
           >
             {t("navigation.catalogs")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/catalogs/manage"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.catalogManagement")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/suppliers"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.suppliers")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/wishlist"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.wishlist")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/search"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.search")}
           </NavLink>
         </li>
       </ul>

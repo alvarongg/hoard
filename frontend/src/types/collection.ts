@@ -47,3 +47,28 @@ export interface CollectionUpdate {
   isPublic?: boolean;
   isActive?: boolean;
 }
+
+/**
+ * Statistics for a collection.
+ */
+export interface CollectionStats {
+  totalItems: number;
+  differentCategoriesCount: number;
+  totalInvested: number | null;
+  currentValue: number | null;
+  valueGain: number | null;
+  roiPercentage: number | null;
+  completeItems: number;
+  gradedItems: number;
+}
+
+/**
+ * Group of collection items by category.
+ */
+export interface CollectionItemGroup {
+  mainCategoryId: string | null;
+  mainCategoryName: string | null;
+  subCategoryId: string | null;
+  subCategoryName: string | null;
+  itemCount: number;
+}

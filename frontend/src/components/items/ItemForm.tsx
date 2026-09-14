@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { CatalogItem, ItemCondition } from "../../types/item";
 import { Select } from "../ui/Select";
 import { Input } from "../ui/Input";
 import { Button } from "../ui/Button";
+import { InlineCatalogItemForm } from "./InlineCatalogItemForm";
 
 interface ItemFormData {
   catalogItemId: string;
@@ -14,6 +15,8 @@ interface ItemFormData {
 
 interface ItemFormProps {
   catalogItems: CatalogItem[];
+  /** Catalog used for inline creation. `null` when no catalog is resolvable. */
+  catalogId: string | null;
   onSubmit: (data: ItemFormData) => void;
   onCancel: () => void;
   isLoading: boolean;
@@ -39,6 +42,7 @@ const CONDITION_LABELS: Record<ItemCondition, string> = {
 
 export function ItemForm({
   catalogItems,
+  catalogId,
   onSubmit,
   onCancel,
   isLoading,
@@ -50,6 +54,9 @@ export function ItemForm({
   const [notes, setNotes] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [showInlineForm, setShowInlineForm] = useState(false);
+  const [createdItems, setCreatedItems] = useState<CatalogItem[]>([]);
+  const createButtonRef = useRef<HTMLButtonElement>(null);
 
   function validate(): boolean {
     const newErrors: Record<string, string> = {};
@@ -77,7 +84,30 @@ export function ItemForm({
     });
   }
 
-  const catalogItemOptions = catalogItems.map((ci) => ({
+  function handleInlineCreated(item: CatalogItem) {
+    setCreatedItems((previous) =>
+      previous.some((created) => created.id === item.id)
+        ? previous
+        : [...previous, item],
+    );
+    setCatalogItemId(item.id);
+    setErrors((previous) => ({ ...previous, catalogItem: "" }));
+    setShowInlineForm(false);
+  }
+
+  function handleInlineCancel() {
+    setShowInlineForm(false);
+    createButtonRef.current?.focus();
+  }
+
+  const knownCatalogItems = [
+    ...catalogItems,
+    ...createdItems.filter(
+      (created) => !catalogItems.some((ci) => ci.id === created.id),
+    ),
+  ];
+
+  const catalogItemOptions = knownCatalogItems.map((ci) => ({
     value: ci.id,
     label: ci.title,
   }));
@@ -89,14 +119,39 @@ export function ItemForm({
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-4">
-      <Select
-        label={t("items.catalogItem")}
-        options={catalogItemOptions}
-        value={catalogItemId}
-        onChange={(e) => setCatalogItemId(e.target.value)}
-        placeholder={t("items.form.selectCatalogItem")}
-        error={errors.catalogItem}
-      />
+      <div className="space-y-2">
+        <Select
+          label={t("items.catalogItem")}
+          options={catalogItemOptions}
+          value={catalogItemId}
+          onChange={(e) => setCatalogItemId(e.target.value)}
+          placeholder={t("items.form.selectCatalogItem")}
+          error={errors.catalogItem}
+        />
+
+        {catalogId && (
+          <>
+            <button
+              ref={createButtonRef}
+              type="button"
+              onClick={() => setShowInlineForm(true)}
+              aria-expanded={showInlineForm}
+              className="text-sm font-medium text-blue-600 underline hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {t("items.inline.createNew")}
+            </button>
+
+            {showInlineForm && (
+              <InlineCatalogItemForm
+                catalogId={catalogId}
+                onCreated={handleInlineCreated}
+                onCancel={handleInlineCancel}
+                isLoading={false}
+              />
+            )}
+          </>
+        )}
+      </div>
 
       <Select
         label={t("items.condition")}

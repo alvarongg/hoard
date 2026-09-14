@@ -102,7 +102,67 @@ const mockImage = {
   uploaded_at: "2024-01-01T00:00:00Z",
 };
 
+const mockWishlistItem = {
+  id: "wish-1",
+  collection_id: "col-1",
+  catalog_item_id: "cat-item-1",
+  desired_condition: "excellent",
+  desired_condition_min: null,
+  must_be_complete: true,
+  desired_completeness_description: null,
+  max_price: 120.0,
+  currency: "USD",
+  specific_variant_required: false,
+  variant_description: null,
+  priority: 2,
+  urgency: "high",
+  notes: "Looking for a boxed copy",
+  search_notes: null,
+  tags: null,
+  is_active: true,
+  is_acquired: false,
+  acquired_date: null,
+  acquired_collection_item_id: null,
+  created_at: "2024-01-01T00:00:00Z",
+  updated_at: "2024-01-01T00:00:00Z",
+};
+
 export const handlers = [
+  // Wishlist
+  http.get(`${API_URL}/wishlist`, () => {
+    return HttpResponse.json([mockWishlistItem]);
+  }),
+
+  http.get(`${API_URL}/wishlist/:id`, ({ params }) => {
+    if (params.id === "not-found") {
+      return HttpResponse.json({ detail: "Not found" }, { status: 404 });
+    }
+    return HttpResponse.json({
+      ...mockWishlistItem,
+      price_aggregates: {
+        avg_price: 100.0,
+        min_price: 80.0,
+        max_price: 120.0,
+        total_sightings: 3,
+        available_sightings: 2,
+      },
+    });
+  }),
+
+  http.post(`${API_URL}/wishlist`, async ({ request }) => {
+    const body = (await request.json()) as Record<string, unknown>;
+    return HttpResponse.json({ ...mockWishlistItem, ...body }, { status: 201 });
+  }),
+
+  http.put(`${API_URL}/wishlist/:id`, async ({ request }) => {
+    const body = (await request.json()) as Record<string, unknown>;
+    return HttpResponse.json({ ...mockWishlistItem, ...body });
+  }),
+
+  http.delete(`${API_URL}/wishlist/:id`, () => {
+    return new HttpResponse(null, { status: 204 });
+  }),
+
   // Collections
   http.get(`${API_URL}/collections`, () => {
     return HttpResponse.json([mockCollection]);
@@ -216,6 +276,124 @@ export const handlers = [
   http.delete(`${API_URL}/images/:id`, () => {
     return new HttpResponse(null, { status: 204 });
   }),
+
+  // Suppliers
+  http.get(`${API_URL}/suppliers`, ({ request }) => {
+    const url = new URL(request.url);
+    const type = url.searchParams.get("type");
+    const country = url.searchParams.get("country");
+    const isFavorite = url.searchParams.get("is_favorite");
+
+    let filtered = [...mockSuppliers];
+    if (type) {
+      filtered = filtered.filter((s) => s.type === type);
+    }
+    if (country) {
+      filtered = filtered.filter((s) => s.country === country);
+    }
+    if (isFavorite === "true") {
+      filtered = filtered.filter((s) => s.is_favorite === true);
+    }
+
+    return HttpResponse.json(filtered);
+  }),
+
+  http.get(`${API_URL}/suppliers/:id`, ({ params }) => {
+    if (params.id === "not-found") {
+      return HttpResponse.json({ detail: "Not found" }, { status: 404 });
+    }
+    const supplier = mockSuppliers.find((s) => s.id === params.id);
+    if (!supplier) {
+      return HttpResponse.json({ detail: "Not found" }, { status: 404 });
+    }
+    return HttpResponse.json(supplier);
+  }),
+
+  http.post(`${API_URL}/suppliers`, async ({ request }) => {
+    const body = (await request.json()) as Record<string, unknown>;
+    const newSupplier = {
+      ...mockSuppliers[0],
+      id: `supplier-${Date.now()}`,
+      ...body,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
+    return HttpResponse.json(newSupplier, { status: 201 });
+  }),
+
+  http.patch(`${API_URL}/suppliers/:id`, async ({ request, params }) => {
+    const body = (await request.json()) as Record<string, unknown>;
+    const supplier = mockSuppliers.find((s) => s.id === params.id);
+    if (!supplier) {
+      return HttpResponse.json({ detail: "Not found" }, { status: 404 });
+    }
+    // Return the updated supplier with the body changes applied
+    const updated = { ...supplier, ...body, updated_at: new Date().toISOString() };
+    return HttpResponse.json(updated);
+  }),
+
+  http.delete(`${API_URL}/suppliers/:id`, () => {
+    return new HttpResponse(null, { status: 204 });
+  }),
+
+  http.get(`${API_URL}/suppliers/:id/purchases`, () => {
+    return HttpResponse.json(mockSupplierPurchases);
+  }),
+];
+
+const mockSupplierPurchases = [
+  {
+    id: "purchase-1",
+    collection_item_id: "item-1",
+    purchase_date: "2024-01-15",
+    purchase_price: 45.0,
+    purchase_currency: "USD",
+  },
+];
+
+const mockSuppliers = [
+  {
+    id: "supplier-1",
+    name: "GameStop",
+    type: "store",
+    country: "USA",
+    state_province: "Texas",
+    city: "Dallas",
+    address: "123 Main St",
+    postal_code: "75001",
+    website: "https://gamestop.com",
+    email: "contact@gamestop.com",
+    phone: "+1-555-123-4567",
+    marketplace_url: null,
+    social_media: null,
+    rating: 4.5,
+    notes: "Local game store",
+    is_favorite: true,
+    is_active: true,
+    created_at: "2024-01-01T00:00:00Z",
+    updated_at: "2024-01-01T00:00:00Z",
+  },
+  {
+    id: "supplier-2",
+    name: "eBay Seller",
+    type: "marketplace",
+    country: "USA",
+    state_province: null,
+    city: null,
+    address: null,
+    postal_code: null,
+    website: null,
+    email: null,
+    phone: null,
+    marketplace_url: "https://ebay.com/user/seller123",
+    social_media: null,
+    rating: 4.8,
+    notes: "Reliable eBay seller",
+    is_favorite: false,
+    is_active: true,
+    created_at: "2024-01-02T00:00:00Z",
+    updated_at: "2024-01-02T00:00:00Z",
+  },
 ];
 
 export {
@@ -226,4 +404,7 @@ export {
   mockMainCategory,
   mockSubCategory,
   mockImage,
+  mockSuppliers,
+  mockSupplierPurchases,
+  mockWishlistItem,
 };

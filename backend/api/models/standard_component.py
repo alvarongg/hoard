@@ -13,7 +13,7 @@ from sqlalchemy import (
     UniqueConstraint,
     func,
 )
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from api.models.base import DBUUID, Base, UUIDMixin
 
@@ -44,6 +44,11 @@ class StandardComponent(UUIDMixin, Base):
     sort_order: Mapped[int] = mapped_column(Integer, default=0)
     created_at: Mapped[datetime] = mapped_column(
         DateTime, server_default=func.now(), nullable=False,
+    )
+
+    # Relationships
+    sub_category: Mapped[SubCategory] = relationship(
+        back_populates="standard_components",
     )
 
     def __repr__(self) -> str:

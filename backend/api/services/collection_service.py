@@ -2,17 +2,21 @@
 
 from __future__ import annotations
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.models.category import SubCategory
-from api.models.collection import Collection
+from api.models.collection import Collection, CollectionItem
 from api.schemas.collection import CollectionCreate, CollectionUpdate
 from core.exceptions import DuplicateError, NotFoundError, ValidationError
 
 
 class CollectionService:
     """Handles CRUD operations and business rules for collections."""
+
+    VALID_TYPES: frozenset[str] = frozenset({
+        "single_category", "multi_category", "mixed"
+    })
 
     def __init__(self, db: AsyncSession) -> None:
         self._db = db
@@ -49,6 +53,9 @@ class CollectionService:
             ValidationError: If single_category and the sub-category does not exist.
         """
         await self._check_name_unique(data.name)
+        self._validate_type_and_restriction(
+            data.collection_type, data.restricted_to_sub_category_id
+        )
 
         if data.collection_type == "single_category":
             sub_cat = await self._db.get(
@@ -99,9 +106,101 @@ class CollectionService:
         await self._db.delete(collection)
         await self._db.commit()
 
+    async def list_items_grouped(self, collection_id: str) -> list[dict]:
+        """Return collection items grouped by main/sub category.
+
+        Args:
+            collection_id: UUID of the collection.
+
+        Returns:
+            List of dicts with main_category_id, main_category_name,
+            sub_category_id, sub_category_name, and item_count.
+
+        Raises:
+            NotFoundError: If the collection does not exist.
+        """
+        collection = await self.get_by_id(collection_id)
+
+        # Query items grouped by category (via Catalog -> SubCategory)
+        from api.models.catalog import Catalog, CatalogItem
+
+        stmt = (
+            select(
+                SubCategory.main_category_id.label("main_category_id"),
+                SubCategory.id.label("sub_category_id"),
+                func.count(CollectionItem.id).label("item_count"),
+            )
+            .select_from(CollectionItem)
+            .join(CatalogItem, CollectionItem.catalog_item_id == CatalogItem.id)
+            .join(Catalog, CatalogItem.catalog_id == Catalog.id)
+            .join(SubCategory, Catalog.sub_category_id == SubCategory.id)
+            .where(CollectionItem.collection_id == collection_id)
+            .group_by(SubCategory.main_category_id, SubCategory.id)
+        )
+
+        result = await self._db.execute(stmt)
+        rows = result.all()
+
+        # Fetch category names
+        from api.models.category import MainCategory
+
+        groups = []
+        for row in rows:
+            main_cat = await self._db.get(MainCategory, row.main_category_id)
+            sub_cat = await self._db.get(SubCategory, row.sub_category_id)
+            groups.append({
+                "main_category_id": str(row.main_category_id) if row.main_category_id else None,
+                "main_category_name": main_cat.name if main_cat else None,
+                "sub_category_id": str(row.sub_category_id) if row.sub_category_id else None,
+                "sub_category_name": sub_cat.name if sub_cat else None,
+                "item_count": row.item_count,
+            })
+
+        return groups
+
+    async def validate_item_sub_category(
+        self, collection_id: str, sub_category_id: str
+    ) -> None:
+        """Validate that an item's sub-category matches collection restriction.
+
+        Raises:
+            ValidationError: If the collection is single_category and the
+                sub-category doesn't match the restriction.
+        """
+        collection = await self.get_by_id(collection_id)
+
+        if collection.collection_type == "single_category":
+            if str(collection.restricted_to_sub_category_id) != str(sub_category_id):
+                raise ValidationError(
+                    f"Item sub-category '{sub_category_id}' does not match "
+                    f"collection restriction '{collection.restricted_to_sub_category_id}'"
+                )
+
     # ------------------------------------------------------------------
     # Private helpers
     # ------------------------------------------------------------------
+
+    def _validate_type_and_restriction(
+        self, collection_type: str, restricted_to_sub_category_id: str | None
+    ) -> None:
+        """Validate collection type and sub-category restriction.
+
+        Raises:
+            ValidationError: If single_category without restriction, or
+                if non-single_category with restriction.
+        """
+        if collection_type not in self.VALID_TYPES:
+            raise ValidationError(
+                f"Invalid collection type '{collection_type}'. "
+                f"Must be one of: {', '.join(sorted(self.VALID_TYPES))}"
+            )
+
+        if collection_type == "single_category":
+            if restricted_to_sub_category_id is None:
+                raise ValidationError(
+                    "restricted_to_sub_category_id is required for single_category collections"
+                )
+        # Note: We allow restricted_to_sub_category_id to be None for other types
 
     async def _check_name_unique(
         self, name: str, *, exclude_id: str | None = None

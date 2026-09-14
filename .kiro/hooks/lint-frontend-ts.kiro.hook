@@ -12,6 +12,6 @@
   },
   "then": {
     "type": "runCommand",
-    "command": "npx eslint --no-error-on-unmatched-pattern ${file}"
+    "command": "bash .kiro/scripts/lint-typescript.sh"
   }
 }

@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "en",
-    supportedLngs: ["en", "es"],
+    supportedLngs: ["es", "en", "pt", "fr", "de"],
     debug: false,
     interpolation: {
       escapeValue: false,
@@ -18,9 +18,19 @@ i18n
       loadPath: "/locales/{{lng}}/{{ns}}.json",
     },
     detection: {
-      order: ["navigator", "htmlTag", "localStorage"],
+      order: ["localStorage", "navigator", "htmlTag"],
       caches: ["localStorage"],
     },
   });
+
+// Update document language when i18n language changes
+i18n.on("languageChanged", (lng) => {
+  document.documentElement.lang = lng;
+});
+
+// Set initial language on document
+if (typeof document !== "undefined") {
+  document.documentElement.lang = i18n.language || "en";
+}
 
 export { i18n };

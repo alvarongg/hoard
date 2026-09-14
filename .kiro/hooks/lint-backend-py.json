@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Lint Backend Python",
+      "description": "Ejecuta Ruff (linter Python) automáticamente cuando se edita un archivo Python del backend para detectar problemas de estilo y errores.",
+      "trigger": "PostFileSave",
+      "matcher": "backend/.*\\.py$",
+      "action": {
+        "type": "command",
+        "command": ".kiro/scripts/lint-python.sh"
+      },
+      "enabled": false
+    }
+  ]
+}

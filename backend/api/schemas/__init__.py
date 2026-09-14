@@ -27,6 +27,10 @@ from api.schemas.collection_item import (
     CollectionItemResponse,
     CollectionItemUpdate,
 )
+from api.schemas.csv_import import (
+    BatchImportError,
+    BatchImportResult,
+)
 from api.schemas.image import (
     ALLOWED_IMAGE_TYPES,
     MAX_IMAGE_SIZE,
@@ -59,6 +63,9 @@ __all__ = [
     "CollectionItemCreate",
     "CollectionItemUpdate",
     "CollectionItemResponse",
+    # CSV import schemas
+    "BatchImportError",
+    "BatchImportResult",
     # Image schemas
     "ItemImageResponse",
     "ImageUploadResponse",

@@ -556,3 +556,139 @@ class TestCascadeDeletionProperty:
             )
             orphans = result.scalars().all()
             assert len(orphans) == 0
+
+
+# ---------------------------------------------------------------------------
+# Collection stats and grouped items endpoint tests
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+class TestCollectionStats:
+    async def test_get_collection_stats_returns_200(
+        self, client: AsyncClient,
+    ) -> None:
+        """Stats endpoint returns proper structure for a collection."""
+        sub_id = await _seed_subcategory(client)
+        collection = await _create_collection(client, sub_id)
+
+        response = await client.get(
+            f"/api/collections/{collection['id']}/stats"
+        )
+        assert response.status_code == 200
+        body = response.json()
+        assert "total_items" in body
+        assert "different_categories_count" in body
+        assert "complete_items" in body
+        assert "graded_items" in body
+
+    async def test_get_collection_stats_nonexistent_returns_404(
+        self, client: AsyncClient,
+    ) -> None:
+        """Stats endpoint returns 404 for nonexistent collection."""
+        response = await client.get(
+            "/api/collections/nonexistent-id/stats"
+        )
+        assert response.status_code == 404
+
+    async def test_get_collection_stats_empty_collection(
+        self, client: AsyncClient,
+    ) -> None:
+        """Stats for empty collection return zeros and nulls."""
+        sub_id = await _seed_subcategory(client)
+        collection = await _create_collection(client, sub_id)
+
+        response = await client.get(
+            f"/api/collections/{collection['id']}/stats"
+        )
+        assert response.status_code == 200
+        body = response.json()
+        assert body["total_items"] == 0
+        assert body["different_categories_count"] == 0
+        assert body["complete_items"] == 0
+        assert body["graded_items"] == 0
+
+
+@pytest.mark.asyncio
+class TestCollectionItemsGrouped:
+    async def test_get_items_grouped_returns_200(
+        self, client: AsyncClient,
+    ) -> None:
+        """Grouped items endpoint returns proper structure."""
+        sub_id = await _seed_subcategory(client)
+        collection = await _create_collection(client, sub_id)
+
+        response = await client.get(
+            f"/api/collections/{collection['id']}/items/grouped"
+        )
+        assert response.status_code == 200
+        assert isinstance(response.json(), list)
+
+    async def test_get_items_grouped_nonexistent_returns_404(
+        self, client: AsyncClient,
+    ) -> None:
+        """Grouped items endpoint returns 404 for nonexistent collection."""
+        response = await client.get(
+            "/api/collections/nonexistent-id/items/grouped"
+        )
+        assert response.status_code == 404
+
+    async def test_get_items_grouped_empty_collection(
+        self, client: AsyncClient,
+    ) -> None:
+        """Grouped items for empty collection return empty list."""
+        sub_id = await _seed_subcategory(client)
+        collection = await _create_collection(client, sub_id)
+
+        response = await client.get(
+            f"/api/collections/{collection['id']}/items/grouped"
+        )
+        assert response.status_code == 200
+        assert response.json() == []
+
+
+@pytest.mark.asyncio
+class TestCreateMultiCategoryCollection:
+    async def test_create_multi_category_without_restriction_returns_201(
+        self, client: AsyncClient,
+    ) -> None:
+        """multi_category collection does not require sub-category restriction."""
+        response = await client.post(
+            "/api/collections",
+            json={
+                "name": "Multi Collection",
+                "collection_type": "multi_category",
+            },
+        )
+        assert response.status_code == 201
+        body = response.json()
+        assert body["collection_type"] == "multi_category"
+        assert body["restricted_to_sub_category_id"] is None
+
+    async def test_create_mixed_without_restriction_returns_201(
+        self, client: AsyncClient,
+    ) -> None:
+        """mixed collection does not require sub-category restriction."""
+        response = await client.post(
+            "/api/collections",
+            json={
+                "name": "Mixed Collection",
+                "collection_type": "mixed",
+            },
+        )
+        assert response.status_code == 201
+        body = response.json()
+        assert body["collection_type"] == "mixed"
+
+    async def test_create_single_category_without_restriction_returns_422(
+        self, client: AsyncClient,
+    ) -> None:
+        """single_category collection requires sub-category restriction."""
+        response = await client.post(
+            "/api/collections",
+            json={
+                "name": "Single Collection",
+                "collection_type": "single_category",
+            },
+        )
+        assert response.status_code == 422

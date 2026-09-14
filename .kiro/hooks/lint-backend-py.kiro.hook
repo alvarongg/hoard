@@ -11,6 +11,6 @@
   },
   "then": {
     "type": "runCommand",
-    "command": "cd backend && python -m ruff check ${file} --no-fix"
+    "command": "bash .kiro/scripts/lint-python.sh"
   }
 }

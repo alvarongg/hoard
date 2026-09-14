@@ -2,6 +2,8 @@ import { fetchApi, toSnakeCase } from "./api";
 import type {
   Collection,
   CollectionCreate,
+  CollectionItemGroup,
+  CollectionStats,
   CollectionUpdate,
 } from "../types/collection";
 
@@ -26,4 +28,10 @@ export const collectionsApi = {
 
   delete: (id: string): Promise<void> =>
     fetchApi<void>(`/collections/${id}`, { method: "DELETE" }),
+
+  stats: (id: string): Promise<CollectionStats> =>
+    fetchApi<CollectionStats>(`/collections/${id}/stats`),
+
+  itemsGrouped: (id: string): Promise<CollectionItemGroup[]> =>
+    fetchApi<CollectionItemGroup[]>(`/collections/${id}/items/grouped`),
 };

@@ -1,0 +1,791 @@
+{
+  "pbtResults": {
+    "3.3 Escribir property test: Cancelar preserva estado del formulario padre": {
+      "status": "passed",
+      "lastRunTimestamp": 1789322355746
+    },
+    "6.3 Escribir property test: Completitud de traducciones i18n": {
+      "status": "passed",
+      "lastRunTimestamp": 1789322800587
+    },
+    "9.1 Escribir property test: Validación de título determina éxito de creación": {
+      "status": "passed",
+      "lastRunTimestamp": 1789323475543
+    },
+    "9.2 Escribir property test: Catálogo inexistente rechaza creación": {
+      "status": "passed",
+      "lastRunTimestamp": 1789323476074
+    },
+    "12.4 Escribir property test: Consistencia de BatchImportResult": {
+      "status": "passed",
+      "lastRunTimestamp": 1789324938748
+    }
+  },
+  "executionHistory": {
+    "1.1 Agregar interface `CatalogItemCreate` en `frontend/src/types/item.ts`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456048
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321465644
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321637879
+      }
+    ],
+    "1.2 Agregar método `createItem` en `frontend/src/services/catalogsApi.ts`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456104
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321652043
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321707295
+      }
+    ],
+    "1.3 Escribir unit tests para `catalogsApi.createItem` en `frontend/src/services/catalogsApi.test.ts`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456195
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321712350
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321784956
+      }
+    ],
+    "2.1 Crear `frontend/src/hooks/useCreateCatalogItem.ts`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456238
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321790001
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321829482
+      }
+    ],
+    "2.2 Escribir unit tests para `useCreateCatalogItem` en `frontend/src/hooks/useCreateCatalogItem.test.ts`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456286
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321833228
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321909888
+      }
+    ],
+    "3.1 Crear `frontend/src/components/items/InlineCatalogItemForm.tsx`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456359
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321913722
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322025671
+      }
+    ],
+    "3.2 Escribir unit tests para `InlineCatalogItemForm` en `frontend/src/components/items/InlineCatalogItemForm.test.tsx`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456403
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322029757
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322200312
+      }
+    ],
+    "3.3 Escribir property test: Cancelar preserva estado del formulario padre": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456445
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322205573
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322311522
+      }
+    ],
+    "4. Checkpoint - Verificar componente inline y hook": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456493
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322316161
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322369861
+      }
+    ],
+    "5.1 Modificar `frontend/src/components/items/ItemForm.tsx`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456544
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322375677
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322503801
+      }
+    ],
+    "5.2 Actualizar tests de `ItemForm` en `frontend/src/components/items/ItemForm.test.tsx`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456589
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322507617
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322641169
+      }
+    ],
+    "6.1 Agregar claves de traducción en `frontend/public/locales/es/translation.json`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456635
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322645907
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322728948
+      }
+    ],
+    "6.2 Agregar claves de traducción en `frontend/public/locales/en/translation.json`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456677
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322732782
+      }
+    ],
+    "6.3 Escribir property test: Completitud de traducciones i18n": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456721
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322736858
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322835795
+      }
+    ],
+    "7. Checkpoint - Verificar integración completa del formulario inline": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456764
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322839775
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322923724
+      }
+    ],
+    "8.1 Modificar `CollectionDetailPage` para pasar `catalogId` a `ItemForm`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456803
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322928023
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323097018
+      }
+    ],
+    "8.2 Actualizar tests de `CollectionDetailPage` para verificar que `catalogId` se pasa correctamente": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456845
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323109341
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323316793
+      }
+    ],
+    "9.1 Escribir property test: Validación de título determina éxito de creación": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456889
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323321587
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323498633
+      }
+    ],
+    "9.2 Escribir property test: Catálogo inexistente rechaza creación": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321456960
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323502625
+      }
+    ],
+    "10. Checkpoint - Verificar integración inline completa": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457005
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323508300
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323646732
+      }
+    ],
+    "11.1 Modificar `CatalogService.create_item` en `backend/api/services/catalog_service.py`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457062
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323655334
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323717795
+      }
+    ],
+    "11.2 Escribir tests para incremento de `total_items` en `backend/tests/unit/test_services/test_catalog_service.py`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457103
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323721976
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323790452
+      }
+    ],
+    "12.1 Crear `backend/api/services/csv_import_service.py`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457146
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323795174
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324132967
+      }
+    ],
+    "12.2 Crear schemas en `backend/api/schemas/csv_import.py`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457186
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324136916
+      }
+    ],
+    "12.3 Escribir unit tests para `CsvImportService` en `backend/tests/unit/test_services/test_csv_import_service.py`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457231
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324141029
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324300697
+      }
+    ],
+    "12.4 Escribir property test: Consistencia de BatchImportResult": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457272
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324304571
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324588496
+      }
+    ],
+    "13.1 Agregar endpoint en `backend/api/routes/catalogs.py`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457311
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324593469
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324730939
+      }
+    ],
+    "13.2 Agregar dependency `get_csv_import_service` en `backend/api/dependencies.py`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457356
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324735153
+      }
+    ],
+    "13.3 Escribir integration tests para endpoint CSV en `backend/tests/integration/test_routes/test_catalog_csv_import.py`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457403
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324739387
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324859402
+      }
+    ],
+    "14. Checkpoint - Verificar backend CSV import completo": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457445
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324863549
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324953319
+      }
+    ],
+    "15.1 Agregar método `importCsv` en `frontend/src/services/catalogsApi.ts`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457488
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324960867
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325273551
+      }
+    ],
+    "15.2 Agregar tipos `BatchImportError` y `BatchImportResult` en `frontend/src/types/catalog.ts`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457531
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325277908
+      }
+    ],
+    "15.3 Crear hook `useCsvImport` en `frontend/src/hooks/useCsvImport.ts`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457578
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325282063
+      }
+    ],
+    "15.4 Crear componente `CsvUploadForm` en `frontend/src/components/catalogs/CsvUploadForm.tsx`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457622
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325286325
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325382236
+      }
+    ],
+    "15.5 Crear página `CatalogManagementPage` en `frontend/src/pages/CatalogManagementPage.tsx`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457677
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325386683
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325556777
+      }
+    ],
+    "15.6 Escribir unit tests para `CsvUploadForm` en `frontend/src/components/catalogs/CsvUploadForm.test.tsx`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457720
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325561117
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325739491
+      }
+    ],
+    "15.7 Escribir unit tests para `CatalogManagementPage` en `frontend/src/pages/CatalogManagementPage.test.tsx`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457763
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325743766
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325890557
+      }
+    ],
+    "16.1 Agregar claves de traducción en `frontend/public/locales/es/translation.json`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457811
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325895572
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789326024276
+      }
+    ],
+    "16.2 Agregar claves de traducción en `frontend/public/locales/en/translation.json`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457856
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789326028416
+      }
+    ],
+    "17.1 Agregar ruta `/catalogs` en el router de la aplicación": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457898
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789326032807
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789326224670
+      }
+    ],
+    "17.2 Agregar enlace de navegación en el menú/sidebar": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457944
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789326228892
+      }
+    ],
+    "18. Final checkpoint - Verificar todos los tests y la integración completa": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321457986
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789326233213
+      },
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789326439007
+      }
+    ],
+    "1. Agregar tipo `CatalogItemCreate` y método `createItem` en la capa de servicios frontend": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321785005
+      }
+    ],
+    "2. Crear hook `useCreateCatalogItem`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789321909932
+      }
+    ],
+    "3. Crear componente `InlineCatalogItemForm`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322311556
+      }
+    ],
+    "5. Integrar `InlineCatalogItemForm` en `ItemForm`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322641269
+      }
+    ],
+    "6. Agregar traducciones i18n para el formulario inline": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789322835849
+      }
+    ],
+    "8. Actualizar páginas que usan `ItemForm` para pasar `catalogId`": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323316850
+      }
+    ],
+    "9. Backend - Escribir property tests para validación de creación de catalog items": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323502692
+      }
+    ],
+    "11. Backend - Incrementar `total_items` al crear CatalogItem": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789323790497
+      }
+    ],
+    "12. Backend - Crear servicio de importación CSV": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324588546
+      }
+    ],
+    "13. Backend - Crear endpoint de importación CSV": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789324859465
+      }
+    ],
+    "15. Frontend - Crear página de gestión de catálogos (Catalog Management Page)": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789325890647
+      }
+    ],
+    "16. Agregar traducciones i18n para gestión de catálogos y CSV import": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789326028491
+      }
+    ],
+    "17. Agregar ruta de navegación para Catalog Management Page": [
+      {
+        "executionId": "e6bfbc94-36be-409c-9965-be05a39cbc89",
+        "chatSessionId": "sess_4d0e65c3-849f-4f6e-a233-9430fe969a6c",
+        "timestamp": 1789326228974
+      }
+    ]
+  }
+}

@@ -1,0 +1,2014 @@
+{
+  "pbtResults": {
+    "5.4 Escribir property test de `transaction_total`": {
+      "status": "passed",
+      "lastRunTimestamp": 1789333801962
+    },
+    "5.5 Escribir property test de `roi_percentage`": {
+      "status": "passed",
+      "lastRunTimestamp": 1789333874323
+    },
+    "10.7 Escribir property test de la transición de adquisición": {
+      "status": "passed",
+      "lastRunTimestamp": 1789344359775
+    },
+    "10.8 Escribir property test de los agregados de precio": {
+      "status": "passed",
+      "lastRunTimestamp": 1789344360481
+    }
+  },
+  "executionHistory": {
+    "1.1 Agregar dependencias backend en `backend/requirements.txt` y `backend/requirements-dev.txt`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330563340
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330611976
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330933321
+      }
+    ],
+    "1.2 Configurar la marca `postgres` opt-in en `backend/pyproject.toml`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330563492
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330614343
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330934208
+      }
+    ],
+    "1.3 Agregar `SEARCH_SIMILARITY_THRESHOLD` en `backend/core/config.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330563599
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330615638
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330935050
+      }
+    ],
+    "1.4 Agregar `postgresql-client` en `backend/Dockerfile`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330563694
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330616462
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330935989
+      }
+    ],
+    "1.5 Agregar dependencias frontend en `frontend/package.json`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330563797
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330617206
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330936547
+      }
+    ],
+    "1.6 Configurar umbrales iniciales de coverage": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330563900
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330963489
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331123487
+      }
+    ],
+    "2.1 Crear `backend/api/models/category_field_schema.py` con el modelo `CategoryFieldSchema`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564017
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331138513
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331834778
+      }
+    ],
+    "2.2 Crear `backend/api/models/price_history.py` con el modelo `CatalogPriceHistory`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564131
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331139367
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331835960
+      }
+    ],
+    "2.3 Crear `backend/api/models/transaction.py` con el modelo `ItemTransaction`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564224
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331140162
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331831648
+      }
+    ],
+    "2.4 Agregar el modelo `ItemAccessory` y la columna `quantity_available` en `backend/api/models/accessory.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564323
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331141241
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331837190
+      }
+    ],
+    "2.5 Escribir unit tests de los modelos nuevos en `backend/tests/unit/test_models/test_new_models.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564417
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332759175
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333696016
+      }
+    ],
+    "3.1 Agregar relaciones en `backend/api/models/catalog.py` y `backend/api/models/collection.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564516
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332767065
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333694796
+      }
+    ],
+    "3.2 Agregar relaciones en `backend/api/models/category.py`, `supplier.py`, `wishlist.py` y `standard_component.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564616
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332768977
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333692972
+      }
+    ],
+    "3.3 Escribir unit tests de relaciones en `backend/tests/unit/test_models/test_relationships.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564716
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334237248
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334714811
+      }
+    ],
+    "4.1 Crear `backend/alembic/versions/002_app_settings.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564811
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331141877
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331833565
+      }
+    ],
+    "4.2 Crear `backend/api/models/app_setting.py` con el modelo `AppSetting`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330564924
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332770206
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333699670
+      }
+    ],
+    "4.3 Escribir tests de la migración y del modelo en `backend/tests/unit/test_models/test_app_setting.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330565017
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334240348
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334717245
+      }
+    ],
+    "5.1 Crear `backend/utils/computations.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330565118
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331905519
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332569492
+      }
+    ],
+    "5.2 Crear `backend/core/dialect.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330565222
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331906775
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332567571
+      }
+    ],
+    "5.3 Escribir unit tests en `backend/tests/unit/test_utils/test_computations.py` y `backend/tests/unit/test_core/test_dialect.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330565314
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332771480
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333697201
+      }
+    ],
+    "5.4 Escribir property test de `transaction_total`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330565497
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333725435
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334183148
+      }
+    ],
+    "5.5 Escribir property test de `roi_percentage`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330565598
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333727320
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334185006
+      }
+    ],
+    "6.1 Crear `frontend/src/components/ui/LiveRegion.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330565697
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331907942
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332570748
+      }
+    ],
+    "6.2 Crear `frontend/src/components/ui/Badge.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330565805
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331903962
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332571955
+      }
+    ],
+    "6.3 Crear `frontend/src/components/ui/Table.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330565903
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331909174
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332573150
+      }
+    ],
+    "6.4 Crear `frontend/src/components/ui/Tooltip.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566006
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789332645733
+      }
+    ],
+    "6.5 Crear `frontend/src/components/ui/SkipLink.tsx` e integrarlo en `AppLayout`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566107
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333728570
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334186195
+      }
+    ],
+    "6.6 Crear `frontend/src/hooks/useReducedMotion.ts` y `frontend/src/hooks/useAnnouncement.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566205
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333729756
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334188608
+      }
+    ],
+    "6.7 Escribir tests de los componentes transversales": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566303
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334239147
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334711546
+      }
+    ],
+    "6.8 Agregar claves i18n de los componentes transversales en `es` y `en`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566397
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334241590
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334713624
+      }
+    ],
+    "7. Checkpoint - Cimientos del Bloque 0 completos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566491
+      }
+    ],
+    "8.1 Crear `backend/api/schemas/supplier.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566588
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334242806
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334716060
+      }
+    ],
+    "8.2 Crear `backend/api/services/supplier_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566688
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334780606
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789335002321
+      }
+    ],
+    "8.3 Agregar `get_supplier_service` en `backend/api/dependencies.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566784
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789335041956
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789335213435
+      }
+    ],
+    "8.4 Crear `backend/api/routes/suppliers.py` y registrar el router en `backend/main.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566881
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789335267448
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789336268240
+      }
+    ],
+    "8.5 Escribir unit tests del service en `backend/tests/unit/test_services/test_supplier_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330566981
+      }
+    ],
+    "8.6 Escribir integration tests en `backend/tests/integration/test_routes/test_suppliers.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330567077
+      }
+    ],
+    "9.1 Crear `frontend/src/types/supplier.ts` y `frontend/src/services/suppliersApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330567177
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334782515
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789335004241
+      }
+    ],
+    "9.2 Crear `frontend/src/hooks/useSuppliers.ts`, `useSupplier.ts` y `useSupplierPurchases.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330567331
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789335043819
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789335215229
+      }
+    ],
+    "9.3 Crear los componentes de suppliers en `frontend/src/components/suppliers/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330567429
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789335264273
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789336266856
+      }
+    ],
+    "9.4 Crear `frontend/src/pages/SuppliersPage.tsx` y registrar la ruta y la navegación": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330567522
+      }
+    ],
+    "9.5 Escribir tests de hooks y componentes de suppliers": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330567620
+      }
+    ],
+    "9.6 Agregar claves i18n de suppliers en `es` y `en`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330567714
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789335266284
+      },
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789336269480
+      }
+    ],
+    "10.1 Crear `backend/api/schemas/wishlist.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330567827
+      }
+    ],
+    "10.2 Crear `backend/api/services/wishlist_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330567919
+      }
+    ],
+    "10.3 Agregar `get_wishlist_service` en `backend/api/dependencies.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568013
+      }
+    ],
+    "10.4 Crear `backend/api/routes/wishlist.py` y `backend/api/routes/sightings.py`, y registrar los routers en `backend/main.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568121
+      }
+    ],
+    "10.5 Escribir unit tests del service en `backend/tests/unit/test_services/test_wishlist_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568220
+      }
+    ],
+    "10.6 Escribir integration tests en `backend/tests/integration/test_routes/test_wishlist.py` y `test_sightings.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568313
+      }
+    ],
+    "10.7 Escribir property test de la transición de adquisición": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568414
+      }
+    ],
+    "10.8 Escribir property test de los agregados de precio": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568512
+      }
+    ],
+    "11.1 Crear `frontend/src/types/wishlist.ts` y `frontend/src/services/wishlistApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568604
+      }
+    ],
+    "11.2 Crear `frontend/src/hooks/useWishlist.ts`, `useWishlistItem.ts` y `useSightings.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568703
+      }
+    ],
+    "11.3 Crear los componentes de wishlist en `frontend/src/components/wishlist/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568805
+      }
+    ],
+    "11.4 Crear `frontend/src/pages/WishlistPage.tsx` y `frontend/src/pages/WishlistDetailPage.tsx`, con rutas y navegación": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330568898
+      }
+    ],
+    "11.5 Escribir tests de hooks y componentes de wishlist": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569051
+      }
+    ],
+    "11.6 Agregar claves i18n de wishlist y sightings en `es` y `en`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569163
+      }
+    ],
+    "12. Checkpoint - Suppliers y wishlist completos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569256
+      }
+    ],
+    "13.1 Crear `backend/api/schemas/item_component.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569353
+      }
+    ],
+    "13.2 Crear `backend/api/services/item_component_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569460
+      }
+    ],
+    "13.3 Agregar `get_item_component_service` en `backend/api/dependencies.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569563
+      }
+    ],
+    "13.4 Crear `backend/api/routes/item_components.py` y registrar el router en `backend/main.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569656
+      }
+    ],
+    "13.5 Escribir unit tests del service en `backend/tests/unit/test_services/test_item_component_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569748
+      }
+    ],
+    "13.6 Escribir integration tests en `backend/tests/integration/test_routes/test_item_components.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569848
+      }
+    ],
+    "13.7 Escribir property test de la completitud del item": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330569944
+      }
+    ],
+    "14.1 Crear `frontend/src/types/itemComponent.ts` y `frontend/src/services/itemComponentsApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570036
+      }
+    ],
+    "14.2 Crear `frontend/src/hooks/useItemComponents.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570130
+      }
+    ],
+    "14.3 Crear los componentes en `frontend/src/components/components/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570235
+      }
+    ],
+    "14.4 Escribir tests de hook y componentes de item components": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570330
+      }
+    ],
+    "14.5 Agregar claves i18n de componentes en `es` y `en`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570427
+      }
+    ],
+    "15.1 Extender `backend/api/schemas/collection.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570523
+      }
+    ],
+    "15.2 Extender `backend/api/services/collection_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570621
+      }
+    ],
+    "15.3 Crear `backend/api/services/collection_stats_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570777
+      }
+    ],
+    "15.4 Agregar `get_collection_stats_service` en `backend/api/dependencies.py` y los endpoints en `backend/api/routes/collections.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570878
+      }
+    ],
+    "15.5 Ampliar unit tests en `backend/tests/unit/test_services/test_collection_service.py` y crear `test_collection_stats_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330570973
+      }
+    ],
+    "15.6 Ampliar integration tests en `backend/tests/integration/test_routes/test_collections.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571077
+      }
+    ],
+    "16.1 Extender `frontend/src/types/collection.ts` y `frontend/src/services/collectionsApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571172
+      }
+    ],
+    "16.2 Crear `frontend/src/hooks/useCollectionStats.ts` y `frontend/src/hooks/useCollectionItemsGrouped.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571270
+      }
+    ],
+    "16.3 Crear `frontend/src/components/collections/CollectionStatsPanel.tsx` y `GroupedItemList.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571369
+      }
+    ],
+    "16.4 Extender `frontend/src/components/collections/CollectionForm.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571465
+      }
+    ],
+    "16.5 Integrar en `frontend/src/pages/CollectionDetailPage.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571562
+      }
+    ],
+    "16.6 Escribir tests de hooks, componentes y página de colecciones": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571654
+      }
+    ],
+    "16.7 Agregar claves i18n de colecciones multi-category en `es` y `en`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571749
+      }
+    ],
+    "17. Checkpoint - Componentes y colecciones multi-category completos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571843
+      }
+    ],
+    "18.1 Crear `backend/api/schemas/search.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330571936
+      }
+    ],
+    "18.2 Crear `backend/api/services/search_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330572030
+      }
+    ],
+    "18.3 Agregar `get_search_service` en `backend/api/dependencies.py` y crear `backend/api/routes/search.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330572166
+      }
+    ],
+    "18.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_search_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330572268
+      }
+    ],
+    "18.5 Escribir tests marcados `@pytest.mark.postgres` en `backend/tests/integration/test_postgres/test_search_postgres.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330572361
+      }
+    ],
+    "18.6 Escribir integration tests en `backend/tests/integration/test_routes/test_search.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330572528
+      }
+    ],
+    "18.7 Escribir property test del subconjunto filtrado": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330572615
+      }
+    ],
+    "19.1 Crear `frontend/src/types/search.ts` y `frontend/src/services/searchApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330572706
+      }
+    ],
+    "19.2 Crear `frontend/src/hooks/useDebouncedValue.ts` y `frontend/src/hooks/useSearch.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330572810
+      }
+    ],
+    "19.3 Crear los componentes en `frontend/src/components/search/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330572905
+      }
+    ],
+    "19.4 Crear `frontend/src/pages/SearchPage.tsx` con ruta y navegación": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573004
+      }
+    ],
+    "19.5 Escribir tests de hooks, componentes y página de búsqueda": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573103
+      }
+    ],
+    "19.6 Agregar claves i18n de búsqueda en `es` y `en`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573198
+      }
+    ],
+    "20. Checkpoint - Búsqueda avanzada completa": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573295
+      }
+    ],
+    "21.1 Configurar `darkMode: \"class\"` y tokens semánticos en `frontend/tailwind.config.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573393
+      }
+    ],
+    "21.2 Crear `frontend/src/theme/storage.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573488
+      }
+    ],
+    "21.3 Crear `frontend/src/theme/ThemeProvider.tsx` y `frontend/src/theme/useTheme.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573580
+      }
+    ],
+    "21.4 Agregar el script inline de tema en `frontend/index.html`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573686
+      }
+    ],
+    "21.5 Crear `frontend/src/components/ui/ThemeToggle.tsx` e integrarlo en `AppLayout`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573780
+      }
+    ],
+    "21.6 Escribir tests de tema": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573872
+      }
+    ],
+    "21.7 Crear la suite de contraste en ambos temas en `frontend/tests/accessibility/theme.a11y.test.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330573970
+      }
+    ],
+    "21.8 Agregar claves i18n del selector de tema en `es` y `en`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330574121
+      }
+    ],
+    "22.1 Extender `frontend/src/i18n/config.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330574215
+      }
+    ],
+    "22.2 Crear los tres archivos de traducción portando todas las claves existentes": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330574315
+      }
+    ],
+    "22.3 Actualizar `frontend/src/components/layout/LanguageSelector.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330574417
+      }
+    ],
+    "22.4 Crear el chequeo de paridad de claves `frontend/scripts/check-i18n-keys.ts` y el script `lint:i18n`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330574515
+      }
+    ],
+    "22.5 Actualizar tests de i18n": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330574619
+      }
+    ],
+    "22.6 Escribir property test de paridad de claves i18n": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330574724
+      }
+    ],
+    "23. Checkpoint - Cierre del Bloque 1 (Fase 2 Core) y subida de coverage a 80%": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330574829
+      }
+    ],
+    "24.1 Crear `backend/api/schemas/price_history.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330574936
+      }
+    ],
+    "24.2 Crear `backend/api/services/price_history_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330575038
+      }
+    ],
+    "24.3 Agregar `get_price_history_service` en `backend/api/dependencies.py` y crear `backend/api/routes/price_history.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330575143
+      }
+    ],
+    "24.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_price_history_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330575257
+      }
+    ],
+    "24.5 Escribir integration tests en `backend/tests/integration/test_routes/test_price_history.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330575364
+      }
+    ],
+    "25.1 Crear `frontend/src/types/priceHistory.ts` y `frontend/src/services/priceHistoryApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330575460
+      }
+    ],
+    "25.2 Crear `frontend/src/hooks/usePriceHistory.ts` y `frontend/src/hooks/useRefreshMarketValue.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330575556
+      }
+    ],
+    "25.3 Crear los componentes en `frontend/src/components/priceHistory/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330575705
+      }
+    ],
+    "25.4 Escribir tests de hooks y componentes de price history": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330575827
+      }
+    ],
+    "25.5 Agregar claves i18n de price history en los 5 idiomas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330575924
+      }
+    ],
+    "26.1 Crear `backend/api/schemas/transaction.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576030
+      }
+    ],
+    "26.2 Crear `backend/api/services/transaction_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576131
+      }
+    ],
+    "26.3 Agregar `get_transaction_service` en `backend/api/dependencies.py` y crear `backend/api/routes/transactions.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576224
+      }
+    ],
+    "26.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_transaction_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576323
+      }
+    ],
+    "26.5 Escribir el test de paridad de dialecto y el test `@pytest.mark.postgres` de `total_amount`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576420
+      }
+    ],
+    "26.6 Escribir integration tests en `backend/tests/integration/test_routes/test_transactions.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576523
+      }
+    ],
+    "27.1 Crear `frontend/src/types/transaction.ts` y `frontend/src/services/transactionsApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576619
+      }
+    ],
+    "27.2 Crear `frontend/src/hooks/useTransactions.ts` y `frontend/src/hooks/useItemInvestment.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576716
+      }
+    ],
+    "27.3 Crear los componentes en `frontend/src/components/transactions/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576820
+      }
+    ],
+    "27.4 Escribir tests de hooks y componentes de transacciones": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330576920
+      }
+    ],
+    "27.5 Agregar claves i18n de transacciones en los 5 idiomas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577011
+      }
+    ],
+    "28. Checkpoint - Price history y transacciones completos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577112
+      }
+    ],
+    "29.1 Crear `backend/api/schemas/stats.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577213
+      }
+    ],
+    "29.2 Crear `backend/api/services/stats_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577395
+      }
+    ],
+    "29.3 Agregar `get_stats_service` en `backend/api/dependencies.py` y crear `backend/api/routes/stats.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577496
+      }
+    ],
+    "29.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_stats_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577588
+      }
+    ],
+    "29.5 Escribir integration tests en `backend/tests/integration/test_routes/test_stats.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577690
+      }
+    ],
+    "30.1 Crear `frontend/src/types/stats.ts` y `frontend/src/services/statsApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577786
+      }
+    ],
+    "30.2 Crear `frontend/src/hooks/useStats.ts` con un hook por endpoint": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577888
+      }
+    ],
+    "30.3 Crear los componentes en `frontend/src/components/stats/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330577988
+      }
+    ],
+    "30.4 Crear `frontend/src/pages/StatsPage.tsx` con ruta y navegación": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330578082
+      }
+    ],
+    "30.5 Escribir tests de hooks, componentes y página de estadísticas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330578179
+      }
+    ],
+    "30.6 Agregar claves i18n de estadísticas en los 5 idiomas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330578299
+      }
+    ],
+    "31.1 Crear `frontend/src/types/chart.ts` y `frontend/src/components/charts/ChartDataTable.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330578422
+      }
+    ],
+    "31.2 Crear `frontend/src/components/charts/ChartContainer.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330578531
+      }
+    ],
+    "31.3 Crear los 4 gráficos en `frontend/src/components/charts/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330578636
+      }
+    ],
+    "31.4 Integrar la sección de gráficos en `frontend/src/pages/StatsPage.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330578736
+      }
+    ],
+    "31.5 Escribir tests de gráficos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330578830
+      }
+    ],
+    "31.6 Agregar claves i18n de gráficos en los 5 idiomas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330578981
+      }
+    ],
+    "32. Checkpoint - Estadísticas y gráficos completos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579077
+      }
+    ],
+    "33.1 Crear `backend/api/schemas/accessory.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579172
+      }
+    ],
+    "33.2 Crear `backend/api/services/accessory_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579277
+      }
+    ],
+    "33.3 Agregar `get_accessory_service` en `backend/api/dependencies.py` y crear `backend/api/routes/accessories.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579381
+      }
+    ],
+    "33.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_accessory_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579481
+      }
+    ],
+    "33.5 Escribir el test `@pytest.mark.postgres` del trigger y la columna GENERATED": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579579
+      }
+    ],
+    "33.6 Escribir integration tests en `backend/tests/integration/test_routes/test_accessories.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579677
+      }
+    ],
+    "33.7 Escribir property test del stock disponible": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579790
+      }
+    ],
+    "34.1 Crear `frontend/src/types/accessory.ts` y `frontend/src/services/accessoriesApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579887
+      }
+    ],
+    "34.2 Crear `frontend/src/hooks/useAccessories.ts` y `frontend/src/hooks/useItemAccessories.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330579990
+      }
+    ],
+    "34.3 Crear los componentes en `frontend/src/components/accessories/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330580094
+      }
+    ],
+    "34.4 Crear `frontend/src/pages/AccessoriesPage.tsx` con ruta y navegación": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330580195
+      }
+    ],
+    "34.5 Escribir tests de hooks, componentes y página de accesorios": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330580294
+      }
+    ],
+    "34.6 Agregar claves i18n de accesorios en los 5 idiomas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330580397
+      }
+    ],
+    "35.1 Crear `backend/api/schemas/export.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330580569
+      }
+    ],
+    "35.2 Crear `backend/api/services/export_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330580667
+      }
+    ],
+    "35.3 Agregar `get_export_service` en `backend/api/dependencies.py` y crear `backend/api/routes/export.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330580764
+      }
+    ],
+    "35.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_export_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330580865
+      }
+    ],
+    "35.5 Escribir integration tests en `backend/tests/integration/test_routes/test_export.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330580963
+      }
+    ],
+    "36.1 Crear `backend/api/schemas/import_data.py` y ampliar `backend/api/schemas/csv_import.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330581062
+      }
+    ],
+    "36.2 Crear `backend/api/services/json_import_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330581163
+      }
+    ],
+    "36.3 Agregar `get_json_import_service` en `backend/api/dependencies.py` y crear `backend/api/routes/import_data.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330581256
+      }
+    ],
+    "36.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_json_import_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330581348
+      }
+    ],
+    "36.5 Escribir integration tests en `backend/tests/integration/test_routes/test_import.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330581444
+      }
+    ],
+    "36.6 Escribir property test de idempotencia del import": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330581539
+      }
+    ],
+    "36.7 Escribir property test del round-trip export → import": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330581648
+      }
+    ],
+    "37.1 Crear `frontend/src/types/transfer.ts`, `frontend/src/services/exportApi.ts` y `frontend/src/services/importApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330581747
+      }
+    ],
+    "37.2 Crear `frontend/src/hooks/useExport.ts` y `frontend/src/hooks/useJsonImport.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330581854
+      }
+    ],
+    "37.3 Crear los componentes en `frontend/src/components/transfer/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582012
+      }
+    ],
+    "37.4 Crear `frontend/src/pages/ExportPage.tsx` y `frontend/src/pages/ImportPage.tsx` con rutas y navegación": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582113
+      }
+    ],
+    "37.5 Escribir tests de hooks, componentes y páginas de transferencia": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582228
+      }
+    ],
+    "37.6 Agregar claves i18n de export e import en los 5 idiomas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582339
+      }
+    ],
+    "38. Checkpoint - Accesorios, export e import completos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582440
+      }
+    ],
+    "39.1 Crear `backend/api/schemas/backup.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582541
+      }
+    ],
+    "39.2 Agregar `ToolUnavailableError` y su handler": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582644
+      }
+    ],
+    "39.3 Crear `backend/api/services/backup_service.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582746
+      }
+    ],
+    "39.4 Crear `backend/core/scheduler.py` y arrancarlo desde el `lifespan` de `backend/main.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582852
+      }
+    ],
+    "39.5 Agregar `get_backup_service` en `backend/api/dependencies.py` y crear `backend/api/routes/backups.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330582969
+      }
+    ],
+    "39.6 Escribir unit tests en `backend/tests/unit/test_services/test_backup_service.py` y `backend/tests/unit/test_core/test_scheduler.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330583078
+      }
+    ],
+    "39.7 Escribir integration tests en `backend/tests/integration/test_routes/test_backups.py`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330583180
+      }
+    ],
+    "39.8 Escribir property test de la rotación de backups": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330583288
+      }
+    ],
+    "40.1 Crear `frontend/src/types/backup.ts` y `frontend/src/services/backupsApi.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330583448
+      }
+    ],
+    "40.2 Crear `frontend/src/hooks/useBackups.ts` y `frontend/src/hooks/useBackupConfig.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330583560
+      }
+    ],
+    "40.3 Crear los componentes en `frontend/src/components/backups/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330583663
+      }
+    ],
+    "40.4 Crear `frontend/src/pages/BackupsPage.tsx` con ruta y navegación": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330583769
+      }
+    ],
+    "40.5 Escribir tests de hooks, componentes y página de backups": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330583873
+      }
+    ],
+    "40.6 Agregar claves i18n de backups en los 5 idiomas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330583973
+      }
+    ],
+    "41. Checkpoint - Backups y scheduler completos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330584073
+      }
+    ],
+    "42.1 Configurar `vite-plugin-pwa` en `frontend/vite.config.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330584180
+      }
+    ],
+    "42.2 Agregar los iconos de la PWA y el registro del service worker": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330584286
+      }
+    ],
+    "42.3 Escribir el test de configuración del plugin en `frontend/tests/pwa/viteConfig.test.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330584388
+      }
+    ],
+    "43.1 Crear `frontend/src/offline/types.ts` y `frontend/src/offline/queue.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330584494
+      }
+    ],
+    "43.2 Crear `frontend/src/offline/sync.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330584595
+      }
+    ],
+    "43.3 Crear el persister de React Query sobre IndexedDB": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330584699
+      }
+    ],
+    "43.4 Crear `frontend/src/hooks/useOnlineStatus.ts` y `frontend/src/hooks/useSyncQueue.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330584803
+      }
+    ],
+    "43.5 Integrar el encolado en las mutaciones sin conexión": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330584974
+      }
+    ],
+    "43.6 Crear los componentes en `frontend/src/components/offline/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330585086
+      }
+    ],
+    "43.7 Escribir tests de la cola y la sincronización": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330585194
+      }
+    ],
+    "43.8 Escribir tests de los componentes offline": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330585304
+      }
+    ],
+    "43.9 Escribir property test del orden FIFO de la cola": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330585404
+      }
+    ],
+    "43.10 Escribir el E2E de offline y agregar claves i18n en los 5 idiomas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330585522
+      }
+    ],
+    "44. Checkpoint - PWA y modo sin conexión completos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330585631
+      }
+    ],
+    "45.1 Reforzar `frontend/src/components/ui/Modal.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330585739
+      }
+    ],
+    "45.2 Ajustar el layout para zoom al 200% en `frontend/src/components/layout/AppLayout.tsx` y `frontend/src/index.css`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330585837
+      }
+    ],
+    "45.3 Aplicar `useReducedMotion` y `useAnnouncement` en los flujos ya construidos": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330585938
+      }
+    ],
+    "45.4 Crear la suite de auditoría por página en `frontend/tests/accessibility/pages.a11y.test.tsx`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330586040
+      }
+    ],
+    "45.5 Crear el E2E de teclado en `frontend/tests/e2e/a11y-keyboard.spec.ts`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330586146
+      }
+    ],
+    "45.6 Crear `docs/ACCESSIBILITY.md` y enlazarlo desde el README": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330586238
+      }
+    ],
+    "46.1 Verificar y cerrar la paridad i18n de los 5 idiomas": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330586402
+      }
+    ],
+    "46.2 Verificar el modo estricto de TypeScript sin `any`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330586513
+      }
+    ],
+    "46.3 Auditar la separación de capas del backend": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330586606
+      }
+    ],
+    "46.4 Completar los E2E faltantes en `frontend/tests/e2e/`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330586715
+      }
+    ],
+    "47. Checkpoint - Cierre del Bloque 2 (Fase 3 Advanced) y subida de coverage a 85%": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330586827
+      }
+    ],
+    "48. Final checkpoint - Suite completa, auditoría y umbrales verificados": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789330586930
+      }
+    ],
+    "1. Bloque 0 - Instalar dependencias nuevas y configuración base": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789331123596
+      }
+    ],
+    "2. Bloque 0 - Crear los 4 modelos SQLAlchemy faltantes": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789333698459
+      }
+    ],
+    "5. Bloque 0 - Crear la capa de cálculo compartida y la capa de dialecto": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334187390
+      }
+    ],
+    "3. Bloque 0 - Agregar relaciones faltantes en modelos existentes": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334718436
+      }
+    ],
+    "4. Bloque 0 - Crear la migración `002_app_settings.py` y el modelo `AppSetting`": [
+      {
+        "executionId": "9212856f-b83b-4266-9d84-2fb9d4346220",
+        "chatSessionId": "sess_9f4a8176-5cc2-45d8-a218-22481d1fa692",
+        "timestamp": 1789334719682
+      }
+    ]
+  }
+}

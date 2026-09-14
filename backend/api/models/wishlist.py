@@ -84,6 +84,9 @@ class WishlistItem(UUIDMixin, TimestampMixin, Base):
     # Relationships
     collection: Mapped[Collection] = relationship()
     catalog_item: Mapped[CatalogItem] = relationship()
+    acquired_collection_item: Mapped[CollectionItem | None] = relationship(
+        foreign_keys=[acquired_collection_item_id],
+    )
     sightings: Mapped[list[WishlistSighting]] = relationship(
         back_populates="wishlist_item",
         cascade="all, delete-orphan",
@@ -158,7 +161,9 @@ class WishlistSighting(UUIDMixin, Base):
     wishlist_item: Mapped[WishlistItem] = relationship(
         back_populates="sightings",
     )
-    supplier: Mapped[Supplier | None] = relationship()
+    supplier: Mapped[Supplier | None] = relationship(
+        back_populates="sightings",
+    )
 
     def __repr__(self) -> str:
         return (

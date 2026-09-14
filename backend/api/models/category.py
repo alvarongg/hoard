@@ -52,6 +52,16 @@ class SubCategory(UUIDMixin, TimestampMixin, Base):
     main_category: Mapped[MainCategory] = relationship(
         back_populates="sub_categories",
     )
+    field_schemas: Mapped[list[CategoryFieldSchema]] = relationship(
+        back_populates="sub_category",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
+    standard_components: Mapped[list[StandardComponent]] = relationship(
+        back_populates="sub_category",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
 
     def __repr__(self) -> str:
         return f"<SubCategory(id={self.id!r}, name={self.name!r})>"

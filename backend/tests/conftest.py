@@ -1,5 +1,6 @@
 """Shared test fixtures for the H.O.A.R.D. backend test suite."""
 
+import os
 from collections.abc import AsyncGenerator
 from uuid import uuid4
 
@@ -19,6 +20,9 @@ from main import app
 # ---------------------------------------------------------------------------
 
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
+
+# PostgreSQL test database URL (opt-in via environment variable)
+HOARD_TEST_DATABASE_URL = os.environ.get("HOARD_TEST_DATABASE_URL")
 
 test_engine = create_async_engine(
     TEST_DATABASE_URL,
@@ -51,6 +55,58 @@ async def db_session() -> AsyncGenerator[AsyncSession, None]:
 
     # Dispose connections after each test
     await test_engine.dispose()
+
+
+# ---------------------------------------------------------------------------
+# Dialect fixture
+# ---------------------------------------------------------------------------
+
+
+@pytest.fixture()
+def dialect_name(db_session: AsyncSession) -> str:
+    """Return the dialect name of the current database session.
+
+    Used by tests that need to branch behavior between PostgreSQL and SQLite.
+    """
+    if db_session.bind is None:
+        return "sqlite"
+    return db_session.bind.dialect.name
+
+
+# ---------------------------------------------------------------------------
+# PostgreSQL fixtures (opt-in via HOARD_TEST_DATABASE_URL)
+# ---------------------------------------------------------------------------
+
+
+@pytest.fixture()
+async def postgres_session() -> AsyncGenerator[AsyncSession, None]:
+    """Provide a PostgreSQL session for tests that require a real database.
+
+    This fixture is opt-in and requires the HOARD_TEST_DATABASE_URL environment
+    variable to be set. Tests using this fixture must be marked with
+    @pytest.mark.postgres.
+
+    If HOARD_TEST_DATABASE_URL is not set, the test is skipped.
+    """
+    if HOARD_TEST_DATABASE_URL is None:
+        pytest.skip("HOARD_TEST_DATABASE_URL is not set")
+
+    pg_engine = create_async_engine(
+        HOARD_TEST_DATABASE_URL,
+        echo=False,
+        future=True,
+    )
+
+    PgSessionFactory = async_sessionmaker(
+        pg_engine,
+        class_=AsyncSession,
+        expire_on_commit=False,
+    )
+
+    async with PgSessionFactory() as session:
+        yield session
+
+    await pg_engine.dispose()
 
 
 # ---------------------------------------------------------------------------

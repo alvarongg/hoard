@@ -2,11 +2,18 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from sqlalchemy import Boolean, Numeric, String, Text
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.types import JSON
 
 from api.models.base import Base, TimestampMixin, UUIDMixin
+
+if TYPE_CHECKING:
+    from api.models.accessory import AccessoryStock
+    from api.models.collection import CollectionItem
+    from api.models.wishlist import WishlistSighting
 
 
 class Supplier(UUIDMixin, TimestampMixin, Base):
@@ -46,6 +53,17 @@ class Supplier(UUIDMixin, TimestampMixin, Base):
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     is_favorite: Mapped[bool] = mapped_column(Boolean, default=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+
+    # Relationships
+    collection_items: Mapped[list[CollectionItem]] = relationship(
+        back_populates="supplier",
+    )
+    sightings: Mapped[list[WishlistSighting]] = relationship(
+        back_populates="supplier",
+    )
+    accessories: Mapped[list[AccessoryStock]] = relationship(
+        back_populates="supplier",
+    )
 
     def __repr__(self) -> str:
         return f"<Supplier(id={self.id!r}, name={self.name!r})>"

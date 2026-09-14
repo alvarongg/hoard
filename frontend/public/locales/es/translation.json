@@ -1,4 +1,21 @@
 {
+  "a11y": {
+    "skipToContent": "Saltar al contenido principal",
+    "sortAscending": "{{column}}, orden ascendente, haz clic para ordenar descendente",
+    "sortDescending": "{{column}}, orden descendente, haz clic para quitar orden",
+    "sortNone": "{{column}}, sin ordenar, haz clic para ordenar ascendente",
+    "tableCaptionFallback": "Tabla de datos",
+    "closeTooltip": "Cerrar tooltip"
+  },
+  "theme": {
+    "label": "Tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "auto": "Automático"
+  },
+  "languageSelector": {
+    "label": "Selector de idioma"
+  },
   "common": {
     "loading": "Cargando...",
     "error": "Ocurrió un error",
@@ -10,13 +27,25 @@
     "confirm": "Confirmar",
     "search": "Buscar",
     "noResults": "No se encontraron resultados",
-    "retry": "Reintentar"
+    "retry": "Reintentar",
+    "view": "Ver",
+    "saving": "Guardando...",
+    "all": "Todos",
+    "clearFilters": "Limpiar filtros",
+    "yes": "Sí",
+    "no": "No",
+    "previous": "Anterior",
+    "next": "Siguiente"
   },
   "navigation": {
     "main": "Navegación principal",
     "home": "Inicio",
     "collections": "Colecciones",
-    "catalogs": "Catálogos"
+    "catalogs": "Catálogos",
+    "catalogManagement": "Gestión de Catálogos",
+    "suppliers": "Proveedores",
+    "wishlist": "Lista de deseos",
+    "search": "Buscar"
   },
   "home": {
     "welcome": "Bienvenido a H.O.A.R.D.",
@@ -53,7 +82,37 @@
       "subCategoryRequired": "La sub-categoría es obligatoria para colecciones de categoría única",
       "mainCategory": "Categoría Principal",
       "selectMainCategory": "Selecciona categoría principal"
-    }
+    },
+    "stats": {
+      "title": "Estadísticas de la Colección",
+      "totalItems": "Total de Items",
+      "differentCategories": "Categorías",
+      "totalInvested": "Total Invertido",
+      "currentValue": "Valor Actual",
+      "valueGain": "Ganancia de Valor",
+      "roi": "ROI",
+      "roiUnavailable": "N/D",
+      "completeItems": "Items Completos",
+      "gradedItems": "Items Graduados"
+    },
+    "theme": "Tema",
+    "themeDescription": "Descripción del Tema",
+    "goalDescription": "Descripción del Objetivo",
+    "goalItemsCount": "Cantidad de Items Objetivo",
+    "displayOrder": "Orden de Visualización",
+    "isPublic": "Pública",
+    "isActive": "Activa",
+    "types": {
+      "singleCategory": "Categoría Única",
+      "multiCategory": "Multi Categoría",
+      "mixed": "Mixta"
+    },
+    "grouped": {
+      "title": "Items por Categoría",
+      "itemCount": "{{count}} items",
+      "uncategorized": "Sin Categoría"
+    },
+    "emptyFirstItem": "Aún no hay items en esta colección. Agrega tu primer item para comenzar."
   },
   "catalogs": {
     "title": "Catálogos",
@@ -63,7 +122,35 @@
     "name": "Nombre",
     "description": "Descripción",
     "items": "Items del Catálogo",
-    "search": "Buscar items..."
+    "search": "Buscar items...",
+    "management": {
+      "title": "Gestión de Catálogos",
+      "selectCatalog": "Selecciona un catálogo",
+      "noCatalogs": "Aún no hay catálogos disponibles",
+      "noItems": "Este catálogo aún no tiene items",
+      "addItem": "Agregar item",
+      "importCsv": "Importar CSV",
+      "itemCount_one": "{{count}} item",
+      "itemCount_other": "{{count}} items",
+      "pagination": "Paginación de items del catálogo",
+      "previousPage": "Página anterior",
+      "nextPage": "Página siguiente",
+      "pageStatus": "Página {{current}} de {{total}}"
+    },
+    "csv": {
+      "upload": "Importar CSV",
+      "selectFile": "Archivo CSV",
+      "importing": "Importando archivo...",
+      "importComplete": "Importación completada",
+      "createdCount_one": "{{count}} item creado",
+      "createdCount_other": "{{count}} items creados",
+      "errorCount_one": "{{count}} fila con errores",
+      "errorCount_other": "{{count}} filas con errores",
+      "errorDetail": "Fila {{row}}: {{message}}",
+      "fileTooLarge": "El archivo supera el límite de 5 MB",
+      "invalidFileType": "Solo se permiten archivos .csv",
+      "noData": "El archivo no contiene filas de datos"
+    }
   },
   "categories": {
     "title": "Categorías",
@@ -101,6 +188,27 @@
       "selectCondition": "Selecciona condición",
       "catalogItemRequired": "El item del catálogo es obligatorio",
       "conditionRequired": "La condición es obligatoria"
+    },
+    "inline": {
+      "createNew": "Crear nuevo item de catálogo",
+      "title": "Título",
+      "titleRequired": "El título es obligatorio",
+      "titleWhitespace": "El título no puede contener solo espacios",
+      "showOptional": "Mostrar campos opcionales",
+      "hideOptional": "Ocultar campos opcionales",
+      "optionalFields": "Campos opcionales",
+      "creating": "Creando item de catálogo...",
+      "createSuccess": "Item de catálogo creado correctamente",
+      "createError": "No se pudo crear el item del catálogo. Inténtalo de nuevo.",
+      "subtitle": "Subtítulo",
+      "description": "Descripción",
+      "manufacturer": "Fabricante",
+      "publisher": "Editor",
+      "developer": "Desarrollador",
+      "brand": "Marca",
+      "language": "Idioma",
+      "region": "Región",
+      "rarity": "Rareza"
     }
   },
   "images": {
@@ -115,11 +223,190 @@
     "tooLarge": "El archivo es demasiado grande. Tamaño máximo: 10MB",
     "preview": "Vista previa de imagen"
   },
+  "components": {
+    "title": "Componentes",
+    "template": {
+      "empty": "No hay componentes definidos para esta categoría"
+    },
+    "present": "{{name}} marcado como presente",
+    "absent": "{{name}} marcado como ausente",
+    "toggleComponent": "Alternar {{name}}",
+    "required": "requerido",
+    "hideDetails": "Ocultar detalles",
+    "addDetails": "Agregar detalles",
+    "condition": "Condición",
+    "conditionNotes": "Notas",
+    "complete": "Completo",
+    "incomplete": "Incompleto ({{present}}/{{required}})",
+    "requiredComponents": "Componentes Requeridos",
+    "optionalComponents": "Componentes Opcionales",
+    "completenessAnnouncement": {
+      "complete": "El artículo está ahora completo",
+      "incomplete": "El artículo está incompleto. Faltan: {{missing}}"
+    }
+  },
   "ui": {
     "loading": "Cargando",
     "close": "Cerrar",
     "emptyTitle": "Nada aquí todavía",
     "emptyDescription": "Comienza creando tu primer elemento"
+  },
+  "suppliers": {
+    "title": "Proveedores",
+    "create": "Crear Proveedor",
+    "edit": "Editar Proveedor",
+    "delete": "Eliminar Proveedor",
+    "name": "Nombre",
+    "type": "Tipo",
+    "typeOptions": {
+      "individual": "Individual",
+      "store": "Tienda",
+      "online": "Tienda Online",
+      "market": "Mercado",
+      "other": "Otro"
+    },
+    "country": "País",
+    "city": "Ciudad",
+    "stateProvince": "Provincia/Estado",
+    "address": "Dirección",
+    "postalCode": "Código Postal",
+    "website": "Sitio web",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "marketplaceUrl": "URL del mercado",
+    "notes": "Notas",
+    "active": "Activo",
+    "rating": "Valoración",
+    "favorite": "Marcar como favorito",
+    "unfavorite": "Quitar de favoritos",
+    "filters": {
+      "all": "Todos",
+      "favorites": "Solo favoritos",
+      "byType": "Por tipo",
+      "byCountry": "Por país"
+    },
+    "purchases": {
+      "title": "Compras",
+      "count_one": "{{count}} compra",
+      "count_other": "{{count}} compras",
+      "totalSpent": "Total gastado"
+    },
+    "empty": "Aún no hay proveedores",
+    "deleteBlocked": "No se puede eliminar: el proveedor tiene compras asociadas",
+    "editLabel": "Editar {{name}}",
+    "deleteLabel": "Eliminar {{name}}",
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar este proveedor?"
+  },
+  "wishlist": {
+    "title": "Lista de deseos",
+    "create": "Crear artículo deseado",
+    "edit": "Editar artículo deseado",
+    "delete": "Eliminar artículo deseado",
+    "viewDetails": "Ver detalles",
+    "backToList": "← Volver a la lista de deseos",
+    "itemTitle": "Artículo deseado #{{id}}",
+    "empty": "Aún no hay artículos en la lista de deseos",
+    "acquired": "Adquirido",
+    "inactive": "Inactivo",
+    "budget": "Presupuesto",
+    "condition": "Condición",
+    "completeness": "Completitud",
+    "mustBeComplete": "Debe estar completo",
+    "anyCompleteness": "Se acepta cualquier condición",
+    "notes": "Notas",
+    "searchNotes": "Notas de búsqueda",
+    "deleteConfirm": "¿Seguro que quieres eliminar este artículo deseado?",
+    "priority": {
+      "critical": "Crítica",
+      "high": "Alta",
+      "medium": "Media",
+      "low": "Baja",
+      "lowest": "Mínima"
+    },
+    "urgency": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta",
+      "critical": "Crítica"
+    },
+    "form": {
+      "priority": "Prioridad",
+      "urgency": "Urgencia",
+      "maxPrice": "Precio máximo",
+      "currency": "Moneda",
+      "desiredCondition": "Condición deseada",
+      "mustBeComplete": "Debe estar completo",
+      "completenessDescription": "Requisitos de completitud",
+      "specificVariantRequired": "Se requiere variante específica",
+      "variantDescription": "Descripción de la variante",
+      "notes": "Notas",
+      "searchNotes": "Notas de búsqueda",
+      "status": "Estado",
+      "active": "Activo",
+      "inactive": "Inactivo"
+    },
+    "filters": {
+      "priority": "Prioridad",
+      "urgency": "Urgencia",
+      "status": "Estado",
+      "activeOnly": "Solo activos",
+      "inactiveOnly": "Solo inactivos",
+      "includeAcquired": "Incluir artículos adquiridos"
+    },
+    "acquire": {
+      "title": "Marcar como adquirido",
+      "description": "Introduce el ID del artículo de colección creado para este artículo deseado.",
+      "collectionItemId": "ID del artículo de colección",
+      "collectionItemPlaceholder": "Introduce el UUID del artículo de colección",
+      "collectionItemRequired": "El ID del artículo de colección es obligatorio",
+      "confirm": "Confirmar adquisición",
+      "button": "Marcar adquirido",
+      "alreadyAcquired": "Este artículo ya está marcado como adquirido"
+    },
+    "aggregates": {
+      "title": "Estadísticas de precio",
+      "average": "Precio promedio",
+      "minimum": "Precio mínimo",
+      "maximum": "Precio máximo",
+      "totalSightings": "Total de avistamientos",
+      "availableCount": "{{count}} disponibles actualmente",
+      "noData": "Sin datos"
+    },
+    "sightings": {
+      "title": "Avistamientos",
+      "create": "Añadir avistamiento",
+      "edit": "Editar avistamiento",
+      "empty": "Aún no hay avistamientos. Añade uno para seguir precios.",
+      "available": "Disponible",
+      "unavailable": "No disponible",
+      "contacted": "Contactado",
+      "condition": "Condición",
+      "viewListing": "Ver publicación",
+      "sighted": "Avistado",
+      "deleteConfirm": "¿Seguro que quieres eliminar este avistamiento?",
+      "decision": {
+        "buy": "Comprar",
+        "pass": "Descartar",
+        "wait": "Esperar",
+        "negotiate": "Negociar"
+      },
+      "form": {
+        "price": "Precio",
+        "currency": "Moneda",
+        "condition": "Condición",
+        "url": "URL",
+        "location": "Ubicación",
+        "availability": "Disponibilidad",
+        "contactSection": "Información de contacto",
+        "contacted": "Vendedor contactado",
+        "contactMethod": "Método de contacto",
+        "responseNotes": "Notas de respuesta",
+        "decisionSection": "Decisión",
+        "decision": "Decisión",
+        "noDecision": "Sin decisión aún",
+        "decisionNotes": "Notas de la decisión"
+      }
+    }
   },
   "errors": {
     "generic": "Algo salió mal",
@@ -130,6 +417,62 @@
     "createFailed": "Error al crear",
     "updateFailed": "Error al actualizar",
     "deleteFailed": "Error al eliminar",
-    "uploadFailed": "Error al subir archivo"
+    "uploadFailed": "Error al subir archivo",
+    "collection": {
+      "subCategoryRequired": "La sub-categoría es obligatoria para colecciones de categoría única",
+      "invalidType": "Tipo de colección inválido",
+      "subCategoryMismatch": "La sub-categoría del item no coincide con la restricción de la colección"
+    },
+    "supplier": {
+      "nameRequired": "El nombre es obligatorio",
+      "invalidType": "Tipo de proveedor inválido",
+      "ratingRange": "La valoración debe estar entre 0 y 5",
+      "hasReferences": "No se puede eliminar: el proveedor tiene compras asociadas",
+      "notFound": "Proveedor no encontrado"
+    },
+    "wishlist": {
+      "referenceNotFound": "No se encontró el artículo de catálogo o la colección referenciada",
+      "priorityRange": "La prioridad debe estar entre 1 y 5",
+      "invalidUrgency": "Nivel de urgencia inválido",
+      "alreadyAcquired": "Este artículo ya está adquirido",
+      "notFound": "Artículo deseado no encontrado",
+      "maxPriceNegative": "El precio máximo no puede ser negativo"
+    },
+    "sighting": {
+      "priceRequired": "El precio es obligatorio",
+      "invalidDecision": "Valor de decisión inválido"
+    },
+    "searchFailed": "La búsqueda falló. Por favor, inténtalo de nuevo."
+  },
+  "search": {
+    "title": "Buscar Catálogo",
+    "placeholder": "Buscar artículos del catálogo...",
+    "results": "Resultados de Búsqueda",
+    "resultsLabel": "Resultados de búsqueda",
+    "resultCount": "{{count}} resultados encontrados",
+    "noResults": "No se encontraron resultados",
+    "noResultsHint": "Intenta ajustar tu búsqueda o filtros",
+    "enterQuery": "Introduce un término de búsqueda para comenzar",
+    "clearSearch": "Limpiar búsqueda",
+    "searching": "Buscando...",
+    "searchHint": "Introduce un término de búsqueda",
+    "degradedMode": "Usando modo de búsqueda básico. Algunas funciones pueden estar limitadas.",
+    "fuzzyMode": "Usando búsqueda difusa para encontrar coincidencias cercanas.",
+    "pagination": "Paginación de resultados de búsqueda",
+    "pageStatus": "Página {{current}} de {{total}}",
+    "filters": {
+      "title": "Filtros",
+      "mainCategory": "Categoría Principal",
+      "subCategory": "Sub-categoría",
+      "language": "Idioma",
+      "region": "Región",
+      "rarity": "Rareza",
+      "yearMin": "Año Desde",
+      "yearMax": "Año Hasta",
+      "manufacturer": "Fabricante",
+      "publisher": "Editor",
+      "developer": "Desarrollador",
+      "brand": "Marca"
+    }
   }
 }

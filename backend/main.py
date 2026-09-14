@@ -13,6 +13,14 @@ from api.routes.categories import subcategories_router
 from api.routes.collections import items_router as collection_items_router
 from api.routes.collections import router as collections_router
 from api.routes.images import images_router, item_images_router
+from api.routes.item_components import (
+    collection_items_router as item_components_collection_router,
+)
+from api.routes.item_components import item_components_router
+from api.routes.search import router as search_router
+from api.routes.sightings import router as sightings_router
+from api.routes.suppliers import router as suppliers_router
+from api.routes.wishlist import router as wishlist_router
 from core.config import get_settings
 from core.exception_handlers import (
     duplicate_handler,
@@ -59,6 +67,12 @@ app.include_router(collections_router, prefix="/api")
 app.include_router(collection_items_router, prefix="/api")
 app.include_router(item_images_router, prefix="/api")
 app.include_router(images_router, prefix="/api")
+app.include_router(suppliers_router, prefix="/api")
+app.include_router(wishlist_router, prefix="/api")
+app.include_router(sightings_router, prefix="/api")
+app.include_router(item_components_collection_router, prefix="/api")
+app.include_router(item_components_router, prefix="/api")
+app.include_router(search_router, prefix="/api")
 
 
 @app.get("/health")

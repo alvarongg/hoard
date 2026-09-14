@@ -435,6 +435,60 @@ class TestCreateItem:
         assert fetched.title == "Banjo-Kazooie"
         assert fetched.catalog_id == cat.id
 
+    @pytest.mark.asyncio
+    async def test_create_item_increments_catalog_total_items_by_one(
+        self, service: CatalogService, db_session: AsyncSession,
+    ) -> None:
+        """Creating a single item bumps the parent catalog counter by one."""
+        main = await _seed_main(db_session)
+        sub = await _seed_sub(db_session, main.id)
+        cat = await _seed_catalog(service, sub.id)
+        initial_total = cat.total_items or 0
+
+        await _seed_item(service, cat.id, title="Diddy Kong Racing")
+
+        refreshed = await service.get_catalog(cat.id)
+        await db_session.refresh(refreshed)
+        assert refreshed.total_items == initial_total + 1
+
+    @pytest.mark.asyncio
+    async def test_create_item_multiple_times_reflects_correct_total_items(
+        self, service: CatalogService, db_session: AsyncSession,
+    ) -> None:
+        """total_items matches the real item count after several inserts."""
+        main = await _seed_main(db_session)
+        sub = await _seed_sub(db_session, main.id)
+        cat = await _seed_catalog(service, sub.id)
+        initial_total = cat.total_items or 0
+
+        titles = ["Perfect Dark", "Star Fox 64", "F-Zero X", "Wave Race 64"]
+        for title in titles:
+            await _seed_item(service, cat.id, title=title)
+
+        refreshed = await service.get_catalog(cat.id)
+        await db_session.refresh(refreshed)
+        items = await service.list_items(cat.id)
+
+        assert refreshed.total_items == initial_total + len(titles)
+        assert refreshed.total_items == len(items)
+
+    @pytest.mark.asyncio
+    async def test_create_item_does_not_affect_other_catalog_total_items(
+        self, service: CatalogService, db_session: AsyncSession,
+    ) -> None:
+        """Only the target catalog counter changes."""
+        main = await _seed_main(db_session)
+        sub = await _seed_sub(db_session, main.id)
+        target = await _seed_catalog(service, sub.id, name="Target Catalog")
+        other = await _seed_catalog(service, sub.id, name="Other Catalog")
+        other_initial = other.total_items or 0
+
+        await _seed_item(service, target.id, title="Mario Party")
+
+        refreshed_other = await service.get_catalog(other.id)
+        await db_session.refresh(refreshed_other)
+        assert refreshed_other.total_items == other_initial
+
 
 class TestUpdateItem:
     """Tests for CatalogService.update_item."""

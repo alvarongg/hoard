@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Lint Frontend TypeScript",
+      "description": "Ejecuta ESLint automáticamente cuando se edita un archivo TypeScript o TSX del frontend para detectar problemas de código tempranamente.",
+      "trigger": "PostFileSave",
+      "matcher": "frontend/.*\\.(ts|tsx)$",
+      "action": {
+        "type": "command",
+        "command": ".kiro/scripts/lint-typescript.sh"
+      },
+      "enabled": false
+    }
+  ]
+}

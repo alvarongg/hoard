@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Verify Tests After Task",
+      "description": "Después de completar una tarea de spec, recuerda al agente que debe verificar que los tests existen y pasan para la funcionalidad implementada.",
+      "trigger": "PostTaskExec",
+      "action": {
+        "type": "agent",
+        "prompt": "La tarea acaba de completarse. Antes de continuar, verifica: 1) ¿Se crearon tests para todo el código nuevo? 2) ¿Los tests cubren casos edge y errores? 3) ¿Los componentes React tienen test de accesibilidad con axe-core? Si falta algún test, créalo ahora. Los tests son OBLIGATORIOS según los estándares del proyecto."
+      },
+      "enabled": false
+    }
+  ]
+}

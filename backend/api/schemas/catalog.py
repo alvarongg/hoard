@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import date, datetime
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from api.schemas._types import StrUUID
 
@@ -155,6 +155,14 @@ class CatalogItemBase(BaseModel):
         max_length=1000,
         description="URL to the cover image",
     )
+
+    @field_validator("title")
+    @classmethod
+    def _title_must_not_be_blank(cls, value: str) -> str:
+        """Reject titles made only of whitespace characters."""
+        if not value.strip():
+            raise ValueError("title must not be empty or whitespace-only")
+        return value
 
 
 class CatalogItemCreate(CatalogItemBase):

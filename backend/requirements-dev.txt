@@ -1,7 +1,9 @@
 -r requirements.txt
+ruff>=0.6
 pytest>=7.4
 pytest-asyncio>=0.23
 httpx>=0.25
-hypothesis>=6.92
+hypothesis==6.122.3
 pytest-cov>=4.1
-aiosqlite>=0.19
+aiosqlite==0.20.0
+pytest-postgresql==6.1.1

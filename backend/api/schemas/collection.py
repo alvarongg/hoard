@@ -134,3 +134,57 @@ class CollectionResponse(CollectionBase):
     updated_at: datetime = Field(..., description="Last update timestamp")
 
     model_config = ConfigDict(from_attributes=True)
+
+
+# ---------------------------------------------------------------------------
+# Collection stats and grouping schemas
+# ---------------------------------------------------------------------------
+
+
+class CollectionItemGroup(BaseModel):
+    """Group of collection items by category."""
+
+    main_category_id: str | None = Field(
+        None, description="UUID of the main category"
+    )
+    main_category_name: str | None = Field(
+        None, description="Name of the main category"
+    )
+    sub_category_id: str | None = Field(
+        None, description="UUID of the sub category"
+    )
+    sub_category_name: str | None = Field(
+        None, description="Name of the sub category"
+    )
+    item_count: int = Field(..., description="Number of items in this group")
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class CollectionStats(BaseModel):
+    """Statistics for a collection."""
+
+    total_items: int = Field(..., description="Total number of items")
+    different_categories_count: int = Field(
+        ..., description="Number of distinct categories"
+    )
+    total_invested: float | None = Field(
+        None, description="Total amount invested"
+    )
+    current_value: float | None = Field(
+        None, description="Current market value"
+    )
+    value_gain: float | None = Field(
+        None, description="Difference between current value and investment"
+    )
+    roi_percentage: float | None = Field(
+        None, description="Return on investment percentage"
+    )
+    complete_items: int = Field(
+        ..., description="Number of complete items"
+    )
+    graded_items: int = Field(
+        ..., description="Number of graded items"
+    )
+
+    model_config = ConfigDict(from_attributes=True)

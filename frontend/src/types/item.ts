@@ -71,3 +71,17 @@ export interface CatalogItem {
   createdAt: string;
   updatedAt: string;
 }
+export interface CatalogItemCreate {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  manufacturer?: string;
+  publisher?: string;
+  developer?: string;
+  brand?: string;
+  language?: string;
+  region?: string;
+  rarity?: string;
+  customFields?: Record<string, unknown>;
+  coverImageUrl?: string;
+}

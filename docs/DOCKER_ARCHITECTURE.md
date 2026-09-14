@@ -153,6 +153,8 @@ HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 ```
 
+> **Nota sobre `postgresql-client`:** El paquete es obligatorio para el sistema de backups. Los binarios `pg_dump` y `pg_restore` se usan para generar y restaurar snapshots de la base de datos en formato custom (-Fc) con compresión incluida. Si el contenedor backend no tiene estos binarios, el endpoint de backup fallará con 503 en lugar de producir un archivo incompleto. Ver [Fase 3 - Backups](#backups).
+
 **Volúmenes:**
 - `uploads`: Imágenes de items
 - `backups`: Backups automáticos
