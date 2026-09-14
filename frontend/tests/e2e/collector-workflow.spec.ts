@@ -10,7 +10,9 @@ test.describe("Collector workflow E2E", () => {
     page,
   }) => {
     await page.goto("/collections");
-    await page.getByRole("button", { name: /new collection|nueva/i }).click();
+    await page
+      .getByRole("button", { name: /create collection|crear colección/i })
+      .click();
 
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
@@ -20,7 +22,7 @@ test.describe("Collector workflow E2E", () => {
     // Selecting the type must NOT close the modal (regression guard).
     await dialog
       .getByLabel(/type|tipo/i)
-      .selectOption({ label: /multi/i });
+      .selectOption({ label: "Multi Category" });
     await expect(dialog).toBeVisible();
 
     await dialog.getByRole("button", { name: /save|guardar/i }).click();
@@ -35,26 +37,24 @@ test.describe("Collector workflow E2E", () => {
   }) => {
     // Ensure a collection exists.
     await page.goto("/collections");
-    await page.getByRole("button", { name: /new collection|nueva/i }).click();
+    await page
+      .getByRole("button", { name: /create collection|crear colección/i })
+      .click();
     const dialog = page.getByRole("dialog");
     const colName = uniq();
     await dialog.getByLabel(/name|nombre/i).fill(colName);
-    await dialog.getByLabel(/type|tipo/i).selectOption({ label: /multi/i });
+    await dialog.getByLabel(/type|tipo/i).selectOption({ label: "Multi Category" });
     await dialog.getByRole("button", { name: /save|guardar/i }).click();
     await expect(dialog).toBeHidden();
 
-    // Open the first catalog.
-    await page.goto("/catalogs");
-    const firstCatalog = page.getByRole("link").filter({ hasText: /.+/ });
-    // Catalogs list renders cards; click the first "view" affordance.
+    // Open the NES catalog (the one with many items).
     await page.goto("/catalogs");
     await page.waitForLoadState("networkidle");
-
-    // Go straight to a catalog detail by clicking the first catalog card link.
-    const catalogCard = page.locator("a[href^='/catalogs/']").first();
-    if ((await catalogCard.count()) > 0) {
-      await catalogCard.click();
-    }
+    await page
+      .locator("a[href^='/catalogs/']")
+      .filter({ hasText: /nintendo|famicom/i })
+      .first()
+      .click();
 
     // From catalog detail, click "View item" on the first item.
     const viewItem = page
