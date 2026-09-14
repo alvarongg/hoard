@@ -25,6 +25,12 @@ export interface CollectionItem {
   purchaseDate: string | null;
   acquisitionType: AcquisitionType | null;
   storageLocation: string | null;
+  supplierId: string | null;
+  isAuthentic: boolean;
+  authenticityNotes: string | null;
+  countryOfOrigin: string | null;
+  conditionNotes: string | null;
+  customFields: Record<string, unknown> | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -39,6 +45,12 @@ export interface CollectionItemCreate {
   purchaseDate?: string;
   acquisitionType?: AcquisitionType;
   storageLocation?: string;
+  supplierId?: string | null;
+  isAuthentic?: boolean;
+  authenticityNotes?: string;
+  countryOfOrigin?: string;
+  conditionNotes?: string;
+  customFields?: Record<string, unknown>;
 }
 
 export interface CollectionItemUpdate {
@@ -50,6 +62,12 @@ export interface CollectionItemUpdate {
   purchaseDate?: string;
   acquisitionType?: AcquisitionType;
   storageLocation?: string;
+  supplierId?: string | null;
+  isAuthentic?: boolean;
+  authenticityNotes?: string;
+  countryOfOrigin?: string;
+  conditionNotes?: string;
+  customFields?: Record<string, unknown>;
 }
 
 export interface CatalogItem {

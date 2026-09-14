@@ -52,7 +52,8 @@
     "export": "Exporter",
     "import": "Importer",
     "backups": "Sauvegardes",
-    "settings": "Paramètres"
+    "settings": "Paramètres",
+    "pending": "En attente"
   },
   "home": {
     "welcome": "Bienvenue sur H.O.A.R.D.",
@@ -747,5 +748,81 @@
   "catalogImport": {
     "description": "Importez un fichier de catalogue (entity_type='catalog').",
     "selectFile": "Sélectionner un fichier"
+  },
+  "collector": {
+    "actions": {
+      "addToCollection": "Ajouter à la collection",
+      "addToWishlist": "Ajouter à la liste de souhaits"
+    },
+    "ownership": {
+      "owned": "Vous l'avez déjà dans {{count}} collection(s)",
+      "notOwned": "Vous ne l'avez encore dans aucune collection."
+    },
+    "addToCollection": {
+      "collection": "Collection",
+      "chooseCollection": "Choisir une collection",
+      "condition": "État",
+      "authenticity": "Authenticité",
+      "original": "Original",
+      "bootleg": "Contrefaçon",
+      "country": "Pays d'origine (ISO-2)",
+      "price": "Prix payé",
+      "currency": "Devise",
+      "supplier": "Fournisseur",
+      "noSupplier": "Aucun fournisseur",
+      "newSupplier": "Nouveau fournisseur",
+      "storageLocation": "Emplacement physique",
+      "conditionNotes": "Notes d'état",
+      "needsMaintenance": "Nécessite un entretien (p.ex. pile)",
+      "maintenanceType": "Type",
+      "maintenanceDue": "Date de révision",
+      "removeFromWishlist": "Retirer de la liste de souhaits",
+      "save": "Enregistrer",
+      "error": "Impossible d'ajouter l'article."
+    },
+    "supplierQuickAdd": {
+      "title": "Nouveau fournisseur rapide",
+      "name": "Nom",
+      "country": "Pays (ISO-2)",
+      "create": "Créer",
+      "error": "Impossible de créer le fournisseur."
+    },
+    "catalogQuickAdd": {
+      "title": "Nouveau catalogue rapide",
+      "name": "Nom",
+      "tematica": "Thème",
+      "create": "Créer"
+    },
+    "collectionCatalogs": {
+      "title": "Catalogues associés",
+      "empty": "Cette collection n'a pas encore de catalogues associés.",
+      "associate": "Associer un catalogue",
+      "choose": "Choisir un catalogue",
+      "add": "Associer",
+      "remove": "Retirer",
+      "new": "Nouveau catalogue"
+    },
+    "price": {
+      "title": "Prix",
+      "url": "URL PriceCharting",
+      "lookup": "Rechercher le prix",
+      "error": "Impossible de récupérer le prix."
+    },
+    "wishlist": {
+      "gotIt": "Je l'ai obtenu"
+    }
+  },
+  "pending": {
+    "title": "En attente",
+    "description": "Données manquantes que vous pouvez compléter quand vous voulez.",
+    "empty": "Aucun élément en attente.",
+    "missing": "Manquant",
+    "markDone": "Complété : {{field}}",
+    "entity": {
+      "supplier": "Fournisseurs",
+      "catalog": "Catalogues",
+      "catalog_item": "Articles de catalogue",
+      "collection_item": "Articles de collection"
+    }
   }
 }

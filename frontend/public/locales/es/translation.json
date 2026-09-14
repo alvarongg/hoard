@@ -52,7 +52,8 @@
     "export": "Exportar",
     "import": "Importar",
     "backups": "Copias",
-    "settings": "Configuración"
+    "settings": "Configuración",
+    "pending": "Pendientes"
   },
   "home": {
     "welcome": "Bienvenido a H.O.A.R.D.",
@@ -747,5 +748,81 @@
   "catalogImport": {
     "description": "Importá un archivo de catálogo (entity_type='catalog').",
     "selectFile": "Seleccionar archivo"
+  },
+  "collector": {
+    "actions": {
+      "addToCollection": "Agregar a colección",
+      "addToWishlist": "Agregar a wishlist"
+    },
+    "ownership": {
+      "owned": "Ya lo tenés en {{count}} colección(es)",
+      "notOwned": "Todavía no lo tenés en ninguna colección."
+    },
+    "addToCollection": {
+      "collection": "Colección",
+      "chooseCollection": "Elegí una colección",
+      "condition": "Estado",
+      "authenticity": "Autenticidad",
+      "original": "Original",
+      "bootleg": "Bootleg",
+      "country": "País de origen (ISO-2)",
+      "price": "Precio pagado",
+      "currency": "Moneda",
+      "supplier": "Proveedor",
+      "noSupplier": "Sin proveedor",
+      "newSupplier": "Nuevo proveedor",
+      "storageLocation": "Ubicación física",
+      "conditionNotes": "Notas de estado",
+      "needsMaintenance": "Requiere mantenimiento (p.ej. batería)",
+      "maintenanceType": "Tipo",
+      "maintenanceDue": "Fecha de revisión",
+      "removeFromWishlist": "Quitar de la wishlist",
+      "save": "Guardar",
+      "error": "No se pudo agregar el ítem."
+    },
+    "supplierQuickAdd": {
+      "title": "Nuevo proveedor rápido",
+      "name": "Nombre",
+      "country": "País (ISO-2)",
+      "create": "Crear",
+      "error": "No se pudo crear el proveedor."
+    },
+    "catalogQuickAdd": {
+      "title": "Nuevo catálogo rápido",
+      "name": "Nombre",
+      "tematica": "Temática",
+      "create": "Crear"
+    },
+    "collectionCatalogs": {
+      "title": "Catálogos asociados",
+      "empty": "Esta colección no tiene catálogos asociados todavía.",
+      "associate": "Asociar catálogo",
+      "choose": "Elegí un catálogo",
+      "add": "Asociar",
+      "remove": "Quitar",
+      "new": "Nuevo catálogo"
+    },
+    "price": {
+      "title": "Precios",
+      "url": "URL de PriceCharting",
+      "lookup": "Buscar precio",
+      "error": "No se pudo obtener el precio."
+    },
+    "wishlist": {
+      "gotIt": "Ya lo conseguí"
+    }
+  },
+  "pending": {
+    "title": "Pendientes",
+    "description": "Datos faltantes que podés completar cuando quieras.",
+    "empty": "No hay pendientes.",
+    "missing": "Faltan",
+    "markDone": "Completé: {{field}}",
+    "entity": {
+      "supplier": "Proveedores",
+      "catalog": "Catálogos",
+      "catalog_item": "Ítems de catálogo",
+      "collection_item": "Ítems de colección"
+    }
   }
 }

@@ -36,6 +36,11 @@ export function Navigation() {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/pending" className={linkClass}>
+            {t("navigation.pending")}
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/stats" className={linkClass}>
             {t("navigation.stats")}
           </NavLink>

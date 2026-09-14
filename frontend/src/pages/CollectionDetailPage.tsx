@@ -6,6 +6,7 @@ import { useCollectionItems } from "../hooks/useCollectionItems";
 import { useCollectionCatalog } from "../hooks/useCollectionCatalog";
 import { useCatalogItems } from "../hooks/useCatalogItems";
 import { ItemList } from "../components/items/ItemList";
+import { CollectionCatalogsSection } from "../components/collector/CollectionCatalogsSection";
 import { ItemForm } from "../components/items/ItemForm";
 import { TransactionList } from "../components/transactions/TransactionList";
 import { TransactionForm } from "../components/transactions/TransactionForm";
@@ -101,6 +102,10 @@ export function CollectionDetailPage() {
           {t("items.add")}
         </Button>
       </div>
+
+      <section aria-label={t("collector.collectionCatalogs.title")} className="mt-6">
+        <CollectionCatalogsSection collectionId={id!} />
+      </section>
 
       <section aria-label={t("collections.items")} className="mt-6">
         <h2 className="text-lg font-semibold text-gray-900">
