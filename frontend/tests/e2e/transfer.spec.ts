@@ -16,8 +16,11 @@ test.describe("Transfer E2E", () => {
 });
 
 test.describe("Import wizard E2E", () => {
-  test("shows the import steps", async ({ page }) => {
+  test("shows the import page and file selector", async ({ page }) => {
     await page.goto("/import");
-    await expect(page.getByText(/upload/i).first()).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /import/i }).first(),
+    ).toBeVisible();
+    await expect(page.getByText(/select file/i).first()).toBeVisible();
   });
 });
