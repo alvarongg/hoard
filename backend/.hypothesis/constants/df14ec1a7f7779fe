@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/category.py
+# hypothesis_version: 6.151.9
+
+[100, 'CASCADE', 'all, delete-orphan', 'main_categories', 'main_categories.id', 'main_category', 'main_category_id', 'slug', 'sub_categories', 'sub_category']

@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/services/csv_import_service.py
+# hypothesis_version: 6.151.9
+
+[1024, '; ', 'brand', 'description', 'developer', 'language', 'manufacturer', 'publisher', 'rarity', 'region', 'sku', 'subtitle', 'title', 'upc', 'utf-8-sig']

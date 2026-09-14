@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/app_setting.py
+# hypothesis_version: 6.151.9
+
+[100, 'app_settings', 'sqlite']

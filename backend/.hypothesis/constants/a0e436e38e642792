@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/services/__init__.py
+# hypothesis_version: 6.151.9
+
+['CatalogService', 'CategoryService', 'CollectionService', 'CsvImportService', 'ImageService']

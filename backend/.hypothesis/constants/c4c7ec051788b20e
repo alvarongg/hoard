@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/collection.py
+# hypothesis_version: 6.151.9
+
+[100, 200, 500, 'CASCADE', 'RESTRICT', 'SET NULL', 'USD', 'all, delete-orphan', 'catalog_items.id', 'collection', 'collection_item', 'collection_items', 'collections', 'collections.id', 'custom', 'items', 'single_category', 'sub_categories.id', 'suppliers.id']

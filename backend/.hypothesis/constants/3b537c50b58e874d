@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/schemas/wishlist.py
+# hypothesis_version: 6.151.9
+
+[200, 500, 1000, ', ', 'Condition', 'Contact method', 'Creation timestamp', 'Decision', 'Decision date', 'Decision notes', 'Description', 'Desired condition', 'General notes', 'Image URLs', 'Maximum price seen', 'Method of contact', 'Minimum price seen', 'Number available', 'Price of the item', 'Response notes', 'URL to the listing', 'USD', 'UUID primary key', 'Urgency level', 'When contacted', 'When last checked', 'Whether available', 'Whether complete', 'Whether contacted', 'buy', 'critical', 'decision', 'high', 'low', 'medium', 'negotiate', 'pass', 'urgency', 'wait']

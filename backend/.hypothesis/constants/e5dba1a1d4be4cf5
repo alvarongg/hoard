@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/price_history.py
+# hypothesis_version: 6.151.9
+
+[200, 500, 'CASCADE', 'CURRENT_TIMESTAMP', 'CatalogItem', 'USD', 'catalog_item_id', 'catalog_items.id', 'condition', 'is_complete', 'price_date', 'price_history', 'source', 'unique_price_record']

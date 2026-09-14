@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/schemas/search.py
+# hypothesis_version: 6.151.9
+
+[100, 200, 1800, 2200, 'Filter by brand', 'Filter by developer', 'Filter by language', 'Filter by publisher', 'Filter by rarity', 'Filter by region', 'Search query string', 'degraded', 'full_text', 'fuzzy']

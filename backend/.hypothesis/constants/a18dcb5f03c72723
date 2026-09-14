@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/routes/catalogs.py
+# hypothesis_version: 6.151.9
+
+[100, 201, 204, 413, 422, 500, 1024, '/catalog-items', '/catalogs', '/search', '/{catalog_id}', '/{catalog_id}/items', '/{item_id}', ';', 'catalog-items', 'catalogs', 'text/csv', 'upload.csv']

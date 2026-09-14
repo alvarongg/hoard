@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/schemas/supplier.py
+# hypothesis_version: 6.151.9
+
+[100, 200, 500, ', ', 'City name', 'Contact phone number', 'Creation timestamp', 'Date of purchase', 'Full street address', 'Postal or ZIP code', 'Purchase price', 'Type of supplier', 'USD', 'UUID primary key', 'Website URL', 'auction', 'marketplace', 'name', 'online', 'physical_store', 'private_seller', 'type']

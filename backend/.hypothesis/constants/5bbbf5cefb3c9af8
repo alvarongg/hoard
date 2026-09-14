@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/core/dialect.py
+# hypothesis_version: 6.151.9
+
+['postgresql', 'sqlite']

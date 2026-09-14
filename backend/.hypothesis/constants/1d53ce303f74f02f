@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/main.py
+# hypothesis_version: 6.151.9
+
+['*', '/api', '/health', '/uploads', '0.1.0', 'H.O.A.R.D. API', 'ok', 'status', 'uploads']

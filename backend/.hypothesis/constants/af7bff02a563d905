@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/services/collection_service.py
+# hypothesis_version: 6.151.9
+
+[100, 'item_count', 'main_category_id', 'main_category_name', 'mixed', 'multi_category', 'name', 'single_category', 'sub_category_id', 'sub_category_name']

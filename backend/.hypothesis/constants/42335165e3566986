@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/routes/wishlist.py
+# hypothesis_version: 6.151.9
+
+[100, 201, 204, 500, '/wishlist', '/{wishlist_item_id}', 'Filter by collection', 'Filter by priority', 'Filter by urgency', 'wishlist']

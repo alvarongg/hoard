@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/transaction.py
+# hypothesis_version: 6.151.9
+
+[100, 200, 500, 'CASCADE', 'CURRENT_TIMESTAMP', 'SET NULL', 'USD', 'collection_items.id', 'item_transactions', 'suppliers.id', 'transactions']

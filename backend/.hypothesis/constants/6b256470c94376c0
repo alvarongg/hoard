@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/category_field_schema.py
+# hypothesis_version: 6.151.9
+
+[100, 200, 'CASCADE', 'field_name', 'field_schemas', 'sqlite', 'sub_categories.id', 'sub_category_id']

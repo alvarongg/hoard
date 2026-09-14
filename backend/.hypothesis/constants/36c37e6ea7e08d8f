@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/services/wishlist_service.py
+# hypothesis_version: 6.151.9
+
+[100, ', ', 'acquired_date', 'avg_price', 'buy', 'catalog_item_id', 'collection_id', 'created_at', 'critical', 'currency', 'decision', 'desired_condition', 'high', 'id', 'is_acquired', 'is_active', 'low', 'max_price', 'medium', 'min_price', 'must_be_complete', 'negotiate', 'notes', 'pass', 'price_aggregates', 'priority', 'search_notes', 'tags', 'total_sightings', 'updated_at', 'urgency', 'variant_description', 'wait']

@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/routes/item_components.py
+# hypothesis_version: 6.151.9
+
+['/collection-items', '/item-components', '/{component_id}', 'Delete a component', 'Update a component', 'item-components']

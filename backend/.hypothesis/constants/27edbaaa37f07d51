@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/core/config.py
+# hypothesis_version: 6.151.9
+
+[0.3, ',', '.env', '/app/uploads', 'change-this', 'utf-8']

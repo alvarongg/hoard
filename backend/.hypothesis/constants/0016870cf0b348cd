@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/schemas/item_component.py
+# hypothesis_version: 6.151.9
+
+[100, 200, 'Creation timestamp', 'ItemComponentBase', 'Type of component', 'UUID primary key', 'accessory', 'after', 'documentation', 'hardware', 'media', 'optional', 'other', 'packaging', 'required']

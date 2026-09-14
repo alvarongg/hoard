@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/models/__init__.py
+# hypothesis_version: 6.151.9
+
+['AccessoryStock', 'AppSetting', 'Base', 'Catalog', 'CatalogItem', 'CatalogPriceHistory', 'CategoryFieldSchema', 'Collection', 'CollectionItem', 'ItemAccessory', 'ItemComponent', 'ItemImage', 'ItemTransaction', 'MainCategory', 'StandardComponent', 'SubCategory', 'Supplier', 'TimestampMixin', 'UUIDMixin', 'WishlistItem', 'WishlistSighting']

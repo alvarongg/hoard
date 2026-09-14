@@ -1,0 +1,4 @@
+# file: /Users/alvaronicolasgarciaguillen/Documents/GitHub/hoard/backend/api/schemas/catalog.py
+# hypothesis_version: 6.151.9
+
+[200, 500, 1000, 5000, 10000, 'Brand name', 'Creation timestamp', 'Developer name', 'Manufacturer name', 'Optional subtitle', 'Primary language', 'Publisher name', 'UUID primary key', 'title']
