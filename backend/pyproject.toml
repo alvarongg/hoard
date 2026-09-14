@@ -25,7 +25,7 @@ omit = ["tests/*", "alembic/*", "main.py", "*/config.py"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 80
+fail_under = 85
 exclude_lines = [
     "pragma: no cover",
     "if TYPE_CHECKING:",

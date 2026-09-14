@@ -564,99 +564,99 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
   - Elevar `fail_under = 80` en `backend/pyproject.toml` y `coverage.thresholds.lines = 80` en `frontend/vitest.config.ts`
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 24. Bloque 2 - Historial de precios backend (R10)
-  - [~] 24.1 Crear `backend/api/schemas/price_history.py`
+- [x] 24. Bloque 2 - Historial de precios backend (R10)
+  - [x] 24.1 Crear `backend/api/schemas/price_history.py`
     - `PriceHistoryBase` con `condition` (obligatorio), `is_complete`, `completeness_description`, `price` (ge 0, 2 decimales), `currency`, `source`, `source_url`, `price_date` (obligatorio), `region`, `notes`
     - `PriceHistoryCreate`, `PriceHistoryResponse`, `LatestPriceEntry`, `ValueUpdateResult` (`updated`, `current_market_value`, `value_source`, `reason`)
     - _Requirements: 10.2, 10.4, 10.6, 10.7_
-  - [~] 24.2 Crear `backend/api/services/price_history_service.py`
+  - [x] 24.2 Crear `backend/api/services/price_history_service.py`
     - `list` con filtros `condition`, `is_complete`, `region`, `date_from`, `date_to`, ordenado por `price_date` descendente
     - `create` verifica la clave natural con un `SELECT` previo y lanza `DuplicateError` con mensaje útil; `delete`
     - `latest_by_condition` devuelve el último precio por condición
     - `refresh_item_market_value` toma el precio más reciente compatible con la condición y completitud del item y escribe `current_market_value`, `current_value_currency`, `last_value_update`, `value_source`; si no hay precio compatible devuelve `updated=False` con `reason` y no modifica nada
     - _Requirements: 10.2, 10.3, 10.5, 10.6, 10.7, 10.8, 19.6_
-  - [~] 24.3 Agregar `get_price_history_service` en `backend/api/dependencies.py` y crear `backend/api/routes/price_history.py`
+  - [x] 24.3 Agregar `get_price_history_service` en `backend/api/dependencies.py` y crear `backend/api/routes/price_history.py`
     - `GET/POST /catalog-items/{id}/price-history`, `GET /catalog-items/{id}/price-history/latest`, `DELETE /price-history/{id}` (204), `POST /collection-items/{id}/refresh-value` (200)
     - Registrar `app.include_router(price_history_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 10.2, 10.5, 10.6, 19.6_
-  - [~] 24.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_price_history_service.py`
+  - [x] 24.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_price_history_service.py`
     - Creación válida; duplicado de clave natural lanza `DuplicateError`; `price` negativo rechazado; catalog item inexistente → `NotFoundError`
     - Cada filtro y sus combinaciones; orden descendente por `price_date`; historial vacío
     - `refresh_item_market_value` con precio compatible actualiza los 4 campos; sin precio compatible devuelve `updated=False` y deja el valor previo intacto
     - _Requirements: 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 19.10_
-  - [~] 24.5 Escribir integration tests en `backend/tests/integration/test_routes/test_price_history.py`
+  - [x] 24.5 Escribir integration tests en `backend/tests/integration/test_routes/test_price_history.py`
     - Códigos 200/201/204/404/409/422 por endpoint y formato de respuesta
     - `POST /collection-items/{id}/refresh-value` devuelve 200 con `ValueUpdateResult` tanto cuando actualiza como cuando no
     - _Requirements: 10.2, 10.3, 10.6, 10.7, 19.9_
 
-- [ ] 25. Bloque 2 - Historial de precios frontend (R10)
-  - [~] 25.1 Crear `frontend/src/types/priceHistory.ts` y `frontend/src/services/priceHistoryApi.ts`
+- [x] 25. Bloque 2 - Historial de precios frontend (R10)
+  - [x] 25.1 Crear `frontend/src/types/priceHistory.ts` y `frontend/src/services/priceHistoryApi.ts`
     - `PriceHistoryEntry`, `PriceHistoryCreate`, `LatestPriceEntry`, `ValueUpdateResult`
     - `priceHistoryApi` con `list(catalogItemId, filters)`, `create`, `remove`, `latest`, `refreshValue(collectionItemId)`
     - _Requirements: 10.5, 10.6, 19.7_
-  - [~] 25.2 Crear `frontend/src/hooks/usePriceHistory.ts` y `frontend/src/hooks/useRefreshMarketValue.ts`
+  - [x] 25.2 Crear `frontend/src/hooks/usePriceHistory.ts` y `frontend/src/hooks/useRefreshMarketValue.ts`
     - `useRefreshMarketValue` invalida el detalle del collection item y las stats al actualizar
     - _Requirements: 10.6, 10.8_
-  - [~] 25.3 Crear los componentes en `frontend/src/components/priceHistory/`
+  - [x] 25.3 Crear los componentes en `frontend/src/components/priceHistory/`
     - `PriceHistoryTable.tsx` sobre el componente `Table`, `PriceHistoryForm.tsx`, `LatestPriceSummary.tsx`
     - Integrarlos en el detalle de catalog item de `frontend/src/pages/CatalogDetailPage.tsx`
     - _Requirements: 10.9_
-  - [~] 25.4 Escribir tests de hooks y componentes de price history
+  - [x] 25.4 Escribir tests de hooks y componentes de price history
     - Hooks con MSW; `PriceHistoryTable.test.tsx`, `PriceHistoryForm.test.tsx`, `LatestPriceSummary.test.tsx`: renderizado, orden descendente, historial vacío, mensaje cuando no hubo actualización de valor, teclado, ARIA y test axe-core obligatorio
     - Actualizar `frontend/src/pages/CatalogDetailPage.test.tsx`
     - _Requirements: 10.7, 10.9, 19.2, 19.3_
-  - [~] 25.5 Agregar claves i18n de price history en los 5 idiomas
+  - [x] 25.5 Agregar claves i18n de price history en los 5 idiomas
     - Sección `priceHistory.*` (`title`, `add`, `condition`, `isComplete`, `price`, `source`, `priceDate`, `region`, `latest`, `refreshValue`, `noCompatiblePrice`, `empty`, `filters.*`) y `errors.priceHistory.*` (`duplicate`, `negativePrice`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_
 
-- [ ] 26. Bloque 2 - Transacciones backend (R11)
-  - [~] 26.1 Crear `backend/api/schemas/transaction.py`
+- [x] 26. Bloque 2 - Transacciones backend (R11)
+  - [x] 26.1 Crear `backend/api/schemas/transaction.py`
     - `TransactionBase` con `transaction_type` (validator contra los 10 valores permitidos), `transaction_date`, `amount`, `currency`, `shipping_cost`, `tax_amount`, `other_fees`, `supplier_id`, `counterpart_name`, `invoice_number`, `receipt_path`, `payment_method`, `notes`
     - `TransactionCreate` y `TransactionUpdate` **sin** `total_amount`; `TransactionResponse` con `total_amount` de solo lectura
     - `ItemInvestment` con `real_invested`, `total_outflow`, `total_inflow`, `current_market_value`, `roi_percentage`, `source`
     - _Requirements: 11.2, 11.3, 11.4, 11.6, 11.7, 11.8_
-  - [~] 26.2 Crear `backend/api/services/transaction_service.py`
+  - [x] 26.2 Crear `backend/api/services/transaction_service.py`
     - `OUTFLOW_TYPES`, `INFLOW_TYPES` y `VALID_TYPES` como constantes documentadas (`gift_received` y `gift_given` clasificados como ingresos)
     - `create` ramifica con `supports_generated_columns`: en PostgreSQL lee `total_amount` tras `refresh()`, en SQLite lo asigna con `transaction_total()` antes del flush
     - `list` ordenado por `transaction_date` descendente; `update`; `delete` devuelve el `ItemInvestment` recalculado
     - `get_investment` calcula `real_invested = Σ total_amount(egresos) − Σ total_amount(ingresos)` y el ROI a partir de esa inversión, con `source = "transactions"`; sin transacciones cae a `purchase_price` con `source = "purchase_price"`
     - _Requirements: 11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 19.6_
-  - [~] 26.3 Agregar `get_transaction_service` en `backend/api/dependencies.py` y crear `backend/api/routes/transactions.py`
+  - [x] 26.3 Agregar `get_transaction_service` en `backend/api/dependencies.py` y crear `backend/api/routes/transactions.py`
     - `GET/POST /collection-items/{id}/transactions`, `PUT /transactions/{id}`, `DELETE /transactions/{id}` (200 con `ItemInvestment`), `GET /collection-items/{id}/investment`
     - Registrar `app.include_router(transactions_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 11.2, 11.6, 11.7, 11.9, 19.6_
-  - [~] 26.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_transaction_service.py`
+  - [x] 26.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_transaction_service.py`
     - Los 10 tipos válidos aceptados y un tipo inválido rechazado
     - `total_amount` con todos los campos, con nulos parciales y con todos nulos
     - Orden descendente por `transaction_date`; inversión real con solo egresos, con egresos e ingresos y sin transacciones (fallback a `purchase_price`)
     - Borrado recalcula inversión y ROI; ROI nulo cuando la inversión resultante es cero
     - _Requirements: 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 19.10_
-  - [~] 26.5 Escribir el test de paridad de dialecto y el test `@pytest.mark.postgres` de `total_amount`
+  - [x] 26.5 Escribir el test de paridad de dialecto y el test `@pytest.mark.postgres` de `total_amount`
     - Test de paridad en `backend/tests/unit/test_services/test_transaction_service.py`: el `total_amount` del camino SQLite coincide con `transaction_total()`
     - `backend/tests/integration/test_postgres/test_transactions_postgres.py` marcado `@pytest.mark.postgres`: el valor lo produce la columna `GENERATED` y coincide con `transaction_total()`
     - _Requirements: 11.4, 19.8_
-  - [~] 26.6 Escribir integration tests en `backend/tests/integration/test_routes/test_transactions.py`
+  - [x] 26.6 Escribir integration tests en `backend/tests/integration/test_routes/test_transactions.py`
     - Códigos 200/201/404/422; `DELETE` devuelve 200 con `ItemInvestment`; `total_amount` presente en la respuesta y ausente del payload aceptado
     - _Requirements: 11.2, 11.3, 11.6, 11.9, 19.9_
 
-- [ ] 27. Bloque 2 - Transacciones frontend (R11)
-  - [~] 27.1 Crear `frontend/src/types/transaction.ts` y `frontend/src/services/transactionsApi.ts`
+- [x] 27. Bloque 2 - Transacciones frontend (R11)
+  - [x] 27.1 Crear `frontend/src/types/transaction.ts` y `frontend/src/services/transactionsApi.ts`
     - `TransactionType`, `Transaction` (con `readonly totalAmount`), `TransactionCreate`, `TransactionUpdate`, `ItemInvestment`
     - `transactionsApi` con `list`, `create`, `update`, `remove`, `investment`
     - _Requirements: 11.6, 11.7, 19.7_
-  - [~] 27.2 Crear `frontend/src/hooks/useTransactions.ts` y `frontend/src/hooks/useItemInvestment.ts`
+  - [x] 27.2 Crear `frontend/src/hooks/useTransactions.ts` y `frontend/src/hooks/useItemInvestment.ts`
     - Mutar transacciones invalida la inversión del item y las stats
     - _Requirements: 11.6, 11.8, 11.9_
-  - [~] 27.3 Crear los componentes en `frontend/src/components/transactions/`
+  - [x] 27.3 Crear los componentes en `frontend/src/components/transactions/`
     - `TransactionList.tsx` sobre `Table`, `TransactionForm.tsx`, `InvestmentSummary.tsx`
     - `TransactionForm` muestra `totalAmount` como campo derivado de solo lectura, calculado en vivo en el cliente para dar feedback antes de enviar
     - Integrar en el detalle de collection item de `frontend/src/pages/CollectionDetailPage.tsx`
     - _Requirements: 11.4, 11.6, 11.7_
-  - [~] 27.4 Escribir tests de hooks y componentes de transacciones
+  - [x] 27.4 Escribir tests de hooks y componentes de transacciones
     - Hooks con MSW; `TransactionList.test.tsx`, `TransactionForm.test.tsx`, `InvestmentSummary.test.tsx`: orden descendente, total derivado en vivo, campo de total no editable, ROI nulo representado sin ambigüedad, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 11.4, 11.6, 11.7, 19.2, 19.3_
-  - [~] 27.5 Agregar claves i18n de transacciones en los 5 idiomas
+  - [x] 27.5 Agregar claves i18n de transacciones en los 5 idiomas
     - Sección `transactions.*` (`title`, `add`, `type.*` con los 10 tipos, `date`, `amount`, `shippingCost`, `taxAmount`, `otherFees`, `totalAmount`, `supplier`, `counterpart`, `invoiceNumber`, `paymentMethod`, `investment.*`, `empty`) y `errors.transaction.invalidType`
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_
@@ -664,82 +664,82 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [~] 28. Checkpoint - Price history y transacciones completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 29. Bloque 2 - Estadísticas backend (R7)
-  - [~] 29.1 Crear `backend/api/schemas/stats.py`
+- [x] 29. Bloque 2 - Estadísticas backend (R7)
+  - [x] 29.1 Crear `backend/api/schemas/stats.py`
     - `ValuationStats`, `DashboardStats`, `CollectionStatsEntry`, `CategoryStatsEntry`, `TimelineEntry`, `TimelinePeriod` enum (`month`, `quarter`, `year`), `CollectionItemSummary`
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
-  - [~] 29.2 Crear `backend/api/services/stats_service.py`
+  - [x] 29.2 Crear `backend/api/services/stats_service.py`
     - `get_dashboard`, `get_by_collection`, `get_valuation`, `get_by_category`, `get_timeline(period)`
     - `_invested_expression` usa la inversión real derivada de transacciones cuando existen y `purchase_price` cuando no; los items sin ninguna de las dos se excluyen sin error
     - El ROI se calcula con `roi_percentage()` de `utils/computations.py`, devolviendo `None` cuando la inversión es cero
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 11.8, 19.6_
-  - [~] 29.3 Agregar `get_stats_service` en `backend/api/dependencies.py` y crear `backend/api/routes/stats.py`
+  - [x] 29.3 Agregar `get_stats_service` en `backend/api/dependencies.py` y crear `backend/api/routes/stats.py`
     - `GET /stats/dashboard`, `/stats/collections`, `/stats/valuation`, `/stats/categories`, `/stats/timeline?period=month|quarter|year` (422 si el período no es válido)
     - Registrar `app.include_router(stats_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 19.6_
-  - [~] 29.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_stats_service.py`
+  - [x] 29.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_stats_service.py`
     - Base vacía: conteos en cero, ROI nulo, listas vacías
     - Items sin `purchase_price` excluidos de la inversión; items con transacciones usan la inversión real
     - Inversión total cero devuelve ROI nulo, no error de división
     - Timeline agrupado por mes, trimestre y año con el formato de período esperado
     - Categorías con conteo y valor acumulado; colecciones inactivas excluidas del desglose por colección
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 19.10_
-  - [~] 29.5 Escribir integration tests en `backend/tests/integration/test_routes/test_stats.py`
+  - [x] 29.5 Escribir integration tests en `backend/tests/integration/test_routes/test_stats.py`
     - 200 y formato por endpoint; `period` inválido devuelve 422; base vacía devuelve 200 con estructura completa
     - _Requirements: 7.1, 7.5, 7.7, 19.9_
 
-- [ ] 30. Bloque 2 - Estadísticas frontend (R7)
-  - [~] 30.1 Crear `frontend/src/types/stats.ts` y `frontend/src/services/statsApi.ts`
+- [x] 30. Bloque 2 - Estadísticas frontend (R7)
+  - [x] 30.1 Crear `frontend/src/types/stats.ts` y `frontend/src/services/statsApi.ts`
     - `ValuationStats`, `DashboardStats`, `CollectionStatsEntry`, `CategoryStatsEntry`, `TimelineEntry`, `TimelinePeriod`
     - `statsApi` con `dashboard`, `collections`, `valuation`, `categories`, `timeline(period)`
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 19.7_
-  - [~] 30.2 Crear `frontend/src/hooks/useStats.ts` con un hook por endpoint
+  - [x] 30.2 Crear `frontend/src/hooks/useStats.ts` con un hook por endpoint
     - `useDashboardStats`, `useCollectionStatsList`, `useValuationStats`, `useCategoryStats`, `useTimelineStats`
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
-  - [~] 30.3 Crear los componentes en `frontend/src/components/stats/`
+  - [x] 30.3 Crear los componentes en `frontend/src/components/stats/`
     - `MetricCard.tsx`, `CollectionStatsTable.tsx`, `CategoryStatsTable.tsx` sobre `Table`
     - `MetricCard` representa el ROI nulo como texto explicativo, no como 0%
     - _Requirements: 7.2, 7.4, 7.7_
-  - [~] 30.4 Crear `frontend/src/pages/StatsPage.tsx` con ruta y navegación
+  - [x] 30.4 Crear `frontend/src/pages/StatsPage.tsx` con ruta y navegación
     - Cada bloque maneja su propio estado de error con `ErrorMessage` y botón de reintento (`refetch`), sin vaciar la página
     - Estado vacío global cuando no hay colecciones ni items
     - Ruta `/stats` en `frontend/src/App.tsx`; enlace en `Navigation.tsx`
     - _Requirements: 7.8, 7.9, 7.10_
-  - [~] 30.5 Escribir tests de hooks, componentes y página de estadísticas
+  - [x] 30.5 Escribir tests de hooks, componentes y página de estadísticas
     - Hooks con MSW: éxito, error, loading
     - `MetricCard.test.tsx`, `CollectionStatsTable.test.tsx`, `CategoryStatsTable.test.tsx`, `StatsPage.test.tsx`: estado vacío, error por bloque con reintento sin afectar a los demás, ROI nulo, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 7.8, 7.9, 7.10, 19.2, 19.3_
-  - [~] 30.6 Agregar claves i18n de estadísticas en los 5 idiomas
+  - [x] 30.6 Agregar claves i18n de estadísticas en los 5 idiomas
     - Sección `stats.*` (`title`, `totalItems`, `totalValue`, `totalInvested`, `valueGain`, `roi`, `roiUnavailable`, `recentAcquisitions`, `mostValuable`, `highPriorityWishlist`, `byCollection`, `byCategory`, `timeline`, `period.*`, `empty`, `retry`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_
 
-- [ ] 31. Bloque 2 - Gráficos accesibles (R16)
-  - [~] 31.1 Crear `frontend/src/types/chart.ts` y `frontend/src/components/charts/ChartDataTable.tsx`
+- [x] 31. Bloque 2 - Gráficos accesibles (R16)
+  - [x] 31.1 Crear `frontend/src/types/chart.ts` y `frontend/src/components/charts/ChartDataTable.tsx`
     - `ChartSeries` con `key`, `label`, `marker` (`circle | square | triangle | diamond`), `dashArray?`, `points`
     - `ChartDataTable` renderiza sobre `Table` una fila por punto con los valores exactos de las series
     - _Requirements: 16.2, 16.3_
-  - [~] 31.2 Crear `frontend/src/components/charts/ChartContainer.tsx`
+  - [x] 31.2 Crear `frontend/src/components/charts/ChartContainer.tsx`
     - Props `{ title, description, data, isLoading, error, children }`
     - `<figure>` con `<figcaption>`; SVG del gráfico con `aria-hidden="true"`; `ChartDataTable` dentro de un `<details>` con `<summary>` etiquetado y alcanzable por teclado
     - `EmptyState` cuando `data` está vacío, `LoadingSpinner` mientras carga, `ErrorMessage` propio ante error
     - Desactiva `isAnimationActive` cuando `useReducedMotion()` es verdadero
     - _Requirements: 16.2, 16.4, 16.5, 16.7, 18.1_
-  - [~] 31.3 Crear los 4 gráficos en `frontend/src/components/charts/`
+  - [x] 31.3 Crear los 4 gráficos en `frontend/src/components/charts/`
     - `ValuationOverTimeChart.tsx` (línea), `InvestmentVsValueChart.tsx` (barras agrupadas), `CategoryDistributionChart.tsx` (barras horizontales), `AcquisitionTimelineChart.tsx` (área)
     - Todos consumen `statsApi` mediante los hooks de la Task 30, envueltos en `ChartContainer`, con `marker` distinto por serie
     - Cargar Recharts con `React.lazy` para no penalizar el primer render de las páginas que no lo usan
     - _Requirements: 16.1, 16.3_
-  - [~] 31.4 Integrar la sección de gráficos en `frontend/src/pages/StatsPage.tsx`
+  - [x] 31.4 Integrar la sección de gráficos en `frontend/src/pages/StatsPage.tsx`
     - Sección de gráficos debajo de las métricas, con cada gráfico aislado en su propio contenedor de error
     - _Requirements: 16.1, 16.7_
-  - [~] 31.5 Escribir tests de gráficos
+  - [x] 31.5 Escribir tests de gráficos
     - `ChartDataTable.test.tsx`: una fila por punto y valores coincidentes con la entrada
     - `ChartContainer.test.tsx`: `<figure>`/`<figcaption>` presentes, `<summary>` alcanzable por teclado y abre la tabla con Enter, SVG `aria-hidden`, estado vacío, error aislado, animación desactivada con `prefers-reduced-motion`
     - Un `.test.tsx` por gráfico verificando que la tabla equivalente refleja los datos del endpoint mockeado con MSW y que cada serie tiene un `marker` distinto
     - `frontend/tests/accessibility/charts.a11y.test.tsx`: axe sobre la sección completa en tema claro y oscuro
     - _Requirements: 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 19.2, 19.3_
-  - [~] 31.6 Agregar claves i18n de gráficos en los 5 idiomas
+  - [x] 31.6 Agregar claves i18n de gráficos en los 5 idiomas
     - Sección `charts.*` (`valuationOverTime`, `investmentVsValue`, `categoryDistribution`, `acquisitionTimeline`, `viewDataTable`, `series.*`, `noData`, `loadError`, `descriptions.*`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_
@@ -747,148 +747,148 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [~] 32. Checkpoint - Estadísticas y gráficos completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 33. Bloque 2 - Accesorios y stock backend (R12)
-  - [~] 33.1 Crear `backend/api/schemas/accessory.py`
+- [x] 33. Bloque 2 - Accesorios y stock backend (R12)
+  - [x] 33.1 Crear `backend/api/schemas/accessory.py`
     - `AccessoryBase` con `name` (min_length 1), `category`, `subcategory`, `compatible_sub_categories`, `size_specifications`, `quantity_total` (ge 0), `minimum_stock_alert` (ge 0), `reorder_quantity`, `unit_cost`, `currency`, `supplier_id`, `supplier_sku`, `supplier_url`, `notes`
     - `AccessoryResponse` con `quantity_in_use`, `quantity_available` e `is_low_stock` de solo lectura; `LowStockEntry`; `ItemAccessoryCreate` (`accessory_id`, `quantity_used` ge 1, `notes`); `ItemAccessoryResponse`
     - _Requirements: 12.1, 12.2, 12.3, 12.5, 12.10_
-  - [~] 33.2 Crear `backend/api/services/accessory_service.py`
+  - [x] 33.2 Crear `backend/api/services/accessory_service.py`
     - CRUD `list` (filtro `category`, paginación), `get`, `create`, `update`, `delete` (lanza `DuplicateError` → 409 si tiene asignaciones vigentes)
     - `list_low_stock` devuelve los accesorios con `quantity_available <= minimum_stock_alert` y la `reorder_quantity` sugerida
     - `assign` valida stock disponible (`ValidationError` si excede) y unicidad (`DuplicateError` si ya está asignado) **antes** del insert, en ambos dialectos; ajusta `quantity_in_use` solo en SQLite (en PostgreSQL lo hace el trigger)
     - `unassign` elimina el registro y decrementa `quantity_in_use` en SQLite
     - `_resolve_available` lee la columna `GENERATED` en PostgreSQL y usa `available_stock()` en SQLite
     - _Requirements: 12.5, 12.6, 12.7, 12.8, 12.9, 12.10, 19.6_
-  - [~] 33.3 Agregar `get_accessory_service` en `backend/api/dependencies.py` y crear `backend/api/routes/accessories.py`
+  - [x] 33.3 Agregar `get_accessory_service` en `backend/api/dependencies.py` y crear `backend/api/routes/accessories.py`
     - `GET/POST /accessories`, `GET/PUT/DELETE /accessories/{id}`, `GET /accessories/low-stock`, `GET/POST /collection-items/{id}/accessories`, `DELETE /item-accessories/{id}`
     - Registrar `app.include_router(accessories_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 12.1, 12.5, 12.6, 12.10, 19.6_
-  - [~] 33.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_accessory_service.py`
+  - [x] 33.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_accessory_service.py`
     - Creación válida; `name` vacío y `quantity_total` negativo rechazados; campos opcionales persistidos
     - `assign` incrementa `quantity_in_use` y reduce `quantity_available`; `unassign` los revierte
     - Asignación duplicada al mismo item rechazada; asignación por encima del disponible rechazada dejando `quantity_in_use` intacto
     - `list_low_stock` con stock por debajo, igual y por encima del umbral
     - `delete` con asignaciones vigentes rechazado
     - _Requirements: 12.1, 12.2, 12.3, 12.5, 12.6, 12.7, 12.8, 12.10, 19.10_
-  - [~] 33.5 Escribir el test `@pytest.mark.postgres` del trigger y la columna GENERATED
+  - [x] 33.5 Escribir el test `@pytest.mark.postgres` del trigger y la columna GENERATED
     - `backend/tests/integration/test_postgres/test_accessories_postgres.py`: `update_accessory_stock_trigger` ajusta `quantity_in_use` sin intervención del service y `quantity_available` coincide con `available_stock()`
     - _Requirements: 12.9, 19.8_
-  - [~] 33.6 Escribir integration tests en `backend/tests/integration/test_routes/test_accessories.py`
+  - [x] 33.6 Escribir integration tests en `backend/tests/integration/test_routes/test_accessories.py`
     - Códigos 200/201/204/404/409/422; asignación sin stock devuelve 422; asignación duplicada devuelve 409; borrado con asignaciones devuelve 409
     - _Requirements: 12.1, 12.2, 12.7, 12.8, 12.10, 19.9_
-  - [~] 33.7 Escribir property test del stock disponible
+  - [x] 33.7 Escribir property test del stock disponible
     - **Property 2: El stock disponible nunca es negativo y siempre es total menos en uso**
     - **Validates: Requirements 12.8, 12.9**
     - Usar `hypothesis` (mínimo 100 iteraciones) con secuencias arbitrarias de asignaciones y desasignaciones, verificando la invariante tras cada operación y que las asignaciones inválidas no modifican `quantity_in_use`
     - Archivo: `backend/tests/unit/test_services/test_accessory_service_properties.py`
 
-- [ ] 34. Bloque 2 - Accesorios y stock frontend (R12)
-  - [~] 34.1 Crear `frontend/src/types/accessory.ts` y `frontend/src/services/accessoriesApi.ts`
+- [x] 34. Bloque 2 - Accesorios y stock frontend (R12)
+  - [x] 34.1 Crear `frontend/src/types/accessory.ts` y `frontend/src/services/accessoriesApi.ts`
     - `Accessory` (con `readonly quantityInUse`, `quantityAvailable`, `isLowStock`), `AccessoryCreate`, `AccessoryUpdate`, `LowStockEntry`, `ItemAccessoryAssignment`
     - `accessoriesApi` con `list`, `get`, `create`, `update`, `remove`, `lowStock`, `listAssignments`, `assign`, `unassign`
     - _Requirements: 12.1, 12.5, 12.10, 19.7_
-  - [~] 34.2 Crear `frontend/src/hooks/useAccessories.ts` y `frontend/src/hooks/useItemAccessories.ts`
+  - [x] 34.2 Crear `frontend/src/hooks/useAccessories.ts` y `frontend/src/hooks/useItemAccessories.ts`
     - Asignar o desasignar invalida el listado de accesorios y el de stock bajo
     - _Requirements: 12.5, 12.6, 12.10_
-  - [~] 34.3 Crear los componentes en `frontend/src/components/accessories/`
+  - [x] 34.3 Crear los componentes en `frontend/src/components/accessories/`
     - `AccessoryCard.tsx`, `AccessoryForm.tsx`, `LowStockList.tsx`, `StockBadge.tsx`, `AssignAccessoryDialog.tsx`
     - `StockBadge` sobre `Badge`: marca el stock bajo con color, texto explícito y `aria-label`
     - `AssignAccessoryDialog` valida localmente la cantidad contra el disponible antes de enviar
     - _Requirements: 12.5, 12.8, 12.11_
-  - [~] 34.4 Crear `frontend/src/pages/AccessoriesPage.tsx` con ruta y navegación
+  - [x] 34.4 Crear `frontend/src/pages/AccessoriesPage.tsx` con ruta y navegación
     - Listado con total, en uso y disponible, sección de stock bajo, estado vacío
     - Ruta `/accessories` en `frontend/src/App.tsx`; enlace en `Navigation.tsx`
     - Integrar `AssignAccessoryDialog` en el detalle de collection item de `frontend/src/pages/CollectionDetailPage.tsx`
     - _Requirements: 12.5, 12.11_
-  - [~] 34.5 Escribir tests de hooks, componentes y página de accesorios
+  - [x] 34.5 Escribir tests de hooks, componentes y página de accesorios
     - Hooks con MSW; un `.test.tsx` por componente y por página: stock bajo destacado con texto además de color, error de stock insuficiente, focus trap del diálogo, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 12.8, 12.11, 18.6, 19.2, 19.3_
-  - [~] 34.6 Agregar claves i18n de accesorios en los 5 idiomas
+  - [x] 34.6 Agregar claves i18n de accesorios en los 5 idiomas
     - Sección `accessories.*` (`title`, `add`, `name`, `category`, `quantityTotal`, `quantityInUse`, `quantityAvailable`, `minimumStockAlert`, `reorderQuantity`, `unitCost`, `supplier`, `lowStock`, `lowStockTitle`, `suggestedReorder`, `assign`, `unassign`, `quantityUsed`, `empty`)
     - `errors.accessory.*` (`invalidStock`, `insufficientStock`, `alreadyAssigned`, `hasAssignments`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_
 
-- [ ] 35. Bloque 2 - Exportación backend (R13)
-  - [~] 35.1 Crear `backend/api/schemas/export.py`
+- [x] 35. Bloque 2 - Exportación backend (R13)
+  - [x] 35.1 Crear `backend/api/schemas/export.py`
     - `ExportEnvelope` (`schema_version`, `entity_type`, `exported_at`, `source`), `CollectionExport`, `CollectionItemExport` (con `components`), `CatalogExport`, `WishlistExport`
     - _Requirements: 13.1, 13.2, 13.6_
-  - [~] 35.2 Crear `backend/api/services/export_service.py`
+  - [x] 35.2 Crear `backend/api/services/export_service.py`
     - `SCHEMA_VERSION = "1.0"`; `export_collection` (colección, items, componentes y catalog items referenciados), `export_catalog_json`, `export_catalog_csv`, `export_wishlist`
     - El header CSV se deriva de `CsvImportService.REQUIRED_COLUMNS | OPTIONAL_COLUMNS` en orden estable, nunca escrito a mano
     - `NotFoundError` para entidades inexistentes
     - _Requirements: 13.1, 13.2, 13.3, 13.4, 13.6, 19.6_
-  - [~] 35.3 Agregar `get_export_service` en `backend/api/dependencies.py` y crear `backend/api/routes/export.py`
+  - [x] 35.3 Agregar `get_export_service` en `backend/api/dependencies.py` y crear `backend/api/routes/export.py`
     - `GET /export/collections/{id}`, `GET /export/catalogs/{id}?format=json|csv`, `GET /export/wishlist`
     - Encabezados `Content-Type` y `Content-Disposition: attachment` con nombre de archivo; 404 para entidad inexistente, 422 para formato no soportado
     - Registrar `app.include_router(export_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 13.2, 13.3, 13.4, 13.5, 19.6_
-  - [~] 35.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_export_service.py`
+  - [x] 35.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_export_service.py`
     - Export de colección con items y componentes; colección vacía; catálogo con y sin items
     - El header del CSV coincide exactamente con las constantes del importador
     - Entidad inexistente lanza `NotFoundError`
     - _Requirements: 13.1, 13.2, 13.3, 13.4, 19.10_
-  - [~] 35.5 Escribir integration tests en `backend/tests/integration/test_routes/test_export.py`
+  - [x] 35.5 Escribir integration tests en `backend/tests/integration/test_routes/test_export.py`
     - 200 con `Content-Type` y `Content-Disposition` correctos por formato; 404 y 422
     - _Requirements: 13.2, 13.3, 13.4, 13.5, 19.9_
 
-- [ ] 36. Bloque 2 - Importación JSON backend (R14)
-  - [~] 36.1 Crear `backend/api/schemas/import_data.py` y ampliar `backend/api/schemas/csv_import.py`
+- [x] 36. Bloque 2 - Importación JSON backend (R14)
+  - [x] 36.1 Crear `backend/api/schemas/import_data.py` y ampliar `backend/api/schemas/csv_import.py`
     - `ImportEntityChange` (`entity_type`, `identifier`, `action`, `reason`), `ImportPreview` (`schema_version`, `to_create`, `to_update`, `to_skip`, `changes`, `errors`)
     - Ampliar `BatchImportResult` con `updated_count` y `skipped_count` con default 0, sin romper al cliente CSV existente
     - _Requirements: 14.3, 14.4, 14.5, 14.7_
-  - [~] 36.2 Crear `backend/api/services/json_import_service.py`
+  - [x] 36.2 Crear `backend/api/services/json_import_service.py`
     - `MAX_FILE_SIZE = 10 MB`, `SUPPORTED_VERSIONS = {"1.0"}`
     - `_parse_envelope` valida JSON, estructura y `schema_version`; `_plan` clasifica cada entidad en create / update / skip y acumula errores por entidad con identificador y motivo
     - `_resolve_existing` busca por clave natural según la tabla del design: `Catalog(sub_category_id, name)`, `CatalogItem(catalog_id, title, region, variant)` con prioridad a `sku`/`upc` no vacío, `Collection(name)`, `CollectionItem(collection_id, catalog_item_id, variant_description, certification_number)`, `WishlistItem(collection_id, catalog_item_id)`, `Supplier(name, type)`, `ItemComponent(collection_item_id, component_name)`; los UUID del documento se ignoran para el matching
     - `preview` corre `_plan` dentro de una transacción que se descarta, sin `commit`; `execute` usa el mismo `_plan` y devuelve `BatchImportResult`
     - _Requirements: 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7, 14.8, 19.6_
-  - [~] 36.3 Agregar `get_json_import_service` en `backend/api/dependencies.py` y crear `backend/api/routes/import_data.py`
+  - [x] 36.3 Agregar `get_json_import_service` en `backend/api/dependencies.py` y crear `backend/api/routes/import_data.py`
     - `POST /import/preview` y `POST /import/execute` con `UploadFile`; 413 si excede 10 MB, 422 si el JSON o la estructura son inválidos
     - Registrar `app.include_router(import_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 14.1, 14.2, 14.3, 19.6_
-  - [~] 36.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_json_import_service.py`
+  - [x] 36.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_json_import_service.py`
     - JSON inválido y estructura no reconocida rechazados; `schema_version` no soportada rechazada; archivo mayor a 10 MB rechazado
     - `preview` no escribe nada en la base (conteos idénticos antes y después)
     - Entidades coincidentes por clave natural se actualizan en lugar de duplicarse
     - Archivo con entidades válidas e inválidas persiste las válidas y reporta ambas cantidades
     - `preview` y `execute` producen los mismos conteos para el mismo archivo
     - _Requirements: 14.1, 14.2, 14.3, 14.4, 14.6, 14.7, 19.10_
-  - [~] 36.5 Escribir integration tests en `backend/tests/integration/test_routes/test_import.py`
+  - [x] 36.5 Escribir integration tests en `backend/tests/integration/test_routes/test_import.py`
     - Códigos 200/413/422; `preview` seguido de no llamar a `execute` deja la base intacta
     - _Requirements: 14.1, 14.2, 14.3, 14.10, 19.9_
-  - [~] 36.6 Escribir property test de idempotencia del import
+  - [x] 36.6 Escribir property test de idempotencia del import
     - **Property 3: La importación es idempotente**
     - **Validates: Requirements 14.6, 14.8**
     - Usar `hypothesis` (mínimo 100 iteraciones) generando documentos de exportación válidos e importándolos dos veces; comparar el conteo por tipo de entidad
     - Archivo: `backend/tests/unit/test_services/test_json_import_service_properties.py`
-  - [~] 36.7 Escribir property test del round-trip export → import
+  - [x] 36.7 Escribir property test del round-trip export → import
     - **Property 4: El round-trip export → import preserva las entidades**
     - **Validates: Requirements 13.6, 14.5**
     - Usar `hypothesis` (mínimo 100 iteraciones) generando colecciones con items y componentes, exportando e importando en una base vacía y comparando los campos exportados
     - Archivo: `backend/tests/unit/test_services/test_transfer_roundtrip_properties.py`
 
-- [ ] 37. Bloque 2 - Export e import frontend (R13, R14)
-  - [~] 37.1 Crear `frontend/src/types/transfer.ts`, `frontend/src/services/exportApi.ts` y `frontend/src/services/importApi.ts`
+- [x] 37. Bloque 2 - Export e import frontend (R13, R14)
+  - [x] 37.1 Crear `frontend/src/types/transfer.ts`, `frontend/src/services/exportApi.ts` y `frontend/src/services/importApi.ts`
     - `ImportPreview`, `ImportEntityChange`, `BatchImportResult` ampliado con `updatedCount` y `skippedCount`, `ExportFormat`
     - `exportApi` usa `fetch` directo más `URL.createObjectURL` para disparar la descarga (no `fetchApi`, que parsea JSON); `importApi` con `preview(file)` y `execute(file)` sobre `FormData`
     - _Requirements: 13.5, 13.7, 14.3, 14.5, 19.7_
-  - [~] 37.2 Crear `frontend/src/hooks/useExport.ts` y `frontend/src/hooks/useJsonImport.ts`
+  - [x] 37.2 Crear `frontend/src/hooks/useExport.ts` y `frontend/src/hooks/useJsonImport.ts`
     - `useExport` expone estado de progreso y error; `useJsonImport` mantiene el paso del asistente y el resultado, e invalida todas las query keys afectadas tras `execute`
     - _Requirements: 13.7, 13.8, 14.9_
-  - [~] 37.3 Crear los componentes en `frontend/src/components/transfer/`
+  - [x] 37.3 Crear los componentes en `frontend/src/components/transfer/`
     - `ExportPanel.tsx` (selección de entidad y formato, indicador de progreso, error con reintento)
     - `ImportWizard.tsx` con 4 pasos (subir → vista previa → confirmar → reporte), `ImportPreviewTable.tsx` sobre `Table`, `ImportReport.tsx`
     - Cancelar en la vista previa simplemente no llama a `execute`; el asistente lo indica explícitamente
     - _Requirements: 13.7, 13.8, 14.9, 14.10_
-  - [~] 37.4 Crear `frontend/src/pages/ExportPage.tsx` y `frontend/src/pages/ImportPage.tsx` con rutas y navegación
+  - [x] 37.4 Crear `frontend/src/pages/ExportPage.tsx` y `frontend/src/pages/ImportPage.tsx` con rutas y navegación
     - Rutas `/export` e `/import` en `frontend/src/App.tsx`; enlaces en `Navigation.tsx`
     - _Requirements: 13.7, 14.9_
-  - [~] 37.5 Escribir tests de hooks, componentes y páginas de transferencia
+  - [x] 37.5 Escribir tests de hooks, componentes y páginas de transferencia
     - Hooks con MSW: descarga exitosa, error con reintento, preview seguido de execute
     - `ExportPanel.test.tsx`, `ImportWizard.test.tsx`, `ImportPreviewTable.test.tsx`, `ImportReport.test.tsx`, `ExportPage.test.tsx`, `ImportPage.test.tsx`: avance y retroceso entre pasos, cancelación sin llamar a `execute`, reporte con errores por entidad, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 13.7, 13.8, 14.9, 14.10, 19.2, 19.3_
-  - [~] 37.6 Agregar claves i18n de export e import en los 5 idiomas
+  - [x] 37.6 Agregar claves i18n de export e import en los 5 idiomas
     - Sección `export.*` (`title`, `entity`, `format`, `download`, `inProgress`, `retry`) e `import.*` (`title`, `steps.*`, `selectFile`, `preview`, `toCreate`, `toUpdate`, `toSkip`, `confirm`, `cancel`, `report`, `partialErrors`, `empty`)
     - `errors.export.*` (`notFound`, `invalidFormat`) y `errors.import.*` (`invalidStructure`, `unsupportedVersion`, `fileTooLarge`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
@@ -897,15 +897,15 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [~] 38. Checkpoint - Accesorios, export e import completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 39. Bloque 2 - Backups backend (R15)
-  - [~] 39.1 Crear `backend/api/schemas/backup.py`
+- [x] 39. Bloque 2 - Backups backend (R15)
+  - [x] 39.1 Crear `backend/api/schemas/backup.py`
     - `BackupInfo`, `BackupConfig` (`frequency` literal, `retention_count` ge 1 le 365, `next_run_at`, `last_run_at`, `last_run_status`), `BackupConfigUpdate`, `RestoreResult`, `BackupVerification`
     - _Requirements: 15.2, 15.3, 15.6, 15.8, 15.9_
-  - [~] 39.2 Agregar `ToolUnavailableError` y su handler
+  - [x] 39.2 Agregar `ToolUnavailableError` y su handler
     - `ToolUnavailableError(DomainError)` en `backend/core/exceptions.py`
     - `service_unavailable_handler` (→ 503) registrado en `backend/core/exception_handlers.py` y en `backend/main.py`
     - _Requirements: 15.1_
-  - [~] 39.3 Crear `backend/api/services/backup_service.py`
+  - [x] 39.3 Crear `backend/api/services/backup_service.py`
     - `create(trigger)` genera `hoard-backup-{YYYYMMDD-HHMMSS}-{shortid}.tar.gz` en `BACKUP_DIR` con `manifest.json`, `database.dump` (`pg_dump -Fc` vía `subprocess`), `uploads/` (copia de `UPLOAD_DIR`) y `config.json` con ajustes no sensibles (nunca `SECRET_KEY` ni `DATABASE_URL`)
     - `shutil.which("pg_dump")` al inicio de `create`; si falta lanza `ToolUnavailableError` nombrando el binario
     - `list` ordenado por fecha descendente, `get_path`, `delete`, `apply_retention` (solo tras un backup exitoso)
@@ -914,53 +914,53 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - `get_config` / `update_config` persisten en `app_settings` bajo la clave `backups.config`
     - `try_acquire_backup_lock` / `release_backup_lock` con `pg_try_advisory_lock(hashtext('hoard.backup'))`
     - _Requirements: 15.1, 15.2, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9, 15.10, 15.11, 19.6_
-  - [~] 39.4 Crear `backend/core/scheduler.py` y arrancarlo desde el `lifespan` de `backend/main.py`
+  - [x] 39.4 Crear `backend/core/scheduler.py` y arrancarlo desde el `lifespan` de `backend/main.py`
     - `AsyncIOScheduler` de APScheduler; job que toma el advisory lock antes de ejecutar y sale sin hacer nada si no lo obtiene
     - Reprograma según la frecuencia persistida y actualiza `last_run_at`, `last_run_status` y `next_run_at`
     - Un fallo registra el error y conserva los backups existentes sin aplicar retención
     - _Requirements: 15.8, 15.9, 15.10, 15.11_
-  - [~] 39.5 Agregar `get_backup_service` en `backend/api/dependencies.py` y crear `backend/api/routes/backups.py`
+  - [x] 39.5 Agregar `get_backup_service` en `backend/api/dependencies.py` y crear `backend/api/routes/backups.py`
     - `GET/POST /backups` (201, 503), `GET /backups/{id}/download` (200, 404), `POST /backups/{id}/restore` (200, 404, 422), `DELETE /backups/{id}` (204, 404), `GET/PUT /backups/config` (200, 422)
     - Registrar `app.include_router(backups_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 15.1, 15.3, 15.4, 15.5, 15.6, 15.8, 15.9, 19.6_
-  - [~] 39.6 Escribir unit tests en `backend/tests/unit/test_services/test_backup_service.py` y `backend/tests/unit/test_core/test_scheduler.py`
+  - [x] 39.6 Escribir unit tests en `backend/tests/unit/test_services/test_backup_service.py` y `backend/tests/unit/test_core/test_scheduler.py`
     - `create` con `pg_dump` mockeado produce el tar con los 4 miembros y el manifest correcto; sin `pg_dump` lanza `ToolUnavailableError`
     - `_verify` rechaza tar corrupto, manifest ausente, `schema_version` no soportada, checksum incorrecto y miembros con path traversal
     - `restore` con archivo inválido no modifica datos; con archivo válido devuelve `RestoreResult`
     - `get_config`/`update_config` persisten en `app_settings`; frecuencia inválida y retención fuera de rango rechazadas
     - Scheduler: sin lock no ejecuta; fallo registra `last_run_status = "failed"` y no aplica retención
     - _Requirements: 15.1, 15.2, 15.5, 15.6, 15.7, 15.8, 15.9, 15.11, 19.10_
-  - [~] 39.7 Escribir integration tests en `backend/tests/integration/test_routes/test_backups.py`
+  - [x] 39.7 Escribir integration tests en `backend/tests/integration/test_routes/test_backups.py`
     - Códigos 200/201/204/404/422/503; `download` devuelve el archivo con `Content-Disposition`; `restore` de backup inexistente devuelve 404 y de backup corrupto 422
     - _Requirements: 15.4, 15.5, 15.6, 15.7, 19.9_
-  - [~] 39.8 Escribir property test de la rotación de backups
+  - [x] 39.8 Escribir property test de la rotación de backups
     - **Property 7: La rotación de backups conserva exactamente min(N, creados)**
     - **Validates: Requirements 15.10**
     - Usar `hypothesis` (mínimo 100 iteraciones) con retención N ≥ 1 y K backups creados secuencialmente; verificar la cantidad restante y que son los más recientes
     - Archivo: `backend/tests/unit/test_services/test_backup_service_properties.py`
 
-- [ ] 40. Bloque 2 - Backups frontend (R15)
-  - [~] 40.1 Crear `frontend/src/types/backup.ts` y `frontend/src/services/backupsApi.ts`
+- [x] 40. Bloque 2 - Backups frontend (R15)
+  - [x] 40.1 Crear `frontend/src/types/backup.ts` y `frontend/src/services/backupsApi.ts`
     - `BackupInfo`, `BackupConfig`, `BackupConfigUpdate`, `RestoreResult`, `BackupFrequency`
     - `backupsApi` con `list`, `create`, `download`, `restore`, `remove`, `getConfig`, `updateConfig`
     - _Requirements: 15.3, 15.4, 15.6, 15.9, 19.7_
-  - [~] 40.2 Crear `frontend/src/hooks/useBackups.ts` y `frontend/src/hooks/useBackupConfig.ts`
+  - [x] 40.2 Crear `frontend/src/hooks/useBackups.ts` y `frontend/src/hooks/useBackupConfig.ts`
     - Crear o borrar invalida el listado; restaurar invalida todas las query keys de datos
     - _Requirements: 15.3, 15.6, 15.9_
-  - [~] 40.3 Crear los componentes en `frontend/src/components/backups/`
+  - [x] 40.3 Crear los componentes en `frontend/src/components/backups/`
     - `BackupList.tsx` sobre `Table` con acciones de descarga, restauración y borrado
     - `BackupConfigForm.tsx` con frecuencia (daily/weekly/monthly), retención y la próxima ejecución programada
     - `RestoreConfirmDialog.tsx`: exige escribir la palabra de confirmación para habilitar el botón, dado que la operación es destructiva e irreversible
     - _Requirements: 15.3, 15.4, 15.6, 15.8, 15.9, 15.12_
-  - [~] 40.4 Crear `frontend/src/pages/BackupsPage.tsx` con ruta y navegación
+  - [x] 40.4 Crear `frontend/src/pages/BackupsPage.tsx` con ruta y navegación
     - Ruta `/settings/backups` en `frontend/src/App.tsx`; enlace en `Navigation.tsx`
     - Mensaje explicativo dedicado ante 503 (falta el cliente de PostgreSQL)
     - _Requirements: 15.12_
-  - [~] 40.5 Escribir tests de hooks, componentes y página de backups
+  - [x] 40.5 Escribir tests de hooks, componentes y página de backups
     - Hooks con MSW incluyendo el caso 503
     - `BackupList.test.tsx`, `BackupConfigForm.test.tsx`, `RestoreConfirmDialog.test.tsx`, `BackupsPage.test.tsx`: botón de restaurar deshabilitado hasta escribir la confirmación, focus trap y Escape en el diálogo, estado vacío, error 503, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 15.12, 18.6, 19.2, 19.3_
-  - [~] 40.6 Agregar claves i18n de backups en los 5 idiomas
+  - [x] 40.6 Agregar claves i18n de backups en los 5 idiomas
     - Sección `backups.*` (`title`, `create`, `download`, `restore`, `delete`, `createdAt`, `size`, `trigger.*`, `contents.*`, `config.*`, `frequency.*`, `retention`, `nextRun`, `lastRun`, `lastRunFailed`, `restoreWarning`, `restoreConfirmWord`, `empty`)
     - `errors.backup.*` (`notFound`, `corrupted`, `toolUnavailable`, `invalidFrequency`, `invalidRetention`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
@@ -969,16 +969,16 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [~] 41. Checkpoint - Backups y scheduler completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 42. Bloque 2 - PWA: manifest y service worker (R17)
-  - [~] 42.1 Configurar `vite-plugin-pwa` en `frontend/vite.config.ts`
+- [x] 42. Bloque 2 - PWA: manifest y service worker (R17)
+  - [x] 42.1 Configurar `vite-plugin-pwa` en `frontend/vite.config.ts`
     - `registerType: "prompt"`, `generateSW` con manifest ("H.O.A.R.D.", short_name "HOARD", iconos 192/512 más maskable, `theme_color` alineado al token `accent`, `display: "standalone"`)
     - `runtimeCaching`: precache + CacheFirst del app shell, StaleWhileRevalidate para `/locales/*/translation.json`, CacheFirst para `/uploads/*` (máx. 200 entradas, 30 días), NetworkFirst con timeout 3 s para `GET /api/collections`, `/api/collection-items`, `/api/stats/*` y `/api/search/*`; sin cache para POST/PUT/DELETE
     - _Requirements: 17.1, 17.2, 17.3, 17.4_
-  - [~] 42.2 Agregar los iconos de la PWA y el registro del service worker
+  - [x] 42.2 Agregar los iconos de la PWA y el registro del service worker
     - Iconos en `frontend/public/` (192, 512 y maskable)
     - Registro con `virtual:pwa-register/react` y aviso de actualización en `frontend/src/main.tsx`, usando `workbox-window`
     - _Requirements: 17.1, 17.2_
-  - [~] 42.3 Escribir el test de configuración del plugin en `frontend/tests/pwa/viteConfig.test.ts`
+  - [x] 42.3 Escribir el test de configuración del plugin en `frontend/tests/pwa/viteConfig.test.ts`
     - Valida la forma del objeto de configuración: manifest presente con los campos requeridos y una estrategia declarada por patrón de URL. No testea Workbox en sí
     - _Requirements: 17.1, 17.2_
 
@@ -1046,21 +1046,21 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
   - [~] 45.5 Crear el E2E de teclado en `frontend/tests/e2e/a11y-keyboard.spec.ts`
     - Recorrido completo por teclado, skip link operativo, focus trap en modales, zoom al 200% sin pérdida de funcionalidad ni scroll horizontal de página
     - _Requirements: 18.4, 18.5, 18.6_
-  - [~] 45.6 Crear `docs/ACCESSIBILITY.md` y enlazarlo desde el README
+  - [x] 45.6 Crear `docs/ACCESSIBILITY.md` y enlazarlo desde el README
     - Documentar el alcance de la auditoría automatizada, los componentes y páginas cubiertos, y la declaración explícita de que la validación completa de conformidad WCAG 2.1 AA requiere pruebas manuales con tecnologías asistivas y revisión experta, que la auditoría automatizada no sustituye
     - Agregar el enlace en `README.md`
     - _Requirements: 18.8_
 
 - [ ] 46. Bloque 2 - Cierre de estándares transversales (R19)
-  - [~] 46.1 Verificar y cerrar la paridad i18n de los 5 idiomas
+  - [x] 46.1 Verificar y cerrar la paridad i18n de los 5 idiomas
     - Ejecutar `npm run lint:i18n` y completar cualquier clave faltante o sobrante acumulada en las Tasks 24 a 45
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1, 9.2_
-  - [~] 46.2 Verificar el modo estricto de TypeScript sin `any`
+  - [x] 46.2 Verificar el modo estricto de TypeScript sin `any`
     - `npx tsc --noEmit` limpio; eliminar cualquier `any` introducido, usando `unknown` con narrowing donde el backend devuelve JSON libre
     - Archivos: `frontend/tsconfig.json` y los módulos señalados por el compilador
     - _Requirements: 19.7_
-  - [~] 46.3 Auditar la separación de capas del backend
+  - [x] 46.3 Auditar la separación de capas del backend
     - Revisar `backend/api/routes/*.py`: ninguna regla de negocio en las routes; toda validación de dominio en los services y toda traducción de error vía exception handlers
     - Mover a `services/` cualquier lógica que haya quedado en routes
     - _Requirements: 19.6_
@@ -1068,11 +1068,11 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - `suppliers.spec.ts`, `wishlist.spec.ts`, `components.spec.ts`, `search.spec.ts`, `stats.spec.ts`, `theme.spec.ts`, `i18n.spec.ts`, `accessories.spec.ts`, `transfer.spec.ts` (export → import round-trip), `backups.spec.ts`, `charts.spec.ts`
     - _Requirements: 19.9_
 
-- [~] 47. Checkpoint - Cierre del Bloque 2 (Fase 3 Advanced) y subida de coverage a 85%
+- [x] 47. Checkpoint - Cierre del Bloque 2 (Fase 3 Advanced) y subida de coverage a 85%
   - Elevar `fail_under = 85` en `backend/pyproject.toml` y `coverage.thresholds.lines = 85` en `frontend/vitest.config.ts`
   - Ensure all tests pass, ask the user if questions arise.
 
-- [~] 48. Final checkpoint - Suite completa, auditoría y umbrales verificados
+- [x] 48. Final checkpoint - Suite completa, auditoría y umbrales verificados
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes

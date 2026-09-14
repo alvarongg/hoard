@@ -35,7 +35,8 @@
     "yes": "Sí",
     "no": "No",
     "previous": "Anterior",
-    "next": "Siguiente"
+    "next": "Siguiente",
+    "actions": "Acciones"
   },
   "navigation": {
     "main": "Navegación principal",
@@ -45,7 +46,12 @@
     "catalogManagement": "Gestión de Catálogos",
     "suppliers": "Proveedores",
     "wishlist": "Lista de deseos",
-    "search": "Buscar"
+    "search": "Buscar",
+    "stats": "Estadísticas",
+    "accessories": "Accesorios",
+    "export": "Exportar",
+    "import": "Importar",
+    "backups": "Copias"
   },
   "home": {
     "welcome": "Bienvenido a H.O.A.R.D.",
@@ -442,7 +448,42 @@
       "priceRequired": "El precio es obligatorio",
       "invalidDecision": "Valor de decisión inválido"
     },
-    "searchFailed": "La búsqueda falló. Por favor, inténtalo de nuevo."
+    "searchFailed": "La búsqueda falló. Por favor, inténtalo de nuevo.",
+    "priceHistory": {
+      "conditionRequired": "La condición es obligatoria",
+      "negativePrice": "El precio debe ser mayor o igual a 0",
+      "dateRequired": "La fecha es obligatoria",
+      "duplicate": "Ya existe un registro de precio con esos datos"
+    },
+    "transaction": {
+      "dateRequired": "La fecha es obligatoria",
+      "invalidType": "Tipo de transacción inválido"
+    },
+    "accessory": {
+      "nameRequired": "El nombre es obligatorio",
+      "invalidStock": "Cantidad inválida",
+      "insufficientStock": "Stock insuficiente",
+      "alreadyAssigned": "Ya está asignado",
+      "hasAssignments": "Tiene asignaciones activas",
+      "selectRequired": "Seleccioná un accesorio"
+    },
+    "export": {
+      "failed": "La exportación falló",
+      "notFound": "No encontrado",
+      "invalidFormat": "Formato no soportado"
+    },
+    "import": {
+      "invalidStructure": "Estructura inválida",
+      "unsupportedVersion": "Versión no soportada",
+      "fileTooLarge": "Archivo demasiado grande"
+    },
+    "backup": {
+      "notFound": "No encontrado",
+      "corrupted": "Copia corrupta",
+      "toolUnavailable": "Cliente de PostgreSQL no disponible",
+      "invalidFrequency": "Frecuencia inválida",
+      "invalidRetention": "Retención inválida"
+    }
   },
   "search": {
     "title": "Buscar Catálogo",
@@ -476,5 +517,195 @@
     },
     "clearFilters": "Limpiar filtros",
     "filtersCleared": "Filtros eliminados"
+  },
+  "priceHistory": {
+    "title": "Historial de precios",
+    "add": "Agregar precio",
+    "condition": "Condición",
+    "isComplete": "Completo",
+    "price": "Precio",
+    "currency": "Moneda",
+    "source": "Fuente",
+    "priceDate": "Fecha",
+    "region": "Región",
+    "latest": "Precios más recientes",
+    "refreshValue": "Actualizar valor de mercado",
+    "noCompatiblePrice": "No hay precio compatible para actualizar el valor",
+    "empty": "Sin historial de precios",
+    "incompleteShort": "incompleto",
+    "deleteEntry": "Eliminar precio del {{date}}"
+  },
+  "transactions": {
+    "title": "Transacciones",
+    "add": "Agregar transacción",
+    "date": "Fecha",
+    "amount": "Monto",
+    "shippingCost": "Envío",
+    "taxAmount": "Impuestos",
+    "otherFees": "Otros cargos",
+    "totalAmount": "Total",
+    "currency": "Moneda",
+    "supplier": "Proveedor",
+    "counterpart": "Contraparte",
+    "invoiceNumber": "N.º de factura",
+    "paymentMethod": "Método de pago",
+    "empty": "Sin transacciones",
+    "deleteEntry": "Eliminar transacción del {{date}}",
+    "type": {
+      "label": "Tipo",
+      "purchase": "Compra",
+      "sale": "Venta",
+      "trade_in": "Permuta (entra)",
+      "trade_out": "Permuta (sale)",
+      "gift_received": "Regalo recibido",
+      "gift_given": "Regalo dado",
+      "grading_fee": "Gradación",
+      "repair": "Reparación",
+      "appraisal": "Tasación",
+      "other": "Otro"
+    },
+    "investment": {
+      "title": "Inversión",
+      "realInvested": "Inversión real",
+      "totalOutflow": "Egresos",
+      "totalInflow": "Ingresos",
+      "roi": "ROI",
+      "roiUnavailable": "sin datos"
+    }
+  },
+  "stats": {
+    "title": "Estadísticas",
+    "totalItems": "Ítems totales",
+    "totalValue": "Valor actual",
+    "totalInvested": "Invertido",
+    "valueGain": "Ganancia",
+    "roi": "ROI",
+    "roiUnavailable": "sin datos",
+    "byCollection": "Por colección",
+    "byCategory": "Por categoría",
+    "timeline": "Línea de tiempo",
+    "empty": "Sin datos para mostrar",
+    "retry": "Reintentar"
+  },
+  "charts": {
+    "valuationOverTime": "Valor en el tiempo",
+    "investmentVsValue": "Inversión vs. valor",
+    "categoryDistribution": "Distribución por categoría",
+    "acquisitionTimeline": "Adquisiciones en el tiempo",
+    "viewDataTable": "Ver tabla de datos",
+    "category": "Categoría",
+    "noData": "Sin datos para el gráfico",
+    "loadError": "No se pudo cargar el gráfico",
+    "descriptions": {
+      "valuationOverTime": "Evolución del monto invertido por período",
+      "investmentVsValue": "Comparación entre lo invertido y el valor actual",
+      "categoryDistribution": "Valor actual acumulado por categoría",
+      "acquisitionTimeline": "Cantidad de ítems adquiridos por período"
+    }
+  },
+  "accessories": {
+    "title": "Accesorios",
+    "add": "Agregar accesorio",
+    "name": "Nombre",
+    "category": "Categoría",
+    "quantityTotal": "Cantidad total",
+    "quantityInUse": "En uso",
+    "quantityAvailable": "Disponible",
+    "minimumStockAlert": "Alerta de stock mínimo",
+    "reorderQuantity": "Cantidad de reposición",
+    "unitCost": "Costo unitario",
+    "supplier": "Proveedor",
+    "lowStock": "Stock bajo: {{count}}",
+    "inStock": "En stock: {{count}}",
+    "lowStockTitle": "Stock bajo",
+    "noLowStock": "Sin alertas de stock",
+    "suggestedReorder": "Disp. {{available}} · reponer {{reorder}}",
+    "assign": "Asignar",
+    "unassign": "Quitar",
+    "quantityUsed": "Cantidad usada",
+    "empty": "Sin accesorios"
+  },
+  "export": {
+    "title": "Exportar",
+    "entity": "Entidad",
+    "entityWishlist": "Lista de deseos",
+    "entityCollection": "Colección",
+    "entityCatalog": "Catálogo",
+    "format": "Formato",
+    "download": "Descargar",
+    "inProgress": "Exportando..."
+  },
+  "import": {
+    "title": "Importar",
+    "selectFile": "Seleccionar archivo",
+    "preview": "Vista previa",
+    "entity": "Entidad",
+    "action": "Acción",
+    "toCreate": "A crear",
+    "toUpdate": "A actualizar",
+    "toSkip": "A omitir",
+    "confirm": "Confirmar importación",
+    "cancel": "Cancelar",
+    "cancelHint": "Cancelar no aplica ningún cambio.",
+    "done": "Listo",
+    "report": "Reporte",
+    "partialErrors": "Errores parciales",
+    "errorRow": "Fila {{row}}",
+    "empty": "Sin cambios",
+    "actions": {
+      "create": "Crear",
+      "update": "Actualizar",
+      "skip": "Omitir"
+    },
+    "steps": {
+      "label": "Pasos",
+      "upload": "Subir",
+      "preview": "Vista previa",
+      "confirm": "Confirmar",
+      "report": "Reporte"
+    }
+  },
+  "backups": {
+    "title": "Copias de seguridad",
+    "create": "Crear copia",
+    "download": "Descargar",
+    "restore": "Restaurar",
+    "delete": "Eliminar",
+    "createdAt": "Fecha",
+    "size": "Tamaño",
+    "config": "Configuración",
+    "frequency": "Frecuencia",
+    "frequencyDaily": "Diaria",
+    "frequencyWeekly": "Semanal",
+    "frequencyMonthly": "Mensual",
+    "retention": "Retención",
+    "nextRun": "Próxima ejecución",
+    "lastRun": "Última ejecución",
+    "lastRunFailed": "La última ejecución falló",
+    "restoreWarning": "Restaurar {{filename}} sobrescribirá los datos actuales. Esta acción es irreversible.",
+    "restoreConfirmWord": "RESTAURAR",
+    "restoreConfirmPrompt": "Escribí {{word}} para confirmar",
+    "toolUnavailable": "El cliente de PostgreSQL (pg_dump) no está disponible en el servidor",
+    "empty": "Sin copias de seguridad"
+  },
+  "offline": {
+    "banner": "Sin conexión — los cambios se guardarán y sincronizarán al reconectar",
+    "pendingOperation": "Operación pendiente",
+    "retry": "Reintentar",
+    "discard": "Descartar",
+    "sync": {
+      "pending": "Pendientes",
+      "applied": "Aplicadas",
+      "conflict": "En conflicto",
+      "failed": "Fallidas"
+    },
+    "conflict": {
+      "title": "Conflicto de sincronización",
+      "keepLocal": "Mantener mi cambio",
+      "keepServer": "Descartar mi cambio"
+    },
+    "failed": {
+      "title": "Operaciones fallidas"
+    }
   }
 }

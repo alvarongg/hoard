@@ -35,3 +35,9 @@ class FileValidationError(DomainError):
     """Raised when an uploaded file fails validation (type, size, etc.)."""
 
     pass
+
+
+class ToolUnavailableError(DomainError):
+    """Raised when a required external tool (e.g. pg_dump) is missing."""
+
+    pass

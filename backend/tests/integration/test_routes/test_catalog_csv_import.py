@@ -125,7 +125,13 @@ class TestImportCsvSuccess:
 
         assert response.status_code == 200
         body = response.json()
-        assert body == {"created_count": 2, "error_count": 0, "errors": []}
+        assert body == {
+            "created_count": 2,
+            "error_count": 0,
+            "updated_count": 0,
+            "skipped_count": 0,
+            "errors": [],
+        }
 
     async def test_import_valid_csv_persists_items(
         self, client: AsyncClient,

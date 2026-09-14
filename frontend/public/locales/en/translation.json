@@ -35,7 +35,8 @@
     "yes": "Yes",
     "no": "No",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "actions": "Actions"
   },
   "navigation": {
     "main": "Main navigation",
@@ -45,7 +46,12 @@
     "catalogManagement": "Catalog Management",
     "suppliers": "Suppliers",
     "wishlist": "Wishlist",
-    "search": "Search"
+    "search": "Search",
+    "stats": "Statistics",
+    "accessories": "Accessories",
+    "export": "Export",
+    "import": "Import",
+    "backups": "Backups"
   },
   "home": {
     "welcome": "Welcome to H.O.A.R.D.",
@@ -442,7 +448,42 @@
       "priceRequired": "Price is required",
       "invalidDecision": "Invalid decision value"
     },
-    "searchFailed": "Search failed. Please try again."
+    "searchFailed": "Search failed. Please try again.",
+    "priceHistory": {
+      "conditionRequired": "Condition is required",
+      "negativePrice": "Price must be 0 or greater",
+      "dateRequired": "Date is required",
+      "duplicate": "A price record with these values already exists"
+    },
+    "transaction": {
+      "dateRequired": "Date is required",
+      "invalidType": "Invalid transaction type"
+    },
+    "accessory": {
+      "nameRequired": "Name is required",
+      "invalidStock": "Invalid quantity",
+      "insufficientStock": "Insufficient stock",
+      "alreadyAssigned": "Already assigned",
+      "hasAssignments": "Has active assignments",
+      "selectRequired": "Select an accessory"
+    },
+    "export": {
+      "failed": "Export failed",
+      "notFound": "Not found",
+      "invalidFormat": "Unsupported format"
+    },
+    "import": {
+      "invalidStructure": "Invalid structure",
+      "unsupportedVersion": "Unsupported version",
+      "fileTooLarge": "File too large"
+    },
+    "backup": {
+      "notFound": "Not found",
+      "corrupted": "Corrupted backup",
+      "toolUnavailable": "PostgreSQL client unavailable",
+      "invalidFrequency": "Invalid frequency",
+      "invalidRetention": "Invalid retention"
+    }
   },
   "search": {
     "title": "Search Catalog",
@@ -476,5 +517,195 @@
     },
     "clearFilters": "Clear filters",
     "filtersCleared": "Filters cleared"
+  },
+  "priceHistory": {
+    "title": "Price history",
+    "add": "Add price",
+    "condition": "Condition",
+    "isComplete": "Complete",
+    "price": "Price",
+    "currency": "Currency",
+    "source": "Source",
+    "priceDate": "Date",
+    "region": "Region",
+    "latest": "Latest prices",
+    "refreshValue": "Refresh market value",
+    "noCompatiblePrice": "No compatible price to update the value",
+    "empty": "No price history",
+    "incompleteShort": "incomplete",
+    "deleteEntry": "Delete price from {{date}}"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "add": "Add transaction",
+    "date": "Date",
+    "amount": "Amount",
+    "shippingCost": "Shipping",
+    "taxAmount": "Tax",
+    "otherFees": "Other fees",
+    "totalAmount": "Total",
+    "currency": "Currency",
+    "supplier": "Supplier",
+    "counterpart": "Counterpart",
+    "invoiceNumber": "Invoice #",
+    "paymentMethod": "Payment method",
+    "empty": "No transactions",
+    "deleteEntry": "Delete transaction from {{date}}",
+    "type": {
+      "label": "Type",
+      "purchase": "Purchase",
+      "sale": "Sale",
+      "trade_in": "Trade in",
+      "trade_out": "Trade out",
+      "gift_received": "Gift received",
+      "gift_given": "Gift given",
+      "grading_fee": "Grading fee",
+      "repair": "Repair",
+      "appraisal": "Appraisal",
+      "other": "Other"
+    },
+    "investment": {
+      "title": "Investment",
+      "realInvested": "Real invested",
+      "totalOutflow": "Outflow",
+      "totalInflow": "Inflow",
+      "roi": "ROI",
+      "roiUnavailable": "no data"
+    }
+  },
+  "stats": {
+    "title": "Statistics",
+    "totalItems": "Total items",
+    "totalValue": "Current value",
+    "totalInvested": "Invested",
+    "valueGain": "Gain",
+    "roi": "ROI",
+    "roiUnavailable": "no data",
+    "byCollection": "By collection",
+    "byCategory": "By category",
+    "timeline": "Timeline",
+    "empty": "No data to show",
+    "retry": "Retry"
+  },
+  "charts": {
+    "valuationOverTime": "Value over time",
+    "investmentVsValue": "Investment vs. value",
+    "categoryDistribution": "Category distribution",
+    "acquisitionTimeline": "Acquisitions over time",
+    "viewDataTable": "View data table",
+    "category": "Category",
+    "noData": "No data for the chart",
+    "loadError": "Could not load the chart",
+    "descriptions": {
+      "valuationOverTime": "Invested amount evolution per period",
+      "investmentVsValue": "Comparison of invested vs. current value",
+      "categoryDistribution": "Accumulated current value per category",
+      "acquisitionTimeline": "Number of items acquired per period"
+    }
+  },
+  "accessories": {
+    "title": "Accessories",
+    "add": "Add accessory",
+    "name": "Name",
+    "category": "Category",
+    "quantityTotal": "Total quantity",
+    "quantityInUse": "In use",
+    "quantityAvailable": "Available",
+    "minimumStockAlert": "Minimum stock alert",
+    "reorderQuantity": "Reorder quantity",
+    "unitCost": "Unit cost",
+    "supplier": "Supplier",
+    "lowStock": "Low stock: {{count}}",
+    "inStock": "In stock: {{count}}",
+    "lowStockTitle": "Low stock",
+    "noLowStock": "No stock alerts",
+    "suggestedReorder": "Avail. {{available}} · reorder {{reorder}}",
+    "assign": "Assign",
+    "unassign": "Remove",
+    "quantityUsed": "Quantity used",
+    "empty": "No accessories"
+  },
+  "export": {
+    "title": "Export",
+    "entity": "Entity",
+    "entityWishlist": "Wishlist",
+    "entityCollection": "Collection",
+    "entityCatalog": "Catalog",
+    "format": "Format",
+    "download": "Download",
+    "inProgress": "Exporting..."
+  },
+  "import": {
+    "title": "Import",
+    "selectFile": "Select file",
+    "preview": "Preview",
+    "entity": "Entity",
+    "action": "Action",
+    "toCreate": "To create",
+    "toUpdate": "To update",
+    "toSkip": "To skip",
+    "confirm": "Confirm import",
+    "cancel": "Cancel",
+    "cancelHint": "Cancelling applies no changes.",
+    "done": "Done",
+    "report": "Report",
+    "partialErrors": "Partial errors",
+    "errorRow": "Row {{row}}",
+    "empty": "No changes",
+    "actions": {
+      "create": "Create",
+      "update": "Update",
+      "skip": "Skip"
+    },
+    "steps": {
+      "label": "Steps",
+      "upload": "Upload",
+      "preview": "Preview",
+      "confirm": "Confirm",
+      "report": "Report"
+    }
+  },
+  "backups": {
+    "title": "Backups",
+    "create": "Create backup",
+    "download": "Download",
+    "restore": "Restore",
+    "delete": "Delete",
+    "createdAt": "Date",
+    "size": "Size",
+    "config": "Configuration",
+    "frequency": "Frequency",
+    "frequencyDaily": "Daily",
+    "frequencyWeekly": "Weekly",
+    "frequencyMonthly": "Monthly",
+    "retention": "Retention",
+    "nextRun": "Next run",
+    "lastRun": "Last run",
+    "lastRunFailed": "The last run failed",
+    "restoreWarning": "Restoring {{filename}} will overwrite the current data. This action is irreversible.",
+    "restoreConfirmWord": "RESTORE",
+    "restoreConfirmPrompt": "Type {{word}} to confirm",
+    "toolUnavailable": "The PostgreSQL client (pg_dump) is not available on the server",
+    "empty": "No backups"
+  },
+  "offline": {
+    "banner": "Offline — changes will be saved and synced when you reconnect",
+    "pendingOperation": "Pending operation",
+    "retry": "Retry",
+    "discard": "Discard",
+    "sync": {
+      "pending": "Pending",
+      "applied": "Applied",
+      "conflict": "Conflict",
+      "failed": "Failed"
+    },
+    "conflict": {
+      "title": "Sync conflict",
+      "keepLocal": "Keep my change",
+      "keepServer": "Discard my change"
+    },
+    "failed": {
+      "title": "Failed operations"
+    }
   }
 }

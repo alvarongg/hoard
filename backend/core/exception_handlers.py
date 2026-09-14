@@ -7,6 +7,7 @@ from core.exceptions import (
     DuplicateError,
     FileValidationError,
     NotFoundError,
+    ToolUnavailableError,
     ValidationError,
 )
 
@@ -31,3 +32,10 @@ async def file_validation_handler(
 ) -> JSONResponse:
     """Map FileValidationError to 422."""
     return JSONResponse(status_code=422, content={"detail": exc.message})
+
+
+async def service_unavailable_handler(
+    request: Request, exc: ToolUnavailableError
+) -> JSONResponse:
+    """Map ToolUnavailableError to 503."""
+    return JSONResponse(status_code=503, content={"detail": exc.message})

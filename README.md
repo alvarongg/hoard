@@ -1149,6 +1149,7 @@ docker-compose exec backend python -m utils.backup_service
 - **[API Documentation](./API_DOCS.md)** - Documentación de endpoints
 - **[Development Guide](./DEVELOPMENT.md)** - Guía de desarrollo
 - **[Deployment Guide](./DEPLOYMENT.md)** - Guía de deployment
+- **[Accessibility](./docs/ACCESSIBILITY.md)** - Enfoque y alcance de accesibilidad (WCAG 2.1 AA)
 
 ---
 

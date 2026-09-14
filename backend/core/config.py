@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "change-this"
     CORS_ORIGINS: str = "http://localhost,http://localhost:3000"
     UPLOAD_DIR: str = "/app/uploads"
+    BACKUP_DIR: str = "/app/backups"
     SEARCH_SIMILARITY_THRESHOLD: float = 0.3
 
     @cached_property

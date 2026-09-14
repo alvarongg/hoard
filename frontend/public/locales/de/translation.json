@@ -35,7 +35,8 @@
     "yes": "Ja",
     "no": "Nein",
     "previous": "Zurück",
-    "next": "Weiter"
+    "next": "Weiter",
+    "actions": "Aktionen"
   },
   "navigation": {
     "main": "Hauptnavigation",
@@ -45,7 +46,12 @@
     "catalogManagement": "Katalogverwaltung",
     "suppliers": "Anbieter",
     "wishlist": "Wunschliste",
-    "search": "Suchen"
+    "search": "Suchen",
+    "stats": "Statistiken",
+    "accessories": "Zubehör",
+    "export": "Exportieren",
+    "import": "Importieren",
+    "backups": "Sicherungen"
   },
   "home": {
     "welcome": "Willkommen bei H.O.A.R.D.",
@@ -442,7 +448,42 @@
       "priceRequired": "Preis ist erforderlich",
       "invalidDecision": "Ungültiger Entscheidungswert"
     },
-    "searchFailed": "Suche fehlgeschlagen. Bitte versuchen Sie es erneut."
+    "searchFailed": "Suche fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "priceHistory": {
+      "conditionRequired": "Zustand ist erforderlich",
+      "negativePrice": "Preis muss 0 oder größer sein",
+      "dateRequired": "Datum ist erforderlich",
+      "duplicate": "Ein Preiseintrag mit diesen Werten existiert bereits"
+    },
+    "transaction": {
+      "dateRequired": "Datum ist erforderlich",
+      "invalidType": "Ungültiger Transaktionstyp"
+    },
+    "accessory": {
+      "nameRequired": "Name ist erforderlich",
+      "invalidStock": "Ungültige Menge",
+      "insufficientStock": "Nicht genügend Bestand",
+      "alreadyAssigned": "Bereits zugewiesen",
+      "hasAssignments": "Hat aktive Zuweisungen",
+      "selectRequired": "Wählen Sie ein Zubehör"
+    },
+    "export": {
+      "failed": "Export fehlgeschlagen",
+      "notFound": "Nicht gefunden",
+      "invalidFormat": "Nicht unterstütztes Format"
+    },
+    "import": {
+      "invalidStructure": "Ungültige Struktur",
+      "unsupportedVersion": "Nicht unterstützte Version",
+      "fileTooLarge": "Datei zu groß"
+    },
+    "backup": {
+      "notFound": "Nicht gefunden",
+      "corrupted": "Beschädigte Sicherung",
+      "toolUnavailable": "PostgreSQL-Client nicht verfügbar",
+      "invalidFrequency": "Ungültige Häufigkeit",
+      "invalidRetention": "Ungültige Aufbewahrung"
+    }
   },
   "search": {
     "title": "Katalog durchsuchen",
@@ -476,5 +517,195 @@
     },
     "clearFilters": "Filter zurücksetzen",
     "filtersCleared": "Filter zurückgesetzt"
+  },
+  "priceHistory": {
+    "title": "Preisverlauf",
+    "add": "Preis hinzufügen",
+    "condition": "Zustand",
+    "isComplete": "Vollständig",
+    "price": "Preis",
+    "currency": "Währung",
+    "source": "Quelle",
+    "priceDate": "Datum",
+    "region": "Region",
+    "latest": "Neueste Preise",
+    "refreshValue": "Marktwert aktualisieren",
+    "noCompatiblePrice": "Kein kompatibler Preis zum Aktualisieren des Werts",
+    "empty": "Kein Preisverlauf",
+    "incompleteShort": "unvollständig",
+    "deleteEntry": "Preis vom {{date}} löschen"
+  },
+  "transactions": {
+    "title": "Transaktionen",
+    "add": "Transaktion hinzufügen",
+    "date": "Datum",
+    "amount": "Betrag",
+    "shippingCost": "Versand",
+    "taxAmount": "Steuer",
+    "otherFees": "Weitere Gebühren",
+    "totalAmount": "Gesamt",
+    "currency": "Währung",
+    "supplier": "Lieferant",
+    "counterpart": "Gegenpartei",
+    "invoiceNumber": "Rechnungsnr.",
+    "paymentMethod": "Zahlungsart",
+    "empty": "Keine Transaktionen",
+    "deleteEntry": "Transaktion vom {{date}} löschen",
+    "type": {
+      "label": "Typ",
+      "purchase": "Kauf",
+      "sale": "Verkauf",
+      "trade_in": "Eintausch",
+      "trade_out": "Austausch",
+      "gift_received": "Geschenk erhalten",
+      "gift_given": "Geschenk gegeben",
+      "grading_fee": "Bewertungsgebühr",
+      "repair": "Reparatur",
+      "appraisal": "Schätzung",
+      "other": "Sonstiges"
+    },
+    "investment": {
+      "title": "Investition",
+      "realInvested": "Reale Investition",
+      "totalOutflow": "Abflüsse",
+      "totalInflow": "Zuflüsse",
+      "roi": "ROI",
+      "roiUnavailable": "keine Daten"
+    }
+  },
+  "stats": {
+    "title": "Statistiken",
+    "totalItems": "Objekte gesamt",
+    "totalValue": "Aktueller Wert",
+    "totalInvested": "Investiert",
+    "valueGain": "Gewinn",
+    "roi": "ROI",
+    "roiUnavailable": "keine Daten",
+    "byCollection": "Nach Sammlung",
+    "byCategory": "Nach Kategorie",
+    "timeline": "Zeitleiste",
+    "empty": "Keine Daten vorhanden",
+    "retry": "Erneut versuchen"
+  },
+  "charts": {
+    "valuationOverTime": "Wert im Zeitverlauf",
+    "investmentVsValue": "Investition vs. Wert",
+    "categoryDistribution": "Kategorieverteilung",
+    "acquisitionTimeline": "Anschaffungen im Zeitverlauf",
+    "viewDataTable": "Datentabelle anzeigen",
+    "category": "Kategorie",
+    "noData": "Keine Daten für das Diagramm",
+    "loadError": "Diagramm konnte nicht geladen werden",
+    "descriptions": {
+      "valuationOverTime": "Entwicklung des investierten Betrags pro Zeitraum",
+      "investmentVsValue": "Vergleich von Investition und aktuellem Wert",
+      "categoryDistribution": "Kumulierter aktueller Wert pro Kategorie",
+      "acquisitionTimeline": "Anzahl der pro Zeitraum erworbenen Objekte"
+    }
+  },
+  "accessories": {
+    "title": "Zubehör",
+    "add": "Zubehör hinzufügen",
+    "name": "Name",
+    "category": "Kategorie",
+    "quantityTotal": "Gesamtmenge",
+    "quantityInUse": "In Verwendung",
+    "quantityAvailable": "Verfügbar",
+    "minimumStockAlert": "Mindestbestandswarnung",
+    "reorderQuantity": "Nachbestellmenge",
+    "unitCost": "Stückkosten",
+    "supplier": "Lieferant",
+    "lowStock": "Niedriger Bestand: {{count}}",
+    "inStock": "Auf Lager: {{count}}",
+    "lowStockTitle": "Niedriger Bestand",
+    "noLowStock": "Keine Bestandswarnungen",
+    "suggestedReorder": "Verf. {{available}} · nachbestellen {{reorder}}",
+    "assign": "Zuweisen",
+    "unassign": "Entfernen",
+    "quantityUsed": "Verwendete Menge",
+    "empty": "Kein Zubehör"
+  },
+  "export": {
+    "title": "Exportieren",
+    "entity": "Entität",
+    "entityWishlist": "Wunschliste",
+    "entityCollection": "Sammlung",
+    "entityCatalog": "Katalog",
+    "format": "Format",
+    "download": "Herunterladen",
+    "inProgress": "Exportiere..."
+  },
+  "import": {
+    "title": "Importieren",
+    "selectFile": "Datei auswählen",
+    "preview": "Vorschau",
+    "entity": "Entität",
+    "action": "Aktion",
+    "toCreate": "Zu erstellen",
+    "toUpdate": "Zu aktualisieren",
+    "toSkip": "Zu überspringen",
+    "confirm": "Import bestätigen",
+    "cancel": "Abbrechen",
+    "cancelHint": "Abbrechen wendet keine Änderungen an.",
+    "done": "Fertig",
+    "report": "Bericht",
+    "partialErrors": "Teilweise Fehler",
+    "errorRow": "Zeile {{row}}",
+    "empty": "Keine Änderungen",
+    "actions": {
+      "create": "Erstellen",
+      "update": "Aktualisieren",
+      "skip": "Überspringen"
+    },
+    "steps": {
+      "label": "Schritte",
+      "upload": "Hochladen",
+      "preview": "Vorschau",
+      "confirm": "Bestätigen",
+      "report": "Bericht"
+    }
+  },
+  "backups": {
+    "title": "Sicherungen",
+    "create": "Sicherung erstellen",
+    "download": "Herunterladen",
+    "restore": "Wiederherstellen",
+    "delete": "Löschen",
+    "createdAt": "Datum",
+    "size": "Größe",
+    "config": "Konfiguration",
+    "frequency": "Häufigkeit",
+    "frequencyDaily": "Täglich",
+    "frequencyWeekly": "Wöchentlich",
+    "frequencyMonthly": "Monatlich",
+    "retention": "Aufbewahrung",
+    "nextRun": "Nächste Ausführung",
+    "lastRun": "Letzte Ausführung",
+    "lastRunFailed": "Die letzte Ausführung ist fehlgeschlagen",
+    "restoreWarning": "Das Wiederherstellen von {{filename}} überschreibt die aktuellen Daten. Diese Aktion ist unwiderruflich.",
+    "restoreConfirmWord": "WIEDERHERSTELLEN",
+    "restoreConfirmPrompt": "Geben Sie {{word}} zur Bestätigung ein",
+    "toolUnavailable": "Der PostgreSQL-Client (pg_dump) ist auf dem Server nicht verfügbar",
+    "empty": "Keine Sicherungen"
+  },
+  "offline": {
+    "banner": "Offline — Änderungen werden gespeichert und beim erneuten Verbinden synchronisiert",
+    "pendingOperation": "Ausstehende Operation",
+    "retry": "Erneut versuchen",
+    "discard": "Verwerfen",
+    "sync": {
+      "pending": "Ausstehend",
+      "applied": "Angewendet",
+      "conflict": "Konflikt",
+      "failed": "Fehlgeschlagen"
+    },
+    "conflict": {
+      "title": "Synchronisierungskonflikt",
+      "keepLocal": "Meine Änderung behalten",
+      "keepServer": "Meine Änderung verwerfen"
+    },
+    "failed": {
+      "title": "Fehlgeschlagene Operationen"
+    }
   }
 }

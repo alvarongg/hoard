@@ -79,6 +79,56 @@ export function Navigation() {
             {t("navigation.search")}
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/stats"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.stats")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/accessories"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.accessories")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/export"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.export")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/import"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.import")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/settings/backups"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.backups")}
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
