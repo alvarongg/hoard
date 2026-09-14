@@ -34,13 +34,15 @@ MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB
 SUPPORTED_VERSIONS = frozenset({"1.0"})
 
 # Columns that a payload item may set directly on CatalogItem.
+# NOTE: alternate_titles and language_codes are intentionally excluded here.
+# In the real PostgreSQL schema those columns are native arrays (text[]),
+# while the ORM types them as JSON, so writing them directly raises a
+# DatatypeMismatch. We preserve that data inside custom_fields (jsonb) instead.
 _ITEM_DIRECT_FIELDS = (
     "title",
     "subtitle",
-    "alternate_titles",
     "region",
     "language",
-    "language_codes",
     "developer",
     "publisher",
     "manufacturer",
@@ -356,6 +358,12 @@ class CatalogImportService:
         custom = dict(payload.custom_fields or {})
         if payload.external_id:
             custom.setdefault("external_id", payload.external_id)
+        # Array columns (text[] in PG) are kept in jsonb custom_fields to avoid
+        # the ORM JSON vs native-array datatype mismatch on PostgreSQL.
+        if payload.alternate_titles:
+            custom.setdefault("alternate_titles", payload.alternate_titles)
+        if payload.language_codes:
+            custom.setdefault("language_codes", payload.language_codes)
         fields["custom_fields"] = custom
         return fields
 
