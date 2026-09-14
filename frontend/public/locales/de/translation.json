@@ -35,7 +35,8 @@
     "yes": "Ja",
     "no": "Nein",
     "previous": "Zurück",
-    "next": "Weiter"
+    "next": "Weiter",
+    "actions": "Aktionen"
   },
   "navigation": {
     "main": "Hauptnavigation",
@@ -442,7 +443,13 @@
       "priceRequired": "Preis ist erforderlich",
       "invalidDecision": "Ungültiger Entscheidungswert"
     },
-    "searchFailed": "Suche fehlgeschlagen. Bitte versuchen Sie es erneut."
+    "searchFailed": "Suche fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "priceHistory": {
+      "conditionRequired": "Zustand ist erforderlich",
+      "negativePrice": "Preis muss 0 oder größer sein",
+      "dateRequired": "Datum ist erforderlich",
+      "duplicate": "Ein Preiseintrag mit diesen Werten existiert bereits"
+    }
   },
   "search": {
     "title": "Katalog durchsuchen",
@@ -476,5 +483,22 @@
     },
     "clearFilters": "Filter zurücksetzen",
     "filtersCleared": "Filter zurückgesetzt"
+  },
+  "priceHistory": {
+    "title": "Preisverlauf",
+    "add": "Preis hinzufügen",
+    "condition": "Zustand",
+    "isComplete": "Vollständig",
+    "price": "Preis",
+    "currency": "Währung",
+    "source": "Quelle",
+    "priceDate": "Datum",
+    "region": "Region",
+    "latest": "Neueste Preise",
+    "refreshValue": "Marktwert aktualisieren",
+    "noCompatiblePrice": "Kein kompatibler Preis zum Aktualisieren des Werts",
+    "empty": "Kein Preisverlauf",
+    "incompleteShort": "unvollständig",
+    "deleteEntry": "Preis vom {{date}} löschen"
   }
 }

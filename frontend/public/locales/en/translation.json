@@ -35,7 +35,8 @@
     "yes": "Yes",
     "no": "No",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "actions": "Actions"
   },
   "navigation": {
     "main": "Main navigation",
@@ -442,7 +443,13 @@
       "priceRequired": "Price is required",
       "invalidDecision": "Invalid decision value"
     },
-    "searchFailed": "Search failed. Please try again."
+    "searchFailed": "Search failed. Please try again.",
+    "priceHistory": {
+      "conditionRequired": "Condition is required",
+      "negativePrice": "Price must be 0 or greater",
+      "dateRequired": "Date is required",
+      "duplicate": "A price record with these values already exists"
+    }
   },
   "search": {
     "title": "Search Catalog",
@@ -476,5 +483,22 @@
     },
     "clearFilters": "Clear filters",
     "filtersCleared": "Filters cleared"
+  },
+  "priceHistory": {
+    "title": "Price history",
+    "add": "Add price",
+    "condition": "Condition",
+    "isComplete": "Complete",
+    "price": "Price",
+    "currency": "Currency",
+    "source": "Source",
+    "priceDate": "Date",
+    "region": "Region",
+    "latest": "Latest prices",
+    "refreshValue": "Refresh market value",
+    "noCompatiblePrice": "No compatible price to update the value",
+    "empty": "No price history",
+    "incompleteShort": "incomplete",
+    "deleteEntry": "Delete price from {{date}}"
   }
 }

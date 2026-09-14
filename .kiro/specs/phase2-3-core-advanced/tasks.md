@@ -589,23 +589,23 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - `POST /collection-items/{id}/refresh-value` devuelve 200 con `ValueUpdateResult` tanto cuando actualiza como cuando no
     - _Requirements: 10.2, 10.3, 10.6, 10.7, 19.9_
 
-- [ ] 25. Bloque 2 - Historial de precios frontend (R10)
-  - [~] 25.1 Crear `frontend/src/types/priceHistory.ts` y `frontend/src/services/priceHistoryApi.ts`
+- [x] 25. Bloque 2 - Historial de precios frontend (R10)
+  - [x] 25.1 Crear `frontend/src/types/priceHistory.ts` y `frontend/src/services/priceHistoryApi.ts`
     - `PriceHistoryEntry`, `PriceHistoryCreate`, `LatestPriceEntry`, `ValueUpdateResult`
     - `priceHistoryApi` con `list(catalogItemId, filters)`, `create`, `remove`, `latest`, `refreshValue(collectionItemId)`
     - _Requirements: 10.5, 10.6, 19.7_
-  - [~] 25.2 Crear `frontend/src/hooks/usePriceHistory.ts` y `frontend/src/hooks/useRefreshMarketValue.ts`
+  - [x] 25.2 Crear `frontend/src/hooks/usePriceHistory.ts` y `frontend/src/hooks/useRefreshMarketValue.ts`
     - `useRefreshMarketValue` invalida el detalle del collection item y las stats al actualizar
     - _Requirements: 10.6, 10.8_
-  - [~] 25.3 Crear los componentes en `frontend/src/components/priceHistory/`
+  - [x] 25.3 Crear los componentes en `frontend/src/components/priceHistory/`
     - `PriceHistoryTable.tsx` sobre el componente `Table`, `PriceHistoryForm.tsx`, `LatestPriceSummary.tsx`
     - Integrarlos en el detalle de catalog item de `frontend/src/pages/CatalogDetailPage.tsx`
     - _Requirements: 10.9_
-  - [~] 25.4 Escribir tests de hooks y componentes de price history
+  - [x] 25.4 Escribir tests de hooks y componentes de price history
     - Hooks con MSW; `PriceHistoryTable.test.tsx`, `PriceHistoryForm.test.tsx`, `LatestPriceSummary.test.tsx`: renderizado, orden descendente, historial vacío, mensaje cuando no hubo actualización de valor, teclado, ARIA y test axe-core obligatorio
     - Actualizar `frontend/src/pages/CatalogDetailPage.test.tsx`
     - _Requirements: 10.7, 10.9, 19.2, 19.3_
-  - [~] 25.5 Agregar claves i18n de price history en los 5 idiomas
+  - [x] 25.5 Agregar claves i18n de price history en los 5 idiomas
     - Sección `priceHistory.*` (`title`, `add`, `condition`, `isComplete`, `price`, `source`, `priceDate`, `region`, `latest`, `refreshValue`, `noCompatiblePrice`, `empty`, `filters.*`) y `errors.priceHistory.*` (`duplicate`, `negativePrice`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_

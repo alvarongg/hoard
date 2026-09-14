@@ -35,7 +35,8 @@
     "yes": "Sí",
     "no": "No",
     "previous": "Anterior",
-    "next": "Siguiente"
+    "next": "Siguiente",
+    "actions": "Acciones"
   },
   "navigation": {
     "main": "Navegación principal",
@@ -442,7 +443,13 @@
       "priceRequired": "El precio es obligatorio",
       "invalidDecision": "Valor de decisión inválido"
     },
-    "searchFailed": "La búsqueda falló. Por favor, inténtalo de nuevo."
+    "searchFailed": "La búsqueda falló. Por favor, inténtalo de nuevo.",
+    "priceHistory": {
+      "conditionRequired": "La condición es obligatoria",
+      "negativePrice": "El precio debe ser mayor o igual a 0",
+      "dateRequired": "La fecha es obligatoria",
+      "duplicate": "Ya existe un registro de precio con esos datos"
+    }
   },
   "search": {
     "title": "Buscar Catálogo",
@@ -476,5 +483,22 @@
     },
     "clearFilters": "Limpiar filtros",
     "filtersCleared": "Filtros eliminados"
+  },
+  "priceHistory": {
+    "title": "Historial de precios",
+    "add": "Agregar precio",
+    "condition": "Condición",
+    "isComplete": "Completo",
+    "price": "Precio",
+    "currency": "Moneda",
+    "source": "Fuente",
+    "priceDate": "Fecha",
+    "region": "Región",
+    "latest": "Precios más recientes",
+    "refreshValue": "Actualizar valor de mercado",
+    "noCompatiblePrice": "No hay precio compatible para actualizar el valor",
+    "empty": "Sin historial de precios",
+    "incompleteShort": "incompleto",
+    "deleteEntry": "Eliminar precio del {{date}}"
   }
 }
