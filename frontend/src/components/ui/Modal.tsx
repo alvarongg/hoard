@@ -26,17 +26,23 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
-    if (isOpen) {
-      previousFocusRef.current = document.activeElement as HTMLElement;
-      dialog.showModal();
-      document.addEventListener("keydown", handleKeyDown);
-    } else {
-      dialog.close();
-      previousFocusRef.current?.focus();
-    }
+    previousFocusRef.current = document.activeElement as HTMLElement;
+    dialog.showModal();
+    // Move focus into the dialog's first focusable element for a
+    // predictable entry point (native showModal otherwise focuses the
+    // dialog itself). The native <dialog> contains focus while open.
+    const focusable = dialog.querySelector<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    focusable?.focus();
+    document.addEventListener("keydown", handleKeyDown);
 
+    const opener = previousFocusRef.current;
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
+      dialog.close();
+      // Return focus to whatever opened the dialog.
+      opener?.focus();
     };
   }, [isOpen, handleKeyDown]);
 
