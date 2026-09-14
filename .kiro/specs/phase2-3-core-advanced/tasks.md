@@ -610,53 +610,53 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_
 
-- [ ] 26. Bloque 2 - Transacciones backend (R11)
-  - [~] 26.1 Crear `backend/api/schemas/transaction.py`
+- [x] 26. Bloque 2 - Transacciones backend (R11)
+  - [x] 26.1 Crear `backend/api/schemas/transaction.py`
     - `TransactionBase` con `transaction_type` (validator contra los 10 valores permitidos), `transaction_date`, `amount`, `currency`, `shipping_cost`, `tax_amount`, `other_fees`, `supplier_id`, `counterpart_name`, `invoice_number`, `receipt_path`, `payment_method`, `notes`
     - `TransactionCreate` y `TransactionUpdate` **sin** `total_amount`; `TransactionResponse` con `total_amount` de solo lectura
     - `ItemInvestment` con `real_invested`, `total_outflow`, `total_inflow`, `current_market_value`, `roi_percentage`, `source`
     - _Requirements: 11.2, 11.3, 11.4, 11.6, 11.7, 11.8_
-  - [~] 26.2 Crear `backend/api/services/transaction_service.py`
+  - [x] 26.2 Crear `backend/api/services/transaction_service.py`
     - `OUTFLOW_TYPES`, `INFLOW_TYPES` y `VALID_TYPES` como constantes documentadas (`gift_received` y `gift_given` clasificados como ingresos)
     - `create` ramifica con `supports_generated_columns`: en PostgreSQL lee `total_amount` tras `refresh()`, en SQLite lo asigna con `transaction_total()` antes del flush
     - `list` ordenado por `transaction_date` descendente; `update`; `delete` devuelve el `ItemInvestment` recalculado
     - `get_investment` calcula `real_invested = Σ total_amount(egresos) − Σ total_amount(ingresos)` y el ROI a partir de esa inversión, con `source = "transactions"`; sin transacciones cae a `purchase_price` con `source = "purchase_price"`
     - _Requirements: 11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 19.6_
-  - [~] 26.3 Agregar `get_transaction_service` en `backend/api/dependencies.py` y crear `backend/api/routes/transactions.py`
+  - [x] 26.3 Agregar `get_transaction_service` en `backend/api/dependencies.py` y crear `backend/api/routes/transactions.py`
     - `GET/POST /collection-items/{id}/transactions`, `PUT /transactions/{id}`, `DELETE /transactions/{id}` (200 con `ItemInvestment`), `GET /collection-items/{id}/investment`
     - Registrar `app.include_router(transactions_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 11.2, 11.6, 11.7, 11.9, 19.6_
-  - [~] 26.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_transaction_service.py`
+  - [x] 26.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_transaction_service.py`
     - Los 10 tipos válidos aceptados y un tipo inválido rechazado
     - `total_amount` con todos los campos, con nulos parciales y con todos nulos
     - Orden descendente por `transaction_date`; inversión real con solo egresos, con egresos e ingresos y sin transacciones (fallback a `purchase_price`)
     - Borrado recalcula inversión y ROI; ROI nulo cuando la inversión resultante es cero
     - _Requirements: 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 19.10_
-  - [~] 26.5 Escribir el test de paridad de dialecto y el test `@pytest.mark.postgres` de `total_amount`
+  - [x] 26.5 Escribir el test de paridad de dialecto y el test `@pytest.mark.postgres` de `total_amount`
     - Test de paridad en `backend/tests/unit/test_services/test_transaction_service.py`: el `total_amount` del camino SQLite coincide con `transaction_total()`
     - `backend/tests/integration/test_postgres/test_transactions_postgres.py` marcado `@pytest.mark.postgres`: el valor lo produce la columna `GENERATED` y coincide con `transaction_total()`
     - _Requirements: 11.4, 19.8_
-  - [~] 26.6 Escribir integration tests en `backend/tests/integration/test_routes/test_transactions.py`
+  - [x] 26.6 Escribir integration tests en `backend/tests/integration/test_routes/test_transactions.py`
     - Códigos 200/201/404/422; `DELETE` devuelve 200 con `ItemInvestment`; `total_amount` presente en la respuesta y ausente del payload aceptado
     - _Requirements: 11.2, 11.3, 11.6, 11.9, 19.9_
 
-- [ ] 27. Bloque 2 - Transacciones frontend (R11)
-  - [~] 27.1 Crear `frontend/src/types/transaction.ts` y `frontend/src/services/transactionsApi.ts`
+- [x] 27. Bloque 2 - Transacciones frontend (R11)
+  - [x] 27.1 Crear `frontend/src/types/transaction.ts` y `frontend/src/services/transactionsApi.ts`
     - `TransactionType`, `Transaction` (con `readonly totalAmount`), `TransactionCreate`, `TransactionUpdate`, `ItemInvestment`
     - `transactionsApi` con `list`, `create`, `update`, `remove`, `investment`
     - _Requirements: 11.6, 11.7, 19.7_
-  - [~] 27.2 Crear `frontend/src/hooks/useTransactions.ts` y `frontend/src/hooks/useItemInvestment.ts`
+  - [x] 27.2 Crear `frontend/src/hooks/useTransactions.ts` y `frontend/src/hooks/useItemInvestment.ts`
     - Mutar transacciones invalida la inversión del item y las stats
     - _Requirements: 11.6, 11.8, 11.9_
-  - [~] 27.3 Crear los componentes en `frontend/src/components/transactions/`
+  - [x] 27.3 Crear los componentes en `frontend/src/components/transactions/`
     - `TransactionList.tsx` sobre `Table`, `TransactionForm.tsx`, `InvestmentSummary.tsx`
     - `TransactionForm` muestra `totalAmount` como campo derivado de solo lectura, calculado en vivo en el cliente para dar feedback antes de enviar
     - Integrar en el detalle de collection item de `frontend/src/pages/CollectionDetailPage.tsx`
     - _Requirements: 11.4, 11.6, 11.7_
-  - [~] 27.4 Escribir tests de hooks y componentes de transacciones
+  - [x] 27.4 Escribir tests de hooks y componentes de transacciones
     - Hooks con MSW; `TransactionList.test.tsx`, `TransactionForm.test.tsx`, `InvestmentSummary.test.tsx`: orden descendente, total derivado en vivo, campo de total no editable, ROI nulo representado sin ambigüedad, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 11.4, 11.6, 11.7, 19.2, 19.3_
-  - [~] 27.5 Agregar claves i18n de transacciones en los 5 idiomas
+  - [x] 27.5 Agregar claves i18n de transacciones en los 5 idiomas
     - Sección `transactions.*` (`title`, `add`, `type.*` con los 10 tipos, `date`, `amount`, `shippingCost`, `taxAmount`, `otherFees`, `totalAmount`, `supplier`, `counterpart`, `invoiceNumber`, `paymentMethod`, `investment.*`, `empty`) y `errors.transaction.invalidType`
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1_

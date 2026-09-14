@@ -449,6 +449,10 @@
       "negativePrice": "Price must be 0 or greater",
       "dateRequired": "Date is required",
       "duplicate": "A price record with these values already exists"
+    },
+    "transaction": {
+      "dateRequired": "Date is required",
+      "invalidType": "Invalid transaction type"
     }
   },
   "search": {
@@ -500,5 +504,43 @@
     "empty": "No price history",
     "incompleteShort": "incomplete",
     "deleteEntry": "Delete price from {{date}}"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "add": "Add transaction",
+    "date": "Date",
+    "amount": "Amount",
+    "shippingCost": "Shipping",
+    "taxAmount": "Tax",
+    "otherFees": "Other fees",
+    "totalAmount": "Total",
+    "currency": "Currency",
+    "supplier": "Supplier",
+    "counterpart": "Counterpart",
+    "invoiceNumber": "Invoice #",
+    "paymentMethod": "Payment method",
+    "empty": "No transactions",
+    "deleteEntry": "Delete transaction from {{date}}",
+    "type": {
+      "label": "Type",
+      "purchase": "Purchase",
+      "sale": "Sale",
+      "trade_in": "Trade in",
+      "trade_out": "Trade out",
+      "gift_received": "Gift received",
+      "gift_given": "Gift given",
+      "grading_fee": "Grading fee",
+      "repair": "Repair",
+      "appraisal": "Appraisal",
+      "other": "Other"
+    },
+    "investment": {
+      "title": "Investment",
+      "realInvested": "Real invested",
+      "totalOutflow": "Outflow",
+      "totalInflow": "Inflow",
+      "roi": "ROI",
+      "roiUnavailable": "no data"
+    }
   }
 }

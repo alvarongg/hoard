@@ -449,6 +449,10 @@
       "negativePrice": "O preço deve ser maior ou igual a 0",
       "dateRequired": "A data é obrigatória",
       "duplicate": "Já existe um registro de preço com esses dados"
+    },
+    "transaction": {
+      "dateRequired": "A data é obrigatória",
+      "invalidType": "Tipo de transação inválido"
     }
   },
   "search": {
@@ -500,5 +504,43 @@
     "empty": "Sem histórico de preços",
     "incompleteShort": "incompleto",
     "deleteEntry": "Excluir preço de {{date}}"
+  },
+  "transactions": {
+    "title": "Transações",
+    "add": "Adicionar transação",
+    "date": "Data",
+    "amount": "Valor",
+    "shippingCost": "Frete",
+    "taxAmount": "Impostos",
+    "otherFees": "Outras taxas",
+    "totalAmount": "Total",
+    "currency": "Moeda",
+    "supplier": "Fornecedor",
+    "counterpart": "Contraparte",
+    "invoiceNumber": "N.º da fatura",
+    "paymentMethod": "Forma de pagamento",
+    "empty": "Sem transações",
+    "deleteEntry": "Excluir transação de {{date}}",
+    "type": {
+      "label": "Tipo",
+      "purchase": "Compra",
+      "sale": "Venda",
+      "trade_in": "Troca (entrada)",
+      "trade_out": "Troca (saída)",
+      "gift_received": "Presente recebido",
+      "gift_given": "Presente dado",
+      "grading_fee": "Classificação",
+      "repair": "Reparo",
+      "appraisal": "Avaliação",
+      "other": "Outro"
+    },
+    "investment": {
+      "title": "Investimento",
+      "realInvested": "Investimento real",
+      "totalOutflow": "Saídas",
+      "totalInflow": "Entradas",
+      "roi": "ROI",
+      "roiUnavailable": "sem dados"
+    }
   }
 }

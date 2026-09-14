@@ -449,6 +449,10 @@
       "negativePrice": "Preis muss 0 oder größer sein",
       "dateRequired": "Datum ist erforderlich",
       "duplicate": "Ein Preiseintrag mit diesen Werten existiert bereits"
+    },
+    "transaction": {
+      "dateRequired": "Datum ist erforderlich",
+      "invalidType": "Ungültiger Transaktionstyp"
     }
   },
   "search": {
@@ -500,5 +504,43 @@
     "empty": "Kein Preisverlauf",
     "incompleteShort": "unvollständig",
     "deleteEntry": "Preis vom {{date}} löschen"
+  },
+  "transactions": {
+    "title": "Transaktionen",
+    "add": "Transaktion hinzufügen",
+    "date": "Datum",
+    "amount": "Betrag",
+    "shippingCost": "Versand",
+    "taxAmount": "Steuer",
+    "otherFees": "Weitere Gebühren",
+    "totalAmount": "Gesamt",
+    "currency": "Währung",
+    "supplier": "Lieferant",
+    "counterpart": "Gegenpartei",
+    "invoiceNumber": "Rechnungsnr.",
+    "paymentMethod": "Zahlungsart",
+    "empty": "Keine Transaktionen",
+    "deleteEntry": "Transaktion vom {{date}} löschen",
+    "type": {
+      "label": "Typ",
+      "purchase": "Kauf",
+      "sale": "Verkauf",
+      "trade_in": "Eintausch",
+      "trade_out": "Austausch",
+      "gift_received": "Geschenk erhalten",
+      "gift_given": "Geschenk gegeben",
+      "grading_fee": "Bewertungsgebühr",
+      "repair": "Reparatur",
+      "appraisal": "Schätzung",
+      "other": "Sonstiges"
+    },
+    "investment": {
+      "title": "Investition",
+      "realInvested": "Reale Investition",
+      "totalOutflow": "Abflüsse",
+      "totalInflow": "Zuflüsse",
+      "roi": "ROI",
+      "roiUnavailable": "keine Daten"
+    }
   }
 }

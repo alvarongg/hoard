@@ -16,6 +16,7 @@ from api.services.item_component_service import ItemComponentService
 from api.services.price_history_service import PriceHistoryService
 from api.services.search_service import SearchService
 from api.services.supplier_service import SupplierService
+from api.services.transaction_service import TransactionService
 from api.services.wishlist_service import WishlistService
 from core.config import Settings, get_settings
 from core.database import get_async_session
@@ -111,3 +112,10 @@ def get_price_history_service(
 ) -> PriceHistoryService:
     """Provide a PriceHistoryService instance."""
     return PriceHistoryService(db)
+
+
+def get_transaction_service(
+    db: AsyncSession = Depends(get_db),
+) -> TransactionService:
+    """Provide a TransactionService instance."""
+    return TransactionService(db)
