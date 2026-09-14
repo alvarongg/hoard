@@ -14,6 +14,10 @@ export interface CatalogManifest {
   schemaVersion: string;
   generatedAt?: string;
   catalogs: CatalogManifestEntry[];
+  source?: {
+    kind: "local" | "remote";
+    location: string;
+  };
 }
 
 export interface CatalogLoadResult {

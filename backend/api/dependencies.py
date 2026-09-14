@@ -7,7 +7,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.services.catalog_service import CatalogService
 from api.services.catalog_import_service import CatalogImportService
-from api.services.catalog_library_service import CatalogLibraryService
+from api.services.catalog_library_service import (
+    CatalogLibraryService,
+    CatalogSource,
+    LocalCatalogSource,
+    RemoteCatalogSource,
+)
 from api.services.accessory_service import AccessoryService
 from api.services.backup_service import BackupService
 from api.services.category_service import CategoryService
@@ -167,10 +172,16 @@ def get_catalog_library_service(
     db: AsyncSession = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ) -> CatalogLibraryService:
-    """Provide a CatalogLibraryService backed by the local library dir."""
-    return CatalogLibraryService(
-        CatalogImportService(db), settings.CATALOG_LIBRARY_DIR
-    )
+    """Provide a CatalogLibraryService backed by the remote URL when set,
+    otherwise the local library dir."""
+    if settings.CATALOG_LIBRARY_URL:
+        source: CatalogSource = RemoteCatalogSource(
+            settings.CATALOG_LIBRARY_URL,
+            settings.catalog_library_allowed_hosts_list,
+        )
+    else:
+        source = LocalCatalogSource(settings.CATALOG_LIBRARY_DIR)
+    return CatalogLibraryService(CatalogImportService(db), source)
 
 
 def get_backup_service(

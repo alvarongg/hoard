@@ -740,7 +740,9 @@
     "loaded": "Carregado: {{created}} criados, {{updated}} atualizados, {{skipped}} ignorados.",
     "loadError": "Não foi possível carregar o catálogo.",
     "empty": "Nenhum catálogo oficial disponível.",
-    "generateNote": "Os catálogos são gerados offline com os scripts do repositório; o app não consulta a fonte em tempo de execução."
+    "generateNote": "Os catálogos são gerados offline com os scripts do repositório; o app não consulta a fonte em tempo de execução.",
+    "sourceRemote": "Baixando do repositório: {{url}}",
+    "sourceLocal": "Fonte local (incluída no app)."
   },
   "catalogImport": {
     "description": "Importe um arquivo de catálogo (entity_type='catalog').",

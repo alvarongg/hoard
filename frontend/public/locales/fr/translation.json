@@ -740,7 +740,9 @@
     "loaded": "Chargé : {{created}} créés, {{updated}} mis à jour, {{skipped}} ignorés.",
     "loadError": "Impossible de charger le catalogue.",
     "empty": "Aucun catalogue officiel disponible.",
-    "generateNote": "Les catalogues sont générés hors ligne avec les scripts du dépôt ; l'application n'interroge jamais la source à l'exécution."
+    "generateNote": "Les catalogues sont générés hors ligne avec les scripts du dépôt ; l'application n'interroge jamais la source à l'exécution.",
+    "sourceRemote": "Téléchargement depuis le dépôt : {{url}}",
+    "sourceLocal": "Source locale (incluse dans l'application)."
   },
   "catalogImport": {
     "description": "Importez un fichier de catalogue (entity_type='catalog').",

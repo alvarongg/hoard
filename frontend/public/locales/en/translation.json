@@ -740,7 +740,9 @@
     "loaded": "Loaded: {{created}} created, {{updated}} updated, {{skipped}} skipped.",
     "loadError": "Could not load the catalog.",
     "empty": "No official catalogs available.",
-    "generateNote": "Catalogs are generated offline with the repository scripts; the app never queries the source at runtime."
+    "generateNote": "Catalogs are generated offline with the repository scripts; the app never queries the source at runtime.",
+    "sourceRemote": "Downloading from the repository: {{url}}",
+    "sourceLocal": "Local source (bundled with the app)."
   },
   "catalogImport": {
     "description": "Import a catalog file (entity_type='catalog').",
