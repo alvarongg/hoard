@@ -17,7 +17,11 @@ from sqlalchemy.ext.asyncio import (
 from api.models.catalog import Catalog, CatalogItem
 from api.models.category import MainCategory, SubCategory
 from api.services.catalog_import_service import CatalogImportService
-from api.services.catalog_library_service import CatalogLibraryService
+from api.services.catalog_library_service import (
+    CatalogLibraryService,
+    LocalCatalogSource,
+    RemoteCatalogSource,
+)
 from core.exceptions import NotFoundError, ValidationError
 
 
@@ -281,7 +285,7 @@ async def test_library_lists_manifest(
     db_session: AsyncSession, library_dir
 ) -> None:
     svc = CatalogLibraryService(
-        CatalogImportService(db_session), str(library_dir)
+        CatalogImportService(db_session), LocalCatalogSource(str(library_dir))
     )
     manifest = svc.read_manifest()
     assert manifest["catalogs"][0]["id"] == "nes"
@@ -291,7 +295,7 @@ async def test_library_load_marks_official(
     db_session: AsyncSession, library_dir
 ) -> None:
     svc = CatalogLibraryService(
-        CatalogImportService(db_session), str(library_dir)
+        CatalogImportService(db_session), LocalCatalogSource(str(library_dir))
     )
     result = await svc.load("nes")
     assert result.created_count == 2
@@ -303,7 +307,7 @@ async def test_library_unknown_id_raises(
     db_session: AsyncSession, library_dir
 ) -> None:
     svc = CatalogLibraryService(
-        CatalogImportService(db_session), str(library_dir)
+        CatalogImportService(db_session), LocalCatalogSource(str(library_dir))
     )
     with pytest.raises(NotFoundError):
         await svc.load("does-not-exist")
@@ -325,7 +329,7 @@ async def test_library_checksum_mismatch_aborts(
     }
     (tmp_path / "manifest.json").write_text(json.dumps(manifest))
     svc = CatalogLibraryService(
-        CatalogImportService(db_session), str(tmp_path)
+        CatalogImportService(db_session), LocalCatalogSource(str(tmp_path))
     )
     with pytest.raises(ValidationError):
         await svc.load("nes")
@@ -339,6 +343,96 @@ async def test_library_missing_manifest_returns_empty(
     db_session: AsyncSession, tmp_path
 ) -> None:
     svc = CatalogLibraryService(
-        CatalogImportService(db_session), str(tmp_path)
+        CatalogImportService(db_session), LocalCatalogSource(str(tmp_path))
     )
     assert svc.read_manifest()["catalogs"] == []
+
+
+# ---------------------------------------------------------------------------
+# Remote catalog source (HTTPS + SSRF allowlist, no real network)
+# ---------------------------------------------------------------------------
+
+
+def test_remote_rejects_non_https() -> None:
+    src = RemoteCatalogSource(
+        "http://raw.githubusercontent.com/o/r/main/catalogs",
+        ["raw.githubusercontent.com"],
+    )
+    with pytest.raises(ValidationError):
+        src.read_manifest()
+
+
+def test_remote_rejects_host_not_in_allowlist() -> None:
+    src = RemoteCatalogSource(
+        "https://evil.example.com/catalogs",
+        ["raw.githubusercontent.com"],
+    )
+    with pytest.raises(ValidationError):
+        src.read_manifest()
+
+
+def test_remote_build_url_ok_for_allowed_host() -> None:
+    src = RemoteCatalogSource(
+        "https://raw.githubusercontent.com/o/r/main/catalogs",
+        ["raw.githubusercontent.com"],
+    )
+    url = src._build_url("manifest.json")
+    assert url == (
+        "https://raw.githubusercontent.com/o/r/main/catalogs/manifest.json"
+    )
+
+
+async def test_remote_load_validates_checksum(
+    db_session: AsyncSession, monkeypatch
+) -> None:
+    catalog_bytes = _envelope()
+    checksum = "sha256:" + hashlib.sha256(catalog_bytes).hexdigest()
+    manifest = json.dumps(
+        {
+            "schema_version": "1.0",
+            "catalogs": [
+                {"id": "nes", "path": "nes.v1.json", "checksum": checksum}
+            ],
+        }
+    ).encode("utf-8")
+
+    served = {"manifest.json": manifest, "nes.v1.json": catalog_bytes}
+    src = RemoteCatalogSource(
+        "https://raw.githubusercontent.com/o/r/main/catalogs",
+        ["raw.githubusercontent.com"],
+    )
+    # Mock the network layer: assert URL host is validated, return bytes.
+    monkeypatch.setattr(
+        src, "_fetch", lambda rel: served[rel]
+    )
+    svc = CatalogLibraryService(CatalogImportService(db_session), src)
+    result = await svc.load("nes")
+    assert result.created_count == 2
+    catalog = (await db_session.execute(select(Catalog))).scalar_one()
+    assert catalog.is_official is True
+
+
+async def test_remote_load_aborts_on_checksum_mismatch(
+    db_session: AsyncSession, monkeypatch
+) -> None:
+    manifest = json.dumps(
+        {
+            "schema_version": "1.0",
+            "catalogs": [
+                {"id": "nes", "path": "nes.v1.json",
+                 "checksum": "sha256:deadbeef"}
+            ],
+        }
+    ).encode("utf-8")
+    served = {"manifest.json": manifest, "nes.v1.json": _envelope()}
+    src = RemoteCatalogSource(
+        "https://raw.githubusercontent.com/o/r/main/catalogs",
+        ["raw.githubusercontent.com"],
+    )
+    monkeypatch.setattr(src, "_fetch", lambda rel: served[rel])
+    svc = CatalogLibraryService(CatalogImportService(db_session), src)
+    with pytest.raises(ValidationError):
+        await svc.load("nes")
+    assert await db_session.scalar(
+        select(func.count()).select_from(Catalog)
+    ) == 0

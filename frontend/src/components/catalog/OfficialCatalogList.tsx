@@ -36,6 +36,13 @@ export function OfficialCatalogList() {
 
   return (
     <div>
+      {data?.source && (
+        <p className="mb-2 text-xs text-content-muted">
+          {data.source.kind === "remote"
+            ? t("catalogLibrary.sourceRemote", { url: data.source.location })
+            : t("catalogLibrary.sourceLocal")}
+        </p>
+      )}
       {result && (
         <p role="status" className="mb-3 text-sm text-green-700">
           {t("catalogLibrary.loaded", {

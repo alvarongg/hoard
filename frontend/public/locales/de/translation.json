@@ -740,7 +740,9 @@
     "loaded": "Geladen: {{created}} erstellt, {{updated}} aktualisiert, {{skipped}} übersprungen.",
     "loadError": "Der Katalog konnte nicht geladen werden.",
     "empty": "Keine offiziellen Kataloge verfügbar.",
-    "generateNote": "Kataloge werden offline mit den Repository-Skripten erzeugt; die App fragt die Quelle zur Laufzeit nie ab."
+    "generateNote": "Kataloge werden offline mit den Repository-Skripten erzeugt; die App fragt die Quelle zur Laufzeit nie ab.",
+    "sourceRemote": "Wird aus dem Repository heruntergeladen: {{url}}",
+    "sourceLocal": "Lokale Quelle (in der App enthalten)."
   },
   "catalogImport": {
     "description": "Importiere eine Katalogdatei (entity_type='catalog').",
