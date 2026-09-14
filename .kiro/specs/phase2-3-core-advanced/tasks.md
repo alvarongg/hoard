@@ -969,16 +969,16 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [~] 41. Checkpoint - Backups y scheduler completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 42. Bloque 2 - PWA: manifest y service worker (R17)
-  - [~] 42.1 Configurar `vite-plugin-pwa` en `frontend/vite.config.ts`
+- [x] 42. Bloque 2 - PWA: manifest y service worker (R17)
+  - [x] 42.1 Configurar `vite-plugin-pwa` en `frontend/vite.config.ts`
     - `registerType: "prompt"`, `generateSW` con manifest ("H.O.A.R.D.", short_name "HOARD", iconos 192/512 más maskable, `theme_color` alineado al token `accent`, `display: "standalone"`)
     - `runtimeCaching`: precache + CacheFirst del app shell, StaleWhileRevalidate para `/locales/*/translation.json`, CacheFirst para `/uploads/*` (máx. 200 entradas, 30 días), NetworkFirst con timeout 3 s para `GET /api/collections`, `/api/collection-items`, `/api/stats/*` y `/api/search/*`; sin cache para POST/PUT/DELETE
     - _Requirements: 17.1, 17.2, 17.3, 17.4_
-  - [~] 42.2 Agregar los iconos de la PWA y el registro del service worker
+  - [x] 42.2 Agregar los iconos de la PWA y el registro del service worker
     - Iconos en `frontend/public/` (192, 512 y maskable)
     - Registro con `virtual:pwa-register/react` y aviso de actualización en `frontend/src/main.tsx`, usando `workbox-window`
     - _Requirements: 17.1, 17.2_
-  - [~] 42.3 Escribir el test de configuración del plugin en `frontend/tests/pwa/viteConfig.test.ts`
+  - [x] 42.3 Escribir el test de configuración del plugin en `frontend/tests/pwa/viteConfig.test.ts`
     - Valida la forma del objeto de configuración: manifest presente con los campos requeridos y una estrategia declarada por patrón de URL. No testea Workbox en sí
     - _Requirements: 17.1, 17.2_
 

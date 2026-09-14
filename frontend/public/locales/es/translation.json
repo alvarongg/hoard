@@ -687,5 +687,25 @@
     "restoreConfirmPrompt": "Escribí {{word}} para confirmar",
     "toolUnavailable": "El cliente de PostgreSQL (pg_dump) no está disponible en el servidor",
     "empty": "Sin copias de seguridad"
+  },
+  "offline": {
+    "banner": "Sin conexión — los cambios se guardarán y sincronizarán al reconectar",
+    "pendingOperation": "Operación pendiente",
+    "retry": "Reintentar",
+    "discard": "Descartar",
+    "sync": {
+      "pending": "Pendientes",
+      "applied": "Aplicadas",
+      "conflict": "En conflicto",
+      "failed": "Fallidas"
+    },
+    "conflict": {
+      "title": "Conflicto de sincronización",
+      "keepLocal": "Mantener mi cambio",
+      "keepServer": "Descartar mi cambio"
+    },
+    "failed": {
+      "title": "Operaciones fallidas"
+    }
   }
 }
