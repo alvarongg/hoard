@@ -97,18 +97,26 @@ export function CatalogDetailPage() {
                           {item.manufacturer}
                         </p>
                       )}
-                      <Button
-                        variant="secondary"
-                        className="mt-2"
-                        onClick={() =>
-                          setSelectedItemId(
-                            selectedItemId === item.id ? null : item.id,
-                          )
-                        }
-                        aria-expanded={selectedItemId === item.id}
-                      >
-                        {t("priceHistory.title")}
-                      </Button>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <Button
+                          onClick={() =>
+                            navigate(`/catalogs/${id}/items/${item.id}`)
+                          }
+                        >
+                          {t("catalogs.viewItem")}
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          onClick={() =>
+                            setSelectedItemId(
+                              selectedItemId === item.id ? null : item.id,
+                            )
+                          }
+                          aria-expanded={selectedItemId === item.id}
+                        >
+                          {t("priceHistory.title")}
+                        </Button>
+                      </div>
                     </Card>
                   ))}
                 </div>

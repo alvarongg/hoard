@@ -162,7 +162,8 @@
       "fileTooLarge": "O arquivo excede o limite de 5 MB",
       "invalidFileType": "Apenas arquivos .csv são permitidos",
       "noData": "O arquivo não contém linhas de dados"
-    }
+    },
+    "viewItem": "Ver item"
   },
   "categories": {
     "title": "Categorias",
