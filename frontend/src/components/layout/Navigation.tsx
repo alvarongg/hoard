@@ -89,6 +89,16 @@ export function Navigation() {
             {t("navigation.stats")}
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/accessories"
+            className={({ isActive }) =>
+              `text-sm ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+            }
+          >
+            {t("navigation.accessories")}
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

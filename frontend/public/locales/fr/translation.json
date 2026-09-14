@@ -47,7 +47,8 @@
     "suppliers": "Fournisseurs",
     "wishlist": "Liste de souhaits",
     "search": "Rechercher",
-    "stats": "Statistiques"
+    "stats": "Statistiques",
+    "accessories": "Accessoires"
   },
   "home": {
     "welcome": "Bienvenue sur H.O.A.R.D.",
@@ -454,6 +455,14 @@
     "transaction": {
       "dateRequired": "La date est requise",
       "invalidType": "Type de transaction invalide"
+    },
+    "accessory": {
+      "nameRequired": "Le nom est requis",
+      "invalidStock": "Quantité invalide",
+      "insufficientStock": "Stock insuffisant",
+      "alreadyAssigned": "Déjà attribué",
+      "hasAssignments": "A des attributions actives",
+      "selectRequired": "Sélectionnez un accessoire"
     }
   },
   "search": {
@@ -573,5 +582,27 @@
       "categoryDistribution": "Valeur actuelle cumulée par catégorie",
       "acquisitionTimeline": "Nombre d'articles acquis par période"
     }
+  },
+  "accessories": {
+    "title": "Accessoires",
+    "add": "Ajouter un accessoire",
+    "name": "Nom",
+    "category": "Catégorie",
+    "quantityTotal": "Quantité totale",
+    "quantityInUse": "En cours d'utilisation",
+    "quantityAvailable": "Disponible",
+    "minimumStockAlert": "Alerte de stock minimum",
+    "reorderQuantity": "Quantité de réapprovisionnement",
+    "unitCost": "Coût unitaire",
+    "supplier": "Fournisseur",
+    "lowStock": "Stock faible : {{count}}",
+    "inStock": "En stock : {{count}}",
+    "lowStockTitle": "Stock faible",
+    "noLowStock": "Aucune alerte de stock",
+    "suggestedReorder": "Dispo. {{available}} · réappro. {{reorder}}",
+    "assign": "Attribuer",
+    "unassign": "Retirer",
+    "quantityUsed": "Quantité utilisée",
+    "empty": "Aucun accessoire"
   }
 }

@@ -6,6 +6,7 @@ from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.services.catalog_service import CatalogService
+from api.services.accessory_service import AccessoryService
 from api.services.category_service import CategoryService
 from api.services.collection_item_service import CollectionItemService
 from api.services.collection_service import CollectionService
@@ -127,3 +128,10 @@ def get_stats_service(
 ) -> StatsService:
     """Provide a StatsService instance."""
     return StatsService(db)
+
+
+def get_accessory_service(
+    db: AsyncSession = Depends(get_db),
+) -> AccessoryService:
+    """Provide an AccessoryService instance."""
+    return AccessoryService(db)

@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from api.routes.catalogs import catalog_items_router
+from api.routes.accessories import router as accessories_router
 from api.routes.catalogs import router as catalogs_router
 from api.routes.categories import router as categories_router
 from api.routes.categories import subcategories_router
@@ -79,6 +80,7 @@ app.include_router(search_router, prefix="/api")
 app.include_router(price_history_router, prefix="/api")
 app.include_router(transactions_router, prefix="/api")
 app.include_router(stats_router, prefix="/api")
+app.include_router(accessories_router, prefix="/api")
 
 
 @app.get("/health")

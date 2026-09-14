@@ -47,7 +47,8 @@
     "suppliers": "Suppliers",
     "wishlist": "Wishlist",
     "search": "Search",
-    "stats": "Statistics"
+    "stats": "Statistics",
+    "accessories": "Accessories"
   },
   "home": {
     "welcome": "Welcome to H.O.A.R.D.",
@@ -454,6 +455,14 @@
     "transaction": {
       "dateRequired": "Date is required",
       "invalidType": "Invalid transaction type"
+    },
+    "accessory": {
+      "nameRequired": "Name is required",
+      "invalidStock": "Invalid quantity",
+      "insufficientStock": "Insufficient stock",
+      "alreadyAssigned": "Already assigned",
+      "hasAssignments": "Has active assignments",
+      "selectRequired": "Select an accessory"
     }
   },
   "search": {
@@ -573,5 +582,27 @@
       "categoryDistribution": "Accumulated current value per category",
       "acquisitionTimeline": "Number of items acquired per period"
     }
+  },
+  "accessories": {
+    "title": "Accessories",
+    "add": "Add accessory",
+    "name": "Name",
+    "category": "Category",
+    "quantityTotal": "Total quantity",
+    "quantityInUse": "In use",
+    "quantityAvailable": "Available",
+    "minimumStockAlert": "Minimum stock alert",
+    "reorderQuantity": "Reorder quantity",
+    "unitCost": "Unit cost",
+    "supplier": "Supplier",
+    "lowStock": "Low stock: {{count}}",
+    "inStock": "In stock: {{count}}",
+    "lowStockTitle": "Low stock",
+    "noLowStock": "No stock alerts",
+    "suggestedReorder": "Avail. {{available}} · reorder {{reorder}}",
+    "assign": "Assign",
+    "unassign": "Remove",
+    "quantityUsed": "Quantity used",
+    "empty": "No accessories"
   }
 }

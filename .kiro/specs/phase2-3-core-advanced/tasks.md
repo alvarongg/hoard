@@ -747,63 +747,63 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
 - [~] 32. Checkpoint - Estadísticas y gráficos completos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 33. Bloque 2 - Accesorios y stock backend (R12)
-  - [~] 33.1 Crear `backend/api/schemas/accessory.py`
+- [x] 33. Bloque 2 - Accesorios y stock backend (R12)
+  - [x] 33.1 Crear `backend/api/schemas/accessory.py`
     - `AccessoryBase` con `name` (min_length 1), `category`, `subcategory`, `compatible_sub_categories`, `size_specifications`, `quantity_total` (ge 0), `minimum_stock_alert` (ge 0), `reorder_quantity`, `unit_cost`, `currency`, `supplier_id`, `supplier_sku`, `supplier_url`, `notes`
     - `AccessoryResponse` con `quantity_in_use`, `quantity_available` e `is_low_stock` de solo lectura; `LowStockEntry`; `ItemAccessoryCreate` (`accessory_id`, `quantity_used` ge 1, `notes`); `ItemAccessoryResponse`
     - _Requirements: 12.1, 12.2, 12.3, 12.5, 12.10_
-  - [~] 33.2 Crear `backend/api/services/accessory_service.py`
+  - [x] 33.2 Crear `backend/api/services/accessory_service.py`
     - CRUD `list` (filtro `category`, paginación), `get`, `create`, `update`, `delete` (lanza `DuplicateError` → 409 si tiene asignaciones vigentes)
     - `list_low_stock` devuelve los accesorios con `quantity_available <= minimum_stock_alert` y la `reorder_quantity` sugerida
     - `assign` valida stock disponible (`ValidationError` si excede) y unicidad (`DuplicateError` si ya está asignado) **antes** del insert, en ambos dialectos; ajusta `quantity_in_use` solo en SQLite (en PostgreSQL lo hace el trigger)
     - `unassign` elimina el registro y decrementa `quantity_in_use` en SQLite
     - `_resolve_available` lee la columna `GENERATED` en PostgreSQL y usa `available_stock()` en SQLite
     - _Requirements: 12.5, 12.6, 12.7, 12.8, 12.9, 12.10, 19.6_
-  - [~] 33.3 Agregar `get_accessory_service` en `backend/api/dependencies.py` y crear `backend/api/routes/accessories.py`
+  - [x] 33.3 Agregar `get_accessory_service` en `backend/api/dependencies.py` y crear `backend/api/routes/accessories.py`
     - `GET/POST /accessories`, `GET/PUT/DELETE /accessories/{id}`, `GET /accessories/low-stock`, `GET/POST /collection-items/{id}/accessories`, `DELETE /item-accessories/{id}`
     - Registrar `app.include_router(accessories_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 12.1, 12.5, 12.6, 12.10, 19.6_
-  - [~] 33.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_accessory_service.py`
+  - [x] 33.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_accessory_service.py`
     - Creación válida; `name` vacío y `quantity_total` negativo rechazados; campos opcionales persistidos
     - `assign` incrementa `quantity_in_use` y reduce `quantity_available`; `unassign` los revierte
     - Asignación duplicada al mismo item rechazada; asignación por encima del disponible rechazada dejando `quantity_in_use` intacto
     - `list_low_stock` con stock por debajo, igual y por encima del umbral
     - `delete` con asignaciones vigentes rechazado
     - _Requirements: 12.1, 12.2, 12.3, 12.5, 12.6, 12.7, 12.8, 12.10, 19.10_
-  - [~] 33.5 Escribir el test `@pytest.mark.postgres` del trigger y la columna GENERATED
+  - [x] 33.5 Escribir el test `@pytest.mark.postgres` del trigger y la columna GENERATED
     - `backend/tests/integration/test_postgres/test_accessories_postgres.py`: `update_accessory_stock_trigger` ajusta `quantity_in_use` sin intervención del service y `quantity_available` coincide con `available_stock()`
     - _Requirements: 12.9, 19.8_
-  - [~] 33.6 Escribir integration tests en `backend/tests/integration/test_routes/test_accessories.py`
+  - [x] 33.6 Escribir integration tests en `backend/tests/integration/test_routes/test_accessories.py`
     - Códigos 200/201/204/404/409/422; asignación sin stock devuelve 422; asignación duplicada devuelve 409; borrado con asignaciones devuelve 409
     - _Requirements: 12.1, 12.2, 12.7, 12.8, 12.10, 19.9_
-  - [~] 33.7 Escribir property test del stock disponible
+  - [x] 33.7 Escribir property test del stock disponible
     - **Property 2: El stock disponible nunca es negativo y siempre es total menos en uso**
     - **Validates: Requirements 12.8, 12.9**
     - Usar `hypothesis` (mínimo 100 iteraciones) con secuencias arbitrarias de asignaciones y desasignaciones, verificando la invariante tras cada operación y que las asignaciones inválidas no modifican `quantity_in_use`
     - Archivo: `backend/tests/unit/test_services/test_accessory_service_properties.py`
 
-- [ ] 34. Bloque 2 - Accesorios y stock frontend (R12)
-  - [~] 34.1 Crear `frontend/src/types/accessory.ts` y `frontend/src/services/accessoriesApi.ts`
+- [x] 34. Bloque 2 - Accesorios y stock frontend (R12)
+  - [x] 34.1 Crear `frontend/src/types/accessory.ts` y `frontend/src/services/accessoriesApi.ts`
     - `Accessory` (con `readonly quantityInUse`, `quantityAvailable`, `isLowStock`), `AccessoryCreate`, `AccessoryUpdate`, `LowStockEntry`, `ItemAccessoryAssignment`
     - `accessoriesApi` con `list`, `get`, `create`, `update`, `remove`, `lowStock`, `listAssignments`, `assign`, `unassign`
     - _Requirements: 12.1, 12.5, 12.10, 19.7_
-  - [~] 34.2 Crear `frontend/src/hooks/useAccessories.ts` y `frontend/src/hooks/useItemAccessories.ts`
+  - [x] 34.2 Crear `frontend/src/hooks/useAccessories.ts` y `frontend/src/hooks/useItemAccessories.ts`
     - Asignar o desasignar invalida el listado de accesorios y el de stock bajo
     - _Requirements: 12.5, 12.6, 12.10_
-  - [~] 34.3 Crear los componentes en `frontend/src/components/accessories/`
+  - [x] 34.3 Crear los componentes en `frontend/src/components/accessories/`
     - `AccessoryCard.tsx`, `AccessoryForm.tsx`, `LowStockList.tsx`, `StockBadge.tsx`, `AssignAccessoryDialog.tsx`
     - `StockBadge` sobre `Badge`: marca el stock bajo con color, texto explícito y `aria-label`
     - `AssignAccessoryDialog` valida localmente la cantidad contra el disponible antes de enviar
     - _Requirements: 12.5, 12.8, 12.11_
-  - [~] 34.4 Crear `frontend/src/pages/AccessoriesPage.tsx` con ruta y navegación
+  - [x] 34.4 Crear `frontend/src/pages/AccessoriesPage.tsx` con ruta y navegación
     - Listado con total, en uso y disponible, sección de stock bajo, estado vacío
     - Ruta `/accessories` en `frontend/src/App.tsx`; enlace en `Navigation.tsx`
     - Integrar `AssignAccessoryDialog` en el detalle de collection item de `frontend/src/pages/CollectionDetailPage.tsx`
     - _Requirements: 12.5, 12.11_
-  - [~] 34.5 Escribir tests de hooks, componentes y página de accesorios
+  - [x] 34.5 Escribir tests de hooks, componentes y página de accesorios
     - Hooks con MSW; un `.test.tsx` por componente y por página: stock bajo destacado con texto además de color, error de stock insuficiente, focus trap del diálogo, teclado, ARIA y test axe-core obligatorio
     - _Requirements: 12.8, 12.11, 18.6, 19.2, 19.3_
-  - [~] 34.6 Agregar claves i18n de accesorios en los 5 idiomas
+  - [x] 34.6 Agregar claves i18n de accesorios en los 5 idiomas
     - Sección `accessories.*` (`title`, `add`, `name`, `category`, `quantityTotal`, `quantityInUse`, `quantityAvailable`, `minimumStockAlert`, `reorderQuantity`, `unitCost`, `supplier`, `lowStock`, `lowStockTitle`, `suggestedReorder`, `assign`, `unassign`, `quantityUsed`, `empty`)
     - `errors.accessory.*` (`invalidStock`, `insufficientStock`, `alreadyAssigned`, `hasAssignments`)
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`

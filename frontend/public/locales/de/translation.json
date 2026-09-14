@@ -47,7 +47,8 @@
     "suppliers": "Anbieter",
     "wishlist": "Wunschliste",
     "search": "Suchen",
-    "stats": "Statistiken"
+    "stats": "Statistiken",
+    "accessories": "Zubehör"
   },
   "home": {
     "welcome": "Willkommen bei H.O.A.R.D.",
@@ -454,6 +455,14 @@
     "transaction": {
       "dateRequired": "Datum ist erforderlich",
       "invalidType": "Ungültiger Transaktionstyp"
+    },
+    "accessory": {
+      "nameRequired": "Name ist erforderlich",
+      "invalidStock": "Ungültige Menge",
+      "insufficientStock": "Nicht genügend Bestand",
+      "alreadyAssigned": "Bereits zugewiesen",
+      "hasAssignments": "Hat aktive Zuweisungen",
+      "selectRequired": "Wählen Sie ein Zubehör"
     }
   },
   "search": {
@@ -573,5 +582,27 @@
       "categoryDistribution": "Kumulierter aktueller Wert pro Kategorie",
       "acquisitionTimeline": "Anzahl der pro Zeitraum erworbenen Objekte"
     }
+  },
+  "accessories": {
+    "title": "Zubehör",
+    "add": "Zubehör hinzufügen",
+    "name": "Name",
+    "category": "Kategorie",
+    "quantityTotal": "Gesamtmenge",
+    "quantityInUse": "In Verwendung",
+    "quantityAvailable": "Verfügbar",
+    "minimumStockAlert": "Mindestbestandswarnung",
+    "reorderQuantity": "Nachbestellmenge",
+    "unitCost": "Stückkosten",
+    "supplier": "Lieferant",
+    "lowStock": "Niedriger Bestand: {{count}}",
+    "inStock": "Auf Lager: {{count}}",
+    "lowStockTitle": "Niedriger Bestand",
+    "noLowStock": "Keine Bestandswarnungen",
+    "suggestedReorder": "Verf. {{available}} · nachbestellen {{reorder}}",
+    "assign": "Zuweisen",
+    "unassign": "Entfernen",
+    "quantityUsed": "Verwendete Menge",
+    "empty": "Kein Zubehör"
   }
 }
