@@ -825,5 +825,17 @@
       "catalog_item": "Articles de catalogue",
       "collection_item": "Articles de collection"
     }
+  },
+  "catalogItemEdit": {
+    "edit": "Modifier l'article",
+    "title": "Titre",
+    "description": "Description / notes",
+    "region": "Région",
+    "manufacturer": "Fabricant",
+    "publisher": "Éditeur",
+    "developer": "Développeur",
+    "variation": "Variante",
+    "variationPlaceholder": "p.ex. avec jeu / clavier / top-loader",
+    "variationDetails": "Détails de la variante"
   }
 }

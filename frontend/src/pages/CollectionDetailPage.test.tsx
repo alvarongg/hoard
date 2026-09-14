@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { http, HttpResponse } from "msw";
 import { server } from "../test/mocks/server";
-import { mockCatalog, mockCollection } from "../test/mocks/handlers";
 import { CollectionDetailPage } from "./CollectionDetailPage";
 
 const API_URL = "http://localhost:8000/api";
@@ -157,13 +156,10 @@ describe("CollectionDetailPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("omits inline creation when the collection has no sub-category", async () => {
+  it("omits inline creation when the collection has no associated catalog", async () => {
     server.use(
-      http.get(`${API_URL}/collections/:id`, () =>
-        HttpResponse.json({
-          ...mockCollection,
-          restricted_to_sub_category_id: null,
-        }),
+      http.get(`${API_URL}/collections/:id/catalogs`, () =>
+        HttpResponse.json([]),
       ),
     );
 
@@ -182,10 +178,10 @@ describe("CollectionDetailPage", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("omits inline creation when the sub-category has no active catalog", async () => {
+  it("omits inline creation when there is no associated catalog to create in", async () => {
     server.use(
-      http.get(`${API_URL}/catalogs`, () =>
-        HttpResponse.json([{ ...mockCatalog, is_active: false }]),
+      http.get(`${API_URL}/collections/:id/catalogs`, () =>
+        HttpResponse.json([]),
       ),
     );
 

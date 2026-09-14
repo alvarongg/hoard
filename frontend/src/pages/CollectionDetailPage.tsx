@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 import { useParams, useNavigate } from "react-router-dom";
 import { useCollection } from "../hooks/useCollection";
 import { useCollectionItems } from "../hooks/useCollectionItems";
-import { useCollectionCatalog } from "../hooks/useCollectionCatalog";
-import { useCatalogItems } from "../hooks/useCatalogItems";
+import { useCollectionCatalogItems } from "../hooks/useCollectionCatalogItems";
 import { ItemList } from "../components/items/ItemList";
 import { CollectionCatalogsSection } from "../components/collector/CollectionCatalogsSection";
 import { ItemForm } from "../components/items/ItemForm";
+import { CollectionItemEditForm } from "../components/items/CollectionItemEditForm";
 import { TransactionList } from "../components/transactions/TransactionList";
 import { TransactionForm } from "../components/transactions/TransactionForm";
 import { InvestmentSummary } from "../components/transactions/InvestmentSummary";
@@ -24,12 +24,13 @@ export function CollectionDetailPage() {
   const navigate = useNavigate();
   const collection = useCollection(id ?? "");
   const items = useCollectionItems(id ?? "");
-  const { catalogId } = useCollectionCatalog(
-    collection.data?.restrictedToSubCategoryId,
-  );
-  const catalogItems = useCatalogItems(catalogId ?? "");
+  const {
+    items: catalogItemsList,
+    primaryCatalogId,
+  } = useCollectionCatalogItems(id);
   const [showAddItemModal, setShowAddItemModal] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+  const [editItemId, setEditItemId] = useState<string | null>(null);
 
   const handleAddItem = useCallback(
     (formData: { catalogItemId: string; condition: ItemCondition; notes: string; purchasePrice: string }) => {
@@ -116,6 +117,8 @@ export function CollectionDetailPage() {
             items={items.data ?? []}
             isLoading={items.isLoading}
             error={items.error}
+            catalogItems={catalogItemsList}
+            onEdit={(itemId) => setEditItemId(itemId)}
           />
         </div>
       </section>
@@ -154,13 +157,41 @@ export function CollectionDetailPage() {
         title={t("items.add")}
       >
         <ItemForm
-          catalogItems={catalogItems.data ?? []}
-          catalogId={catalogId}
+          catalogItems={catalogItemsList}
+          catalogId={primaryCatalogId}
           onSubmit={handleAddItem}
           onCancel={() => setShowAddItemModal(false)}
           isLoading={items.addItem.isPending}
         />
       </Modal>
+
+      {editItemId && (
+        <Modal
+          isOpen={Boolean(editItemId)}
+          onClose={() => setEditItemId(null)}
+          title={t("items.edit")}
+        >
+          {(() => {
+            const editing = (items.data ?? []).find(
+              (i) => i.id === editItemId,
+            );
+            if (!editing) return null;
+            return (
+              <CollectionItemEditForm
+                item={editing}
+                isLoading={items.updateItem.isPending}
+                onSubmit={(data) =>
+                  items.updateItem.mutate(
+                    { id: editItemId, data },
+                    { onSuccess: () => setEditItemId(null) },
+                  )
+                }
+                onCancel={() => setEditItemId(null)}
+              />
+            );
+          })()}
+        </Modal>
+      )}
     </main>
   );
 }

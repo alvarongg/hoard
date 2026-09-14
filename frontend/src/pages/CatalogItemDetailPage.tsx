@@ -5,11 +5,13 @@ import { useParams } from "react-router-dom";
 import { useCatalogItem } from "../hooks/useCatalogItem";
 import { useCollections } from "../hooks/useCollections";
 import { useOwnership, usePriceLookup } from "../hooks/useCollectorWorkflow";
+import { useUpdateCatalogItem } from "../hooks/useUpdateCatalogItem";
 import { usePriceHistory } from "../hooks/usePriceHistory";
 import { useWishlist } from "../hooks/useWishlist";
 import { collectionItemsApi } from "../services/collectionItemsApi";
 import { AddToCollectionForm } from "../components/collector/AddToCollectionForm";
 import type { AddToCollectionResult } from "../components/collector/AddToCollectionForm";
+import { CatalogItemEditForm } from "../components/catalog/CatalogItemEditForm";
 import { PriceHistoryTable } from "../components/priceHistory/PriceHistoryTable";
 import { Badge } from "../components/ui/Badge";
 import { Button } from "../components/ui/Button";
@@ -32,6 +34,8 @@ export function CatalogItemDetailPage() {
 
   const [showAdd, setShowAdd] = useState(false);
   const [showWishlist, setShowWishlist] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const updateItem = useUpdateCatalogItem(itemId as string);
   const [wishlistCollection, setWishlistCollection] = useState("");
   const [priceUrl, setPriceUrl] = useState("");
   const [addError, setAddError] = useState<string | null>(null);
@@ -105,7 +109,18 @@ export function CatalogItemDetailPage() {
         <Button variant="secondary" onClick={() => setShowWishlist(true)}>
           {t("collector.actions.addToWishlist")}
         </Button>
+        <Button variant="secondary" onClick={() => setShowEdit(true)}>
+          {t("catalogItemEdit.edit")}
+        </Button>
       </div>
+
+      {item.variation && (
+        <p className="text-sm">
+          <span className="font-medium">{t("catalogItemEdit.variation")}:</span>{" "}
+          {item.variation}
+          {item.variationDetails ? ` — ${item.variationDetails}` : ""}
+        </p>
+      )}
 
       {item.description && <p>{item.description}</p>}
 
@@ -191,6 +206,20 @@ export function CatalogItemDetailPage() {
             </Button>
           </div>
         </div>
+      </Modal>
+      <Modal
+        isOpen={showEdit}
+        onClose={() => setShowEdit(false)}
+        title={t("catalogItemEdit.edit")}
+      >
+        <CatalogItemEditForm
+          item={item}
+          isLoading={updateItem.isPending}
+          onSubmit={(data) =>
+            updateItem.mutate(data, { onSuccess: () => setShowEdit(false) })
+          }
+          onCancel={() => setShowEdit(false)}
+        />
       </Modal>
     </div>
   );

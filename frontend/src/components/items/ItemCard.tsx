@@ -3,6 +3,8 @@ import type { CollectionItem, ItemCondition } from "../../types/item";
 
 interface ItemCardProps {
   item: CollectionItem;
+  catalogTitle?: string;
+  catalogName?: string;
   primaryImageUrl?: string;
   onEdit?: (id: string) => void;
 }
@@ -16,7 +18,13 @@ const CONDITION_KEYS: Record<ItemCondition, string> = {
   poor: "items.poor",
 };
 
-export function ItemCard({ item, primaryImageUrl, onEdit }: ItemCardProps) {
+export function ItemCard({
+  item,
+  catalogTitle,
+  catalogName,
+  primaryImageUrl,
+  onEdit,
+}: ItemCardProps) {
   const { t } = useTranslation();
   const headingId = `item-${item.id}`;
 
@@ -34,8 +42,11 @@ export function ItemCard({ item, primaryImageUrl, onEdit }: ItemCardProps) {
         />
       )}
       <h3 id={headingId} className="text-base font-semibold text-gray-900">
-        {item.catalogItemId}
+        {catalogTitle ?? item.catalogItemId}
       </h3>
+      {catalogName && (
+        <p className="text-xs text-gray-400">{catalogName}</p>
+      )}
       <p className="mt-1 text-sm text-gray-500">
         {t("items.condition")}: {t(CONDITION_KEYS[item.condition])}
       </p>

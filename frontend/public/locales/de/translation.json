@@ -825,5 +825,17 @@
       "catalog_item": "Katalogeinträge",
       "collection_item": "Sammlungseinträge"
     }
+  },
+  "catalogItemEdit": {
+    "edit": "Element bearbeiten",
+    "title": "Titel",
+    "description": "Beschreibung / Notizen",
+    "region": "Region",
+    "manufacturer": "Hersteller",
+    "publisher": "Herausgeber",
+    "developer": "Entwickler",
+    "variation": "Variante",
+    "variationPlaceholder": "z.B. mit Spiel / Tastatur / Top-Loader",
+    "variationDetails": "Variantendetails"
   }
 }

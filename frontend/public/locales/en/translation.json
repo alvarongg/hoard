@@ -825,5 +825,17 @@
       "catalog_item": "Catalog items",
       "collection_item": "Collection items"
     }
+  },
+  "catalogItemEdit": {
+    "edit": "Edit item",
+    "title": "Title",
+    "description": "Description / notes",
+    "region": "Region",
+    "manufacturer": "Manufacturer",
+    "publisher": "Publisher",
+    "developer": "Developer",
+    "variation": "Variant",
+    "variationPlaceholder": "e.g. with game / keyboard / top-loader",
+    "variationDetails": "Variant details"
   }
 }

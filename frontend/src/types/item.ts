@@ -86,6 +86,10 @@ export interface CatalogItem {
   rarity: string | null;
   customFields: Record<string, unknown>;
   coverImageUrl: string | null;
+  variation: string | null;
+  variationDetails: string | null;
+  relatedItemsGroup: string | null;
+  images: Record<string, unknown> | null;
   createdAt: string;
   updatedAt: string;
 }
