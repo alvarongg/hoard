@@ -1046,21 +1046,21 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
   - [~] 45.5 Crear el E2E de teclado en `frontend/tests/e2e/a11y-keyboard.spec.ts`
     - Recorrido completo por teclado, skip link operativo, focus trap en modales, zoom al 200% sin pérdida de funcionalidad ni scroll horizontal de página
     - _Requirements: 18.4, 18.5, 18.6_
-  - [~] 45.6 Crear `docs/ACCESSIBILITY.md` y enlazarlo desde el README
+  - [x] 45.6 Crear `docs/ACCESSIBILITY.md` y enlazarlo desde el README
     - Documentar el alcance de la auditoría automatizada, los componentes y páginas cubiertos, y la declaración explícita de que la validación completa de conformidad WCAG 2.1 AA requiere pruebas manuales con tecnologías asistivas y revisión experta, que la auditoría automatizada no sustituye
     - Agregar el enlace en `README.md`
     - _Requirements: 18.8_
 
 - [ ] 46. Bloque 2 - Cierre de estándares transversales (R19)
-  - [~] 46.1 Verificar y cerrar la paridad i18n de los 5 idiomas
+  - [x] 46.1 Verificar y cerrar la paridad i18n de los 5 idiomas
     - Ejecutar `npm run lint:i18n` y completar cualquier clave faltante o sobrante acumulada en las Tasks 24 a 45
     - Archivos: `frontend/public/locales/{es,en,pt,fr,de}/translation.json`
     - _Requirements: 19.1, 9.2_
-  - [~] 46.2 Verificar el modo estricto de TypeScript sin `any`
+  - [x] 46.2 Verificar el modo estricto de TypeScript sin `any`
     - `npx tsc --noEmit` limpio; eliminar cualquier `any` introducido, usando `unknown` con narrowing donde el backend devuelve JSON libre
     - Archivos: `frontend/tsconfig.json` y los módulos señalados por el compilador
     - _Requirements: 19.7_
-  - [~] 46.3 Auditar la separación de capas del backend
+  - [x] 46.3 Auditar la separación de capas del backend
     - Revisar `backend/api/routes/*.py`: ninguna regla de negocio en las routes; toda validación de dominio en los services y toda traducción de error vía exception handlers
     - Mover a `services/` cualquier lógica que haya quedado en routes
     - _Requirements: 19.6_
@@ -1068,11 +1068,11 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
     - `suppliers.spec.ts`, `wishlist.spec.ts`, `components.spec.ts`, `search.spec.ts`, `stats.spec.ts`, `theme.spec.ts`, `i18n.spec.ts`, `accessories.spec.ts`, `transfer.spec.ts` (export → import round-trip), `backups.spec.ts`, `charts.spec.ts`
     - _Requirements: 19.9_
 
-- [~] 47. Checkpoint - Cierre del Bloque 2 (Fase 3 Advanced) y subida de coverage a 85%
+- [x] 47. Checkpoint - Cierre del Bloque 2 (Fase 3 Advanced) y subida de coverage a 85%
   - Elevar `fail_under = 85` en `backend/pyproject.toml` y `coverage.thresholds.lines = 85` en `frontend/vitest.config.ts`
   - Ensure all tests pass, ask the user if questions arise.
 
-- [~] 48. Final checkpoint - Suite completa, auditoría y umbrales verificados
+- [x] 48. Final checkpoint - Suite completa, auditoría y umbrales verificados
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes

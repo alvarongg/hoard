@@ -34,7 +34,7 @@ export default defineConfig({
         "**/*.spec.ts",
       ],
       thresholds: {
-        lines: 80,
+        lines: 85,
       },
     },
   },
