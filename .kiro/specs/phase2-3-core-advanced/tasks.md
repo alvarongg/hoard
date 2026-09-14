@@ -564,27 +564,27 @@ Cada dominio backend sigue el patrón del proyecto: schemas Pydantic → service
   - Elevar `fail_under = 80` en `backend/pyproject.toml` y `coverage.thresholds.lines = 80` en `frontend/vitest.config.ts`
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 24. Bloque 2 - Historial de precios backend (R10)
-  - [~] 24.1 Crear `backend/api/schemas/price_history.py`
+- [x] 24. Bloque 2 - Historial de precios backend (R10)
+  - [x] 24.1 Crear `backend/api/schemas/price_history.py`
     - `PriceHistoryBase` con `condition` (obligatorio), `is_complete`, `completeness_description`, `price` (ge 0, 2 decimales), `currency`, `source`, `source_url`, `price_date` (obligatorio), `region`, `notes`
     - `PriceHistoryCreate`, `PriceHistoryResponse`, `LatestPriceEntry`, `ValueUpdateResult` (`updated`, `current_market_value`, `value_source`, `reason`)
     - _Requirements: 10.2, 10.4, 10.6, 10.7_
-  - [~] 24.2 Crear `backend/api/services/price_history_service.py`
+  - [x] 24.2 Crear `backend/api/services/price_history_service.py`
     - `list` con filtros `condition`, `is_complete`, `region`, `date_from`, `date_to`, ordenado por `price_date` descendente
     - `create` verifica la clave natural con un `SELECT` previo y lanza `DuplicateError` con mensaje útil; `delete`
     - `latest_by_condition` devuelve el último precio por condición
     - `refresh_item_market_value` toma el precio más reciente compatible con la condición y completitud del item y escribe `current_market_value`, `current_value_currency`, `last_value_update`, `value_source`; si no hay precio compatible devuelve `updated=False` con `reason` y no modifica nada
     - _Requirements: 10.2, 10.3, 10.5, 10.6, 10.7, 10.8, 19.6_
-  - [~] 24.3 Agregar `get_price_history_service` en `backend/api/dependencies.py` y crear `backend/api/routes/price_history.py`
+  - [x] 24.3 Agregar `get_price_history_service` en `backend/api/dependencies.py` y crear `backend/api/routes/price_history.py`
     - `GET/POST /catalog-items/{id}/price-history`, `GET /catalog-items/{id}/price-history/latest`, `DELETE /price-history/{id}` (204), `POST /collection-items/{id}/refresh-value` (200)
     - Registrar `app.include_router(price_history_router, prefix="/api")` en `backend/main.py`
     - _Requirements: 10.2, 10.5, 10.6, 19.6_
-  - [~] 24.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_price_history_service.py`
+  - [x] 24.4 Escribir unit tests del service en `backend/tests/unit/test_services/test_price_history_service.py`
     - Creación válida; duplicado de clave natural lanza `DuplicateError`; `price` negativo rechazado; catalog item inexistente → `NotFoundError`
     - Cada filtro y sus combinaciones; orden descendente por `price_date`; historial vacío
     - `refresh_item_market_value` con precio compatible actualiza los 4 campos; sin precio compatible devuelve `updated=False` y deja el valor previo intacto
     - _Requirements: 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 19.10_
-  - [~] 24.5 Escribir integration tests en `backend/tests/integration/test_routes/test_price_history.py`
+  - [x] 24.5 Escribir integration tests en `backend/tests/integration/test_routes/test_price_history.py`
     - Códigos 200/201/204/404/409/422 por endpoint y formato de respuesta
     - `POST /collection-items/{id}/refresh-value` devuelve 200 con `ValueUpdateResult` tanto cuando actualiza como cuando no
     - _Requirements: 10.2, 10.3, 10.6, 10.7, 19.9_

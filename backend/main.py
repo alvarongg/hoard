@@ -17,6 +17,7 @@ from api.routes.item_components import (
     collection_items_router as item_components_collection_router,
 )
 from api.routes.item_components import item_components_router
+from api.routes.price_history import router as price_history_router
 from api.routes.search import router as search_router
 from api.routes.sightings import router as sightings_router
 from api.routes.suppliers import router as suppliers_router
@@ -73,6 +74,7 @@ app.include_router(sightings_router, prefix="/api")
 app.include_router(item_components_collection_router, prefix="/api")
 app.include_router(item_components_router, prefix="/api")
 app.include_router(search_router, prefix="/api")
+app.include_router(price_history_router, prefix="/api")
 
 
 @app.get("/health")

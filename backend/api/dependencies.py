@@ -13,6 +13,7 @@ from api.services.collection_stats_service import CollectionStatsService
 from api.services.csv_import_service import CsvImportService
 from api.services.image_service import ImageService
 from api.services.item_component_service import ItemComponentService
+from api.services.price_history_service import PriceHistoryService
 from api.services.search_service import SearchService
 from api.services.supplier_service import SupplierService
 from api.services.wishlist_service import WishlistService
@@ -103,3 +104,10 @@ def get_search_service(
 ) -> SearchService:
     """Provide a SearchService instance."""
     return SearchService(db, settings)
+
+
+def get_price_history_service(
+    db: AsyncSession = Depends(get_db),
+) -> PriceHistoryService:
+    """Provide a PriceHistoryService instance."""
+    return PriceHistoryService(db)
